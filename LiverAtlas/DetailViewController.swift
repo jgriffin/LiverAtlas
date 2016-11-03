@@ -17,7 +17,12 @@ class DetailViewController: UIViewController {
         // Update the user interface for the detail item.
         if let detail = self.detailItem {
             if let label = self.detailDescriptionLabel {
-                label.text = detail.timestamp!.description
+                switch detail {
+                case let .Entry(description, _):
+                    label.text = description
+                case let .Synonym(description, _):
+                    label.text = description
+                }
             }
         }
     }
@@ -33,7 +38,7 @@ class DetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    var detailItem: Event? {
+    var detailItem: LiverAtlasIndex.LiverAtlasIndexItem? {
         didSet {
             // Update the view.
             self.configureView()

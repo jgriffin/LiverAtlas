@@ -7,8 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3EA12DE7615EEB2169F0DC9E /* Pods_LiverAtlasTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 641D99D7DA412BFD9CAB6D4D /* Pods_LiverAtlasTests.framework */; };
+		71E0991D7481BA657FF6A8FE /* Pods_LiverAtlas.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69551A3CC407B16394B8564F /* Pods_LiverAtlas.framework */; };
+		D6168F2B1DCE32F300F294F8 /* LiverAtlasScrapeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6168F2A1DCE32F300F294F8 /* LiverAtlasScrapeTests.swift */; };
 		D63605B11DCBB97B00F20A65 /* IndexTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63605B01DCBB97B00F20A65 /* IndexTableViewController.swift */; };
 		D63605B51DCBC10100F20A65 /* IndexItemEntryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63605B41DCBC10100F20A65 /* IndexItemEntryTableViewCell.swift */; };
+		D63605D91DCC26BF00F20A65 /* AutoLayoutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63605D71DCC26BF00F20A65 /* AutoLayoutTableViewCell.swift */; };
+		D63605DA1DCC26BF00F20A65 /* AutoLayoutTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D63605D81DCC26BF00F20A65 /* AutoLayoutTableViewCell.xib */; };
+		D64885601DCE7F180016ED31 /* LiverAtlasScraper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D648855F1DCE7F180016ED31 /* LiverAtlasScraper.swift */; };
+		D64885611DCE7FB10016ED31 /* LiverAtlasScraper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D648855F1DCE7F180016ED31 /* LiverAtlasScraper.swift */; };
 		D6BE1DAC1DCB8BD800305B7D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BE1DAB1DCB8BD800305B7D /* AppDelegate.swift */; };
 		D6BE1DAF1DCB8BD800305B7D /* LiverAtlas.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D6BE1DAD1DCB8BD800305B7D /* LiverAtlas.xcdatamodeld */; };
 		D6BE1DB31DCB8BD800305B7D /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BE1DB21DCB8BD800305B7D /* DetailViewController.swift */; };
@@ -21,6 +28,7 @@
 		D6BE1DE11DCB8E1400305B7D /* LiverAtlasIndex.json in Resources */ = {isa = PBXBuildFile; fileRef = D6BE1DE01DCB8E1400305B7D /* LiverAtlasIndex.json */; };
 		D6BE1DE31DCB995300305B7D /* LiverAtlasIndexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BE1DE21DCB995300305B7D /* LiverAtlasIndexTests.swift */; };
 		D6BE1DE41DCB998D00305B7D /* LiverAtlastIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BE1DDE1DCB8CF700305B7D /* LiverAtlastIndex.swift */; };
+		E15505037D637206A15D8B94 /* Pods_LiverAtlasUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76490D144A99A7D88A1A3664 /* Pods_LiverAtlasUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,8 +49,21 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5B1ED9A2C68953806B33C782 /* Pods-LiverAtlasTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiverAtlasTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LiverAtlasTests/Pods-LiverAtlasTests.release.xcconfig"; sourceTree = "<group>"; };
+		641D99D7DA412BFD9CAB6D4D /* Pods_LiverAtlasTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LiverAtlasTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		691CB5DEC8215DB8F8FACCCA /* Pods-LiverAtlas.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiverAtlas.release.xcconfig"; path = "Pods/Target Support Files/Pods-LiverAtlas/Pods-LiverAtlas.release.xcconfig"; sourceTree = "<group>"; };
+		69551A3CC407B16394B8564F /* Pods_LiverAtlas.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LiverAtlas.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		76490D144A99A7D88A1A3664 /* Pods_LiverAtlasUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LiverAtlasUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A428BE715C684284DDA05050 /* Pods-LiverAtlas.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiverAtlas.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LiverAtlas/Pods-LiverAtlas.debug.xcconfig"; sourceTree = "<group>"; };
+		BD3CC62BC44AB7DC90A5508C /* Pods-LiverAtlasUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiverAtlasUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LiverAtlasUITests/Pods-LiverAtlasUITests.release.xcconfig"; sourceTree = "<group>"; };
+		CE090C35C5D15C6B457BDD39 /* Pods-LiverAtlasTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiverAtlasTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LiverAtlasTests/Pods-LiverAtlasTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D10CFD08294A25C9C3A6E9D9 /* Pods-LiverAtlasUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiverAtlasUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LiverAtlasUITests/Pods-LiverAtlasUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		D6168F2A1DCE32F300F294F8 /* LiverAtlasScrapeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiverAtlasScrapeTests.swift; sourceTree = "<group>"; };
 		D63605B01DCBB97B00F20A65 /* IndexTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndexTableViewController.swift; sourceTree = "<group>"; };
 		D63605B41DCBC10100F20A65 /* IndexItemEntryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndexItemEntryTableViewCell.swift; sourceTree = "<group>"; };
+		D63605D71DCC26BF00F20A65 /* AutoLayoutTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoLayoutTableViewCell.swift; sourceTree = "<group>"; };
+		D63605D81DCC26BF00F20A65 /* AutoLayoutTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AutoLayoutTableViewCell.xib; sourceTree = "<group>"; };
+		D648855F1DCE7F180016ED31 /* LiverAtlasScraper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiverAtlasScraper.swift; sourceTree = "<group>"; };
 		D6BE1DA81DCB8BD800305B7D /* LiverAtlas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiverAtlas.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6BE1DAB1DCB8BD800305B7D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D6BE1DAE1DCB8BD800305B7D /* LiverAtlas.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LiverAtlas.xcdatamodel; sourceTree = "<group>"; };
@@ -67,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71E0991D7481BA657FF6A8FE /* Pods_LiverAtlas.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +96,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3EA12DE7615EEB2169F0DC9E /* Pods_LiverAtlasTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,12 +104,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E15505037D637206A15D8B94 /* Pods_LiverAtlasUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8FAB39E134496AD42E573505 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				69551A3CC407B16394B8564F /* Pods_LiverAtlas.framework */,
+				641D99D7DA412BFD9CAB6D4D /* Pods_LiverAtlasTests.framework */,
+				76490D144A99A7D88A1A3664 /* Pods_LiverAtlasUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B1995B7BFB36012787F25B6E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A428BE715C684284DDA05050 /* Pods-LiverAtlas.debug.xcconfig */,
+				691CB5DEC8215DB8F8FACCCA /* Pods-LiverAtlas.release.xcconfig */,
+				CE090C35C5D15C6B457BDD39 /* Pods-LiverAtlasTests.debug.xcconfig */,
+				5B1ED9A2C68953806B33C782 /* Pods-LiverAtlasTests.release.xcconfig */,
+				D10CFD08294A25C9C3A6E9D9 /* Pods-LiverAtlasUITests.debug.xcconfig */,
+				BD3CC62BC44AB7DC90A5508C /* Pods-LiverAtlasUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		D63605D61DCBCD4500F20A65 /* Index */ = {
 			isa = PBXGroup;
 			children = (
@@ -94,6 +141,9 @@
 				D6BE1DE01DCB8E1400305B7D /* LiverAtlasIndex.json */,
 				D63605B01DCBB97B00F20A65 /* IndexTableViewController.swift */,
 				D63605B41DCBC10100F20A65 /* IndexItemEntryTableViewCell.swift */,
+				D63605D71DCC26BF00F20A65 /* AutoLayoutTableViewCell.swift */,
+				D63605D81DCC26BF00F20A65 /* AutoLayoutTableViewCell.xib */,
+				D648855F1DCE7F180016ED31 /* LiverAtlasScraper.swift */,
 			);
 			name = Index;
 			sourceTree = "<group>";
@@ -105,6 +155,8 @@
 				D6BE1DC41DCB8BD800305B7D /* LiverAtlasTests */,
 				D6BE1DCF1DCB8BD800305B7D /* LiverAtlasUITests */,
 				D6BE1DA91DCB8BD800305B7D /* Products */,
+				B1995B7BFB36012787F25B6E /* Pods */,
+				8FAB39E134496AD42E573505 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -139,6 +191,7 @@
 				D6BE1DC71DCB8BD800305B7D /* Info.plist */,
 				D6BE1DE21DCB995300305B7D /* LiverAtlasIndexTests.swift */,
 				D6BE1DC51DCB8BD800305B7D /* LiverAtlasTests.swift */,
+				D6168F2A1DCE32F300F294F8 /* LiverAtlasScrapeTests.swift */,
 			);
 			path = LiverAtlasTests;
 			sourceTree = "<group>";
@@ -159,9 +212,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D6BE1DD51DCB8BD800305B7D /* Build configuration list for PBXNativeTarget "LiverAtlas" */;
 			buildPhases = (
+				13D807F8EB2C241BDE0AEEC5 /* [CP] Check Pods Manifest.lock */,
 				D6BE1DA41DCB8BD800305B7D /* Sources */,
 				D6BE1DA51DCB8BD800305B7D /* Frameworks */,
 				D6BE1DA61DCB8BD800305B7D /* Resources */,
+				63B122B5AA59FE3A7B081B6E /* [CP] Embed Pods Frameworks */,
+				C1C3907B1AF49B71355CB330 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -176,9 +232,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D6BE1DD81DCB8BD800305B7D /* Build configuration list for PBXNativeTarget "LiverAtlasTests" */;
 			buildPhases = (
+				DF724C5F94774AAC9B118DA8 /* [CP] Check Pods Manifest.lock */,
 				D6BE1DBD1DCB8BD800305B7D /* Sources */,
 				D6BE1DBE1DCB8BD800305B7D /* Frameworks */,
 				D6BE1DBF1DCB8BD800305B7D /* Resources */,
+				BE048E0D24A4EC4A4059D05E /* [CP] Embed Pods Frameworks */,
+				A5412B9A3122E6D7B5E7D729 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -194,9 +253,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D6BE1DDB1DCB8BD800305B7D /* Build configuration list for PBXNativeTarget "LiverAtlasUITests" */;
 			buildPhases = (
+				6F5833154A0603DAE4D3653D /* [CP] Check Pods Manifest.lock */,
 				D6BE1DC81DCB8BD800305B7D /* Sources */,
 				D6BE1DC91DCB8BD800305B7D /* Frameworks */,
 				D6BE1DCA1DCB8BD800305B7D /* Resources */,
+				CE20E180D288A6965753D099 /* [CP] Embed Pods Frameworks */,
+				B90352C53B6C55B309BB8B13 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -261,6 +323,7 @@
 			files = (
 				D6BE1DBB1DCB8BD800305B7D /* LaunchScreen.storyboard in Resources */,
 				D6BE1DB81DCB8BD800305B7D /* Assets.xcassets in Resources */,
+				D63605DA1DCC26BF00F20A65 /* AutoLayoutTableViewCell.xib in Resources */,
 				D6BE1DB61DCB8BD800305B7D /* Main.storyboard in Resources */,
 				D6BE1DE11DCB8E1400305B7D /* LiverAtlasIndex.json in Resources */,
 			);
@@ -282,14 +345,154 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		13D807F8EB2C241BDE0AEEC5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		63B122B5AA59FE3A7B081B6E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LiverAtlas/Pods-LiverAtlas-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6F5833154A0603DAE4D3653D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		A5412B9A3122E6D7B5E7D729 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LiverAtlasTests/Pods-LiverAtlasTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B90352C53B6C55B309BB8B13 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LiverAtlasUITests/Pods-LiverAtlasUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BE048E0D24A4EC4A4059D05E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LiverAtlasTests/Pods-LiverAtlasTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C1C3907B1AF49B71355CB330 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LiverAtlas/Pods-LiverAtlas-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CE20E180D288A6965753D099 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LiverAtlasUITests/Pods-LiverAtlasUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DF724C5F94774AAC9B118DA8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		D6BE1DA41DCB8BD800305B7D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				D6BE1DDF1DCB8CF700305B7D /* LiverAtlastIndex.swift in Sources */,
+				D64885601DCE7F180016ED31 /* LiverAtlasScraper.swift in Sources */,
 				D6BE1DAF1DCB8BD800305B7D /* LiverAtlas.xcdatamodeld in Sources */,
 				D63605B11DCBB97B00F20A65 /* IndexTableViewController.swift in Sources */,
+				D63605D91DCC26BF00F20A65 /* AutoLayoutTableViewCell.swift in Sources */,
 				D6BE1DAC1DCB8BD800305B7D /* AppDelegate.swift in Sources */,
 				D6BE1DB31DCB8BD800305B7D /* DetailViewController.swift in Sources */,
 				D63605B51DCBC10100F20A65 /* IndexItemEntryTableViewCell.swift in Sources */,
@@ -300,8 +503,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D64885611DCE7FB10016ED31 /* LiverAtlasScraper.swift in Sources */,
 				D6BE1DC61DCB8BD800305B7D /* LiverAtlasTests.swift in Sources */,
 				D6BE1DE41DCB998D00305B7D /* LiverAtlastIndex.swift in Sources */,
+				D6168F2B1DCE32F300F294F8 /* LiverAtlasScrapeTests.swift in Sources */,
 				D6BE1DE31DCB995300305B7D /* LiverAtlasIndexTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -444,6 +649,7 @@
 		};
 		D6BE1DD61DCB8BD800305B7D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A428BE715C684284DDA05050 /* Pods-LiverAtlas.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = LiverAtlas/Info.plist;
@@ -456,6 +662,7 @@
 		};
 		D6BE1DD71DCB8BD800305B7D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 691CB5DEC8215DB8F8FACCCA /* Pods-LiverAtlas.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = LiverAtlas/Info.plist;
@@ -468,8 +675,9 @@
 		};
 		D6BE1DD91DCB8BD800305B7D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CE090C35C5D15C6B457BDD39 /* Pods-LiverAtlasTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = LiverAtlasTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -482,8 +690,9 @@
 		};
 		D6BE1DDA1DCB8BD800305B7D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5B1ED9A2C68953806B33C782 /* Pods-LiverAtlasTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = LiverAtlasTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -496,8 +705,9 @@
 		};
 		D6BE1DDC1DCB8BD800305B7D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D10CFD08294A25C9C3A6E9D9 /* Pods-LiverAtlasUITests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				INFOPLIST_FILE = LiverAtlasUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = us.fofu.LiverAtlasUITests;
@@ -509,8 +719,9 @@
 		};
 		D6BE1DDD1DCB8BD800305B7D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BD3CC62BC44AB7DC90A5508C /* Pods-LiverAtlasUITests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				INFOPLIST_FILE = LiverAtlasUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = us.fofu.LiverAtlasUITests;

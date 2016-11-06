@@ -40,16 +40,15 @@ class IndexTableViewController: UITableViewController {
 
         switch indexItems[indexPath.row] {
         case let .Entry(description, href):
-            let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifierEntry, for: indexPath) as! IndexItemEntryTableViewCell
-
-            cell.configure(description: description, href: href)
-            
+            let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifierEntry, for: indexPath)
+            cell.textLabel?.text = description
+            cell.detailTextLabel?.text = href
             return cell
             
         case let .Synonym(description, href):
             let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifierSynonym, for: indexPath) as! IndexItemEntryTableViewCell
-            cell.configure(description: description, href: href)
-            
+            cell.textLabel?.text = description
+            cell.detailTextLabel?.text = href
             return cell
         }
     }

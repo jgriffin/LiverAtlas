@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -86,39 +85,30 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="reuseIdentifierEntry" rowHeight="68" id="tMl-lp-Lln" userLabel="Index Item View Cell" customClass="IndexItemEntryTableViewCell" customModule="LiverAtlas" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="reuseIdentifierEntry" textLabel="uOH-PT-Rm8" detailTextLabel="qbm-6g-dKe" rowHeight="68" style="IBUITableViewCellStyleSubtitle" id="tMl-lp-Lln" userLabel="Index Item View Cell" customClass="IndexItemEntryTableViewCell" customModule="LiverAtlas" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="22" width="375" height="68"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tMl-lp-Lln" id="szT-cI-C9z">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="67"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="Thin wall and perifocal edema" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hir-UF-92i" userLabel="Description">
-                                            <rect key="frame" x="8" y="8" width="359" height="20.5"/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uOH-PT-Rm8">
+                                            <rect key="frame" x="15" y="16" width="34" height="21"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="248" text="/case/1/" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Amx-O1-sSJ" userLabel="Hyperlink">
-                                            <rect key="frame" x="8" y="36.5" width="359" height="23"/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qbm-6g-dKe">
+                                            <rect key="frame" x="15" y="37" width="44" height="15"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="trailingMargin" secondItem="Amx-O1-sSJ" secondAttribute="trailing" id="7ZT-Aw-8xd"/>
-                                        <constraint firstItem="Hir-UF-92i" firstAttribute="top" secondItem="szT-cI-C9z" secondAttribute="topMargin" id="9J6-pa-Gkg"/>
-                                        <constraint firstItem="Amx-O1-sSJ" firstAttribute="leading" secondItem="szT-cI-C9z" secondAttribute="leadingMargin" id="EhD-Wd-ANl"/>
-                                        <constraint firstItem="Hir-UF-92i" firstAttribute="leading" secondItem="szT-cI-C9z" secondAttribute="leadingMargin" id="Ion-LD-fdN"/>
-                                        <constraint firstItem="Hir-UF-92i" firstAttribute="trailing" secondItem="szT-cI-C9z" secondAttribute="trailingMargin" id="WUI-m9-c4h"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="Amx-O1-sSJ" secondAttribute="bottom" id="g2X-Td-c3S"/>
-                                        <constraint firstItem="Amx-O1-sSJ" firstAttribute="top" secondItem="Hir-UF-92i" secondAttribute="bottom" constant="8" symbolic="YES" id="rOe-sh-gMp"/>
-                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="descriptionLabel" destination="Hir-UF-92i" id="Ipe-wF-eaq"/>
-                                    <outlet property="hrefLabel" destination="Amx-O1-sSJ" id="ItA-Be-tPZ"/>
                                     <segue destination="vC3-pB-5Vb" kind="showDetail" identifier="showDetail" id="pq2-rA-49F"/>
                                 </connections>
                             </tableViewCell>
@@ -133,7 +123,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rux-fX-hf1" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="709" y="-630"/>
+            <point key="canvasLocation" x="791" y="-630"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="r7l-gg-dq7">

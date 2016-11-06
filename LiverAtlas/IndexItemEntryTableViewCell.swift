@@ -21,6 +21,17 @@ class IndexItemEntryTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
+    
+    override func prepareForInterfaceBuilder() {
+        //
+        print("prepareForInterface builder called")
+        self.backgroundColor = UIColor.green
+    }
+    
+    override func updateConstraints() {
+        print("ran updateConstraints")
+        
+    }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

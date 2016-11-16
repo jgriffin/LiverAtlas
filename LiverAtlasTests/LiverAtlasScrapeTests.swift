@@ -59,8 +59,8 @@ class LiverAtlasScrapeTests: XCTestCase {
         let url = URL(string: "http://liveratlas.org/case/1")!
         let doc = urlSessionSynchronousGetKannaHtml(url: url)!
         
-        let details = LiverAtlasScraper.caseDetailsFrom(detailsHtml: doc)
-        XCTAssertEqual(details.caseNumberHeading, "Case 1:")
+        let details = LiverAtlasScraper.caseDetailsFrom(caseURL: url, detailsHtml: doc)
+        XCTAssertEqual(details?.caseNumberHeading, "Case 1:")
     }
     
     func testLoadLiverDiagnosisDetails() {
@@ -79,12 +79,78 @@ class LiverAtlasScrapeTests: XCTestCase {
                 item.href.contains("case")
             }.prefix(3)
         
-        let cases = indexItems.map { (item) -> LiverAtlasCaseDetails in
+        let cases = indexItems.flatMap { (item) -> LiverAtlasCaseDetails? in
             let caseURL = URL(string:item.href, relativeTo: liverAtlastIndexURL)!
             let caseHtml = urlSessionSynchronousGetKannaHtml(url: caseURL)
-            return LiverAtlasScraper.caseDetailsFrom(detailsHtml: caseHtml!)
+            return LiverAtlasScraper.caseDetailsFrom(caseURL: caseURL, detailsHtml: caseHtml!)
         }
         XCTAssertEqual(cases.count, 3)
     }
+    
+    // MARK: - Fetcher tests
+
+    func testFetcherGetIndexItemsReferencedFromIndex() {
+        let expectation = self.expectation(description: "fetch liver atlas index")
+        let fetcher = LiverAtlasScraperFetcher()
+        fetcher.getIndexItemsReferencedFromIndex { (indexItems) in
+            XCTAssertEqual(indexItems.count, 564)
+            expectation.fulfill()
+        }
+        
+        waitForExpectations(timeout: 2, handler: nil)
+    }
+
+    func testFetcherGetCaseDetailsFor() {
+        let url = URL(string: "http://liveratlas.org/case/1")!
+        let expectation = self.expectation(description: "fetch liver atlas index")
+        
+        let fetcher = LiverAtlasScraperFetcher()
+        fetcher.getCaseDetailsFor(caseDetailURL: url) { (caseDetail) in
+            expectation.fulfill()
+        }
+        
+        waitForExpectations(timeout: 2, handler: nil)
+    }
+
+    func testFetcherGetCaseDetailsForCase19() {
+        let url = URL(string: "http://liveratlas.org/case/19")!
+        let expectation = self.expectation(description: "fetch liver atlas index")
+        
+        let fetcher = LiverAtlasScraperFetcher()
+        fetcher.getCaseDetailsFor(caseDetailURL: url) { (caseDetail) in
+            expectation.fulfill()
+        }
+        
+        waitForExpectations(timeout: 2, handler: nil)
+    }
+
+    func testFetcherGetCaseDetailsForCase160() {
+        let url = URL(string: "http://liveratlas.org/case/160")!
+        let expectation = self.expectation(description: "fetch liver atlas index")
+        
+        let fetcher = LiverAtlasScraperFetcher()
+        fetcher.getCaseDetailsFor(caseDetailURL: url) { (caseDetail) in
+            expectation.fulfill()
+        }
+        
+        waitForExpectations(timeout: 2, handler: nil)
+    }
+    
+    func testFetcherCaseDetailsReferencedFromIndex() {
+        self.measure() {
+            let expectation = self.expectation(description: "fetch liver atlas index")
+            let fetcher = LiverAtlasScraperFetcher()
+            fetcher.getIndexItemsReferencedFromIndex(completion: fetcher.fetchCaseDetailsForIndexItems)
+            
+            fetcher.fetcherGroup.notify(queue: DispatchQueue.main) {
+                XCTAssertEqual(fetcher.caseDetailResults.count, 238)
+                expectation.fulfill()
+            }
+            
+            self.waitForExpectations(timeout: 30, handler: nil)
+        }
+    }
+
+
     
 }

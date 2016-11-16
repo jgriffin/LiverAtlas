@@ -15,6 +15,7 @@ struct LiverAtlasIndexItem {
 }
 
 struct LiverAtlasCaseDetails {
+    let caseURL: String
     let caseNumberHeading: String
     let headingText: String
     let headingHref: String
@@ -30,7 +31,7 @@ struct LiverAtlasDiagnosisDetail {
     let imagingFindings: String
 }
 
-struct LiverAtlasImage {
+struct LiverAtlasScrapeImage {
     let title: String
     let src: String
 }
@@ -51,36 +52,41 @@ class LiverAtlasScraper {
                                        href: href)
         }
     }
+
     
-    static func caseDetailsFrom(detailsHtml: HTMLDocument) -> LiverAtlasCaseDetails {
+    static func caseDetailsFrom(caseURL: URL, detailsHtml: HTMLDocument) -> LiverAtlasCaseDetails? {
         let theCase = detailsHtml.at_xpath("//div[@id='full_case_view']")!
         
-        let heading_case_number = theCase.at_xpath("h1[@id='document_first_heading']/span")?.content?.trimmingCharacters(in: .whitespacesAndNewlines)
-        let heading_text = theCase.at_xpath("h1[@id='document_first_heading']/a")?.content?.trimmingCharacters(in: .whitespacesAndNewlines)
-        let heading_href = theCase.at_xpath("h1[@id='document_first_heading']/a")?["href"]
-        let keywords = theCase.xpath("*/ul[contains(@class,'keyword_list')]/li").map { $0.content?.trimmingCharacters(in: .whitespacesAndNewlines) }
-
-        let clinical_presentation = theCase.at_xpath("div[@id='case_diagnosis']/p")?.content
-
-        let case_image_tiles = theCase.xpath(".//div[@class='image_gallery']//div[contains(@class, 'image_tile')]")
-        let case_images = case_image_tiles.flatMap { imageTile -> LiverAtlasImage? in
-            guard  let title = imageTile.at_xpath("./h4")?.content,
-                let img_src = imageTile.at_xpath("./a/img")?["src"] else {
-                    print("dropping incomplete image")
-                    return nil
+        guard let heading_case_number = theCase.at_xpath("h1[@id='document_first_heading']/span")?.content?.trimmingCharacters(in: .whitespacesAndNewlines),
+            let heading_text = theCase.at_xpath("h1[@id='document_first_heading']/a")?.content?.trimmingCharacters(in: .whitespacesAndNewlines),
+            let heading_href = theCase.at_xpath("h1[@id='document_first_heading']/a")?["href"],
+            let clinical_presentation = theCase.at_xpath("div[@id='case_diagnosis']/p")?.content else {
+                print("dropping invalid case details for \(caseURL.absoluteString)")
+                return nil
+        }
+        let keywords: [String] = theCase.xpath("*/ul[contains(@class,'keyword_list')]/li").flatMap { $0.content?.trimmingCharacters(in: .whitespacesAndNewlines) }
+    
+        let case_images = theCase.xpath(".//div[@class='image_gallery']//div[contains(@class, 'image_tile')]").flatMap { imageTile -> LiverAtlasImage? in
+            guard let title = imageTile.at_xpath("./h4")?.content, let img_src = imageTile.at_xpath("./a/img")?["src"] else {
+                print("dropping invalid image for \(caseURL.absoluteString)")
+                return nil
             }
             return LiverAtlasImage(title: title, src: img_src)
         }
-
-        let imaging_findings = theCase.at_xpath(".//div[@id='case_diagnosis']/div[@class='formatted_text']")?.content?.trimmingCharacters(in: .whitespacesAndNewlines)
         
-        return LiverAtlasCaseDetails(caseNumberHeading: heading_case_number!,
-                                     headingText: heading_text!,
-                                     headingHref: heading_href!,
-                                     keywords: keywords as! [String],
-                                     clinicalPresentation: clinical_presentation!,
+        guard let imaging_findings = theCase.at_xpath(".//div[@id='case_diagnosis']/div[@class='formatted_text']")?.content?.trimmingCharacters(in: .whitespacesAndNewlines) else {
+            print("dropping missing image findings for \(caseURL.absoluteString)")
+            return nil
+        }
+        
+        return LiverAtlasCaseDetails(caseURL: caseURL.absoluteString,
+                                     caseNumberHeading: heading_case_number,
+                                     headingText: heading_text,
+                                     headingHref: heading_href,
+                                     keywords: keywords,
+                                     clinicalPresentation: clinical_presentation,
                                      images: case_images,
-                                     imageFindings: imaging_findings!)
+                                     imageFindings: imaging_findings)
     }
     
     static func diagnosisDetailsFrom(detailsHtml: HTMLDocument) -> [LiverAtlasDiagnosisDetail] {
@@ -102,6 +108,8 @@ class LiverAtlasScraper {
 }
 
 class LiverAtlasScraperFetcher {
+    let liverAtlasIndexURL = URL(string: "http://liveratlas.org/index/")!
+
     // LiverAtlasScraperFetcher fetches index then fetches details references from each item's reference
     //
     // The http calls are made asynchronously using a shared fetcherSession
@@ -112,7 +120,7 @@ class LiverAtlasScraperFetcher {
     lazy var fetcherSession: URLSession = {
         var configuration = URLSessionConfiguration.ephemeral
         // Keeping at 1 connection is a cheap way to getting the results in order
-        configuration.httpMaximumConnectionsPerHost = 1
+        configuration.httpMaximumConnectionsPerHost = 5
         return URLSession(configuration: configuration)
     }()
     
@@ -120,11 +128,12 @@ class LiverAtlasScraperFetcher {
     
     var caseDetailResults = [LiverAtlasCaseDetails]()
     
-    func getCaseDetailsReferencedFromIndex() {
+    // MARK: fetcher methods
+    
+    func getIndexItemsReferencedFromIndex(completion: @escaping ([LiverAtlasIndexItem]) -> ()) {
         assert(Thread.isMainThread)
         fetcherGroup.enter()
         
-        let liverAtlasIndexURL = URL(string: "http://liveratlas.org/index/")!
         let downloadIndexTask = fetcherSession.dataTask(with: liverAtlasIndexURL) { (data, response, error) in
             assert(!Thread.isMainThread)
             defer {
@@ -142,7 +151,6 @@ class LiverAtlasScraperFetcher {
             }
             
             let indexItems = LiverAtlasScraper.indexItemsFrom(indexHtml: indexHtml)
-            let caseIndexItems = indexItems.filter { (item) in item.href.contains("case") }.prefix(3)
             
             self.fetcherGroup.enter()
             
@@ -151,19 +159,15 @@ class LiverAtlasScraperFetcher {
                 defer {
                     self.fetcherGroup.leave()
                 }
-                
-                // queue downloads for all the cases
-                caseIndexItems.forEach { item in
-                    let caseURL = URL(string:item.href, relativeTo: liverAtlasIndexURL)!
-                    self.getCaseDetailsFor(caseDetailURL: caseURL)
-                }
+
+                completion(indexItems)
             }
             
         }
         downloadIndexTask.resume()
     }
-    
-    func getCaseDetailsFor(caseDetailURL: URL) {
+
+    func getCaseDetailsFor(caseDetailURL: URL, completion: @escaping (LiverAtlasCaseDetails) -> ()) {
         assert(Thread.isMainThread)
         fetcherGroup.enter()
 
@@ -183,19 +187,45 @@ class LiverAtlasScraperFetcher {
                 return
             }
             
-            let caseDetails = LiverAtlasScraper.caseDetailsFrom(detailsHtml: detailHtml)
-            
-            self.fetcherGroup.enter()
-            DispatchQueue.main.async {
-                assert(Thread.isMainThread)
-                defer {
-                    self.fetcherGroup.leave()
+            if let caseDetails = LiverAtlasScraper.caseDetailsFrom(caseURL: caseDetailURL, detailsHtml: detailHtml) {
+                self.fetcherGroup.enter()
+             
+                DispatchQueue.main.async {
+                    defer { 
+                        self.fetcherGroup.leave()
+                    }
+                    
+                    completion(caseDetails)
                 }
-            
-                self.caseDetailResults.append(caseDetails)
             }
-            
         }
         downloadIndexTask.resume()
     }
+    
+    // MARK: fetcher helpers
+    
+    func fetchCaseDetailsForIndexItems(indexItems: [LiverAtlasIndexItem]) {
+        assert(Thread.isMainThread)
+        self.fetcherGroup.enter()
+        defer {
+            self.fetcherGroup.leave()
+        }
+        
+        // queue downloads for all the cases
+        let caseIndexItems = indexItems.filter { (item) in item.href.contains("case") && !item.href.contains("?") }
+        
+        caseIndexItems.forEach { item in
+            let caseURL = URL(string:item.href, relativeTo: liverAtlasIndexURL)!
+            self.getCaseDetailsFor(caseDetailURL: caseURL) { caseDetails in
+                self.appendCaseDetailResults(caseDetails: caseDetails)
+            }
+        }
+    }
+    
+    func appendCaseDetailResults(caseDetails: LiverAtlasCaseDetails) {
+        assert(Thread.isMainThread)
+        
+        self.caseDetailResults.append(caseDetails)
+    }
+
 }

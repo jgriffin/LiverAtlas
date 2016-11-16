@@ -1,0 +1,89 @@
+{
+  "title": "Abscess (pyogenic): Pyogenic, subacute, unilocular, with contained rupture",
+  "pk": 6,
+  "modified_date": "2015-06-10T00:00:00Z",
+  "clinical_presentation": "64 year old African American man with Ig A Kappa monoclonal gammopathy who presented with abdominal pain and tenderness. ",
+  "diagnosis": {
+    "diagnosis": "Abscess (pyogenic)",
+    "categories": [
+      {
+        "id": 186,
+        "lft": 1,
+        "rgt": 2,
+        "tree_id": 24,
+        "depth": 1,
+        "title": "Infection",
+        "exclusive_children": false,
+        "modified_date": "2015-06-17T03:48:56.536840Z"
+      }
+    ],
+    "information": "<p>\r\n\t<strong>Author:</strong>&nbsp;Claudia Sadro, MD</p>\r\n<p>\r\n\t&nbsp;</p>\r\n<h1>\r\n\tSynonyms</h1>\r\n<p>\r\n\tBacterial liver abscess</p>\r\n<h1>\r\n\tEpidemiology</h1>\r\n<ul>\r\n\t<li>\r\n\t\tIncidence of pyogenic liver abscess is decreasing due to improved therapies for abdominal infections such as appendicitis, diverticulitis and inflammatory bowel disease</li>\r\n\t<li>\r\n\t\tIncreased risk of infection in patients with biliary obstruction or biliary procedures, immune compromise or diabetes</li>\r\n</ul>\r\n<h1>\r\n\tEtiology</h1>\r\n<ul>\r\n\t<li>\r\n\t\tPortal seeding from abdominal infections such as appendicitis, diverticulitis or inflammatory bowel disease</li>\r\n\t<li>\r\n\t\tAscending biliary infection from obstruction (benign or malignant), stenting or other biliary procedures</li>\r\n\t<li>\r\n\t\tDirect spread of infection from acute cholecystitis</li>\r\n\t<li>\r\n\t\tHematogenous spread in patients with intravenous drug use or bacterial endocarditis</li>\r\n\t<li>\r\n\t\tCryptogenic liver abscess occurs with no predisposing cause and is reported to occur in 15-53% of patients</li>\r\n\t<li>\r\n\t\tIncreased risk with immune compromise and diabetes</li>\r\n</ul>\r\n<p>\r\n\t&nbsp;</p>\r\n<h1>\r\n\tPathology</h1>\r\n<h4>\r\n\tSubtypes<br />\r\n\t&nbsp;</h4>\r\n<p>\r\n\t- Cryptogenic and abscesses that occur secondary to abdominal infection:</p>\r\n<ul>\r\n\t<li>\r\n\t\tTend to be solitary</li>\r\n\t<li>\r\n\t\tEnter the liver through the portal venous system</li>\r\n\t<li>\r\n\t\tTend to occur in the posterior right lobe<br />\r\n\t\t&nbsp;</li>\r\n</ul>\r\n<p>\r\n\t- Abscesses from ascending biliary infection:</p>\r\n<ul>\r\n\t<li>\r\n\t\tTend to be multifocal</li>\r\n\t<li>\r\n\t\tCentral in location and often in a hepatic segment or lobe<br />\r\n\t\t&nbsp;</li>\r\n</ul>\r\n<p>\r\n\t- Abscesses that occur from direct spread from acute cholecystitis are central adjacent to the gallbladder</p>\r\n<p>\r\n\t- Abscesses that occur due to hematogenous spread in patients with intravenous drug use or infective endocarditis:</p>\r\n<ul>\r\n\t<li>\r\n\t\tMultiple (see candida)</li>\r\n\t<li>\r\n\t\tSmall</li>\r\n\t<li>\r\n\t\tMay also infect the spleen<br />\r\n\t\t&nbsp;</li>\r\n</ul>\r\n<h4>\r\n\tMicroscopic</h4>\r\n<ul>\r\n\t<li>\r\n\t\tCenter of abscess is composed of bacteria and pus</li>\r\n\t<li>\r\n\t\tDestruction of hepatic parenchyma with surrounding inflammatory reaction</li>\r\n\t<li>\r\n\t\tMost pyogenic liver abscesses are polymicrobial and the most common organism isolated is Escherchia coli.&nbsp; Abscesses due to hematogenous dissemination are usually due to Staphylococcus</li>\r\n</ul>\r\n<p>\r\n\t&nbsp;</p>\r\n<h1>\r\n\tImaging</h1>\r\n<h2>\r\n\tGeneral</h2>\r\n<ul>\r\n\t<li>\r\n\t\tCavities that may contain gas</li>\r\n\t<li>\r\n\t\tClearly defined wall&nbsp;</li>\r\n\t<li>\r\n\t\tOften with perifocal edema</li>\r\n</ul>\r\n<h4>\r\n\tSubtypes</h4>\r\n<ul>\r\n\t<li>\r\n\t\tCryptogenic abscess and liver abscess secondary to abdominal infection are usually due to coliforms</li>\r\n\t<li>\r\n\t\tAbscesses from ascending biliary infection:</li>\r\n</ul>\r\n<p style=\"margin-left: 80px;\">\r\n\t- Microabscesses are centrally located and often localized to a segment or lobe of the liver<br />\r\n\t- Often biliary obstruction with enhancement of the bile ducts</p>\r\n<ul>\r\n\t<li>\r\n\t\tAbscesses from hematogenous dissemination</li>\r\n</ul>\r\n<p style=\"margin-left: 80px;\">\r\n\t- Microabscesses are randomly distributed throughout the liver<br />\r\n\t- Involvement of the spleen possible<br />\r\n\t- When &lt;1 cm they may completely enhance and resemble flash filling hemangiomas</p>\r\n<ul>\r\n\t<li>\r\n\t\tAbscesses from direct spread of acute cholecystitis are situated adjacent to an inflamed gallbladder. &nbsp;Discontinuity of the gall bladder wall possible</li>\r\n</ul>\r\n<h2>\r\n\tCT</h2>\r\n<h4>\r\n\tAcute</h4>\r\n<p>\r\n\tCluster of closely opposed small rim enhancing cavities &lt; 2 cm (&ldquo;cluster sign&rdquo;)</p>\r\n<h4>\r\n\tSubacute</h4>\r\n<ul>\r\n\t<li>\r\n\t\tMicrocavities coalesce into a unilocular cavity</li>\r\n\t<li>\r\n\t\tEnhancing wall</li>\r\n\t<li>\r\n\t\tContains fluid and possibly gas</li>\r\n\t<li>\r\n\t\tPerilesional edema that is low density (classic &ldquo;double target sign&rdquo;)</li>\r\n\t<li>\r\n\t\tTransient hepatic attenuation differences (THAD) are possible peripheral to the abscess due to reduced venous flow from inflammation in portal triads and compensatory increased hepatic arterial flow</li>\r\n</ul>\r\n<h2>\r\n\tMR</h2>\r\n<h4>\r\n\tAcute</h4>\r\n<p>\r\n\tCluster of closely opposed small rim enhancing cavities that are hypointense on T1 and hyperintense on T2</p>\r\n<h4>\r\n\tSubacute</h4>\r\n<ul>\r\n\t<li>\r\n\t\tMicrocavities coalesce into a unilocular cavity</li>\r\n\t<li>\r\n\t\tEnhancing wall</li>\r\n\t<li>\r\n\t\tContains fluid that is hypointense on T1 and hyperintense on T2</li>\r\n\t<li>\r\n\t\tInternal gas is low signal intensity on all sequences.</li>\r\n\t<li>\r\n\t\tPerilesional edema peripheral to enhancing wall is hyperintense on T2</li>\r\n\t<li>\r\n\t\tTransient hepatic intensity differences (THID) are possible peripheral to the abscess</li>\r\n</ul>\r\n<h2>\r\n\tUS</h2>\r\n<p>\r\n\tAppearance is variable, may be hypo-, hyperechoic or mixed echogenicity</p>\r\n<h4>\r\n\tAcute</h4>\r\n<ul>\r\n\t<li>\r\n\t\tEchogenicity similar to liver</li>\r\n\t<li>\r\n\t\tIll defined</li>\r\n\t<li>\r\n\t\tRegional distortion of hepatic parenchyma with posterior acoustic enhancement</li>\r\n\t<li>\r\n\t\tCluster of microabscesses (&lt;2cm) with decreased echogenicity centrally with echogenic rims with posterior acoustic enhancement possible</li>\r\n</ul>\r\n<h4>\r\n\tSubacute</h4>\r\n<ul>\r\n\t<li>\r\n\t\tMicroabscesses coalesce into a unilocular cavity with irregular walls, a hypoechoic liquefied center with debris and posterior acoustic enhancement.</li>\r\n\t<li>\r\n\t\tInternal gas presents as areas of increased echogenicity with reverberation artifact.</li>\r\n\t<li>\r\n\t\tAbscess wall and surrounding parenchyma may be hyperemic with increased vascularity on color doppler</li>\r\n</ul>\r\n<p>\r\n\t&nbsp;</p>\r\n<h1>\r\n\tDifferential Diagnosis</h1>\r\n<p>\r\n\tCryptogenic liver abscess and liver abscess due to abdominal infection may resemble</p>\r\n<ul>\r\n\t<li>\r\n\t\tCystic or necrotic metastases</li>\r\n\t<li>\r\n\t\tHemorrhagic cyst</li>\r\n\t<li>\r\n\t\tAmebic abscess</li>\r\n\t<li>\r\n\t\tEchinococcus granulosus (hydatid)</li>\r\n\t<li>\r\n\t\tBiliary cystadenoma<br />\r\n\t\t&nbsp;</li>\r\n</ul>\r\n<p>\r\n\tLiver abscesses due to ascending cholangitis and hematogenous dissemination may resemble</p>\r\n<ul>\r\n\t<li>\r\n\t\tCandidiasis</li>\r\n\t<li>\r\n\t\tMetastases</li>\r\n\t<li>\r\n\t\tLymphoma</li>\r\n\t<li>\r\n\t\tFlash filling hemangiomas (if &lt;1 cm)</li>\r\n</ul>\r\n<p>\r\n\t&nbsp;</p>\r\n<h1>\r\n\tComplications</h1>\r\n<ul>\r\n\t<li>\r\n\t\tContained rupture with subcapsular abscess</li>\r\n\t<li>\r\n\t\tIntraperitoneal rupture with peritonitis</li>\r\n</ul>\r\n<p>\r\n\t&nbsp;</p>\r\n<h1>\r\n\tTreatment</h1>\r\n<p>\r\n\tPercutaneous drainage when &gt; 5 cm, intravenous antibiotics and treatment of the offending cause<br />\r\n\t&nbsp;</p>\r\n<h1>\r\n\tBibliography</h1>\r\n<ul>\r\n\t<li>\r\n\t\tReid-Lombardo KM, Khan S, Sclabas G. Hepatic cysts and liver abscess. The Surgical clinics of North America 2010; 90:679-697.</li>\r\n\t<li>\r\n\t\t<a href=\"http://www.ncbi.nlm.nih.gov/pubmed/3261506\" target=\"_blank\">Jeffrey RB, Jr., Tolentino CS, Chang FC, Federle MP. CT of small pyogenic hepatic abscesses: the cluster sign. AJR Am J Roentgenol 1988; 151:487-489.</a></li>\r\n\t<li>\r\n\t\t<a href=\"http://www.ncbi.nlm.nih.gov/pubmed/6690522\" target=\"_blank\">Bernardino ME, Berkman WA, Plemmons M, Sones PJ, Jr., Price RB, Casarella WJ. Percutaneous drainage of multiseptated hepatic abscess. J Comput Assist Tomogr 1984; 8:38-41.</a></li>\r\n\t<li>\r\n\t\t<a href=\"http://www.ncbi.nlm.nih.gov/pubmed/11222204\" target=\"_blank\">Gabata T, Kadoya M, Matsui O, et al. Dynamic CT of hepatic abscesses: significance of transient segmental enhancement. AJR Am J Roentgenol 2001; 176:675-679</a>.</li>\r\n\t<li>\r\n\t\t<a href=\"http://www.ncbi.nlm.nih.gov/pubmed/15100533\" target=\"_blank\">Yang DM, Kim HN, Kang JH, Seo TS, Park CH, Kim HS. Complications of pyogenic hepatic abscess: computed tomography and clinical features. J Comput Assist Tomogr 2004; 28:311-317</a>.</li>\r\n\t<li>\r\n\t\t<a href=\"http://www.ncbi.nlm.nih.gov/pubmed/15256619\" target=\"_blank\">Mortele KJ, Segatto E, Ros PR. The infected liver: radiologic-pathologic correlation. Radiographics 2004; 24:937-955</a>.</li>\r\n\t<li>\r\n\t\tSTAT Dx. In: Amirsys Publishing 2005-2013</li>\r\n</ul>\r\n<p>\r\n\t&nbsp;</p>\r\n",
+    "pk": 134,
+    "modified_date": "2015-06-17T03:48:45.225024Z",
+    "synonyms": [
+      {
+        "id": 118,
+        "name": "Bacterial Liver Abscess",
+        "modified_date": "2015-06-17T03:49:11.344498Z",
+        "diagnosis": 134
+      }
+    ]
+  },
+  "specific_diagnosis": "Pyogenic, subacute, unilocular, with contained rupture",
+  "notes": "1112-Liver other-TT",
+  "ctmodality": [
+    {
+      "pk": 6,
+      "title": "CT Imaging for Abscess (pyogenic): Unilocular, with perifocal edema...",
+      "modified_date": "2015-06-10T00:00:00Z",
+      "specific_diagnosis": "Unilocular, with perifocal edema and contained perforation",
+      "imaging_findings": "<p>\r\n\tPyogenic liver abscess, confirmed on exploratory laparotomy, which revealed gram positive cocci. No hepatic extramedullary disease. CT shows a unilocular subacute liver abscess in segment 4 of the left lobe with a thin capsule, surrounding hypodense edema and focal contained rupture superiorly (see coronal reconstruction). Mild pericardial effusion. Courtesy Tarun Pandey, MD, Hemendra Shah, MD, University of Arkansas for Medical Sciences, AK, USA.</p>\r\n",
+      "quiz_level": 1,
+      "public": true,
+      "imaging_features": [
+        {
+          "id": 47,
+          "title": "Cystic",
+          "tree": "CT Imaging Features"
+        },
+        {
+          "id": 38,
+          "title": "Hypovascular",
+          "tree": "CT Imaging Features"
+        },
+        {
+          "id": 28,
+          "title": "Continous Ring Enhancement",
+          "tree": "CT Imaging Features"
+        }
+      ],
+      "structural_features": [
+        {
+          "id": 37,
+          "title": "Perifocal Edema",
+          "tree": "CT Structural Features"
+        }
+      ],
+      "images": [
+        {
+          "id": 28,
+          "image": "http://liveratlas.org/media/case_images/Abscess_-_contained_rupture_ax.jpg",
+          "image_phase": "Portal Venous",
+          "image_caption": "",
+          "order": 0,
+          "modified_date": "2015-06-10T00:00:00Z"
+        },
+        {
+          "id": 29,
+          "image": "http://liveratlas.org/media/case_images/Abscess_-_contained_rupture_cor.jpg",
+          "image_phase": "Portal Venous",
+          "image_caption": "Coronal reconstruction",
+          "order": 1,
+          "modified_date": "2015-06-10T00:00:00Z"
+        }
+      ]
+    }
+  ],
+  "mrmodality": [],
+  "usmodality": []
+}

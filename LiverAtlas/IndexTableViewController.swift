@@ -12,7 +12,7 @@ class IndexTableViewController: UITableViewController {
     let reuseIdentifierEntry = "reuseIdentifierEntry"
     let reuseIdentifierSynonym = "reuseIdentifierEntry"
 
-    let indexItems = LiverAtlasIndex().items
+    var indexItems: [LiverAtlasIndexItem]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,10 +20,7 @@ class IndexTableViewController: UITableViewController {
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 50; //Set this to any value that works for you.
 
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
+        indexItems = LiverAtlasCaseIndex().indexItems
     }
 
     // MARK: - Table view data source
@@ -33,24 +30,17 @@ class IndexTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return indexItems.count
+        return indexItems?.count ?? 0
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        switch indexItems[indexPath.row] {
-        case let .Entry(description, href):
-            let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifierEntry, for: indexPath)
-            cell.textLabel?.text = description
-            cell.detailTextLabel?.text = href
-            return cell
-            
-        case let .Synonym(description, href):
-            let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifierSynonym, for: indexPath) as! IndexItemEntryTableViewCell
-            cell.textLabel?.text = description
-            cell.detailTextLabel?.text = href
-            return cell
-        }
+        let indexItem = indexItems[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifierEntry, for: indexPath)
+        cell.textLabel?.text = indexItem.title
+        cell.detailTextLabel?.text = indexItem.url.absoluteString
+        
+        return cell
     }
 
     // MARK: - Segues
@@ -60,8 +50,9 @@ class IndexTableViewController: UITableViewController {
             if let indexPath = self.tableView.indexPathForSelectedRow {
                 let indexItem = indexItems[indexPath.row]
 
-                let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
-                controller.detailItem = indexItem
+                let controller = (segue.destination as! UINavigationController).topViewController as! LiverAtlasCaseDetailViewController
+                controller.liverAtlasIndexItem = indexItem
+                
                 controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem
                 controller.navigationItem.leftItemsSupplementBackButton = true
             }

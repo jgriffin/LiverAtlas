@@ -9,10 +9,14 @@
 import UIKit
 
 class CaseResultsViewController: UIViewController, UITableViewDelegate {
+    let caseDetailSegueIdentifier =  "CaseResultToCaseDetailSegue"
+    
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableViewHeaderResultSummaryLabel: UILabel!
     
     var liverAtlasCases: [LiverAtlasCase]? {
         didSet {
+            tableViewHeaderResultSummaryLabel.text = "There are \(liverAtlasCases?.count ?? 0) cases matching the current search"
             tableView?.reloadData()
         }
     }
@@ -20,7 +24,23 @@ class CaseResultsViewController: UIViewController, UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 100
+        
         liverAtlasCases = LiverAtlasCaseIndex.instance.allCases
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let liverAtlasCase = liverAtlasCases![tableView.indexPathForSelectedRow!.row]
+        
+        switch segue.identifier! {
+        case caseDetailSegueIdentifier:
+            let caseDetailVC = segue.destination as! LiverAtlasCaseDetailViewController
+            caseDetailVC.liverAtlasCase = liverAtlasCase
+            
+        default:
+            NSLog("unrecognized segue")
+        }
     }
 
 }
@@ -32,13 +52,12 @@ extension CaseResultsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
         let caseResultCell = tableView.dequeueReusableCell(withIdentifier: "caseResultIdentifier",
-                                                          for: indexPath)
+                                                          for: indexPath) as! CaseResultTableViewCell
         
         let theCase = liverAtlasCases![indexPath.row]
-        
-        caseResultCell.textLabel?.text = theCase.title
-        caseResultCell.detailTextLabel?.text = theCase.specificDiagnosis
+        caseResultCell.configure(liverAtlasCase: theCase)
         
         return caseResultCell
     }

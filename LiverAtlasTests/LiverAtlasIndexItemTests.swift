@@ -43,6 +43,13 @@ class LiverAtlasIndexItemTests: XCTestCase {
         XCTAssertEqual(index.indexItems.count, 352)
     }
 
+    func testLiverAtlasCaseIndexAllCases() {
+        let index = LiverAtlasCaseIndex()
+        
+        XCTAssertEqual(index.allCases.count, 352)
+    }
+
+    
     
     
 

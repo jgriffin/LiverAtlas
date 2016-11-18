@@ -9,39 +9,72 @@
 import XCTest
 
 class LiverAtlasCaseCrawlerTests: XCTestCase {
-
-    class LiverAtlasCaseCrawlerHooked : LiverAtlasCaseCrawler {
-        var onLiverAtlasIndexUpdated: (() -> ())!
-        
-        override func liverAtlasIndexUpdated() {
-            if let onUpdate = onLiverAtlasIndexUpdated {
-                onUpdate()
-                return
-            }
-            
-            super.liverAtlasIndexUpdated()
-        }
-    }
     
     func testFetchIndex() {
-        let crawler = LiverAtlasCaseCrawlerHooked()
+        let crawler = LiverAtlasCaseCrawler()
+        
         let expectation = self.expectation(description: "Index Fetcher")
-        crawler.onLiverAtlasIndexUpdated = {
+
+        crawler.loadLiverAtlasIndex { liverAtlasIndex in
+            XCTAssertNotNil(liverAtlasIndex)
+            XCTAssertEqual(liverAtlasIndex?.count ?? 0, 352)
+
             expectation.fulfill()
         }
+        
+        waitForExpectations(timeout: 200, handler: nil)
+    }
 
-        crawler.loadLiverAtlasIndex()
+    func testFetchSomeCasesFromIndexItems() {
+        let someIndexItems = Array(LiverAtlasCaseIndex().loadLiverAtlasIndexItemsFromResourceFile().prefix(3))
         
-        waitForExpectations(timeout: 2, handler: nil)
+        let crawler = LiverAtlasCaseCrawler()
+        let expectation = self.expectation(description: "Case Crawler working")
         
-        XCTAssertNotNil(crawler.liverAtlasIndex)
+        crawler.loadAllLiverAtlasCases(forIndexItems: someIndexItems) { (caseItems) in
+            XCTAssertNotNil(caseItems)
+            XCTAssertEqual(caseItems!.count, 3)
+            expectation.fulfill()
+        }
+        
+        waitForExpectations(timeout: 10, handler: nil)
     }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    func slow_testMeasureFetchAllCasesFromIndexItems() {
+        self.measure { 
+            let allIndexItems = LiverAtlasCaseIndex().loadLiverAtlasIndexItemsFromResourceFile()
+            XCTAssertEqual(allIndexItems.count, 352)
+
+            let crawler = LiverAtlasCaseCrawler()
+            let expectation = self.expectation(description: "Case Crawler working")
+            
+            crawler.loadAllLiverAtlasCases(forIndexItems: allIndexItems) { (caseItems) in
+                XCTAssertNotNil(caseItems)
+                XCTAssertEqual(caseItems!.count, 352)
+                expectation.fulfill()
+            }
+            
+            self.waitForExpectations(timeout: 100, handler: nil)
         }
     }
     
+    func slow_testFetchAllCasesFromIndexItemsToJson() {
+        let crawler = LiverAtlasCaseCrawler()
+        let expectation = self.expectation(description: "Case Crawler working")
+        
+        let allIndexItems = LiverAtlasCaseIndex().loadLiverAtlasIndexItemsFromResourceFile()
+        crawler.loadAllLiverAtlasCasesJson(forIndexItems: allIndexItems) { (caseItemsJson) in
+            if let _ = caseItemsJson,
+                let jsonData = try? JSONSerialization.data(withJSONObject: caseItemsJson!, options: .prettyPrinted) {
+                
+                let url = URL(fileURLWithPath: "liveratlas_api_all_cases.json", relativeTo: URL(fileURLWithPath:NSTemporaryDirectory()))
+                try! jsonData.write(to: url)
+                NSLog("wrote all cases to: \(url.absoluteString)")
+            }
+            
+            expectation.fulfill()
+        }
+        
+        self.waitForExpectations(timeout: 100, handler: nil)
+    }
 }

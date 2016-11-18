@@ -23,7 +23,8 @@ import UIKit
 
 
 class LiverAtlasCaseDetailViewController: UIViewController {
-
+    static let storyboardIdentifier = "LiverAtlasCaseDetailViewController"
+    
     @IBOutlet weak var caseHeadingNumberLabel: UILabel!
     @IBOutlet weak var caseHeadingTextLabel: UILabel!
     
@@ -32,6 +33,7 @@ class LiverAtlasCaseDetailViewController: UIViewController {
     @IBOutlet weak var diagnosisLabel: UILabel!
     @IBOutlet weak var specificDiagnosisLabel: UILabel!
     @IBOutlet weak var notesLabel: UILabel!
+    @IBOutlet weak var ctModalityView: CTModalityView!
 
     var liverAtlasIndexItem: LiverAtlasIndexItem! {
         didSet {
@@ -47,7 +49,7 @@ class LiverAtlasCaseDetailViewController: UIViewController {
     }
     
     func configureView() {
-        guard caseHeadingTextLabel != nil else {
+        guard caseHeadingTextLabel != nil &&  liverAtlasIndexItem != nil else {
             return
         }
         
@@ -60,6 +62,14 @@ class LiverAtlasCaseDetailViewController: UIViewController {
             diagnosisLabel.text = caseItem.diagnosis.diagnosis
             specificDiagnosisLabel.text = caseItem.specificDiagnosis
             notesLabel.text = caseItem.notes
+            
+            if let ctmodality = caseItem.ctmodality.first {
+                ctModalityView.configure(ctmodality: ctmodality)
+                ctModalityView.isHidden = false
+            } else {
+                ctModalityView.isHidden = true
+            }
+            ctModalityView.parentNavigationController = self.navigationController
             
             detailsStackView.isHidden = false
         } else {
@@ -74,7 +84,8 @@ class LiverAtlasCaseDetailViewController: UIViewController {
     }
 
     func fetchCaseDetails(indexItem: LiverAtlasIndexItem) {
-        LiverAtlasCaseCrawler().loadCaseForIndexItem(indexItem: liverAtlasIndexItem, callback: { (liverAtlasCase:LiverAtlasCase?) in
+        LiverAtlasCaseCrawler.instance.loadLiverAtlasCase(indexItem: liverAtlasIndexItem,
+                                                          callback: { (liverAtlasCase:LiverAtlasCase?) in
             assert(Thread.isMainThread)
             
             if let _ = liverAtlasCase {

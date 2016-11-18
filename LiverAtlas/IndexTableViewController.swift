@@ -50,11 +50,21 @@ class IndexTableViewController: UITableViewController {
             if let indexPath = self.tableView.indexPathForSelectedRow {
                 let indexItem = indexItems[indexPath.row]
 
-                let controller = (segue.destination as! UINavigationController).topViewController as! LiverAtlasCaseDetailViewController
-                controller.liverAtlasIndexItem = indexItem
+                let mainNavigationController = segue.destination as! UINavigationController
                 
-                controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem
-                controller.navigationItem.leftItemsSupplementBackButton = true
+                var detailViewController = mainNavigationController.topViewController as? LiverAtlasCaseDetailViewController
+                if detailViewController == nil {
+                    let bundle = Bundle(for: type(of:self))
+                    let storyboard = UIStoryboard(name: "Main", bundle: bundle)
+                    detailViewController = storyboard.instantiateViewController(withIdentifier: LiverAtlasCaseDetailViewController.storyboardIdentifier) as? LiverAtlasCaseDetailViewController
+                }
+                
+                detailViewController!.liverAtlasIndexItem = indexItem
+                
+                detailViewController!.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem
+                detailViewController!.navigationItem.leftItemsSupplementBackButton = true
+                
+                mainNavigationController.setViewControllers([detailViewController!], animated: true)
             }
         }
     }

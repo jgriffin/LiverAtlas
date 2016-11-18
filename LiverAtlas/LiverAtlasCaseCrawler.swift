@@ -6,38 +6,194 @@
 //  Copyright © 2016 John Griffin. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 
 class LiverAtlasCaseCrawler: NSObject, URLSessionDelegate, URLSessionTaskDelegate {
-    let liverAtlasIndexUrl = URL(string:"http://liveratlas.org/api/cases")!
+    static var instance: LiverAtlasCaseCrawler = LiverAtlasCaseCrawler()
+    lazy var session: URLSession = self.createURLSession()
     
-    var liverAtlasIndex: [LiverAtlasIndexItem]! {
-        didSet {
-            liverAtlasIndexUpdated()
+    // LiverAtlas objects
+
+    let liverAtlasIndexUrl = URL(string:"http://liveratlas.org/api/cases/")!
+    
+    func loadLiverAtlasIndex(completion: @escaping ([LiverAtlasIndexItem]?) -> Void) {
+        loadLiverAtlasIndexJson { atlasIndexJson in
+            guard let _ = atlasIndexJson,
+                let atlasIndex = LiverAtlasJsonHelper.liverAtlasIndex(fromJson: atlasIndexJson!) else {
+                    return completion(nil)
+            }
+            completion(atlasIndex)
+        }
+    }
+
+    func loadLiverAtlasCase(indexItem: LiverAtlasIndexItem, callback: @escaping (LiverAtlasCase?) -> Void) {
+        loadLiverAtlasCase(url: indexItem.url, callback: callback)
+    }
+    
+    func loadLiverAtlasCase(url: URL, callback: @escaping (LiverAtlasCase?) -> Void) {
+        
+        loadLiverAtlasCaseJson(url: url) { dowloadedJsonDictionary in
+            assert(Thread.isMainThread)
+            guard
+                let jsonDictionary = dowloadedJsonDictionary,
+                let atlasCase = LiverAtlasJsonHelper.liverAtlasCase(fromJson: jsonDictionary) else {
+                    callback(nil)
+                    return
+            }
+            callback(atlasCase)
+        }
+    }
+
+    func loadAllLiverAtlasCases(forIndexItems indexItems: [LiverAtlasIndexItem],
+                                completion: @escaping ([LiverAtlasCase]?) -> Void) {
+        
+        loadAllLiverAtlasCasesJson(forIndexItems: indexItems) { (jsonCasesDictionaryArray: [[String: AnyObject]]?) in
+            assert(Thread.isMainThread)
+            guard let _ = jsonCasesDictionaryArray else {
+                completion(nil)
+                return
+            }
+            
+            let liverAtlasCases = jsonCasesDictionaryArray!.map {
+                LiverAtlasJsonHelper.liverAtlasCase(fromJson: $0)!
+            }
+            completion(liverAtlasCases)
         }
     }
     
-    var liverAtlasCases = [LiverAtlasCase]()
+    func loadLiverAtlasImageForURL(imageURL: URL, callback: @escaping (UIImage?) -> Void) {
+        
+        let downloadImageTask = session.dataTask(with: imageURL) { (data, reponse, error) in
+            var imageResult: UIImage?
+            defer {
+                DispatchQueue.main.async {
+                    callback(imageResult)
+                }
+            }
+            
+            guard let _ = data else {
+                return
+            }
+            
+            imageResult = UIImage(data: data!)
+        }
+        downloadImageTask.resume()
+    }
 
-    // URL Session
+    // Json objects
     
-    lazy var session: URLSession = self.createURLSession()
-    lazy var fetcherGroup = DispatchGroup()
+    func loadLiverAtlasIndexJson(completion: @escaping ([[String: AnyObject]]?) -> Void) {
+        let fetchIndexTask = session.dataTask(with: liverAtlasIndexUrl) { (data, response, error) in
+            assert(!Thread.isMainThread)
+            
+            var indexItemsResponse: [[String: AnyObject]]?
+            defer {
+                completion(indexItemsResponse)
+            }
+            
+            guard error == nil && data != nil,
+                let json = try? JSONSerialization.jsonObject(with: data!) else {
+                    assert(false, "error downloading liver atlas index")
+                    return
+            }
+            
+            guard let jsonArray = json as? [[String: AnyObject]] else {
+                if let jsonDict = json as? [String: AnyObject],
+                    let detail = jsonDict["detail"] as? String,
+                    detail == "Authentication credentials were not provided." {
+                    NSLog("Authentication credentials were not provided.")
+                } else {
+                    assert(false, "json error")
+                }
+                return
+            }
+            
+            indexItemsResponse = jsonArray
+        }
+        fetchIndexTask.resume()
+    }
+    
+    func loadLiverAtlasCaseJson(url: URL, callback: @escaping ([String: AnyObject]?) -> Void) {
+        
+        let downloadImageTask = session.dataTask(with: url) { (data, reponse, error) in
+            guard
+                let _ = data,
+                let json = try? JSONSerialization.jsonObject(with: data!),
+                let jsonDictionary = json as? [String: AnyObject] else {
+                    DispatchQueue.main.async {
+                        callback(nil)
+                    }
+                    return
+            }
+            
+            DispatchQueue.main.async {
+                callback(jsonDictionary)
+            }
+        }
+        downloadImageTask.resume()
+    }
 
+    func loadAllLiverAtlasCasesJson(forIndexItems indexItems: [LiverAtlasIndexItem],
+                                    completion: @escaping ([[String: AnyObject]]?) -> Void) {
+        
+        // the fetcher groups allow us to know whether fetches are in progress
+        let fetcherGroup = DispatchGroup()
+        
+        var liverAtlasCases = [[String: AnyObject]]()
+        
+        for indexItem in indexItems {
+            fetcherGroup.enter()
+            
+            loadLiverAtlasCaseJson(url: indexItem.url, callback: { (liverAtlasCaseJson) in
+                assert(Thread.isMainThread)
+                guard let liverCase = liverAtlasCaseJson else {
+                    NSLog("error downloading indexItem: \(indexItem.pk)")
+                    fetcherGroup.leave()
+                    return
+                }
+                
+                liverAtlasCases.append(liverCase)
+                fetcherGroup.leave()
+            })
+            
+        }
+        
+        fetcherGroup.notify(queue: DispatchQueue.main, execute: {
+            completion(liverAtlasCases)
+        })
+    }
+    
+    // helpers
+
+    func jsonDictionaryForResource(filename: String) ->  [String: AnyObject]? {
+        let casesFilePath = Bundle(for: type(of:self)).path(forResource: filename, ofType: ".json")!
+        let data = try! Data(contentsOf: URL(fileURLWithPath: casesFilePath))
+        
+        return try! JSONSerialization.jsonObject(with: data, options: []) as?  [String: AnyObject]
+    }
+    
+    let case6Filename = "liveratlas_api_case_6"
+    func loadCase6() -> LiverAtlasCase {
+        let jsonDictionary = jsonDictionaryForResource(filename: case6Filename)!
+        return LiverAtlasJsonHelper.liverAtlasCase(fromJson: jsonDictionary)!
+    }
+    
+    // create session methods
+    
     func createURLSession() -> URLSession {
-        let configuration = URLSessionConfiguration.default
+        let configuration = URLSessionConfiguration.ephemeral
         configuration.httpMaximumConnectionsPerHost = 5
         
         configuration.httpAdditionalHeaders = [
             "Accept": "application/json",
-            "Authorization": authorizationHeader()
+            "Authorization": authorizationHeader
         ]
         
-        return URLSession(configuration: configuration, delegate: self, delegateQueue: nil)
+        return URLSession(configuration: configuration, delegate: nil, delegateQueue: nil)
     }
     
-    func authorizationHeader() -> String {
+    var authorizationHeader: String {
         let (username, password) = ("john_griffin@hotmail.com", "liver")
         let authString = "\(username):\(password)"
         let authDataString = authString.data(using: .utf8)!.base64EncodedString()
@@ -52,72 +208,5 @@ class LiverAtlasCaseCrawler: NSObject, URLSessionDelegate, URLSessionTaskDelegat
     func urlSession(_ session: URLSession, task: URLSessionTask, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
         
     }
-    
-    // fetching methods
 
-    func loadLiverAtlasIndex() {
-        fetcherGroup.enter()
-        
-        let fetchIndexTask = session.dataTask(with: liverAtlasIndexUrl) { (data, response, error) in
-            assert(!Thread.isMainThread)
-            defer {
-                self.fetcherGroup.leave()
-            }
-            
-            guard error == nil && data != nil else {
-                assert(false, "error downloading liver atlas index")
-                return
-            }
-            
-            do {
-                let json = try JSONSerialization.jsonObject(with: data!)
-                
-                guard let jsonArray = json as? [[String: AnyObject]] else {
-                    if let jsonDict = json as? [String: AnyObject],
-                        let detail = jsonDict["detail"] as? String,
-                        detail == "Authentication credentials were not provided." {
-                        assert(false, "missing auth credentials")
-                    } else {
-                        assert(false, "json error")
-                    }
-                    return
-                }
-                
-                let indexItems = LiverAtlasJsonHelper.liverAtlasIndex(fromJson: jsonArray)
-                self.liverAtlasIndex = indexItems
-                
-            } catch {
-                assert(false, "error parsing index json")
-                return
-            }
-        }
-        fetchIndexTask.resume()
-    }
-    
-    func liverAtlasIndexUpdated() {
-        
-    }
-    
-    func loadCases(forIndexItems indexItems: [LiverAtlasIndexItem]) {
-        
-    }
-    
-    
-    func jsonDictionaryForResource(filename: String) ->  [String: AnyObject]? {
-        let casesFilePath = Bundle(for: type(of:self)).path(forResource: filename, ofType: ".json")!
-        let data = try! Data(contentsOf: URL(fileURLWithPath: casesFilePath))
-        
-        return try! JSONSerialization.jsonObject(with: data, options: []) as?  [String: AnyObject]
-    }
-
-    
-    let case6Filename = "liveratlas_api_case_6"
-    func loadCaseForIndexItem(indexItem: LiverAtlasIndexItem, callback: @escaping (LiverAtlasCase?) -> Void) {
-        // until auth is fixed, keep returning case 6 from the resource file
-        let jsonDictionary = jsonDictionaryForResource(filename: case6Filename)!
-        let atlasCase = LiverAtlasJsonHelper.liverAtlasCase(fromJson: jsonDictionary)
-        DispatchQueue.main.async {
-            callback(atlasCase)
-        }
-    }
 }

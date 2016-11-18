@@ -20,20 +20,6 @@
                ReferencedContainer = "container:LiverAtlas.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "NO"
-            buildForRunning = "NO"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D6BE1DCB1DCB8BD800305B7D"
-               BuildableName = "LiverAtlasUITests.xctest"
-               BlueprintName = "LiverAtlasUITests"
-               ReferencedContainer = "container:LiverAtlas.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -49,6 +35,16 @@
                BlueprintIdentifier = "D6BE1DC01DCB8BD800305B7D"
                BuildableName = "LiverAtlasTests.xctest"
                BlueprintName = "LiverAtlasTests"
+               ReferencedContainer = "container:LiverAtlas.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "D6BE1DCB1DCB8BD800305B7D"
+               BuildableName = "LiverAtlasUITests.xctest"
+               BlueprintName = "LiverAtlasUITests"
                ReferencedContainer = "container:LiverAtlas.xcodeproj">
             </BuildableReference>
          </TestableReference>

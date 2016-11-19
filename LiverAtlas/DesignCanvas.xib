@@ -17,7 +17,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="251.5" translatesAutoresizingMaskIntoConstraints="NO" id="Ybg-z5-74x" customClass="CTModalityPanelView" customModule="LiverAtlas" customModuleProvider="target">
-                    <rect key="frame" x="8" y="8" width="304" height="251.5"/>
+                    <rect key="frame" x="8" y="8" width="304" height="401.5"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
             </subviews>

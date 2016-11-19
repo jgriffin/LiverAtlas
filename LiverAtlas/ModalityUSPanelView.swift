@@ -9,26 +9,8 @@
 import UIKit
 
 @IBDesignable
-class USModalityPanelView: UIView {
-    @IBOutlet var view: UIView!
-    @IBOutlet weak var title: UILabel!
-    @IBOutlet weak var specificDiagnosis: UILabel!
-    @IBOutlet weak var liverImagesCollectionView: IntrinsicSizeCollectionView!
-    @IBOutlet weak var imagingFeaturesLabel: UILabel!
-    @IBOutlet weak var structuralFeaturesLabel: UILabel!
-
-    var parentNavigationController: UINavigationController!
+class USModalityPanelView: ModalityPanelView {
     var usmodality: LiverAtlasUSModality!
-    
-    required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)!
-        loadNib()
-    }
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        loadNib()
-    }
     
     func configure(usmodality: LiverAtlasUSModality) {
         self.usmodality = usmodality
@@ -42,20 +24,7 @@ class USModalityPanelView: UIView {
         
         liverImagesCollectionView.reloadData()
     }
-    
-    
-    func loadNib() {
-        Bundle(for: type(of:self)).loadNibNamed("CTModalityPanelView", owner: self, options: nil)
-        view.frame = bounds
-        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        view.translatesAutoresizingMaskIntoConstraints = true
 
-        self.addSubview(self.view);
-
-        liverImagesCollectionView.register(UINib(nibName:"ImageTileCollectionViewCell", bundle: Bundle(for: type(of:self))),
-                                           forCellWithReuseIdentifier: ImageTileCollectionViewCell.identifier)
-    }
-    
     override func prepareForInterfaceBuilder() {
         let case6 = LiverAtlasIndex.instance.case6
         configure(usmodality: case6.usmodality.first!)

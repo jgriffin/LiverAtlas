@@ -25,14 +25,18 @@ class CaseDetailsPanelView: UIView {
     }
     
     func configureView(liverAtlasCase: LiverAtlasCase) {
-        diagnosisTextLabel?.text = liverAtlasCase.title
+        diagnosisTextLabel?.text = liverAtlasCase.diagnosis.diagnosis
         specificDiagnosisLabel?.text = liverAtlasCase.specificDiagnosis
-        diagnosticKeywordsLabel?.text = liverAtlasCase.diagnosis.categories.map({ $0.title }).joined(separator: ", ")
-        clinicalPresentationHeading?.text = "Clinical Presentation"
+        diagnosticKeywordsLabel?.text = diagnosticCategoriesText(forDiagnosis: liverAtlasCase.diagnosis)
+        clinicalPresentationHeading?.text = "Clinical Presentation:"
         clinicalPresentationLabel?.text = liverAtlasCase.clinicalPresentation
-        notesHeading?.text = "Notes"
+        notesHeading?.text = "Notes:"
         notesLabel?.text = liverAtlasCase.notes
+    }
 
+    func diagnosticCategoriesText(forDiagnosis diagnosis: LiverAtlasDiagnosis) -> String {
+        let categoriesJoined = diagnosis.categories.map({ $0.title }).joined(separator: ", ")
+        return "Diagnostic categories: \(categoriesJoined)"
     }
     
     override init(frame: CGRect) {
@@ -63,12 +67,26 @@ class CaseDetailsPanelView: UIView {
             addSubview(label)
         }
         
+        styleTheLabels()
+    }
+
+    func styleTheLabels() {
         // set the fonts
         let textStyleForLabels: [UIFontTextStyle: [UILabel]] = [
-            .headline: [diagnosisTextLabel],
-            .subheadline: [specificDiagnosisLabel, diagnosticKeywordsLabel, clinicalPresentationLabel, notesLabel],
-            .caption1: [clinicalPresentationHeading, notesHeading]
+            .headline: [
+                diagnosisTextLabel
+            ],
+            .subheadline: [
+                specificDiagnosisLabel,
+                diagnosticKeywordsLabel,
+                clinicalPresentationLabel,
+                notesLabel
+            ],
+            .caption1: [
+                clinicalPresentationHeading,
+                notesHeading
             ]
+        ]
         for (textStyle, labels) in textStyleForLabels {
             let font = UIFont.preferredFont(forTextStyle: textStyle, compatibleWith: nil)
             labels.forEach { $0.font = font }
@@ -87,7 +105,7 @@ class CaseDetailsPanelView: UIView {
         ]
         
         let constraints = NSLayoutConstraint.constraints(
-                withVisualFormat: "V:|-[diagnosis]-[specific]-[keywords]-[clinicalHeading]-[clinical]-[notesHeading]-[notes]-|",
+                withVisualFormat: "V:|-[diagnosis]-[specific]-[keywords]-[clinicalHeading][clinical]-[notesHeading][notes]-|",
                 options: [.alignAllLeading, .alignAllTrailing],
                 metrics: nil,
                 views: views)

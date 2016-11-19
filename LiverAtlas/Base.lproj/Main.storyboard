@@ -53,15 +53,58 @@
                                                     </view>
                                                     <view contentMode="scaleToFill" placeholderIntrinsicWidth="359" placeholderIntrinsicHeight="550.5" translatesAutoresizingMaskIntoConstraints="NO" id="Dew-pL-fPM" userLabel="CTModality View" customClass="CTModalityPanelView" customModule="LiverAtlas" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="275.5" width="359" height="550.5"/>
+                                                        <subviews>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mce-fB-CLI" userLabel="Top Border">
+                                                                <rect key="frame" x="0.0" y="-4" width="359" height="0.5"/>
+                                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="0.5" id="FRx-Oj-Xam"/>
+                                                                </constraints>
+                                                            </view>
+                                                        </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <constraints>
+                                                            <constraint firstItem="mce-fB-CLI" firstAttribute="top" secondItem="Dew-pL-fPM" secondAttribute="top" constant="-4" id="CxG-21-7v8"/>
+                                                            <constraint firstAttribute="trailing" secondItem="mce-fB-CLI" secondAttribute="trailing" id="jtu-DX-sEM"/>
+                                                            <constraint firstItem="mce-fB-CLI" firstAttribute="leading" secondItem="Dew-pL-fPM" secondAttribute="leading" id="qFy-I3-fU2"/>
+                                                        </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" placeholderIntrinsicWidth="359" placeholderIntrinsicHeight="550.5" translatesAutoresizingMaskIntoConstraints="NO" id="rYx-5Z-nXs" userLabel="MRModality View" customClass="CTModalityPanelView" customModule="LiverAtlas" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="834" width="359" height="550.5"/>
+                                                        <subviews>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nZD-u0-v0D" userLabel="Top Border">
+                                                                <rect key="frame" x="0.0" y="-4" width="359" height="0.5"/>
+                                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="0.5" id="77W-2T-msi"/>
+                                                                </constraints>
+                                                            </view>
+                                                        </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="trailing" secondItem="nZD-u0-v0D" secondAttribute="trailing" id="6bs-y4-lV4"/>
+                                                            <constraint firstItem="nZD-u0-v0D" firstAttribute="top" secondItem="rYx-5Z-nXs" secondAttribute="top" constant="-4" id="WpN-2r-qjh"/>
+                                                            <constraint firstItem="nZD-u0-v0D" firstAttribute="leading" secondItem="rYx-5Z-nXs" secondAttribute="leading" id="gkI-m3-QZl"/>
+                                                        </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" placeholderIntrinsicWidth="359" placeholderIntrinsicHeight="550.5" translatesAutoresizingMaskIntoConstraints="NO" id="Leq-s8-QT3" userLabel="USModality View" customClass="CTModalityPanelView" customModule="LiverAtlas" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="1392.5" width="359" height="550.5"/>
+                                                        <subviews>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XfW-6T-ikc" userLabel="Top Border">
+                                                                <rect key="frame" x="0.0" y="-4" width="359" height="0.5"/>
+                                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="0.5" id="Psn-uP-28w"/>
+                                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="0.5" id="Txs-rb-42f"/>
+                                                                </constraints>
+                                                            </view>
+                                                        </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="trailing" secondItem="XfW-6T-ikc" secondAttribute="trailing" id="WfZ-10-43J"/>
+                                                            <constraint firstItem="XfW-6T-ikc" firstAttribute="top" secondItem="Leq-s8-QT3" secondAttribute="top" constant="-4" id="pSV-t2-jcR"/>
+                                                            <constraint firstItem="XfW-6T-ikc" firstAttribute="leading" secondItem="Leq-s8-QT3" secondAttribute="leading" id="xLq-Px-YLI"/>
+                                                        </constraints>
                                                     </view>
                                                 </subviews>
                                             </stackView>

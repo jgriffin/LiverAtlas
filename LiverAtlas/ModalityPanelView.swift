@@ -109,9 +109,9 @@ class ModalityPanelView: UIView {
         ]
         
         let constraints = NSLayoutConstraint.constraints(
-            withVisualFormat: "V:|-[title]-20-[specificHeading][specific]-20-[liverImages(150)]-20-[imagingFeaturesHeading][imagingFeatures]-20-[structuralFeaturesHeading][structuralFeatures]-20-|",
+            withVisualFormat: "V:|-[title]-20-[specificHeading][specific]-20-[liverImages(150)]-20-[imagingFeaturesHeading][imagingFeatures]-20-[structuralFeaturesHeading][structuralFeatures]-20@priorityAllowHiding-|",
             options: [.alignAllLeading, .alignAllTrailing],
-            metrics: nil,
+            metrics: ["priorityAllowHiding": 999],
             views: views)
         self.addConstraints(constraints)
         

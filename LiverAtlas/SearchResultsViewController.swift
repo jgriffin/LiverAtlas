@@ -8,26 +8,24 @@
 
 import UIKit
 
+protocol SearchResultsViewControllerDelegate {
+    func didSelect(liverAtlasCase: LiverAtlasCase)
+}
+
+
 class SearchResultsViewController: UITableViewController {
-    let casesToSearch: [LiverAtlasCase]
+    let searcher = LiverAtlasSearcher()
+    var delegate: SearchResultsViewControllerDelegate?
     
-    var filteredCases: [LiverAtlasCase] {
+    var casesToSearch: [LiverAtlasCase]! {
+        didSet {
+            filteredCases = casesToSearch
+        }
+    }
+    var filteredCases: [LiverAtlasCase]! {
         didSet {
             tableView.reloadData()
         }
-    }
-    
-    let searcher = LiverAtlasSearcher()
-    
-    init(casesToSearch: [LiverAtlasCase]) {
-        self.casesToSearch = casesToSearch
-        self.filteredCases = casesToSearch
-
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
     
     override func viewDidLoad() {
@@ -36,16 +34,19 @@ class SearchResultsViewController: UITableViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 75
         
-        tableView.register(UINib(nibName:"CaseResultTableViewCell", bundle:Bundle(for: type(of:self))),
+        tableView.register(UINib(nibName:"CaseResultTableViewCell",
+                                 bundle:Bundle(for: type(of:self))),
                            forCellReuseIdentifier: CaseResultTableViewCell.identifier)
     }
 
+    // TableView data source
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return filteredCases.count
+        return filteredCases?.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -57,12 +58,23 @@ class SearchResultsViewController: UITableViewController {
         
         return cell
     }
+    
+    // TableViewDelegate
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let liverAtlasCase = filteredCases[indexPath.item]
+        delegate?.didSelect(liverAtlasCase: liverAtlasCase)
+    }
 }
 
 extension SearchResultsViewController: UISearchResultsUpdating {
+    
     func updateSearchResults(for searchController: UISearchController) {
         let sb = searchController.searchBar
         let searchText = sb.text!
+        
+        // show even when empty
+        self.view.isHidden = false
         
         filteredCases = searcher.searchCases(casesToSearch: casesToSearch, forSearchText: searchText)
     }

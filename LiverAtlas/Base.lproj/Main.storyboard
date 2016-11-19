@@ -42,17 +42,17 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oKq-4p-H75" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1959"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="2043.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="826" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="0oc-zU-88g" userLabel="Vertical Stack View">
-                                                <rect key="frame" x="8" y="8" width="359" height="1943"/>
+                                                <rect key="frame" x="8" y="8" width="359" height="2027.5"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" placeholderIntrinsicWidth="359" placeholderIntrinsicHeight="267.5" translatesAutoresizingMaskIntoConstraints="NO" id="c0A-qH-zcc" customClass="CaseDetailsPanelView" customModule="LiverAtlas" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="359" height="267.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="359" height="352"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </view>
                                                     <view contentMode="scaleToFill" placeholderIntrinsicWidth="359" placeholderIntrinsicHeight="550.5" translatesAutoresizingMaskIntoConstraints="NO" id="Dew-pL-fPM" userLabel="CTModality View" customClass="CTModalityPanelView" customModule="LiverAtlas" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="275.5" width="359" height="550.5"/>
+                                                        <rect key="frame" x="0.0" y="360" width="359" height="550.5"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mce-fB-CLI" userLabel="Top Border">
                                                                 <rect key="frame" x="0.0" y="-4" width="359" height="0.5"/>
@@ -70,7 +70,7 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" placeholderIntrinsicWidth="359" placeholderIntrinsicHeight="550.5" translatesAutoresizingMaskIntoConstraints="NO" id="rYx-5Z-nXs" userLabel="MRModality View" customClass="CTModalityPanelView" customModule="LiverAtlas" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="834" width="359" height="550.5"/>
+                                                        <rect key="frame" x="0.0" y="918.5" width="359" height="550.5"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nZD-u0-v0D" userLabel="Top Border">
                                                                 <rect key="frame" x="0.0" y="-4" width="359" height="0.5"/>
@@ -88,7 +88,7 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" placeholderIntrinsicWidth="359" placeholderIntrinsicHeight="550.5" translatesAutoresizingMaskIntoConstraints="NO" id="Leq-s8-QT3" userLabel="USModality View" customClass="CTModalityPanelView" customModule="LiverAtlas" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="1392.5" width="359" height="550.5"/>
+                                                        <rect key="frame" x="0.0" y="1477" width="359" height="550.5"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XfW-6T-ikc" userLabel="Top Border">
                                                                 <rect key="frame" x="0.0" y="-4" width="359" height="0.5"/>
@@ -159,7 +159,7 @@
         <!--Case Results View Controller-->
         <scene sceneID="Pji-uy-goa">
             <objects>
-                <viewController id="xsU-RI-o1L" customClass="CaseResultsViewController" customModule="LiverAtlas" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CaseResultsViewControllerStoryboardIdentifier" id="xsU-RI-o1L" customClass="CaseResultsViewController" customModule="LiverAtlas" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="wAA-ux-29Y"/>
                         <viewControllerLayoutGuide type="bottom" id="u5M-PS-gVm"/>
@@ -190,44 +190,6 @@
                                         <constraint firstItem="PD7-Y0-QvQ" firstAttribute="top" secondItem="G5u-CQ-dA1" secondAttribute="topMargin" id="nQT-DU-sLC"/>
                                     </constraints>
                                 </view>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="caseResultIdentifier" rowHeight="104" id="9Lf-KZ-8t6" userLabel="CaseResultCell" customClass="CaseResultTableViewCell" customModule="LiverAtlas" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="72" width="375" height="104"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9Lf-KZ-8t6" id="Uqm-aN-oFY">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="103.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Abscess (amebic)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1gh-RD-mdQ" userLabel="Title">
-                                                    <rect key="frame" x="8" y="8" width="359" height="21"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Thin wall and perifoca edema" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7wG-rK-OqR" userLabel="Specific Diagnosis">
-                                                    <rect key="frame" x="8" y="29" width="359" height="66"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="7wG-rK-OqR" firstAttribute="leading" secondItem="Uqm-aN-oFY" secondAttribute="leadingMargin" id="9DS-Ic-mov"/>
-                                                <constraint firstItem="1gh-RD-mdQ" firstAttribute="top" secondItem="Uqm-aN-oFY" secondAttribute="topMargin" id="KQl-tJ-hZi"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="7wG-rK-OqR" secondAttribute="bottom" id="Pwg-rh-jfA"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="7wG-rK-OqR" secondAttribute="trailing" id="Rbe-jS-itg"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="1gh-RD-mdQ" secondAttribute="trailing" id="YBY-U7-l8Y"/>
-                                                <constraint firstItem="7wG-rK-OqR" firstAttribute="top" secondItem="1gh-RD-mdQ" secondAttribute="bottom" id="qxj-sb-7Ds"/>
-                                                <constraint firstItem="1gh-RD-mdQ" firstAttribute="leading" secondItem="Uqm-aN-oFY" secondAttribute="leadingMargin" id="zub-mD-Cje"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="specificDiagnosisLabel" destination="7wG-rK-OqR" id="A8O-7P-EsA"/>
-                                            <outlet property="titleLabel" destination="1gh-RD-mdQ" id="McO-mo-PPh"/>
-                                            <segue destination="JEX-9P-axG" kind="show" identifier="CaseResultToCaseDetailSegue" id="7ze-tH-xCc"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="xsU-RI-o1L" id="yaL-b9-eGI"/>
                                     <outlet property="delegate" destination="xsU-RI-o1L" id="tbP-S8-xFZ"/>
@@ -246,6 +208,7 @@
                     <connections>
                         <outlet property="tableView" destination="T7Z-Gg-tRS" id="Zi1-q8-r3a"/>
                         <outlet property="tableViewHeaderResultSummaryLabel" destination="PD7-Y0-QvQ" id="8su-fY-cpD"/>
+                        <segue destination="JEX-9P-axG" kind="show" identifier="CaseResultToCaseDetailSegue" id="Ism-8i-gJv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CfT-OU-zTB" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -267,10 +230,10 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" alwaysBounceVertical="YES" alwaysBounceHorizontal="YES" minimumZoomScale="0.5" maximumZoomScale="6" translatesAutoresizingMaskIntoConstraints="NO" id="5Bu-P3-cWA">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qWP-Ow-Hrr" userLabel="Content View">
+                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qWP-Ow-Hrr" userLabel="Content View">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="755"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" placeholderIntrinsicWidth="482" placeholderIntrinsicHeight="755" translatesAutoresizingMaskIntoConstraints="NO" id="0bU-5G-sPI">
+                                            <imageView userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" placeholderIntrinsicWidth="482" placeholderIntrinsicHeight="755" translatesAutoresizingMaskIntoConstraints="NO" id="0bU-5G-sPI">
                                                 <rect key="frame" x="-53.5" y="0.0" width="482" height="755"/>
                                             </imageView>
                                         </subviews>
@@ -398,6 +361,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="pq2-rA-49F"/>
-        <segue reference="7ze-tH-xCc"/>
+        <segue reference="Ism-8i-gJv"/>
     </inferredMetricsTieBreakers>
 </document>

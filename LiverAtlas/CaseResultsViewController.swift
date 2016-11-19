@@ -9,13 +9,18 @@
 import UIKit
 
 class CaseResultsViewController: UIViewController, UITableViewDelegate {
-    let caseDetailSegueIdentifier =  "CaseResultToCaseDetailSegue"
+    static let storyboardIdentifier = "CaseResultsViewControllerStoryboardIdentifier"
+    static let caseDetailSegueIdentifier =  "CaseResultToCaseDetailSegue"
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableViewHeaderResultSummaryLabel: UILabel!
     
     var liverAtlasCases: [LiverAtlasCase]? {
         didSet {
+            guard let _ = tableViewHeaderResultSummaryLabel else {
+                return
+            }
+
             tableViewHeaderResultSummaryLabel.text = "There are \(liverAtlasCases?.count ?? 0) cases matching the current search"
             tableView?.reloadData()
         }
@@ -27,15 +32,26 @@ class CaseResultsViewController: UIViewController, UITableViewDelegate {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 100
         
-        liverAtlasCases = LiverAtlasIndex.instance.allCases
+        tableView.register(UINib(nibName: "CaseResultTableViewCell",
+                                 bundle: Bundle(for: type(of:self))),
+                           forCellReuseIdentifier: CaseResultTableViewCell.identifier)
+        
+        liverAtlasCases = liverAtlasCases ?? LiverAtlasIndex.instance.allCases
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: CaseResultsViewController.caseDetailSegueIdentifier,
+                     sender: indexPath)
+
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let liverAtlasCase = liverAtlasCases![tableView.indexPathForSelectedRow!.row]
-        
         switch segue.identifier! {
-        case caseDetailSegueIdentifier:
+        case CaseResultsViewController.caseDetailSegueIdentifier:
+            let indexPath = sender as! IndexPath
+            let liverAtlasCase = liverAtlasCases![indexPath.item]
             let caseDetailVC = segue.destination as! CaseDetailsViewController
+            
             caseDetailVC.liverAtlasCase = liverAtlasCase
             
         default:
@@ -53,7 +69,7 @@ extension CaseResultsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        let caseResultCell = tableView.dequeueReusableCell(withIdentifier: "caseResultIdentifier",
+        let caseResultCell = tableView.dequeueReusableCell(withIdentifier: CaseResultTableViewCell.identifier,
                                                           for: indexPath) as! CaseResultTableViewCell
         
         let theCase = liverAtlasCases![indexPath.row]

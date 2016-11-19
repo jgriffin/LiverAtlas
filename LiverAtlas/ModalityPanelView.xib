@@ -28,22 +28,22 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KNC-6J-GVQ" userLabel="title">
-                            <rect key="frame" x="0.0" y="0.0" width="33.5" height="20.5"/>
+                            <rect key="frame" x="0.0" y="0.0" width="34" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="88p-BZ-CIr" userLabel="Specific Diagnosis Stack View">
-                            <rect key="frame" x="0.0" y="28.5" width="140.5" height="35"/>
+                            <rect key="frame" x="0.0" y="29" width="141" height="36"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Imaging Diagnosis:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pf7-n1-Iz6" userLabel="label - specific diagnosis">
-                                    <rect key="frame" x="0.0" y="0.0" width="140.5" height="14.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="141" height="15"/>
                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Specific Diagnosis" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4lk-Q3-3L7" userLabel="specific diagnosis">
-                                    <rect key="frame" x="0.0" y="14.5" width="140.5" height="20.5"/>
+                                    <rect key="frame" x="0.0" y="15" width="141" height="21"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -51,7 +51,7 @@
                             </subviews>
                         </stackView>
                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="327" placeholderIntrinsicHeight="infinite" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="uE1-3H-EdF" userLabel="liver images" customClass="IntrinsicSizeCollectionView" customModule="LiverAtlas" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="71.5" width="375" height="238.5"/>
+                            <rect key="frame" x="0.0" y="73" width="375" height="234"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="STg-Yu-1ph">
                                 <size key="itemSize" width="150" height="100"/>
@@ -66,16 +66,16 @@
                             </connections>
                         </collectionView>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="FF7-we-FwD" userLabel="Imaging Features Stack View">
-                            <rect key="frame" x="0.0" y="318" width="132" height="35"/>
+                            <rect key="frame" x="0.0" y="315" width="132" height="36"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Imaging Features" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PR5-qN-mUu" userLabel="label - imaging features">
-                                    <rect key="frame" x="0.0" y="0.0" width="132" height="14.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="132" height="15"/>
                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Imaging Features" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rvq-bW-eiW" userLabel="imaging features">
-                                    <rect key="frame" x="0.0" y="14.5" width="132" height="20.5"/>
+                                    <rect key="frame" x="0.0" y="15" width="132" height="21"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -83,16 +83,16 @@
                             </subviews>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ux0-gS-WPd" userLabel="Structural Features Stack View">
-                            <rect key="frame" x="0.0" y="361" width="146.5" height="35"/>
+                            <rect key="frame" x="0.0" y="359" width="147" height="36"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Structural Features" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1kp-HS-S9i" userLabel="label - structural features">
-                                    <rect key="frame" x="0.0" y="0.0" width="146.5" height="14.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="147" height="15"/>
                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Structural Features" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RZi-vd-SDg" userLabel="structural features">
-                                    <rect key="frame" x="0.0" y="14.5" width="146.5" height="20.5"/>
+                                    <rect key="frame" x="0.0" y="15" width="147" height="21"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -100,16 +100,16 @@
                             </subviews>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="4XG-Ol-N3c" userLabel="image findings">
-                            <rect key="frame" x="0.0" y="404" width="375" height="263"/>
+                            <rect key="frame" x="0.0" y="403" width="375" height="264"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Imaging Findings:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gCC-Tx-iZd" userLabel="label - Imagine Findings">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="14.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="15"/>
                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qxY-tB-HX4" userLabel="image findings">
-                                    <rect key="frame" x="0.0" y="22.5" width="375" height="240.5"/>
+                                    <rect key="frame" x="0.0" y="23" width="375" height="241"/>
                                     <string key="text">CT demonstrates large central amebic liver abscess. The present image represents the subacute stage of the abscess with a thin capsule, perilesional hypodense edema, internal enhancing membranes and confluent loculations (compare to "acute abscess" with cluster sign and no distinct capsule). The patient was successfully treated with percuaneous drainage and metronidazole. Couresty Tarun Pandey, MD, Hemendra Shah, MD, University of Arkansas for Medical Sciences, AK, USA.</string>
                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                     <nil key="textColor"/>

@@ -15,8 +15,8 @@ class CTModalityPanelView: ModalityPanelView {
     func configure(ctmodality: LiverAtlasCTModality) {
         self.ctmodality = ctmodality
         
-        title.text = ctmodality.title
-        specificDiagnosis.text = ctmodality.specificDiagnosis
+        titleLabel.text = ctmodality.title
+        specificDiagnosisLabel.text = ctmodality.specificDiagnosis
         imagingFeaturesLabel.text = ctmodality.imagingFeatures.map { $0.title }
             .joined(separator: ", ")
         structuralFeaturesLabel.text = ctmodality.structuralFeatures.map { $0.title }
@@ -28,6 +28,8 @@ class CTModalityPanelView: ModalityPanelView {
     override func prepareForInterfaceBuilder() {
         let case6 = LiverAtlasIndex.instance.case6
         configure(ctmodality: case6.ctmodality.first!)
+        
+        super.prepareForInterfaceBuilder()
     }
 }
 

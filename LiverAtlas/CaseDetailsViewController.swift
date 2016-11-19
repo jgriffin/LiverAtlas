@@ -24,6 +24,7 @@ import UIKit
 
 class CaseDetailsViewController: UIViewController {
     static let storyboardIdentifier = "CaseDetailsViewController"
+    static let showImagingSequeIdentifier = "CaseDetailToImagingSegue"
 
     @IBOutlet weak var caseDetailsPanelView: CaseDetailsPanelView!
     @IBOutlet weak var ctModalityPanelView: CTModalityPanelView!
@@ -40,6 +41,8 @@ class CaseDetailsViewController: UIViewController {
         guard caseDetailsPanelView != nil else {
             return
         }
+        
+        navigationItem.title = "Case \(liverAtlasCase.pk)"
         
         caseDetailsPanelView.liverAtlasCase = liverAtlasCase
 
@@ -67,10 +70,90 @@ class CaseDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        ctModalityPanelView.liverImagesCollectionView.delegate = self
+        mrModalityPanelView.liverImagesCollectionView.delegate = self
+        usModalityPanelView.liverImagesCollectionView.delegate = self
+        ctModalityPanelView.liverImagesCollectionView.dataSource = self
+        mrModalityPanelView.liverImagesCollectionView.dataSource = self
+        usModalityPanelView.liverImagesCollectionView.dataSource = self
+
         if let _ = liverAtlasCase {
             configureView(liverAtlasCase: liverAtlasCase!)
         }
     }
+}
 
+extension CaseDetailsViewController: UICollectionViewDataSource {
+
+    func collectionView(_ collectionView: UICollectionView,
+                               numberOfItemsInSection section: Int) -> Int {
+        switch collectionView {
+        case ctModalityPanelView.liverImagesCollectionView:
+            return liverAtlasCase?.ctmodality.count ?? 0
+        case mrModalityPanelView.liverImagesCollectionView:
+            return liverAtlasCase?.mrmodality.count ?? 0
+        case usModalityPanelView.liverImagesCollectionView:
+            return liverAtlasCase?.usmodality.count ?? 0
+        default:
+            fatalError("unrecognized collection view")
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                               cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let imageTileCell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageTileCollectionViewCell.identifier,
+                                                             for: indexPath) as! ImageTileCollectionViewCell
+
+        let liverAtlasImage = self.liverAtlasImage(forCollectionView: collectionView,
+                                                   cellAtIndexPath: indexPath)
+        imageTileCell.configure(liverAtlasImage: liverAtlasImage)
+        
+        return imageTileCell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                                 collectionViewLayout: UICollectionViewLayout,
+                                 sizeForItemAtIndexPath: IndexPath) -> CGSize {
+        return CGSize(width: 100, height: 150)
+    }
+    
+    func liverAtlasImage(forCollectionView collectionView: UICollectionView,
+                         cellAtIndexPath indexPath: IndexPath) -> LiverAtlasImage {
+        switch collectionView {
+        case ctModalityPanelView.liverImagesCollectionView:
+            return liverAtlasCase!.ctmodality.first!.images[indexPath.item]
+        case mrModalityPanelView.liverImagesCollectionView:
+            return liverAtlasCase!.mrmodality.first!.images[indexPath.item]
+        case usModalityPanelView.liverImagesCollectionView:
+            return liverAtlasCase!.usmodality.first!.images[indexPath.item]
+        default:
+            fatalError("unrecognized collection view")
+        }
+    }
+}
+
+extension CaseDetailsViewController: UICollectionViewDelegate {
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let image = liverAtlasImage(forCollectionView: collectionView,
+                                    cellAtIndexPath: indexPath)
+        performSegue(withIdentifier: CaseDetailsViewController.showImagingSequeIdentifier,
+                     sender: image)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case .some(CaseDetailsViewController.showImagingSequeIdentifier):
+            if let image = sender as? LiverAtlasImage {
+                (segue.destination as? ImagingViewController)?.loadWithImage(imageURL: image.image)
+            }
+            break
+        default:
+            NSLog("handled segue indetifier: \(segue.identifier)")
+            break
+        }
+    }
+    
 }
 

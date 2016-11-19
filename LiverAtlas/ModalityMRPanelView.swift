@@ -15,8 +15,8 @@ class MRModalityPanelView: ModalityPanelView {
     func configure(mrmodality: LiverAtlasMRModality) {
         self.mrmodality = mrmodality
         
-        title.text = mrmodality.title
-        specificDiagnosis.text = mrmodality.specificDiagnosis
+        titleLabel.text = mrmodality.title
+        specificDiagnosisLabel.text = mrmodality.specificDiagnosis
         imagingFeaturesLabel.text = mrmodality.imagingFeatures.map { $0.title }
             .joined(separator: ", ")
         structuralFeaturesLabel.text = mrmodality.structuralFeatures.map { $0.title }

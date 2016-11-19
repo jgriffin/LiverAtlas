@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11542"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -15,16 +16,16 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="309.5" translatesAutoresizingMaskIntoConstraints="NO" id="Ybg-z5-74x" customClass="CaseDetailsPanelView" customModule="LiverAtlas" customModuleProvider="target">
-                    <rect key="frame" x="16" y="29" width="288" height="309.5"/>
+                <view contentMode="scaleToFill" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="251.5" translatesAutoresizingMaskIntoConstraints="NO" id="Ybg-z5-74x" customClass="CTModalityPanelView" customModule="LiverAtlas" customModuleProvider="target">
+                    <rect key="frame" x="8" y="8" width="304" height="251.5"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="Ybg-z5-74x" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="29" id="WNI-0j-6yI"/>
-                <constraint firstItem="Ybg-z5-74x" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="Xzr-ec-Am1"/>
-                <constraint firstAttribute="trailing" secondItem="Ybg-z5-74x" secondAttribute="trailing" constant="16" id="f4L-fR-fyC"/>
+                <constraint firstItem="Ybg-z5-74x" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leadingMargin" id="F9P-Qf-ePJ"/>
+                <constraint firstItem="Ybg-z5-74x" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailingMargin" id="O3K-6f-7iq"/>
+                <constraint firstItem="Ybg-z5-74x" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="topMargin" id="kMj-U0-xiN"/>
             </constraints>
             <point key="canvasLocation" x="-286" y="-131"/>
         </view>

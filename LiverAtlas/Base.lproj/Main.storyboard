@@ -26,10 +26,10 @@
             </objects>
             <point key="canvasLocation" x="-38" y="-630"/>
         </scene>
-        <!--Detail-->
+        <!--Case Details View Controller-->
         <scene sceneID="yUG-lL-AsK">
             <objects>
-                <viewController storyboardIdentifier="LiverAtlasCaseDetailViewController" title="Detail" automaticallyAdjustsScrollViewInsets="NO" id="JEX-9P-axG" customClass="LiverAtlasCaseDetailViewController" customModule="LiverAtlas" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CaseDetailsViewController" title="Detail" automaticallyAdjustsScrollViewInsets="NO" id="JEX-9P-axG" userLabel="Case Details View Controller" customClass="CaseDetailsViewController" customModule="LiverAtlas" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="SYR-Wa-9uf"/>
                         <viewControllerLayoutGuide type="bottom" id="GAO-Cl-Wes"/>
@@ -42,101 +42,25 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oKq-4p-H75" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1959"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="752" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ery-oJ-YLM" userLabel="case header">
-                                                <rect key="frame" x="8" y="8" width="367" height="40"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="826" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="0oc-zU-88g" userLabel="Vertical Stack View">
+                                                <rect key="frame" x="8" y="8" width="359" height="1943"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Case 1: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C3z-Hd-14X" userLabel="case number heading">
-                                                        <rect key="frame" x="0.0" y="0.0" width="367" height="19.5"/>
-                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Abscess (amebic)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eu2-Lr-O4d" userLabel="heading text">
-                                                        <rect key="frame" x="0.0" y="19.5" width="367" height="20.5"/>
-                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="40" id="hfP-2m-8mG"/>
-                                                </constraints>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="0oc-zU-88g" userLabel="Vertical Stack View">
-                                                <rect key="frame" x="8" y="68" width="367" height="599"/>
-                                                <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="300" placeholderIntrinsicHeight="58" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="4cf-eQ-igx" userLabel="clinical presentation">
-                                                        <rect key="frame" x="0.0" y="0.0" width="367" height="39.5"/>
-                                                        <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Clinical Presentation:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UiC-vl-yeX" userLabel="label - Clinical Presentation: ">
-                                                                <rect key="frame" x="0.0" y="0.0" width="367" height="14.5"/>
-                                                                <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="35 year old man with fever, right upper quadrant abdominal pain and vomiting" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sZp-4w-vuf" userLabel="clinical presentation">
-                                                                <rect key="frame" x="0.0" y="22.5" width="367" height="17"/>
-                                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                        </subviews>
-                                                    </stackView>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="300" placeholderIntrinsicHeight="58" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Cpq-e6-z8i" userLabel="specific diagnosis">
-                                                        <rect key="frame" x="0.0" y="59.5" width="367" height="43"/>
-                                                        <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Diagnosis" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GdA-OV-Am9" userLabel="label - Diagnosis:">
-                                                                <rect key="frame" x="0.0" y="0.0" width="367" height="14.5"/>
-                                                                <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="diagnosis" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qqX-BA-glI" userLabel="specific diagnosis">
-                                                                <rect key="frame" x="0.0" y="22.5" width="367" height="20.5"/>
-                                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                        </subviews>
-                                                    </stackView>
-                                                    <stackView opaque="NO" tag="-2" contentMode="scaleToFill" placeholderIntrinsicWidth="367" placeholderIntrinsicHeight="43" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="6Xb-Rm-3zf" userLabel="diagnostic categories">
-                                                        <rect key="frame" x="0.0" y="122.5" width="367" height="43"/>
-                                                        <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Diagnostic Category: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t6r-NP-IZ9" userLabel="label - Diagnostic Category:">
-                                                                <rect key="frame" x="0.0" y="0.0" width="367" height="14.5"/>
-                                                                <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="diagnostic categories" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fh1-WW-db8" userLabel="keywords">
-                                                                <rect key="frame" x="0.0" y="22.5" width="367" height="20.5"/>
-                                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                        </subviews>
-                                                    </stackView>
-                                                    <stackView opaque="NO" tag="-2" contentMode="scaleToFill" placeholderIntrinsicWidth="367" placeholderIntrinsicHeight="43" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="GPV-JW-uAG" userLabel="notes">
-                                                        <rect key="frame" x="0.0" y="185.5" width="367" height="43"/>
-                                                        <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notes:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IIR-Qc-hwM" userLabel="label - Notes:">
-                                                                <rect key="frame" x="0.0" y="0.0" width="367" height="14.5"/>
-                                                                <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="notes" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eA9-Ea-V4t" userLabel="notes">
-                                                                <rect key="frame" x="0.0" y="22.5" width="367" height="20.5"/>
-                                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                        </subviews>
-                                                    </stackView>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dew-pL-fPM" userLabel="CTModality View" customClass="CTModalityView" customModule="LiverAtlas" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="248.5" width="367" height="350.5"/>
+                                                    <view contentMode="scaleToFill" placeholderIntrinsicWidth="359" placeholderIntrinsicHeight="267.5" translatesAutoresizingMaskIntoConstraints="NO" id="c0A-qH-zcc" customClass="CaseDetailsPanelView" customModule="LiverAtlas" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="359" height="267.5"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" placeholderIntrinsicWidth="359" placeholderIntrinsicHeight="550.5" translatesAutoresizingMaskIntoConstraints="NO" id="Dew-pL-fPM" userLabel="CTModality View" customClass="CTModalityPanelView" customModule="LiverAtlas" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="275.5" width="359" height="550.5"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" placeholderIntrinsicWidth="359" placeholderIntrinsicHeight="550.5" translatesAutoresizingMaskIntoConstraints="NO" id="rYx-5Z-nXs" userLabel="MRModality View" customClass="CTModalityPanelView" customModule="LiverAtlas" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="834" width="359" height="550.5"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" placeholderIntrinsicWidth="359" placeholderIntrinsicHeight="550.5" translatesAutoresizingMaskIntoConstraints="NO" id="Leq-s8-QT3" userLabel="USModality View" customClass="CTModalityPanelView" customModule="LiverAtlas" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="1392.5" width="359" height="550.5"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </view>
                                                 </subviews>
@@ -144,13 +68,10 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="ery-oJ-YLM" firstAttribute="leading" secondItem="oKq-4p-H75" secondAttribute="leadingMargin" id="83a-gY-Oze"/>
-                                            <constraint firstItem="0oc-zU-88g" firstAttribute="top" secondItem="ery-oJ-YLM" secondAttribute="bottom" constant="20" id="B4N-96-ICJ"/>
-                                            <constraint firstAttribute="trailing" secondItem="0oc-zU-88g" secondAttribute="trailing" id="EPT-FG-UBy"/>
-                                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="0oc-zU-88g" secondAttribute="bottom" id="JqL-2j-XkP"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="0oc-zU-88g" secondAttribute="trailing" id="EPT-FG-UBy"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="0oc-zU-88g" secondAttribute="bottom" id="JqL-2j-XkP"/>
                                             <constraint firstItem="0oc-zU-88g" firstAttribute="leading" secondItem="oKq-4p-H75" secondAttribute="leadingMargin" id="Zrt-43-7bv"/>
-                                            <constraint firstItem="ery-oJ-YLM" firstAttribute="top" secondItem="oKq-4p-H75" secondAttribute="topMargin" id="hJp-NM-n07"/>
-                                            <constraint firstAttribute="trailing" secondItem="ery-oJ-YLM" secondAttribute="trailing" id="rfL-kF-RZ2"/>
+                                            <constraint firstItem="0oc-zU-88g" firstAttribute="top" secondItem="oKq-4p-H75" secondAttribute="topMargin" id="q2h-5b-MYs"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -167,7 +88,6 @@
                             <constraint firstAttribute="trailing" secondItem="oCk-R6-gIV" secondAttribute="trailing" id="0F3-2S-LMS"/>
                             <constraint firstItem="oCk-R6-gIV" firstAttribute="top" secondItem="SYR-Wa-9uf" secondAttribute="bottom" id="B3T-Lf-M4H"/>
                             <constraint firstItem="oKq-4p-H75" firstAttribute="width" secondItem="svH-Pt-448" secondAttribute="width" id="OkG-4w-YAI"/>
-                            <constraint firstItem="oKq-4p-H75" firstAttribute="height" secondItem="svH-Pt-448" secondAttribute="height" id="Q4J-4m-rWH"/>
                             <constraint firstItem="oCk-R6-gIV" firstAttribute="leading" secondItem="svH-Pt-448" secondAttribute="leading" id="eKa-VK-QPd"/>
                             <constraint firstAttribute="bottom" secondItem="oCk-R6-gIV" secondAttribute="bottom" id="nFA-op-LmU"/>
                         </constraints>
@@ -175,20 +95,16 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Detail" id="mOI-FS-AaM"/>
                     <connections>
-                        <outlet property="caseHeadingNumberLabel" destination="C3z-Hd-14X" id="do7-ma-Yy5"/>
-                        <outlet property="caseHeadingTextLabel" destination="eu2-Lr-O4d" id="TRO-eI-ivq"/>
-                        <outlet property="clinicalPresentationLabel" destination="sZp-4w-vuf" id="vT2-yL-PAe"/>
-                        <outlet property="ctModalityView" destination="Dew-pL-fPM" id="WPf-jO-drW"/>
-                        <outlet property="detailsStackView" destination="0oc-zU-88g" id="Exd-E6-AAc"/>
-                        <outlet property="diagnosisLabel" destination="Fh1-WW-db8" id="bbc-go-fkQ"/>
-                        <outlet property="notesLabel" destination="eA9-Ea-V4t" id="651-t1-Wuw"/>
-                        <outlet property="specificDiagnosisLabel" destination="qqX-BA-glI" id="yjK-98-PCA"/>
+                        <outlet property="caseDetailsPanelView" destination="c0A-qH-zcc" id="Vr4-9D-zKp"/>
+                        <outlet property="ctModalityPanelView" destination="Dew-pL-fPM" id="ohf-FZ-rGq"/>
+                        <outlet property="mrModalityPanelView" destination="rYx-5Z-nXs" id="8Fh-aG-6P5"/>
+                        <outlet property="usModalityPanelView" destination="Leq-s8-QT3" id="BtR-i7-5n7"/>
                         <segue destination="FQ5-a5-NfL" kind="show" identifier="CaseDetailToImagingSegue" id="LJ9-Yq-2Gl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FJe-Yq-33r" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="894" y="919"/>
+            <point key="canvasLocation" x="893.60000000000002" y="918.89055472263874"/>
         </scene>
         <!--Case Results View Controller-->
         <scene sceneID="Pji-uy-goa">
@@ -239,7 +155,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Thin wall and perifoca edema" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7wG-rK-OqR" userLabel="Specific Diagnosis">
-                                                    <rect key="frame" x="8" y="29" width="359" height="66.5"/>
+                                                    <rect key="frame" x="8" y="29" width="359" height="66"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -304,7 +220,7 @@
                                     <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qWP-Ow-Hrr" userLabel="Content View">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="755"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" placeholderIntrinsicWidth="482" placeholderIntrinsicHeight="755" translatesAutoresizingMaskIntoConstraints="NO" id="0bU-5G-sPI">
+                                            <imageView userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" placeholderIntrinsicWidth="482" placeholderIntrinsicHeight="755" translatesAutoresizingMaskIntoConstraints="NO" id="0bU-5G-sPI">
                                                 <rect key="frame" x="-53.5" y="0.0" width="482" height="755"/>
                                             </imageView>
                                         </subviews>

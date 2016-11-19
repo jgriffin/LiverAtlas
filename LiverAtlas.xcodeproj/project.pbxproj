@@ -18,7 +18,7 @@
 		D6BAF6211DDBE9DB00C9D17F /* liveratlas_api_cases.json in Resources */ = {isa = PBXBuildFile; fileRef = D6BAF61F1DDBE9DB00C9D17F /* liveratlas_api_cases.json */; };
 		D6BAF6261DDBEA3900C9D17F /* LiverAtlasIndexItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BAF6251DDBEA3900C9D17F /* LiverAtlasIndexItem.swift */; };
 		D6BAF6271DDBEA3900C9D17F /* LiverAtlasIndexItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BAF6251DDBEA3900C9D17F /* LiverAtlasIndexItem.swift */; };
-		D6BAF6291DDBEDCE00C9D17F /* LiverAtlasIndexItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BAF6281DDBEDCE00C9D17F /* LiverAtlasIndexItemTests.swift */; };
+		D6BAF6291DDBEDCE00C9D17F /* LiverAtlasIndexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BAF6281DDBEDCE00C9D17F /* LiverAtlasIndexTests.swift */; };
 		D6BAF62A1DDBF1DF00C9D17F /* liveratlas_api_case_6.json in Resources */ = {isa = PBXBuildFile; fileRef = D6BAF61E1DDBE9DB00C9D17F /* liveratlas_api_case_6.json */; };
 		D6BAF62B1DDBF1DF00C9D17F /* liveratlas_api_cases.json in Resources */ = {isa = PBXBuildFile; fileRef = D6BAF61F1DDBE9DB00C9D17F /* liveratlas_api_cases.json */; };
 		D6BAF62D1DDC07D800C9D17F /* LiverAtlasCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BAF62C1DDC07D800C9D17F /* LiverAtlasCase.swift */; };
@@ -29,24 +29,28 @@
 		D6BAF6361DDCBD3800C9D17F /* LiverAtlasCaseCrawler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BAF6351DDCBD3800C9D17F /* LiverAtlasCaseCrawler.swift */; };
 		D6BAF6371DDCBD3800C9D17F /* LiverAtlasCaseCrawler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BAF6351DDCBD3800C9D17F /* LiverAtlasCaseCrawler.swift */; };
 		D6BAF6391DDCC2F200C9D17F /* LiverAtlasCaseCrawlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BAF6381DDCC2F200C9D17F /* LiverAtlasCaseCrawlerTests.swift */; };
-		D6BAF63B1DDCD47B00C9D17F /* LiverAtlasCaseIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BAF63A1DDCD47B00C9D17F /* LiverAtlasCaseIndex.swift */; };
-		D6BAF63C1DDCD47B00C9D17F /* LiverAtlasCaseIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BAF63A1DDCD47B00C9D17F /* LiverAtlasCaseIndex.swift */; };
-		D6BAF6401DDCE6BF00C9D17F /* CTModalityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BAF63F1DDCE6BF00C9D17F /* CTModalityView.swift */; };
-		D6BAF6421DDCE6D100C9D17F /* CTModalityView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6BAF6411DDCE6D100C9D17F /* CTModalityView.xib */; };
+		D6BAF63B1DDCD47B00C9D17F /* LiverAtlasIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BAF63A1DDCD47B00C9D17F /* LiverAtlasIndex.swift */; };
+		D6BAF63C1DDCD47B00C9D17F /* LiverAtlasIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BAF63A1DDCD47B00C9D17F /* LiverAtlasIndex.swift */; };
+		D6BAF6401DDCE6BF00C9D17F /* ModalityCTPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BAF63F1DDCE6BF00C9D17F /* ModalityCTPanelView.swift */; };
+		D6BAF6421DDCE6D100C9D17F /* CTModalityPanelView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6BAF6411DDCE6D100C9D17F /* CTModalityPanelView.xib */; };
 		D6BAF6471DDCED0A00C9D17F /* ImageTileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BAF6451DDCED0A00C9D17F /* ImageTileCollectionViewCell.swift */; };
 		D6BAF6481DDCED0A00C9D17F /* ImageTileCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6BAF6461DDCED0A00C9D17F /* ImageTileCollectionViewCell.xib */; };
 		D6BE1DAC1DCB8BD800305B7D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BE1DAB1DCB8BD800305B7D /* AppDelegate.swift */; };
 		D6BE1DAF1DCB8BD800305B7D /* LiverAtlas.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D6BE1DAD1DCB8BD800305B7D /* LiverAtlas.xcdatamodeld */; };
-		D6BE1DB31DCB8BD800305B7D /* LiverAtlasDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BE1DB21DCB8BD800305B7D /* LiverAtlasDetailViewController.swift */; };
+		D6BE1DB31DCB8BD800305B7D /* CaseDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BE1DB21DCB8BD800305B7D /* CaseDetailsViewController.swift */; };
 		D6BE1DB61DCB8BD800305B7D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6BE1DB41DCB8BD800305B7D /* Main.storyboard */; };
 		D6BE1DB81DCB8BD800305B7D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D6BE1DB71DCB8BD800305B7D /* Assets.xcassets */; };
 		D6BE1DBB1DCB8BD800305B7D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6BE1DB91DCB8BD800305B7D /* LaunchScreen.storyboard */; };
 		D6BE1DD11DCB8BD800305B7D /* LiverAtlasUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BE1DD01DCB8BD800305B7D /* LiverAtlasUITests.swift */; };
+		D6CC094E1DDFDD5600CBC598 /* ModalityMRPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CC094C1DDFDD5600CBC598 /* ModalityMRPanelView.swift */; };
+		D6CC094F1DDFDD5600CBC598 /* ModalityUSPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CC094D1DDFDD5600CBC598 /* ModalityUSPanelView.swift */; };
 		D6D6F7C91DDEA74200FAC4A8 /* liveratlas_api_all_cases.json in Resources */ = {isa = PBXBuildFile; fileRef = D6D6F7C81DDEA74200FAC4A8 /* liveratlas_api_all_cases.json */; };
 		D6D6F7CA1DDEA74200FAC4A8 /* liveratlas_api_all_cases.json in Resources */ = {isa = PBXBuildFile; fileRef = D6D6F7C81DDEA74200FAC4A8 /* liveratlas_api_all_cases.json */; };
 		D6D6F7CC1DDEB0B500FAC4A8 /* CaseResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D6F7CB1DDEB0B500FAC4A8 /* CaseResultsViewController.swift */; };
 		D6D6F7CF1DDED31500FAC4A8 /* CaseResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D6F7CE1DDED31500FAC4A8 /* CaseResultTableViewCell.swift */; };
 		D6D6F7D01DDED31500FAC4A8 /* CaseResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D6F7CE1DDED31500FAC4A8 /* CaseResultTableViewCell.swift */; };
+		D6DC852E1DDEE700000F0D31 /* CaseDetailsPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DC852D1DDEE700000F0D31 /* CaseDetailsPanelView.swift */; };
+		D6DC85301DDEE868000F0D31 /* DesignCanvas.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6DC852F1DDEE868000F0D31 /* DesignCanvas.xib */; };
 		D6DCA0B61DD03AAB004A6A63 /* IntrinsicSizeCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DCA0B51DD03AAB004A6A63 /* IntrinsicSizeCollectionView.swift */; };
 		E15505037D637206A15D8B94 /* Pods_LiverAtlasUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76490D144A99A7D88A1A3664 /* Pods_LiverAtlasUITests.framework */; };
 /* End PBXBuildFile section */
@@ -78,7 +82,6 @@
 		BD3CC62BC44AB7DC90A5508C /* Pods-LiverAtlasUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiverAtlasUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LiverAtlasUITests/Pods-LiverAtlasUITests.release.xcconfig"; sourceTree = "<group>"; };
 		CE090C35C5D15C6B457BDD39 /* Pods-LiverAtlasTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiverAtlasTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LiverAtlasTests/Pods-LiverAtlasTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D10CFD08294A25C9C3A6E9D9 /* Pods-LiverAtlasUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiverAtlasUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LiverAtlasUITests/Pods-LiverAtlasUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		D6168F2A1DCE32F300F294F8 /* LiverAtlasScrapeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiverAtlasScrapeTests.swift; sourceTree = "<group>"; };
 		D63605B01DCBB97B00F20A65 /* IndexTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndexTableViewController.swift; sourceTree = "<group>"; };
 		D63605B41DCBC10100F20A65 /* IndexItemEntryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndexItemEntryTableViewCell.swift; sourceTree = "<group>"; };
 		D63605D71DCC26BF00F20A65 /* AutoLayoutTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoLayoutTableViewCell.swift; sourceTree = "<group>"; };
@@ -87,21 +90,21 @@
 		D6BAF61E1DDBE9DB00C9D17F /* liveratlas_api_case_6.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = liveratlas_api_case_6.json; sourceTree = "<group>"; };
 		D6BAF61F1DDBE9DB00C9D17F /* liveratlas_api_cases.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = liveratlas_api_cases.json; sourceTree = "<group>"; };
 		D6BAF6251DDBEA3900C9D17F /* LiverAtlasIndexItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiverAtlasIndexItem.swift; sourceTree = "<group>"; };
-		D6BAF6281DDBEDCE00C9D17F /* LiverAtlasIndexItemTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiverAtlasIndexItemTests.swift; sourceTree = "<group>"; };
+		D6BAF6281DDBEDCE00C9D17F /* LiverAtlasIndexTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiverAtlasIndexTests.swift; sourceTree = "<group>"; };
 		D6BAF62C1DDC07D800C9D17F /* LiverAtlasCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiverAtlasCase.swift; sourceTree = "<group>"; };
 		D6BAF6301DDC0C0300C9D17F /* LiverAtlasJsonHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiverAtlasJsonHelper.swift; sourceTree = "<group>"; };
 		D6BAF6331DDC0E8300C9D17F /* LiverAtlasCaseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiverAtlasCaseTests.swift; sourceTree = "<group>"; };
 		D6BAF6351DDCBD3800C9D17F /* LiverAtlasCaseCrawler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiverAtlasCaseCrawler.swift; sourceTree = "<group>"; };
 		D6BAF6381DDCC2F200C9D17F /* LiverAtlasCaseCrawlerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiverAtlasCaseCrawlerTests.swift; sourceTree = "<group>"; };
-		D6BAF63A1DDCD47B00C9D17F /* LiverAtlasCaseIndex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiverAtlasCaseIndex.swift; sourceTree = "<group>"; };
-		D6BAF63F1DDCE6BF00C9D17F /* CTModalityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CTModalityView.swift; sourceTree = "<group>"; };
-		D6BAF6411DDCE6D100C9D17F /* CTModalityView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CTModalityView.xib; sourceTree = "<group>"; };
+		D6BAF63A1DDCD47B00C9D17F /* LiverAtlasIndex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiverAtlasIndex.swift; sourceTree = "<group>"; };
+		D6BAF63F1DDCE6BF00C9D17F /* ModalityCTPanelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalityCTPanelView.swift; sourceTree = "<group>"; };
+		D6BAF6411DDCE6D100C9D17F /* CTModalityPanelView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CTModalityPanelView.xib; sourceTree = "<group>"; };
 		D6BAF6451DDCED0A00C9D17F /* ImageTileCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageTileCollectionViewCell.swift; sourceTree = "<group>"; };
 		D6BAF6461DDCED0A00C9D17F /* ImageTileCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageTileCollectionViewCell.xib; sourceTree = "<group>"; };
 		D6BE1DA81DCB8BD800305B7D /* LiverAtlas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiverAtlas.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6BE1DAB1DCB8BD800305B7D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D6BE1DAE1DCB8BD800305B7D /* LiverAtlas.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LiverAtlas.xcdatamodel; sourceTree = "<group>"; };
-		D6BE1DB21DCB8BD800305B7D /* LiverAtlasDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiverAtlasDetailViewController.swift; sourceTree = "<group>"; };
+		D6BE1DB21DCB8BD800305B7D /* CaseDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseDetailsViewController.swift; sourceTree = "<group>"; };
 		D6BE1DB51DCB8BD800305B7D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D6BE1DB71DCB8BD800305B7D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D6BE1DBA1DCB8BD800305B7D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -111,9 +114,13 @@
 		D6BE1DCC1DCB8BD800305B7D /* LiverAtlasUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LiverAtlasUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6BE1DD01DCB8BD800305B7D /* LiverAtlasUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiverAtlasUITests.swift; sourceTree = "<group>"; };
 		D6BE1DD21DCB8BD800305B7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D6CC094C1DDFDD5600CBC598 /* ModalityMRPanelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalityMRPanelView.swift; sourceTree = "<group>"; };
+		D6CC094D1DDFDD5600CBC598 /* ModalityUSPanelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalityUSPanelView.swift; sourceTree = "<group>"; };
 		D6D6F7C81DDEA74200FAC4A8 /* liveratlas_api_all_cases.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = liveratlas_api_all_cases.json; sourceTree = "<group>"; };
 		D6D6F7CB1DDEB0B500FAC4A8 /* CaseResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaseResultsViewController.swift; sourceTree = "<group>"; };
 		D6D6F7CE1DDED31500FAC4A8 /* CaseResultTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaseResultTableViewCell.swift; sourceTree = "<group>"; };
+		D6DC852D1DDEE700000F0D31 /* CaseDetailsPanelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaseDetailsPanelView.swift; sourceTree = "<group>"; };
+		D6DC852F1DDEE868000F0D31 /* DesignCanvas.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DesignCanvas.xib; sourceTree = "<group>"; };
 		D6DCA0B51DD03AAB004A6A63 /* IntrinsicSizeCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntrinsicSizeCollectionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -179,7 +186,7 @@
 				D6BAF62C1DDC07D800C9D17F /* LiverAtlasCase.swift */,
 				D6BAF6301DDC0C0300C9D17F /* LiverAtlasJsonHelper.swift */,
 				D6BAF6351DDCBD3800C9D17F /* LiverAtlasCaseCrawler.swift */,
-				D6BAF63A1DDCD47B00C9D17F /* LiverAtlasCaseIndex.swift */,
+				D6BAF63A1DDCD47B00C9D17F /* LiverAtlasIndex.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -187,18 +194,22 @@
 		D6BAF6431DDCE6DF00C9D17F /* View */ = {
 			isa = PBXGroup;
 			children = (
-				D6BE1DB91DCB8BD800305B7D /* LaunchScreen.storyboard */,
-				D6BE1DB41DCB8BD800305B7D /* Main.storyboard */,
 				D6BE1DB71DCB8BD800305B7D /* Assets.xcassets */,
-				D63605B41DCBC10100F20A65 /* IndexItemEntryTableViewCell.swift */,
 				D63605D71DCC26BF00F20A65 /* AutoLayoutTableViewCell.swift */,
 				D63605D81DCC26BF00F20A65 /* AutoLayoutTableViewCell.xib */,
-				D6DCA0B51DD03AAB004A6A63 /* IntrinsicSizeCollectionView.swift */,
-				D6BAF63F1DDCE6BF00C9D17F /* CTModalityView.swift */,
-				D6BAF6411DDCE6D100C9D17F /* CTModalityView.xib */,
+				D6DC852D1DDEE700000F0D31 /* CaseDetailsPanelView.swift */,
+				D6D6F7CE1DDED31500FAC4A8 /* CaseResultTableViewCell.swift */,
+				D6BAF6411DDCE6D100C9D17F /* CTModalityPanelView.xib */,
+				D6DC852F1DDEE868000F0D31 /* DesignCanvas.xib */,
 				D6BAF6451DDCED0A00C9D17F /* ImageTileCollectionViewCell.swift */,
 				D6BAF6461DDCED0A00C9D17F /* ImageTileCollectionViewCell.xib */,
-				D6D6F7CE1DDED31500FAC4A8 /* CaseResultTableViewCell.swift */,
+				D63605B41DCBC10100F20A65 /* IndexItemEntryTableViewCell.swift */,
+				D6DCA0B51DD03AAB004A6A63 /* IntrinsicSizeCollectionView.swift */,
+				D6BE1DB91DCB8BD800305B7D /* LaunchScreen.storyboard */,
+				D6BE1DB41DCB8BD800305B7D /* Main.storyboard */,
+				D6BAF63F1DDCE6BF00C9D17F /* ModalityCTPanelView.swift */,
+				D6CC094C1DDFDD5600CBC598 /* ModalityMRPanelView.swift */,
+				D6CC094D1DDFDD5600CBC598 /* ModalityUSPanelView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -206,10 +217,10 @@
 		D6BAF6441DDCE6FB00C9D17F /* View Controller */ = {
 			isa = PBXGroup;
 			children = (
-				D6BE1DB21DCB8BD800305B7D /* LiverAtlasDetailViewController.swift */,
-				D63605B01DCBB97B00F20A65 /* IndexTableViewController.swift */,
-				D6572A841DDD3B0C00981848 /* ImagingViewController.swift */,
+				D6BE1DB21DCB8BD800305B7D /* CaseDetailsViewController.swift */,
 				D6D6F7CB1DDEB0B500FAC4A8 /* CaseResultsViewController.swift */,
+				D6572A841DDD3B0C00981848 /* ImagingViewController.swift */,
+				D63605B01DCBB97B00F20A65 /* IndexTableViewController.swift */,
 			);
 			name = "View Controller";
 			sourceTree = "<group>";
@@ -253,8 +264,7 @@
 			children = (
 				D6BE1DC71DCB8BD800305B7D /* Info.plist */,
 				D6BAF6331DDC0E8300C9D17F /* LiverAtlasCaseTests.swift */,
-				D6168F2A1DCE32F300F294F8 /* LiverAtlasScrapeTests.swift */,
-				D6BAF6281DDBEDCE00C9D17F /* LiverAtlasIndexItemTests.swift */,
+				D6BAF6281DDBEDCE00C9D17F /* LiverAtlasIndexTests.swift */,
 				D6BAF6381DDCC2F200C9D17F /* LiverAtlasCaseCrawlerTests.swift */,
 			);
 			path = LiverAtlasTests;
@@ -391,8 +401,9 @@
 				D6BAF6201DDBE9DB00C9D17F /* liveratlas_api_case_6.json in Resources */,
 				D6BE1DBB1DCB8BD800305B7D /* LaunchScreen.storyboard in Resources */,
 				D6BE1DB81DCB8BD800305B7D /* Assets.xcassets in Resources */,
-				D6BAF6421DDCE6D100C9D17F /* CTModalityView.xib in Resources */,
+				D6BAF6421DDCE6D100C9D17F /* CTModalityPanelView.xib in Resources */,
 				D63605DA1DCC26BF00F20A65 /* AutoLayoutTableViewCell.xib in Resources */,
+				D6DC85301DDEE868000F0D31 /* DesignCanvas.xib in Resources */,
 				D6BE1DB61DCB8BD800305B7D /* Main.storyboard in Resources */,
 				D6BAF6211DDBE9DB00C9D17F /* liveratlas_api_cases.json in Resources */,
 			);
@@ -562,17 +573,20 @@
 			files = (
 				D6572A851DDD3B0C00981848 /* ImagingViewController.swift in Sources */,
 				D6BAF6311DDC0C0300C9D17F /* LiverAtlasJsonHelper.swift in Sources */,
+				D6CC094E1DDFDD5600CBC598 /* ModalityMRPanelView.swift in Sources */,
 				D6DCA0B61DD03AAB004A6A63 /* IntrinsicSizeCollectionView.swift in Sources */,
-				D6BAF6401DDCE6BF00C9D17F /* CTModalityView.swift in Sources */,
+				D6BAF6401DDCE6BF00C9D17F /* ModalityCTPanelView.swift in Sources */,
 				D6BE1DAF1DCB8BD800305B7D /* LiverAtlas.xcdatamodeld in Sources */,
-				D6BAF63B1DDCD47B00C9D17F /* LiverAtlasCaseIndex.swift in Sources */,
+				D6BAF63B1DDCD47B00C9D17F /* LiverAtlasIndex.swift in Sources */,
+				D6DC852E1DDEE700000F0D31 /* CaseDetailsPanelView.swift in Sources */,
 				D63605B11DCBB97B00F20A65 /* IndexTableViewController.swift in Sources */,
 				D6D6F7CC1DDEB0B500FAC4A8 /* CaseResultsViewController.swift in Sources */,
+				D6CC094F1DDFDD5600CBC598 /* ModalityUSPanelView.swift in Sources */,
 				D6BAF6471DDCED0A00C9D17F /* ImageTileCollectionViewCell.swift in Sources */,
 				D63605D91DCC26BF00F20A65 /* AutoLayoutTableViewCell.swift in Sources */,
 				D6BAF6261DDBEA3900C9D17F /* LiverAtlasIndexItem.swift in Sources */,
 				D6BE1DAC1DCB8BD800305B7D /* AppDelegate.swift in Sources */,
-				D6BE1DB31DCB8BD800305B7D /* LiverAtlasDetailViewController.swift in Sources */,
+				D6BE1DB31DCB8BD800305B7D /* CaseDetailsViewController.swift in Sources */,
 				D6BAF62D1DDC07D800C9D17F /* LiverAtlasCase.swift in Sources */,
 				D6D6F7CF1DDED31500FAC4A8 /* CaseResultTableViewCell.swift in Sources */,
 				D6BAF6361DDCBD3800C9D17F /* LiverAtlasCaseCrawler.swift in Sources */,
@@ -589,10 +603,10 @@
 				D6BAF6321DDC0C0300C9D17F /* LiverAtlasJsonHelper.swift in Sources */,
 				D6D6F7D01DDED31500FAC4A8 /* CaseResultTableViewCell.swift in Sources */,
 				D6BAF62E1DDC07D800C9D17F /* LiverAtlasCase.swift in Sources */,
-				D6BAF6291DDBEDCE00C9D17F /* LiverAtlasIndexItemTests.swift in Sources */,
+				D6BAF6291DDBEDCE00C9D17F /* LiverAtlasIndexTests.swift in Sources */,
 				D6BAF6391DDCC2F200C9D17F /* LiverAtlasCaseCrawlerTests.swift in Sources */,
 				D6BAF6371DDCBD3800C9D17F /* LiverAtlasCaseCrawler.swift in Sources */,
-				D6BAF63C1DDCD47B00C9D17F /* LiverAtlasCaseIndex.swift in Sources */,
+				D6BAF63C1DDCD47B00C9D17F /* LiverAtlasIndex.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

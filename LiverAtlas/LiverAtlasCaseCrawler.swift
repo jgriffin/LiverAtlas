@@ -166,19 +166,6 @@ class LiverAtlasCaseCrawler: NSObject, URLSessionDelegate, URLSessionTaskDelegat
     
     // helpers
 
-    func jsonDictionaryForResource(filename: String) ->  [String: AnyObject]? {
-        let casesFilePath = Bundle(for: type(of:self)).path(forResource: filename, ofType: ".json")!
-        let data = try! Data(contentsOf: URL(fileURLWithPath: casesFilePath))
-        
-        return try! JSONSerialization.jsonObject(with: data, options: []) as?  [String: AnyObject]
-    }
-    
-    let case6Filename = "liveratlas_api_case_6"
-    func loadCase6() -> LiverAtlasCase {
-        let jsonDictionary = jsonDictionaryForResource(filename: case6Filename)!
-        return LiverAtlasJsonHelper.liverAtlasCase(fromJson: jsonDictionary)!
-    }
-    
     // create session methods
     
     func createURLSession() -> URLSession {

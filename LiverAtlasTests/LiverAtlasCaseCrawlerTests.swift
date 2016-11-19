@@ -26,7 +26,7 @@ class LiverAtlasCaseCrawlerTests: XCTestCase {
     }
 
     func testFetchSomeCasesFromIndexItems() {
-        let someIndexItems = Array(LiverAtlasCaseIndex().loadLiverAtlasIndexItemsFromResourceFile().prefix(3))
+        let someIndexItems = Array(LiverAtlasIndex().loadLiverAtlasIndexItemsFromResourceFile().prefix(3))
         
         let crawler = LiverAtlasCaseCrawler()
         let expectation = self.expectation(description: "Case Crawler working")
@@ -42,7 +42,7 @@ class LiverAtlasCaseCrawlerTests: XCTestCase {
     
     func slow_testMeasureFetchAllCasesFromIndexItems() {
         self.measure { 
-            let allIndexItems = LiverAtlasCaseIndex().loadLiverAtlasIndexItemsFromResourceFile()
+            let allIndexItems = LiverAtlasIndex().loadLiverAtlasIndexItemsFromResourceFile()
             XCTAssertEqual(allIndexItems.count, 352)
 
             let crawler = LiverAtlasCaseCrawler()
@@ -62,7 +62,7 @@ class LiverAtlasCaseCrawlerTests: XCTestCase {
         let crawler = LiverAtlasCaseCrawler()
         let expectation = self.expectation(description: "Case Crawler working")
         
-        let allIndexItems = LiverAtlasCaseIndex().loadLiverAtlasIndexItemsFromResourceFile()
+        let allIndexItems = LiverAtlasIndex().loadLiverAtlasIndexItemsFromResourceFile()
         crawler.loadAllLiverAtlasCasesJson(forIndexItems: allIndexItems) { (caseItemsJson) in
             if let _ = caseItemsJson,
                 let jsonData = try? JSONSerialization.data(withJSONObject: caseItemsJson!, options: .prettyPrinted) {

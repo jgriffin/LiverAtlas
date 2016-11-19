@@ -1,5 +1,5 @@
 //
-//  CTModalityView.swift
+//  USModalityPanelView.swift
 //  LiverAtlas
 //
 //  Created by John on 11/16/16.
@@ -9,7 +9,7 @@
 import UIKit
 
 @IBDesignable
-class CTModalityView: UIView {
+class USModalityPanelView: UIView {
     @IBOutlet var view: UIView!
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var specificDiagnosis: UILabel!
@@ -18,7 +18,7 @@ class CTModalityView: UIView {
     @IBOutlet weak var structuralFeaturesLabel: UILabel!
 
     var parentNavigationController: UINavigationController!
-    var ctmodality: LiverAtlasCTModality!
+    var usmodality: LiverAtlasUSModality!
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!
@@ -30,14 +30,14 @@ class CTModalityView: UIView {
         loadNib()
     }
     
-    func configure(ctmodality: LiverAtlasCTModality) {
-        self.ctmodality = ctmodality
+    func configure(usmodality: LiverAtlasUSModality) {
+        self.usmodality = usmodality
         
-        title.text = ctmodality.title
-        specificDiagnosis.text = ctmodality.specificDiagnosis
-        imagingFeaturesLabel.text = ctmodality.imagingFeatures.map { $0.title }
+        title.text = usmodality.title
+        specificDiagnosis.text = usmodality.specificDiagnosis
+        imagingFeaturesLabel.text = usmodality.imagingFeatures.map { $0.title }
             .joined(separator: ", ")
-        structuralFeaturesLabel.text = ctmodality.structuralFeatures.map { $0.title }
+        structuralFeaturesLabel.text = usmodality.structuralFeatures.map { $0.title }
             .joined(separator: ", ")
         
         liverImagesCollectionView.reloadData()
@@ -45,7 +45,7 @@ class CTModalityView: UIView {
     
     
     func loadNib() {
-        Bundle(for: type(of:self)).loadNibNamed("CTModalityView", owner: self, options: nil)
+        Bundle(for: type(of:self)).loadNibNamed("CTModalityPanelView", owner: self, options: nil)
         view.frame = bounds
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.translatesAutoresizingMaskIntoConstraints = true
@@ -57,12 +57,12 @@ class CTModalityView: UIView {
     }
     
     override func prepareForInterfaceBuilder() {
-        let case6 = LiverAtlasCaseCrawler.instance.loadCase6()
-        configure(ctmodality: case6.ctmodality.first!)
+        let case6 = LiverAtlasIndex.instance.case6
+        configure(usmodality: case6.usmodality.first!)
     }
 }
 
-extension CTModalityView: UICollectionViewDataSource {
+extension USModalityPanelView: UICollectionViewDataSource {
     // images data source
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -70,20 +70,20 @@ extension CTModalityView: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return ctmodality?.images.count ?? 0
+        return usmodality?.images.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageTileCollectionViewCell.identifier, for: indexPath) as! ImageTileCollectionViewCell
-        cell.configure(liverAtlasImage: ctmodality.images[indexPath.item])
+        cell.configure(liverAtlasImage: usmodality.images[indexPath.item])
         
         return cell
     }
 }
 
-extension CTModalityView:  UICollectionViewDelegate {
+extension USModalityPanelView:  UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let imageURL = ctmodality.images[indexPath.item].image
+        let imageURL = usmodality.images[indexPath.item].image
 
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let imagingController = storyboard.instantiateViewController(withIdentifier: ImagingViewController.identifier) as! ImagingViewController

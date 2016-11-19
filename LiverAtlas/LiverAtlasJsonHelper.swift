@@ -155,11 +155,65 @@ struct LiverAtlasJsonHelper {
     }
 
     static func liverAtlasMRModality(fromJson json: [String: AnyObject]) -> LiverAtlasMRModality? {
-        return nil
+        guard
+            let pk = json["pk"] as? Int,
+            let title = json["title"] as? String,
+            let modifiedDate = modifiedDateFromJson(jsonDictionary: json),
+            let specificDiagnosis = json["specific_diagnosis"] as? String,
+            let imagingFindings = json["imaging_findings"] as? String,
+            let quizLevel = json["quiz_level"] as? Int,
+            let isPublic = json["public"] as? Bool,
+            let imagingFeaturesJsonArray = json["imaging_features"] as? [[String: AnyObject]],
+            let structuralFeaturesJsonArray = json["structural_features"] as? [[String: AnyObject]],
+            let imagesJsonArray = json["images"] as? [[String: AnyObject]]  else {
+                return nil
+        }
+        
+        let imagingFeatures = imagingFeaturesJsonArray.map { liverAtlasImagingFeature(fromJson: $0)! }
+        let structuralFeatures = structuralFeaturesJsonArray.map { liverAtlasStructuralFeature(fromJson: $0)! }
+        let images = imagesJsonArray.map { liverAtlasImage(fromJson: $0)! }
+        
+        return LiverAtlasMRModality(pk: pk,
+                                    title: title,
+                                    modifiedDate: modifiedDate,
+                                    specificDiagnosis: specificDiagnosis,
+                                    imagingFindings: imagingFindings,
+                                    quizLevel: quizLevel,
+                                    isPublic: isPublic,
+                                    imagingFeatures: imagingFeatures,
+                                    structuralFeatures: structuralFeatures,
+                                    images: images)
     }
     
     static func liverAtlasUSModality(fromJson json: [String: AnyObject]) -> LiverAtlasUSModality? {
-        return nil
+        guard
+            let pk = json["pk"] as? Int,
+            let title = json["title"] as? String,
+            let modifiedDate = modifiedDateFromJson(jsonDictionary: json),
+            let specificDiagnosis = json["specific_diagnosis"] as? String,
+            let imagingFindings = json["imaging_findings"] as? String,
+            let quizLevel = json["quiz_level"] as? Int,
+            let isPublic = json["public"] as? Bool,
+            let imagingFeaturesJsonArray = json["imaging_features"] as? [[String: AnyObject]],
+            let structuralFeaturesJsonArray = json["structural_features"] as? [[String: AnyObject]],
+            let imagesJsonArray = json["images"] as? [[String: AnyObject]]  else {
+                return nil
+        }
+        
+        let imagingFeatures = imagingFeaturesJsonArray.map { liverAtlasImagingFeature(fromJson: $0)! }
+        let structuralFeatures = structuralFeaturesJsonArray.map { liverAtlasStructuralFeature(fromJson: $0)! }
+        let images = imagesJsonArray.map { liverAtlasImage(fromJson: $0)! }
+        
+        return LiverAtlasUSModality(pk: pk,
+                                    title: title,
+                                    modifiedDate: modifiedDate,
+                                    specificDiagnosis: specificDiagnosis,
+                                    imagingFindings: imagingFindings,
+                                    quizLevel: quizLevel,
+                                    isPublic: isPublic,
+                                    imagingFeatures: imagingFeatures,
+                                    structuralFeatures: structuralFeatures,
+                                    images: images)
     }
 
     static func liverAtlasImagingFeature(fromJson json: [String: AnyObject]) -> LiverAtlasImagingFeature! {

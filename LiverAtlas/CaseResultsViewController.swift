@@ -27,7 +27,7 @@ class CaseResultsViewController: UIViewController, UITableViewDelegate {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 100
         
-        liverAtlasCases = LiverAtlasCaseIndex.instance.allCases
+        liverAtlasCases = LiverAtlasIndex.instance.allCases
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -35,7 +35,7 @@ class CaseResultsViewController: UIViewController, UITableViewDelegate {
         
         switch segue.identifier! {
         case caseDetailSegueIdentifier:
-            let caseDetailVC = segue.destination as! LiverAtlasCaseDetailViewController
+            let caseDetailVC = segue.destination as! CaseDetailsViewController
             caseDetailVC.liverAtlasCase = liverAtlasCase
             
         default:

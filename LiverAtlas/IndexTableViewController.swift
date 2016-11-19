@@ -20,7 +20,7 @@ class IndexTableViewController: UITableViewController {
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 50; //Set this to any value that works for you.
 
-        indexItems = LiverAtlasCaseIndex().indexItems
+        indexItems = LiverAtlasIndex().indexItems
     }
 
     // MARK: - Table view data source
@@ -49,17 +49,20 @@ class IndexTableViewController: UITableViewController {
         if segue.identifier == "showDetail" {
             if let indexPath = self.tableView.indexPathForSelectedRow {
                 let indexItem = indexItems[indexPath.row]
+                let liverAtlasCase = LiverAtlasIndex.instance.allCases.first(where: { (aCase) -> Bool in
+                    aCase.pk == indexItem.pk
+                })!
 
                 let mainNavigationController = segue.destination as! UINavigationController
                 
-                var detailViewController = mainNavigationController.topViewController as? LiverAtlasCaseDetailViewController
+                var detailViewController = mainNavigationController.topViewController as? CaseDetailsViewController
                 if detailViewController == nil {
                     let bundle = Bundle(for: type(of:self))
                     let storyboard = UIStoryboard(name: "Main", bundle: bundle)
-                    detailViewController = storyboard.instantiateViewController(withIdentifier: LiverAtlasCaseDetailViewController.storyboardIdentifier) as? LiverAtlasCaseDetailViewController
+                    detailViewController = storyboard.instantiateViewController(withIdentifier: CaseDetailsViewController.storyboardIdentifier) as? CaseDetailsViewController
                 }
                 
-                detailViewController!.liverAtlasIndexItem = indexItem
+                detailViewController!.liverAtlasCase = liverAtlasCase
                 
                 detailViewController!.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem
                 detailViewController!.navigationItem.leftItemsSupplementBackButton = true

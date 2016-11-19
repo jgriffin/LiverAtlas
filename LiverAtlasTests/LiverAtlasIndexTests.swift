@@ -8,7 +8,7 @@
 
 import XCTest
 
-class LiverAtlasIndexItemTests: XCTestCase {
+class LiverAtlasIndexTests: XCTestCase {
     let casesFilename = "liveratlas_api_cases"
     
     func jsonArrayForResource(filename: String) -> NSArray! {
@@ -37,14 +37,14 @@ class LiverAtlasIndexItemTests: XCTestCase {
         XCTAssertEqual(cases?.count, 352)
     }
 
-    func testLiverAtlasCaseIndex() {
-        let index = LiverAtlasCaseIndex()
+    func testLiverAtlasIndex() {
+        let index = LiverAtlasIndex()
         
         XCTAssertEqual(index.indexItems.count, 352)
     }
 
-    func testLiverAtlasCaseIndexAllCases() {
-        let index = LiverAtlasCaseIndex()
+    func testLiverAtlasIndexAllCases() {
+        let index = LiverAtlasIndex()
         
         XCTAssertEqual(index.allCases.count, 352)
     }

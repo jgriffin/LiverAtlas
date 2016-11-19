@@ -63,11 +63,29 @@ struct LiverAtlasCTModality {
 }
 
 struct LiverAtlasMRModality {
-    
+    let pk: Int
+    let title: String
+    let modifiedDate: Date
+    let specificDiagnosis: String
+    let imagingFindings: String
+    let quizLevel: Int
+    let isPublic: Bool
+    let imagingFeatures: [LiverAtlasImagingFeature]
+    let structuralFeatures: [LiverAtlasStructuralFeature]
+    let images: [LiverAtlasImage]
 }
 
 struct LiverAtlasUSModality {
-    
+    let pk: Int
+    let title: String
+    let modifiedDate: Date
+    let specificDiagnosis: String
+    let imagingFindings: String
+    let quizLevel: Int
+    let isPublic: Bool
+    let imagingFeatures: [LiverAtlasImagingFeature]
+    let structuralFeatures: [LiverAtlasStructuralFeature]
+    let images: [LiverAtlasImage]   
 }
 
 struct LiverAtlasImage {

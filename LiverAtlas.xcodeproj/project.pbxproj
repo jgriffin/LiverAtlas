@@ -14,8 +14,6 @@
 		D62061F91DE0D82400CA0E14 /* LiverAtlasSearcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62061F51DE0D57000CA0E14 /* LiverAtlasSearcher.swift */; };
 		D63605B11DCBB97B00F20A65 /* IndexTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63605B01DCBB97B00F20A65 /* IndexTableViewController.swift */; };
 		D63605B51DCBC10100F20A65 /* IndexItemEntryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63605B41DCBC10100F20A65 /* IndexItemEntryTableViewCell.swift */; };
-		D63605D91DCC26BF00F20A65 /* AutoLayoutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63605D71DCC26BF00F20A65 /* AutoLayoutTableViewCell.swift */; };
-		D63605DA1DCC26BF00F20A65 /* AutoLayoutTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D63605D81DCC26BF00F20A65 /* AutoLayoutTableViewCell.xib */; };
 		D6572A851DDD3B0C00981848 /* ImagingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6572A841DDD3B0C00981848 /* ImagingViewController.swift */; };
 		D6B1B3FA1DE0CE620094EF40 /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B1B3F91DE0CE620094EF40 /* SearchResultsViewController.swift */; };
 		D6B1B3FD1DE0D15C0094EF40 /* CaseResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B1B3FB1DE0D15C0094EF40 /* CaseResultTableViewCell.swift */; };
@@ -91,8 +89,6 @@
 		D62061F71DE0D7F400CA0E14 /* LiverAtlasSearcherTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiverAtlasSearcherTests.swift; sourceTree = "<group>"; };
 		D63605B01DCBB97B00F20A65 /* IndexTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndexTableViewController.swift; sourceTree = "<group>"; };
 		D63605B41DCBC10100F20A65 /* IndexItemEntryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndexItemEntryTableViewCell.swift; sourceTree = "<group>"; };
-		D63605D71DCC26BF00F20A65 /* AutoLayoutTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoLayoutTableViewCell.swift; sourceTree = "<group>"; };
-		D63605D81DCC26BF00F20A65 /* AutoLayoutTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AutoLayoutTableViewCell.xib; sourceTree = "<group>"; };
 		D6572A841DDD3B0C00981848 /* ImagingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagingViewController.swift; sourceTree = "<group>"; };
 		D6B1B3F91DE0CE620094EF40 /* SearchResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
 		D6B1B3FB1DE0D15C0094EF40 /* CaseResultTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaseResultTableViewCell.swift; sourceTree = "<group>"; };
@@ -185,6 +181,22 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		D62061FA1DE0F19300CA0E14 /* Case Details */ = {
+			isa = PBXGroup;
+			children = (
+				D6DC852D1DDEE700000F0D31 /* CaseDetailsPanelView.swift */,
+				D6BAF6451DDCED0A00C9D17F /* ImageTileCollectionViewCell.swift */,
+				D6BAF6461DDCED0A00C9D17F /* ImageTileCollectionViewCell.xib */,
+				D6DCA0B51DD03AAB004A6A63 /* IntrinsicSizeCollectionView.swift */,
+				D6BAF63F1DDCE6BF00C9D17F /* ModalityCTPanelView.swift */,
+				D6CC094C1DDFDD5600CBC598 /* ModalityMRPanelView.swift */,
+				D6CC09501DDFEAA700CBC598 /* ModalityPanelView.swift */,
+				D6BAF6411DDCE6D100C9D17F /* ModalityPanelView.xib */,
+				D6CC094D1DDFDD5600CBC598 /* ModalityUSPanelView.swift */,
+			);
+			name = "Case Details";
+			sourceTree = "<group>";
+		};
 		D6BAF61D1DDBE9C000C9D17F /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -205,24 +217,14 @@
 		D6BAF6431DDCE6DF00C9D17F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D62061FA1DE0F19300CA0E14 /* Case Details */,
 				D6BE1DB71DCB8BD800305B7D /* Assets.xcassets */,
-				D63605D71DCC26BF00F20A65 /* AutoLayoutTableViewCell.swift */,
-				D63605D81DCC26BF00F20A65 /* AutoLayoutTableViewCell.xib */,
-				D6DC852D1DDEE700000F0D31 /* CaseDetailsPanelView.swift */,
-				D6DC852F1DDEE868000F0D31 /* DesignCanvas.xib */,
-				D6BAF6451DDCED0A00C9D17F /* ImageTileCollectionViewCell.swift */,
-				D6BAF6461DDCED0A00C9D17F /* ImageTileCollectionViewCell.xib */,
-				D63605B41DCBC10100F20A65 /* IndexItemEntryTableViewCell.swift */,
-				D6DCA0B51DD03AAB004A6A63 /* IntrinsicSizeCollectionView.swift */,
-				D6BE1DB91DCB8BD800305B7D /* LaunchScreen.storyboard */,
-				D6BE1DB41DCB8BD800305B7D /* Main.storyboard */,
-				D6BAF63F1DDCE6BF00C9D17F /* ModalityCTPanelView.swift */,
-				D6CC094C1DDFDD5600CBC598 /* ModalityMRPanelView.swift */,
-				D6CC09501DDFEAA700CBC598 /* ModalityPanelView.swift */,
-				D6BAF6411DDCE6D100C9D17F /* ModalityPanelView.xib */,
-				D6CC094D1DDFDD5600CBC598 /* ModalityUSPanelView.swift */,
 				D6B1B3FB1DE0D15C0094EF40 /* CaseResultTableViewCell.swift */,
 				D6B1B3FC1DE0D15C0094EF40 /* CaseResultTableViewCell.xib */,
+				D6DC852F1DDEE868000F0D31 /* DesignCanvas.xib */,
+				D63605B41DCBC10100F20A65 /* IndexItemEntryTableViewCell.swift */,
+				D6BE1DB91DCB8BD800305B7D /* LaunchScreen.storyboard */,
+				D6BE1DB41DCB8BD800305B7D /* Main.storyboard */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -417,7 +419,6 @@
 				D6BE1DBB1DCB8BD800305B7D /* LaunchScreen.storyboard in Resources */,
 				D6BE1DB81DCB8BD800305B7D /* Assets.xcassets in Resources */,
 				D6BAF6421DDCE6D100C9D17F /* ModalityPanelView.xib in Resources */,
-				D63605DA1DCC26BF00F20A65 /* AutoLayoutTableViewCell.xib in Resources */,
 				D6DC85301DDEE868000F0D31 /* DesignCanvas.xib in Resources */,
 				D6B1B3FE1DE0D15C0094EF40 /* CaseResultTableViewCell.xib in Resources */,
 				D6BE1DB61DCB8BD800305B7D /* Main.storyboard in Resources */,
@@ -602,7 +603,6 @@
 				D6CC09511DDFEAA700CBC598 /* ModalityPanelView.swift in Sources */,
 				D6CC094F1DDFDD5600CBC598 /* ModalityUSPanelView.swift in Sources */,
 				D6BAF6471DDCED0A00C9D17F /* ImageTileCollectionViewCell.swift in Sources */,
-				D63605D91DCC26BF00F20A65 /* AutoLayoutTableViewCell.swift in Sources */,
 				D6BAF6261DDBEA3900C9D17F /* LiverAtlasIndexItem.swift in Sources */,
 				D6BE1DAC1DCB8BD800305B7D /* AppDelegate.swift in Sources */,
 				D6BE1DB31DCB8BD800305B7D /* CaseDetailsViewController.swift in Sources */,

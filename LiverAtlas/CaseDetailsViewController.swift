@@ -32,9 +32,9 @@ class CaseDetailsViewController: UIViewController {
     @IBOutlet weak var usModalityPanelView: USModalityPanelView!
     @IBOutlet var searchNavBarButton: UIBarButtonItem!
 
-    lazy var searchController: UISearchController = { self.createSearchController() }()
-    var searchResultsController: SearchResultsViewController!
-
+    lazy var searchController: LiverAtlasSearchController = {
+        return LiverAtlasSearchController(delegate: self, searchControllerDelegate: self)
+    }()
     
     var liverAtlasCase: LiverAtlasCase? {
         didSet {
@@ -88,85 +88,6 @@ class CaseDetailsViewController: UIViewController {
     }
 }
 
-
-extension CaseDetailsViewController: UISearchControllerDelegate {
-    
-    // search controller helpers
-    
-    func createSearchController() -> UISearchController {
-        searchResultsController = SearchResultsViewController()
-        searchResultsController.casesToSearch = LiverAtlasIndex.instance.allCases
-        
-        let searchController = UISearchController(searchResultsController: searchResultsController)
-        searchController.searchResultsUpdater = searchResultsController
-        searchController.delegate = self
-        searchController.hidesNavigationBarDuringPresentation = false
-        searchController.dimsBackgroundDuringPresentation = false
-        definesPresentationContext = true
-        
-        let searchBar = searchController.searchBar
-        searchBar.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(searchBar)
-        searchBar.sizeToFit()
-        searchBar.autocapitalizationType = .none
-
-        searchBar.delegate = self
-        searchResultsController.delegate = self
-        
-        return searchController
-    }
-    
-    // UISearchControllerDelegate
-
-    @IBAction func searchCases(_ sender: Any) {        
-        self.navigationItem.titleView = searchController.searchBar
-        self.navigationItem.hidesBackButton = true
-        self.navigationItem.rightBarButtonItem = nil
-
-        searchController.searchBar.becomeFirstResponder()
-    }
-    
-    func didDismissSearchController(_ searchController: UISearchController) {
-        self.navigationItem.titleView = nil
-        self.navigationItem.hidesBackButton = false
-        self.navigationItem.rightBarButtonItem = searchNavBarButton
-    }
-}
-
-extension CaseDetailsViewController: UISearchBarDelegate {
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        guard !searchBar.text!.isEmpty,
-            let filteredResults = searchResultsController?.filteredCases,
-            !filteredResults.isEmpty else {
-                return
-        }
-
-        guard let navController = self.navigationController else {
-            return
-        }
-
-        // push filteredResults as new results view
-
-        let storyboard = UIStoryboard(name: "Main", bundle: Bundle(for: type(of:self)))
-        let resultsViewController = storyboard
-            .instantiateViewController(withIdentifier: CaseResultsViewController.storyboardIdentifier)
-            as! CaseResultsViewController
-        resultsViewController.liverAtlasCases = filteredResults
-        
-        let _ = navController.popToRootViewController(animated: false)
-        navController.pushViewController(resultsViewController, animated: true)
-    }
-}
-
-
-extension CaseDetailsViewController: SearchResultsViewControllerDelegate {
-    func didSelect(liverAtlasCase: LiverAtlasCase) {
-        self.liverAtlasCase = liverAtlasCase
-        
-        searchController.isActive = false
-    }
-    
-}
 
 extension CaseDetailsViewController: UICollectionViewDataSource {
 
@@ -239,6 +160,47 @@ extension CaseDetailsViewController: UICollectionViewDelegate {
             break
         }
     }
+}
+
+extension CaseDetailsViewController: UISearchControllerDelegate {
     
+    func willPresentSearchController(_ searchController: UISearchController) {
+        navigationItem.titleView = searchController.searchBar
+        navigationItem.hidesBackButton = true
+        navigationItem.rightBarButtonItem = nil
+        
+        searchController.searchBar.becomeFirstResponder()
+    }
+    
+    func didDismissSearchController(_ searchController: UISearchController) {
+        navigationItem.titleView = nil
+        navigationItem.hidesBackButton = false
+        navigationItem.rightBarButtonItem = searchNavBarButton
+    }
+}
+
+extension CaseDetailsViewController: LiverAtlasSearchControllerDelegate {
+    
+    func didSelect(liverAtlasCase: LiverAtlasCase) {
+        
+    }
+    
+    func didEndSearch(withCases filteredResults: [LiverAtlasCase]) {
+        guard let navController = navigationController else {
+            return
+        }
+        
+        // CaseResultsViewController
+        let storyboard = UIStoryboard(name: "Main",
+                                      bundle: Bundle(for: type(of:self)))
+        let resultsViewController = storyboard
+            .instantiateViewController(withIdentifier: CaseResultsViewController.storyboardIdentifier)
+            as! CaseResultsViewController
+
+        resultsViewController.liverAtlasCases = filteredResults
+        
+        let _ = navController.popToRootViewController(animated: false)
+        navController.pushViewController(resultsViewController, animated: true)
+    }
 }
 

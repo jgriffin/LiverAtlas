@@ -8,14 +8,8 @@
 
 import UIKit
 
-protocol SearchResultsViewControllerDelegate {
-    func didSelect(liverAtlasCase: LiverAtlasCase)
-}
-
-
 class SearchResultsViewController: UITableViewController {
     let searcher = LiverAtlasSearcher()
-    var delegate: SearchResultsViewControllerDelegate?
     
     var casesToSearch: [LiverAtlasCase]! {
         didSet {
@@ -57,14 +51,7 @@ class SearchResultsViewController: UITableViewController {
         cell.configure(liverAtlasCase: liverAtlasCase)
         
         return cell
-    }
-    
-    // TableViewDelegate
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let liverAtlasCase = filteredCases[indexPath.item]
-        delegate?.didSelect(liverAtlasCase: liverAtlasCase)
-    }
+    }    
 }
 
 extension SearchResultsViewController: UISearchResultsUpdating {

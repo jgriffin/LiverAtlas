@@ -141,7 +141,7 @@
                     <navigationItem key="navigationItem" title="Detail" id="mOI-FS-AaM">
                         <barButtonItem key="rightBarButtonItem" systemItem="search" id="j7u-7g-imb">
                             <connections>
-                                <action selector="searchCases:" destination="JEX-9P-axG" id="MWZ-MK-cPQ"/>
+                                <action selector="searchCases:" destination="JEX-9P-axG" id="whZ-Ii-Utg"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -149,7 +149,6 @@
                         <outlet property="caseDetailsPanelView" destination="c0A-qH-zcc" id="Vr4-9D-zKp"/>
                         <outlet property="ctModalityPanelView" destination="Dew-pL-fPM" id="ohf-FZ-rGq"/>
                         <outlet property="mrModalityPanelView" destination="rYx-5Z-nXs" id="8Fh-aG-6P5"/>
-                        <outlet property="searchNavBarButton" destination="j7u-7g-imb" id="QCw-qo-MEb"/>
                         <outlet property="usModalityPanelView" destination="Leq-s8-QT3" id="BtR-i7-5n7"/>
                         <segue destination="FQ5-a5-NfL" kind="show" identifier="CaseDetailToImagingSegue" id="LJ9-Yq-2Gl"/>
                     </connections>
@@ -356,6 +355,10 @@
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
+                    <connections>
+                        <outlet property="filterBarButtonItem" destination="fFm-Oj-Jzh" id="fez-6M-0zb"/>
+                        <outlet property="searchBarButtonItem" destination="jvl-PC-7ib" id="m2w-lb-B24"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pdz-nW-tLR" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="oEo-Ja-gUb">
@@ -378,13 +381,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" alwaysBounceVertical="YES" alwaysBounceHorizontal="YES" minimumZoomScale="0.5" maximumZoomScale="6" translatesAutoresizingMaskIntoConstraints="NO" id="5Bu-P3-cWA">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" alwaysBounceHorizontal="YES" minimumZoomScale="0.5" maximumZoomScale="6" translatesAutoresizingMaskIntoConstraints="NO" id="5Bu-P3-cWA">
+                                <rect key="frame" x="0.0" y="-2" width="375" height="667"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qWP-Ow-Hrr" userLabel="Content View">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="755"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" placeholderIntrinsicWidth="482" placeholderIntrinsicHeight="755" translatesAutoresizingMaskIntoConstraints="NO" id="0bU-5G-sPI">
+                                            <imageView userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" placeholderIntrinsicWidth="482" placeholderIntrinsicHeight="755" translatesAutoresizingMaskIntoConstraints="NO" id="0bU-5G-sPI">
                                                 <rect key="frame" x="-53.5" y="0.0" width="482" height="755"/>
                                             </imageView>
                                         </subviews>
@@ -443,31 +446,46 @@
             </objects>
             <point key="canvasLocation" x="-1556" y="-630"/>
         </scene>
-        <!--Index-->
+        <!--Filter View Controller-->
         <scene sceneID="smW-Zh-WAh">
             <objects>
-                <tableViewController title="Index" clearsSelectionOnViewWillAppear="NO" id="7bK-jq-Zjz" customClass="IndexTableViewController" customModule="LiverAtlas" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Index" clearsSelectionOnViewWillAppear="NO" id="7bK-jq-Zjz" userLabel="Filter View Controller" customClass="FilterTableViewController" customModule="LiverAtlas" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="r7i-6Z-zg0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="y20-j0-nEe" userLabel="Header View">
+                            <rect key="frame" x="0.0" y="64" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="zOa-Pn-GLV">
+                                    <rect key="frame" x="135.5" y="8" width="104" height="29"/>
+                                    <segments>
+                                        <segment title="CT"/>
+                                        <segment title="MR"/>
+                                        <segment title="US"/>
+                                    </segments>
+                                    <connections>
+                                        <action selector="modalityChanged:" destination="7bK-jq-Zjz" eventType="valueChanged" id="maI-Fg-mpN"/>
+                                    </connections>
+                                </segmentedControl>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="zOa-Pn-GLV" firstAttribute="centerX" secondItem="y20-j0-nEe" secondAttribute="centerX" id="OYv-Hs-q1F"/>
+                                <constraint firstItem="zOa-Pn-GLV" firstAttribute="centerY" secondItem="y20-j0-nEe" secondAttribute="centerY" id="lqN-BJ-oU0"/>
+                            </constraints>
+                        </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="reuseIdentifierEntry" textLabel="uOH-PT-Rm8" detailTextLabel="qbm-6g-dKe" rowHeight="68" style="IBUITableViewCellStyleSubtitle" id="tMl-lp-Lln" userLabel="Index Item View Cell" customClass="IndexItemEntryTableViewCell" customModule="LiverAtlas" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="22" width="375" height="68"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="FilterItemCellIdentifier" textLabel="uOH-PT-Rm8" rowHeight="68" style="IBUITableViewCellStyleDefault" id="tMl-lp-Lln" userLabel="Filter Item View Cell" customClass="IndexItemEntryTableViewCell" customModule="LiverAtlas" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="66" width="375" height="68"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tMl-lp-Lln" id="szT-cI-C9z">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="67.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="336" height="67.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uOH-PT-Rm8">
-                                            <rect key="frame" x="15" y="17" width="33.5" height="20.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qbm-6g-dKe">
-                                            <rect key="frame" x="15" y="37.5" width="44" height="14.5"/>
+                                            <rect key="frame" x="15" y="0.0" width="321" height="67.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
                                             <nil key="textColor"/>
@@ -475,9 +493,6 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="vC3-pB-5Vb" kind="showDetail" identifier="IndextoShowDetailSegue" id="pq2-rA-49F"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <sections/>
@@ -486,8 +501,35 @@
                             <outlet property="delegate" destination="7bK-jq-Zjz" id="RA6-mI-bju"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Index" id="Zdf-7t-Un8"/>
+                    <navigationItem key="navigationItem" title="Filters" id="Zdf-7t-Un8">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="wIm-sK-eSU">
+                            <connections>
+                                <action selector="doneAction:" destination="7bK-jq-Zjz" id="W0N-Qq-QWI"/>
+                                <segue destination="vC3-pB-5Vb" kind="showDetail" identifier="ApplyFilterToDetailsSegue" id="wT5-6k-ssC"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="modalitySegmentedControl" destination="zOa-Pn-GLV" id="CbB-fu-nOK"/>
+                    </connections>
                 </tableViewController>
+                <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="FilterItemCellIdentifier" textLabel="YRm-gZ-rle" rowHeight="68" style="IBUITableViewCellStyleDefault" id="dCz-ew-25b" userLabel="Sructural Section Header" customClass="IndexItemEntryTableViewCell" customModule="LiverAtlas" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="68"/>
+                    <autoresizingMask key="autoresizingMask"/>
+                    <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dCz-ew-25b" id="bnV-i7-niI">
+                        <rect key="frame" x="0.0" y="0.0" width="336" height="67.5"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Structural Features" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YRm-gZ-rle">
+                                <rect key="frame" x="15" y="0.0" width="321" height="67.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </tableViewCellContentView>
+                </tableViewCell>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rux-fX-hf1" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1556" y="1187"/>
@@ -515,7 +557,7 @@
         <image name="W-Logo_RegistrationMark_Purple_26851" width="184" height="123"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="pq2-rA-49F"/>
+        <segue reference="wT5-6k-ssC"/>
         <segue reference="9cB-Mb-2FH"/>
     </inferredMetricsTieBreakers>
 </document>

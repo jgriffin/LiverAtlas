@@ -12,9 +12,10 @@ import Foundation
 class LiverAtlasIndex {
     static var instance: LiverAtlasIndex = LiverAtlasIndex()
     
+    // raw cases
+    
     lazy var indexItems: [LiverAtlasIndexItem] = { self.loadLiverAtlasIndexItemsFromResourceFile() }()
     lazy var allCases: [LiverAtlasCase] = { self.loadLiverAtlasAllCasesFromResourceFile() }()
-
     lazy var case6: LiverAtlasCase = { self.loadCase6() }()
     
     // internal
@@ -58,7 +59,6 @@ class LiverAtlasIndex {
                                       usmodality: [])
         return fakeCase
     }
-
 
     // helpers
     

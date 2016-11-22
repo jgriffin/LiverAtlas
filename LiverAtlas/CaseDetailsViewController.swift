@@ -8,20 +8,6 @@
 
 import UIKit
 
-//struct LiverAtlasCase {
-//    let title: String
-//    let pk: Int
-//    let modifiedData: Date
-//    let clinicalPresentation: String
-//    let diagnosis: LiverAtlasDiagnosis
-//    let specificDiagnosis: String
-//    let notes: String
-//    let ctmodality: [LiverAtlasCTModality]
-//    let mrmodality: [LiverAtlasMRModality]
-//    let usmodality: [LiverAtlasUSModality]
-//}
-
-
 class CaseDetailsViewController: UIViewController {
     static let storyboardIdentifier = "CaseDetailsViewController"
     static let showImagingSequeIdentifier = "CaseDetailToImagingSegue"
@@ -30,11 +16,9 @@ class CaseDetailsViewController: UIViewController {
     @IBOutlet weak var ctModalityPanelView: CTModalityPanelView!
     @IBOutlet weak var mrModalityPanelView: MRModalityPanelView!
     @IBOutlet weak var usModalityPanelView: USModalityPanelView!
-    @IBOutlet var searchNavBarButton: UIBarButtonItem!
 
-    lazy var searchController: LiverAtlasSearchController = {
-        return LiverAtlasSearchController(delegate: self, searchControllerDelegate: self)
-    }()
+    lazy var searchController: LiverAtlasSearchController = { self.createSearchController() }()
+    var hiddenRightBarButtonItems: [UIBarButtonItem]?
     
     var liverAtlasCase: LiverAtlasCase? {
         didSet {
@@ -85,7 +69,14 @@ class CaseDetailsViewController: UIViewController {
         if let _ = liverAtlasCase {
             configureView(liverAtlasCase: liverAtlasCase!)
         }
+        
+        definesPresentationContext = true
     }
+
+    @IBAction func searchCases(_ sender: Any) {
+        searchController.searchCases()
+    }
+
 }
 
 
@@ -164,9 +155,21 @@ extension CaseDetailsViewController: UICollectionViewDelegate {
 
 extension CaseDetailsViewController: UISearchControllerDelegate {
     
-    func willPresentSearchController(_ searchController: UISearchController) {
+    func createSearchController() -> LiverAtlasSearchController {
+        return LiverAtlasSearchController(delegate: self,
+                                          searchControllerDelegate: self)
+    }
+
+    func presentSearchController(_ searchController: UISearchController) {
+        if let _ = navigationItem.titleView {
+            return
+        }
+
+        searchController.searchBar.sizeToFit()
         navigationItem.titleView = searchController.searchBar
         navigationItem.hidesBackButton = true
+        
+        hiddenRightBarButtonItems = navigationItem.rightBarButtonItems
         navigationItem.rightBarButtonItem = nil
         
         searchController.searchBar.becomeFirstResponder()
@@ -175,7 +178,7 @@ extension CaseDetailsViewController: UISearchControllerDelegate {
     func didDismissSearchController(_ searchController: UISearchController) {
         navigationItem.titleView = nil
         navigationItem.hidesBackButton = false
-        navigationItem.rightBarButtonItem = searchNavBarButton
+        navigationItem.rightBarButtonItems = hiddenRightBarButtonItems
     }
 }
 

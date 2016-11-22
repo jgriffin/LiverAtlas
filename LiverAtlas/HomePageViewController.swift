@@ -11,6 +11,11 @@ import UIKit
 class HomePageViewController: UIViewController {
     static let homeToDetailsSegueIdentifier = "HomeToCaseDetailsSegue"
     
+    @IBOutlet weak var searchBarButtonItem: UIBarButtonItem!
+    @IBOutlet weak var filterBarButtonItem: UIBarButtonItem!
+
+    var activeFilters = [LiverAtlasFilter]()
+    
     lazy var liverAtlasSearchController: LiverAtlasSearchController = {
         self.createSearchController()
     }()
@@ -20,19 +25,12 @@ class HomePageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        definesPresentationContext = true
     }
-
 
     @IBAction func searchCases(_ sender: Any) {
         let _ = liverAtlasSearchController
-        definesPresentationContext = true
-//        navigationItem.titleView = liverAtlasSearchController.searchController.searchBar
-        
         liverAtlasSearchController.searchCases()
-    }
-    
-    @IBAction func changeFilter(_ sender: Any) {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

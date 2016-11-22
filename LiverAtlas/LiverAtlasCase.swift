@@ -19,8 +19,30 @@ struct LiverAtlasCase {
     let ctmodality: [LiverAtlasCTModality]
     let mrmodality: [LiverAtlasMRModality]
     let usmodality: [LiverAtlasUSModality]
-}
+    
+    func imagingFeaturesForModality(modality: LiverAtlasModality) -> [LiverAtlasImagingFeature] {
+        switch modality {
+        case .ct:
+            return ctmodality.flatMap { $0.imagingFeatures }
+        case .mr:
+            return mrmodality.flatMap { $0.imagingFeatures }
+        case .us:
+            return usmodality.flatMap { $0.imagingFeatures }
+        }
+    }
+    
+    func structuralFeaturesForModality(modality: LiverAtlasModality) -> [LiverAtlasStructuralFeature] {
+        switch modality {
+        case .ct:
+            return ctmodality.flatMap { $0.structuralFeatures }
+        case .mr:
+            return mrmodality.flatMap { $0.structuralFeatures }
+        case .us:
+            return usmodality.flatMap { $0.structuralFeatures }
+        }
+    }
 
+}
 
 struct LiverAtlasDiagnosis {
     let diagnosis: String
@@ -47,6 +69,10 @@ struct LiverAtlasSynonym {
     let name: String
     let modifiedDate: Date
     let diagnosis: Int
+}
+
+enum LiverAtlasModality {
+    case ct, mr, us
 }
 
 struct LiverAtlasCTModality {

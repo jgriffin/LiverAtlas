@@ -11,16 +11,26 @@ import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate {
-
+    
+    static var instance: AppDelegate { return UIApplication.shared.delegate as! AppDelegate }
+    
     var window: UIWindow?
+    
+    var filterNavigationController: UINavigationController!
+    var detailsNavigationController: UINavigationController!
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         let splitViewController = self.window!.rootViewController as! UISplitViewController
-        let navigationController = splitViewController.viewControllers[splitViewController.viewControllers.count-1] as! UINavigationController
-        navigationController.topViewController!.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
         splitViewController.delegate = self
+
+        filterNavigationController = splitViewController.viewControllers.first! as! UINavigationController
+        detailsNavigationController = splitViewController.viewControllers.last! as! UINavigationController
+
+        let firstDetailsPage = filterNavigationController.topViewController!
+        firstDetailsPage.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
+        firstDetailsPage.navigationItem.leftItemsSupplementBackButton = true
 
         return true
     }

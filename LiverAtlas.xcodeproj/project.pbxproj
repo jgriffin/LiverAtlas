@@ -12,9 +12,14 @@
 		D62061F61DE0D57000CA0E14 /* LiverAtlasSearcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62061F51DE0D57000CA0E14 /* LiverAtlasSearcher.swift */; };
 		D62061F81DE0D7F400CA0E14 /* LiverAtlasSearcherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62061F71DE0D7F400CA0E14 /* LiverAtlasSearcherTests.swift */; };
 		D62061F91DE0D82400CA0E14 /* LiverAtlasSearcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62061F51DE0D57000CA0E14 /* LiverAtlasSearcher.swift */; };
-		D63605B11DCBB97B00F20A65 /* IndexTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63605B01DCBB97B00F20A65 /* IndexTableViewController.swift */; };
+		D63605B11DCBB97B00F20A65 /* FilterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63605B01DCBB97B00F20A65 /* FilterTableViewController.swift */; };
 		D63605B51DCBC10100F20A65 /* IndexItemEntryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63605B41DCBC10100F20A65 /* IndexItemEntryTableViewCell.swift */; };
 		D6572A851DDD3B0C00981848 /* ImagingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6572A841DDD3B0C00981848 /* ImagingViewController.swift */; };
+		D65DE1AC1DE111350064E043 /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65DE1AB1DE111350064E043 /* HomePageViewController.swift */; };
+		D65DE1AE1DE152470064E043 /* LiverAtlasSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65DE1AD1DE152470064E043 /* LiverAtlasSearchController.swift */; };
+		D697B26D1DE4F7E0002F6388 /* LiverAtlasFilterer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D697B26C1DE4F7E0002F6388 /* LiverAtlasFilterer.swift */; };
+		D697B26E1DE4F7E0002F6388 /* LiverAtlasFilterer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D697B26C1DE4F7E0002F6388 /* LiverAtlasFilterer.swift */; };
+		D6A7F4691DE3F7DF009D8E65 /* FilterSectionHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A7F4681DE3F7DF009D8E65 /* FilterSectionHeaderCell.swift */; };
 		D6B1B3FA1DE0CE620094EF40 /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B1B3F91DE0CE620094EF40 /* SearchResultsViewController.swift */; };
 		D6B1B3FD1DE0D15C0094EF40 /* CaseResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B1B3FB1DE0D15C0094EF40 /* CaseResultTableViewCell.swift */; };
 		D6B1B3FE1DE0D15C0094EF40 /* CaseResultTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6B1B3FC1DE0D15C0094EF40 /* CaseResultTableViewCell.xib */; };
@@ -55,6 +60,9 @@
 		D6DC852E1DDEE700000F0D31 /* CaseDetailsPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DC852D1DDEE700000F0D31 /* CaseDetailsPanelView.swift */; };
 		D6DC85301DDEE868000F0D31 /* DesignCanvas.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6DC852F1DDEE868000F0D31 /* DesignCanvas.xib */; };
 		D6DCA0B61DD03AAB004A6A63 /* IntrinsicSizeCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DCA0B51DD03AAB004A6A63 /* IntrinsicSizeCollectionView.swift */; };
+		D6FAB9EA1DE21FD500CAFE95 /* LiverAtlasFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FAB9E91DE21FD500CAFE95 /* LiverAtlasFilter.swift */; };
+		D6FAB9EB1DE21FD500CAFE95 /* LiverAtlasFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FAB9E91DE21FD500CAFE95 /* LiverAtlasFilter.swift */; };
+		D6FAB9ED1DE2725600CAFE95 /* LiverAtlasFilterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FAB9EC1DE2725600CAFE95 /* LiverAtlasFilterTests.swift */; };
 		E15505037D637206A15D8B94 /* Pods_LiverAtlasUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76490D144A99A7D88A1A3664 /* Pods_LiverAtlasUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -87,9 +95,13 @@
 		D10CFD08294A25C9C3A6E9D9 /* Pods-LiverAtlasUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiverAtlasUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LiverAtlasUITests/Pods-LiverAtlasUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		D62061F51DE0D57000CA0E14 /* LiverAtlasSearcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiverAtlasSearcher.swift; sourceTree = "<group>"; };
 		D62061F71DE0D7F400CA0E14 /* LiverAtlasSearcherTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiverAtlasSearcherTests.swift; sourceTree = "<group>"; };
-		D63605B01DCBB97B00F20A65 /* IndexTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndexTableViewController.swift; sourceTree = "<group>"; };
+		D63605B01DCBB97B00F20A65 /* FilterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterTableViewController.swift; sourceTree = "<group>"; };
 		D63605B41DCBC10100F20A65 /* IndexItemEntryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndexItemEntryTableViewCell.swift; sourceTree = "<group>"; };
 		D6572A841DDD3B0C00981848 /* ImagingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagingViewController.swift; sourceTree = "<group>"; };
+		D65DE1AB1DE111350064E043 /* HomePageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
+		D65DE1AD1DE152470064E043 /* LiverAtlasSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiverAtlasSearchController.swift; sourceTree = "<group>"; };
+		D697B26C1DE4F7E0002F6388 /* LiverAtlasFilterer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiverAtlasFilterer.swift; sourceTree = "<group>"; };
+		D6A7F4681DE3F7DF009D8E65 /* FilterSectionHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterSectionHeaderCell.swift; sourceTree = "<group>"; };
 		D6B1B3F91DE0CE620094EF40 /* SearchResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
 		D6B1B3FB1DE0D15C0094EF40 /* CaseResultTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaseResultTableViewCell.swift; sourceTree = "<group>"; };
 		D6B1B3FC1DE0D15C0094EF40 /* CaseResultTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CaseResultTableViewCell.xib; sourceTree = "<group>"; };
@@ -128,6 +140,8 @@
 		D6DC852D1DDEE700000F0D31 /* CaseDetailsPanelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaseDetailsPanelView.swift; sourceTree = "<group>"; };
 		D6DC852F1DDEE868000F0D31 /* DesignCanvas.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DesignCanvas.xib; sourceTree = "<group>"; };
 		D6DCA0B51DD03AAB004A6A63 /* IntrinsicSizeCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntrinsicSizeCollectionView.swift; sourceTree = "<group>"; };
+		D6FAB9E91DE21FD500CAFE95 /* LiverAtlasFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiverAtlasFilter.swift; sourceTree = "<group>"; };
+		D6FAB9EC1DE2725600CAFE95 /* LiverAtlasFilterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiverAtlasFilterTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -210,6 +224,8 @@
 				D6BAF6351DDCBD3800C9D17F /* LiverAtlasCaseCrawler.swift */,
 				D6BAF63A1DDCD47B00C9D17F /* LiverAtlasIndex.swift */,
 				D62061F51DE0D57000CA0E14 /* LiverAtlasSearcher.swift */,
+				D6FAB9E91DE21FD500CAFE95 /* LiverAtlasFilter.swift */,
+				D697B26C1DE4F7E0002F6388 /* LiverAtlasFilterer.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -225,6 +241,7 @@
 				D63605B41DCBC10100F20A65 /* IndexItemEntryTableViewCell.swift */,
 				D6BE1DB91DCB8BD800305B7D /* LaunchScreen.storyboard */,
 				D6BE1DB41DCB8BD800305B7D /* Main.storyboard */,
+				D6A7F4681DE3F7DF009D8E65 /* FilterSectionHeaderCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -233,10 +250,12 @@
 			isa = PBXGroup;
 			children = (
 				D6BE1DB21DCB8BD800305B7D /* CaseDetailsViewController.swift */,
+				D65DE1AD1DE152470064E043 /* LiverAtlasSearchController.swift */,
 				D6D6F7CB1DDEB0B500FAC4A8 /* CaseResultsViewController.swift */,
 				D6572A841DDD3B0C00981848 /* ImagingViewController.swift */,
-				D63605B01DCBB97B00F20A65 /* IndexTableViewController.swift */,
+				D63605B01DCBB97B00F20A65 /* FilterTableViewController.swift */,
 				D6B1B3F91DE0CE620094EF40 /* SearchResultsViewController.swift */,
+				D65DE1AB1DE111350064E043 /* HomePageViewController.swift */,
 			);
 			name = "View Controller";
 			sourceTree = "<group>";
@@ -283,6 +302,7 @@
 				D6BAF6281DDBEDCE00C9D17F /* LiverAtlasIndexTests.swift */,
 				D6BAF6381DDCC2F200C9D17F /* LiverAtlasCaseCrawlerTests.swift */,
 				D62061F71DE0D7F400CA0E14 /* LiverAtlasSearcherTests.swift */,
+				D6FAB9EC1DE2725600CAFE95 /* LiverAtlasFilterTests.swift */,
 			);
 			path = LiverAtlasTests;
 			sourceTree = "<group>";
@@ -588,17 +608,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D65DE1AE1DE152470064E043 /* LiverAtlasSearchController.swift in Sources */,
 				D6572A851DDD3B0C00981848 /* ImagingViewController.swift in Sources */,
+				D6A7F4691DE3F7DF009D8E65 /* FilterSectionHeaderCell.swift in Sources */,
 				D6BAF6311DDC0C0300C9D17F /* LiverAtlasJsonHelper.swift in Sources */,
 				D6CC094E1DDFDD5600CBC598 /* ModalityMRPanelView.swift in Sources */,
 				D6B1B3FA1DE0CE620094EF40 /* SearchResultsViewController.swift in Sources */,
 				D6DCA0B61DD03AAB004A6A63 /* IntrinsicSizeCollectionView.swift in Sources */,
+				D697B26D1DE4F7E0002F6388 /* LiverAtlasFilterer.swift in Sources */,
 				D6BAF6401DDCE6BF00C9D17F /* ModalityCTPanelView.swift in Sources */,
 				D6BE1DAF1DCB8BD800305B7D /* LiverAtlas.xcdatamodeld in Sources */,
 				D6BAF63B1DDCD47B00C9D17F /* LiverAtlasIndex.swift in Sources */,
 				D6DC852E1DDEE700000F0D31 /* CaseDetailsPanelView.swift in Sources */,
 				D6B1B3FD1DE0D15C0094EF40 /* CaseResultTableViewCell.swift in Sources */,
-				D63605B11DCBB97B00F20A65 /* IndexTableViewController.swift in Sources */,
+				D65DE1AC1DE111350064E043 /* HomePageViewController.swift in Sources */,
+				D63605B11DCBB97B00F20A65 /* FilterTableViewController.swift in Sources */,
 				D6D6F7CC1DDEB0B500FAC4A8 /* CaseResultsViewController.swift in Sources */,
 				D6CC09511DDFEAA700CBC598 /* ModalityPanelView.swift in Sources */,
 				D6CC094F1DDFDD5600CBC598 /* ModalityUSPanelView.swift in Sources */,
@@ -610,6 +634,7 @@
 				D6BAF62D1DDC07D800C9D17F /* LiverAtlasCase.swift in Sources */,
 				D6BAF6361DDCBD3800C9D17F /* LiverAtlasCaseCrawler.swift in Sources */,
 				D63605B51DCBC10100F20A65 /* IndexItemEntryTableViewCell.swift in Sources */,
+				D6FAB9EA1DE21FD500CAFE95 /* LiverAtlasFilter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -624,8 +649,11 @@
 				D6BAF6291DDBEDCE00C9D17F /* LiverAtlasIndexTests.swift in Sources */,
 				D6BAF6391DDCC2F200C9D17F /* LiverAtlasCaseCrawlerTests.swift in Sources */,
 				D62061F81DE0D7F400CA0E14 /* LiverAtlasSearcherTests.swift in Sources */,
+				D697B26E1DE4F7E0002F6388 /* LiverAtlasFilterer.swift in Sources */,
+				D6FAB9EB1DE21FD500CAFE95 /* LiverAtlasFilter.swift in Sources */,
 				D62061F91DE0D82400CA0E14 /* LiverAtlasSearcher.swift in Sources */,
 				D6BAF6371DDCBD3800C9D17F /* LiverAtlasCaseCrawler.swift in Sources */,
+				D6FAB9ED1DE2725600CAFE95 /* LiverAtlasFilterTests.swift in Sources */,
 				D6BAF63C1DDCD47B00C9D17F /* LiverAtlasIndex.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

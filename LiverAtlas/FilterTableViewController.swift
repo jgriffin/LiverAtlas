@@ -77,7 +77,6 @@ class FilterTableViewController: UITableViewController {
         tableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
     }
     
-    
     // MARK: - Segues
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

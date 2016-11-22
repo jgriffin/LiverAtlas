@@ -72,7 +72,7 @@ class LiverAtlasFilterer {
     func filterGroups(fromAllModalityCases theCases: [LiverAtlasCase],
                       withModality modality: LiverAtlasModality) -> [LiverAtlasFilterGroup] {
         let diagnosisFiltersGroup: LiverAtlasFilterGroup = {
-            let theDiagnoses = theCases.map { $0.diagnosis.diagnosis }
+            let theDiagnoses = theCases.flatMap { $0.diagnosis.categories.map({ $0.title}) }
             let uniqueDiagnoses = Set(theDiagnoses).sorted()
             let diagnosesFilters = uniqueDiagnoses.map {
                 LiverAtlasFilter(filterType: .diagnosisCategory, filterString: $0)

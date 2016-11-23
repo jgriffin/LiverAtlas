@@ -1,5 +1,5 @@
 //
-//  LAIndexViewController.swift
+//  IndexViewController.swift
 //  LiverAtlas
 //
 //  Created by John on 11/22/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LAIndexViewController: UIViewController {
+class IndexViewController: UIViewController {
     let diagnosisCellIdentifier = "DiagnosisTableCellIdentifier"
     let specificDiagnosisCellIdentifier = "SpecificDiagnosisTableCellIdentifier"
     
@@ -30,7 +30,7 @@ class LAIndexViewController: UIViewController {
     
 }
 
-extension LAIndexViewController: UITableViewDataSource {
+extension IndexViewController: UITableViewDataSource {
 
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -58,6 +58,6 @@ extension LAIndexViewController: UITableViewDataSource {
     
 }
 //
-//extension LAIndexViewController: UITableViewDelegate {
+//extension IndexViewController: UITableViewDelegate {
 //    
 //}

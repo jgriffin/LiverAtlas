@@ -12,11 +12,11 @@
 		D62061F61DE0D57000CA0E14 /* LASearcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62061F51DE0D57000CA0E14 /* LASearcher.swift */; };
 		D62061F81DE0D7F400CA0E14 /* LASearcherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62061F71DE0D7F400CA0E14 /* LASearcherTests.swift */; };
 		D62061F91DE0D82400CA0E14 /* LASearcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62061F51DE0D57000CA0E14 /* LASearcher.swift */; };
-		D63605B11DCBB97B00F20A65 /* FilterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63605B01DCBB97B00F20A65 /* FilterTableViewController.swift */; };
+		D63605B11DCBB97B00F20A65 /* FiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63605B01DCBB97B00F20A65 /* FiltersViewController.swift */; };
 		D63605B51DCBC10100F20A65 /* IndexItemEntryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63605B41DCBC10100F20A65 /* IndexItemEntryTableViewCell.swift */; };
 		D6572A851DDD3B0C00981848 /* ImagingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6572A841DDD3B0C00981848 /* ImagingViewController.swift */; };
 		D65DE1AC1DE111350064E043 /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65DE1AB1DE111350064E043 /* HomePageViewController.swift */; };
-		D65DE1AE1DE152470064E043 /* LiverAtlasSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65DE1AD1DE152470064E043 /* LiverAtlasSearchController.swift */; };
+		D65DE1AE1DE152470064E043 /* LASearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65DE1AD1DE152470064E043 /* LASearchController.swift */; };
 		D67E26E51DE52316004AA893 /* IndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67E26E41DE52316004AA893 /* IndexViewController.swift */; };
 		D697B26D1DE4F7E0002F6388 /* LAFilterer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D697B26C1DE4F7E0002F6388 /* LAFilterer.swift */; };
 		D697B26E1DE4F7E0002F6388 /* LAFilterer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D697B26C1DE4F7E0002F6388 /* LAFilterer.swift */; };
@@ -95,11 +95,11 @@
 		D10CFD08294A25C9C3A6E9D9 /* Pods-LiverAtlasUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiverAtlasUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LiverAtlasUITests/Pods-LiverAtlasUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		D62061F51DE0D57000CA0E14 /* LASearcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LASearcher.swift; sourceTree = "<group>"; };
 		D62061F71DE0D7F400CA0E14 /* LASearcherTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LASearcherTests.swift; sourceTree = "<group>"; };
-		D63605B01DCBB97B00F20A65 /* FilterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterTableViewController.swift; sourceTree = "<group>"; };
+		D63605B01DCBB97B00F20A65 /* FiltersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiltersViewController.swift; sourceTree = "<group>"; };
 		D63605B41DCBC10100F20A65 /* IndexItemEntryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndexItemEntryTableViewCell.swift; sourceTree = "<group>"; };
 		D6572A841DDD3B0C00981848 /* ImagingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagingViewController.swift; sourceTree = "<group>"; };
 		D65DE1AB1DE111350064E043 /* HomePageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
-		D65DE1AD1DE152470064E043 /* LiverAtlasSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiverAtlasSearchController.swift; sourceTree = "<group>"; };
+		D65DE1AD1DE152470064E043 /* LASearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LASearchController.swift; sourceTree = "<group>"; };
 		D67E26E41DE52316004AA893 /* IndexViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndexViewController.swift; sourceTree = SOURCE_ROOT; };
 		D697B26C1DE4F7E0002F6388 /* LAFilterer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LAFilterer.swift; sourceTree = "<group>"; };
 		D6A7F4681DE3F7DF009D8E65 /* FilterSectionHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterSectionHeaderCell.swift; sourceTree = "<group>"; };
@@ -225,6 +225,7 @@
 				D62061F51DE0D57000CA0E14 /* LASearcher.swift */,
 				D6FAB9E91DE21FD500CAFE95 /* LAFilter.swift */,
 				D697B26C1DE4F7E0002F6388 /* LAFilterer.swift */,
+				D65DE1AD1DE152470064E043 /* LASearchController.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -251,10 +252,9 @@
 				D67E26E41DE52316004AA893 /* IndexViewController.swift */,
 				D6BE1DB21DCB8BD800305B7D /* CaseDetailsViewController.swift */,
 				D6D6F7CB1DDEB0B500FAC4A8 /* CaseResultsViewController.swift */,
-				D63605B01DCBB97B00F20A65 /* FilterTableViewController.swift */,
+				D63605B01DCBB97B00F20A65 /* FiltersViewController.swift */,
 				D65DE1AB1DE111350064E043 /* HomePageViewController.swift */,
 				D6572A841DDD3B0C00981848 /* ImagingViewController.swift */,
-				D65DE1AD1DE152470064E043 /* LiverAtlasSearchController.swift */,
 				D6B1B3F91DE0CE620094EF40 /* SearchResultsViewController.swift */,
 			);
 			name = "View Controller";
@@ -609,7 +609,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D67E26E51DE52316004AA893 /* IndexViewController.swift in Sources */,
-				D65DE1AE1DE152470064E043 /* LiverAtlasSearchController.swift in Sources */,
+				D65DE1AE1DE152470064E043 /* LASearchController.swift in Sources */,
 				D6572A851DDD3B0C00981848 /* ImagingViewController.swift in Sources */,
 				D6A7F4691DE3F7DF009D8E65 /* FilterSectionHeaderCell.swift in Sources */,
 				D6BAF6311DDC0C0300C9D17F /* LAJsonHelper.swift in Sources */,
@@ -622,7 +622,7 @@
 				D6DC852E1DDEE700000F0D31 /* CaseDetailsPanelView.swift in Sources */,
 				D6B1B3FD1DE0D15C0094EF40 /* CaseResultTableViewCell.swift in Sources */,
 				D65DE1AC1DE111350064E043 /* HomePageViewController.swift in Sources */,
-				D63605B11DCBB97B00F20A65 /* FilterTableViewController.swift in Sources */,
+				D63605B11DCBB97B00F20A65 /* FiltersViewController.swift in Sources */,
 				D6D6F7CC1DDEB0B500FAC4A8 /* CaseResultsViewController.swift in Sources */,
 				D6CC09511DDFEAA700CBC598 /* ModalityPanelView.swift in Sources */,
 				D6CC094F1DDFDD5600CBC598 /* ModalityUSPanelView.swift in Sources */,

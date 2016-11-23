@@ -11,6 +11,7 @@ import UIKit
 class CaseResultsViewController: UIViewController {
     static let storyboardIdentifier = "CaseResultsViewControllerStoryboardIdentifier"
     static let caseDetailSegueIdentifier =  "CaseResultToCaseDetailSegue"
+    static let homePageControllerIdentifier = "HomePageViewControllerStoryboardIdentifier"
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableViewHeaderResultSummaryLabel: UILabel!
@@ -59,6 +60,20 @@ class CaseResultsViewController: UIViewController {
         navigationItem.rightBarButtonItem = nil
 
         searchController.searchCases()
+    }
+    
+    @IBAction func homeAction(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main",
+                                      bundle: Bundle(for: type(of:self)))
+        
+        let homePageVC = storyboard.instantiateViewController(withIdentifier: CaseResultsViewController.homePageControllerIdentifier) as! HomePageViewController
+        
+        homePageVC.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
+        homePageVC.navigationItem.leftItemsSupplementBackButton = true
+        
+        let detailNavController = UINavigationController(rootViewController: homePageVC)
+        
+        showDetailViewController(detailNavController, sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

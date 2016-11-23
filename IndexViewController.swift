@@ -27,7 +27,20 @@ class IndexViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
+    @IBAction func homeAction(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main",
+                                      bundle: Bundle(for: type(of:self)))
+        
+        let homePageVC = storyboard.instantiateViewController(withIdentifier: CaseResultsViewController.homePageControllerIdentifier) as! HomePageViewController
+        
+        homePageVC.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
+        homePageVC.navigationItem.leftItemsSupplementBackButton = true
+        
+        let detailNavController = UINavigationController(rootViewController: homePageVC)
+        
+        showDetailViewController(detailNavController, sender: self)
+    }
 }
 
 extension IndexViewController: UITableViewDataSource {

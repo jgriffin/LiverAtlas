@@ -1,5 +1,5 @@
 //
-//  FilterTableViewController.swift
+//  FiltersViewController.swift
 //  LiverAtlas
 //
 //  Created by John on 11/3/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FilterTableViewController: UITableViewController {
+class FiltersViewController: UITableViewController {
     let filterItemReuseIdentifier = "FilterItemCellIdentifier"
     let sectionHeaderReuseIdentifier = "SectionHeaderCellIdentifier"
     let FilterViewToCaseResultsSegue = "FilterViewToCaseResultsSegue"
@@ -105,7 +105,7 @@ class FilterTableViewController: UITableViewController {
  
 }
 
-extension FilterTableViewController: ExpandableFilterSectionDelegate { // UITableViewDataSource
+extension FiltersViewController: ExpandableFilterSectionDelegate { // UITableViewDataSource
 
     func sectionExpansionToggle(isExpanded: Bool, forFilterType filterType: LAFilterType) {
         if isExpanded {

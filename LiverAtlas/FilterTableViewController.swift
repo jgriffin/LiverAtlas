@@ -11,6 +11,8 @@ import UIKit
 class FilterTableViewController: UITableViewController {
     let filterItemReuseIdentifier = "FilterItemCellIdentifier"
     let sectionHeaderReuseIdentifier = "SectionHeaderCellIdentifier"
+    let FilterViewToCaseResultsSegue = "FilterViewToCaseResultsSegue"
+    let CaseResultsViewControllerIdentifier = "CaseResultsViewControllerStoryboardIdentifier"
 
     @IBOutlet var modalitySegmentedControl: UISegmentedControl!
     
@@ -37,7 +39,29 @@ class FilterTableViewController: UITableViewController {
     }
 
     @IBAction func doneAction(_ sender: Any) {
-        showDetailViewController(AppDelegate.instance.detailsNavigationController, sender: self)
+        if let detailsNavController = splitViewController?.viewControllers.last as? UINavigationController,
+            let caseResultsVC = detailsNavController.topViewController as? CaseResultsViewController {
+            caseResultsVC.liverAtlasCases = filterer.filteredCases(fromCases: filterer.modalityFilteredCases,
+                                                                    passingFilters: Array(selectedFeatures))
+            // done?
+            return
+        }
+        
+        let storyboard = UIStoryboard(name: "Main",
+                                      bundle: Bundle(for: type(of:self)))
+        
+        let caseResultsVC = storyboard.instantiateViewController(withIdentifier: CaseResultsViewControllerIdentifier) as! CaseResultsViewController
+        
+        let filteredCases = filterer.filteredCases(fromCases: filterer.modalityFilteredCases,
+                                                   passingFilters: Array(selectedFeatures))
+        caseResultsVC.configure(liverAtlasCases: filteredCases)
+        
+        caseResultsVC.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
+        caseResultsVC.navigationItem.leftItemsSupplementBackButton = true
+
+        let detailNavController = UINavigationController(rootViewController: caseResultsVC)
+
+        showDetailViewController(detailNavController, sender: self)
     }
 
     // MARK: Modality Filters
@@ -78,11 +102,6 @@ class FilterTableViewController: UITableViewController {
     }
     
     // MARK: - Segues
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ApplyFilterToDetailsSegue" {
-        }
-    }
  
 }
 

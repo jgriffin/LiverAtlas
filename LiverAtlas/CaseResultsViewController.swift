@@ -8,12 +8,15 @@
 
 import UIKit
 
-class CaseResultsViewController: UIViewController, UITableViewDelegate {
+class CaseResultsViewController: UIViewController {
     static let storyboardIdentifier = "CaseResultsViewControllerStoryboardIdentifier"
     static let caseDetailSegueIdentifier =  "CaseResultToCaseDetailSegue"
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableViewHeaderResultSummaryLabel: UILabel!
+    
+    lazy var searchController: LiverAtlasSearchController = { self.createSearchController() }()
+    var hiddenRightBarButtonItems: [UIBarButtonItem]?
     
     var liverAtlasCases: [LiverAtlasCase]? {
         didSet {
@@ -24,6 +27,10 @@ class CaseResultsViewController: UIViewController, UITableViewDelegate {
             tableViewHeaderResultSummaryLabel.text = "There are \(liverAtlasCases?.count ?? 0) cases matching the current search"
             tableView?.reloadData()
         }
+    }
+    
+    func configure(liverAtlasCases: [LiverAtlasCase]) {
+        self.liverAtlasCases = liverAtlasCases
     }
 
     override func viewDidLoad() {
@@ -39,10 +46,9 @@ class CaseResultsViewController: UIViewController, UITableViewDelegate {
         liverAtlasCases = liverAtlasCases ?? LiverAtlasIndex.instance.allCases
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: CaseResultsViewController.caseDetailSegueIdentifier,
-                     sender: indexPath)
 
+    @IBAction func searchAction(_ sender: Any) {
+        searchController.searchCases()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -59,6 +65,16 @@ class CaseResultsViewController: UIViewController, UITableViewDelegate {
         }
     }
 
+}
+
+extension CaseResultsViewController: UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: CaseResultsViewController.caseDetailSegueIdentifier,
+                     sender: indexPath)
+        
+    }
+    
 }
 
 extension CaseResultsViewController: UITableViewDataSource {
@@ -78,5 +94,46 @@ extension CaseResultsViewController: UITableViewDataSource {
         return caseResultCell
     }
 }
+
+extension CaseResultsViewController: UISearchControllerDelegate {
+    
+    func createSearchController() -> LiverAtlasSearchController {
+        return LiverAtlasSearchController(delegate: self,
+                                          searchControllerDelegate: self)
+    }
+    
+    func presentSearchController(_ searchController: UISearchController) {
+        if let _ = navigationItem.titleView {
+            return
+        }
+        
+        searchController.searchBar.sizeToFit()
+        navigationItem.titleView = searchController.searchBar
+        navigationItem.hidesBackButton = true
+        
+        hiddenRightBarButtonItems = navigationItem.rightBarButtonItems
+        navigationItem.rightBarButtonItem = nil
+        
+        searchController.searchBar.becomeFirstResponder()
+    }
+    
+    func didDismissSearchController(_ searchController: UISearchController) {
+        navigationItem.titleView = nil
+        navigationItem.hidesBackButton = false
+        navigationItem.rightBarButtonItems = hiddenRightBarButtonItems
+    }
+}
+
+extension CaseResultsViewController: LiverAtlasSearchControllerDelegate {
+    
+    func didSelect(liverAtlasCase: LiverAtlasCase) {
+        // TODO: push details vc
+    }
+    
+    func didEndSearch(withCases filteredResults: [LiverAtlasCase]) {
+        self.configure(liverAtlasCases: filteredResults)
+    }
+}
+
 
 

@@ -57,6 +57,7 @@
 		D6D6F7C91DDEA74200FAC4A8 /* liveratlas_api_all_cases.json in Resources */ = {isa = PBXBuildFile; fileRef = D6D6F7C81DDEA74200FAC4A8 /* liveratlas_api_all_cases.json */; };
 		D6D6F7CA1DDEA74200FAC4A8 /* liveratlas_api_all_cases.json in Resources */ = {isa = PBXBuildFile; fileRef = D6D6F7C81DDEA74200FAC4A8 /* liveratlas_api_all_cases.json */; };
 		D6D6F7CC1DDEB0B500FAC4A8 /* CaseResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D6F7CB1DDEB0B500FAC4A8 /* CaseResultsViewController.swift */; };
+		D6D96E5D1DE5513E00F89D9B /* CaseResultImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D96E5C1DE5513E00F89D9B /* CaseResultImageCollectionViewCell.swift */; };
 		D6DC852E1DDEE700000F0D31 /* CaseDetailsPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DC852D1DDEE700000F0D31 /* CaseDetailsPanelView.swift */; };
 		D6DC85301DDEE868000F0D31 /* DesignCanvas.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6DC852F1DDEE868000F0D31 /* DesignCanvas.xib */; };
 		D6DCA0B61DD03AAB004A6A63 /* IntrinsicSizeCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DCA0B51DD03AAB004A6A63 /* IntrinsicSizeCollectionView.swift */; };
@@ -137,6 +138,7 @@
 		D6CC09501DDFEAA700CBC598 /* ModalityPanelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalityPanelView.swift; sourceTree = "<group>"; };
 		D6D6F7C81DDEA74200FAC4A8 /* liveratlas_api_all_cases.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = liveratlas_api_all_cases.json; sourceTree = "<group>"; };
 		D6D6F7CB1DDEB0B500FAC4A8 /* CaseResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaseResultsViewController.swift; sourceTree = "<group>"; };
+		D6D96E5C1DE5513E00F89D9B /* CaseResultImageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaseResultImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		D6DC852D1DDEE700000F0D31 /* CaseDetailsPanelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaseDetailsPanelView.swift; sourceTree = "<group>"; };
 		D6DC852F1DDEE868000F0D31 /* DesignCanvas.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DesignCanvas.xib; sourceTree = "<group>"; };
 		D6DCA0B51DD03AAB004A6A63 /* IntrinsicSizeCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntrinsicSizeCollectionView.swift; sourceTree = "<group>"; };
@@ -242,6 +244,7 @@
 				D6BE1DB91DCB8BD800305B7D /* LaunchScreen.storyboard */,
 				D6BE1DB41DCB8BD800305B7D /* Main.storyboard */,
 				D6A7F4681DE3F7DF009D8E65 /* FilterSectionHeaderCell.swift */,
+				D6D96E5C1DE5513E00F89D9B /* CaseResultImageCollectionViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -635,6 +638,7 @@
 				D6BAF6361DDCBD3800C9D17F /* LACaseCrawler.swift in Sources */,
 				D63605B51DCBC10100F20A65 /* IndexItemEntryTableViewCell.swift in Sources */,
 				D6FAB9EA1DE21FD500CAFE95 /* LAFilter.swift in Sources */,
+				D6D96E5D1DE5513E00F89D9B /* CaseResultImageCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -153,10 +153,10 @@
             </objects>
             <point key="canvasLocation" x="1974" y="190"/>
         </scene>
-        <!--Matching Cases-->
+        <!--Results Scene-->
         <scene sceneID="Pji-uy-goa">
             <objects>
-                <viewController storyboardIdentifier="CaseResultsViewControllerStoryboardIdentifier" id="xsU-RI-o1L" customClass="CaseResultsViewController" customModule="LiverAtlas" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CaseResultsViewControllerStoryboardIdentifier" id="xsU-RI-o1L" userLabel="Results Scene" customClass="CaseResultsViewController" customModule="LiverAtlas" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="wAA-ux-29Y"/>
                         <viewControllerLayoutGuide type="bottom" id="u5M-PS-gVm"/>
@@ -504,7 +504,7 @@
                                     <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qWP-Ow-Hrr" userLabel="Content View">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="755"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" placeholderIntrinsicWidth="482" placeholderIntrinsicHeight="755" translatesAutoresizingMaskIntoConstraints="NO" id="0bU-5G-sPI">
+                                            <imageView userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" placeholderIntrinsicWidth="482" placeholderIntrinsicHeight="755" translatesAutoresizingMaskIntoConstraints="NO" id="0bU-5G-sPI">
                                                 <rect key="frame" x="-53.5" y="0.0" width="482" height="755"/>
                                             </imageView>
                                         </subviews>
@@ -576,7 +576,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="zOa-Pn-GLV">
-                                    <rect key="frame" x="135.5" y="8" width="104" height="29"/>
+                                    <rect key="frame" x="136" y="8" width="104" height="29"/>
                                     <segments>
                                         <segment title="CT"/>
                                         <segment title="MR"/>
@@ -673,6 +673,6 @@
         <image name="W-Logo_RegistrationMark_Purple_26851" width="184" height="123"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="9cB-Mb-2FH"/>
+        <segue reference="Ism-8i-gJv"/>
     </inferredMetricsTieBreakers>
 </document>

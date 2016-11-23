@@ -10,26 +10,57 @@ import UIKit
 
 class CaseResultTableViewCell: UITableViewCell {
     static let identifier = "CaseResultTableViewCellIdentifier"
+    static let resultTableViewImageCellIdentifier = "ResultTableViewImageCellIdentifier"
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var specificDiagnosisLabel: UILabel!
-    @IBOutlet weak var clinicalPresentationLabel: UILabel!
+    @IBOutlet weak var imagesCollectionView: UICollectionView!
+    
+    var laCase: LACase!
+    var laImages: [LAImage]!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+
+        imagesCollectionView.dataSource = self
+        imagesCollectionView.delegate = self
+        
+        imagesCollectionView.register(CaseResultImageCollectionViewCell.self,
+                                      forCellWithReuseIdentifier: CaseResultTableViewCell.resultTableViewImageCellIdentifier)
     }
     
     func configure(laCase: LACase) {
+        self.laCase = laCase
+        self.laImages = laCase.imagesForModality(modality: .ct)
+        imagesCollectionView.reloadData()
+        
         titleLabel?.text = laCase.title
         specificDiagnosisLabel?.text = laCase.specificDiagnosis
-        clinicalPresentationLabel?.text = laCase.clinicalPresentation
+    }
+}
+
+extension CaseResultTableViewCell: UICollectionViewDataSource {
+
+    func collectionView(_ collectionView: UICollectionView,
+                               numberOfItemsInSection section: Int) -> Int {
+        return laImages.count
     }
     
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let laImage = laImages[indexPath.item]
+        
+        let imageCell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: CaseResultTableViewCell.resultTableViewImageCellIdentifier,
+            for: indexPath) as! CaseResultImageCollectionViewCell
+        
+        imageCell.configure(laImage: laImage)
+        
+        return imageCell
     }
+
+}
+
+
+extension CaseResultTableViewCell: UICollectionViewDelegate {
     
 }

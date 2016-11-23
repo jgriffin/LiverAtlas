@@ -46,7 +46,6 @@ class CaseResultsViewController: UIViewController {
         
         laCases = laCases ?? LAIndex.instance.allCases
     }
-    
 
     @IBAction func searchAction(_ sender: Any) {
         definesPresentationContext = true

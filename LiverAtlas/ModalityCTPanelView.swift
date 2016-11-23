@@ -10,9 +10,9 @@ import UIKit
 
 @IBDesignable
 class CTModalityPanelView: ModalityPanelView {
-    var ctmodality: LiverAtlasCTModality!
+    var ctmodality: LACTModality!
     
-    func configure(ctmodality: LiverAtlasCTModality) {
+    func configure(ctmodality: LACTModality) {
         self.ctmodality = ctmodality
         
         titleLabel.text = ctmodality.title
@@ -26,7 +26,7 @@ class CTModalityPanelView: ModalityPanelView {
     }
     
     override func prepareForInterfaceBuilder() {
-        let case6 = LiverAtlasIndex.instance.case6
+        let case6 = LAIndex.instance.case6
         configure(ctmodality: case6.ctmodality.first!)
         
         super.prepareForInterfaceBuilder()
@@ -46,7 +46,7 @@ extension CTModalityPanelView: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageTileCollectionViewCell.identifier, for: indexPath) as! ImageTileCollectionViewCell
-        cell.configure(liverAtlasImage: ctmodality.images[indexPath.item])
+        cell.configure(laImage: ctmodality.images[indexPath.item])
         
         return cell
     }

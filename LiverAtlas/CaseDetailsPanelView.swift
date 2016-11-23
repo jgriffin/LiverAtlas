@@ -20,25 +20,25 @@ class CaseDetailsPanelView: UIView {
     @IBOutlet var notesHeading: UILabel!
     @IBOutlet var notesLabel: UILabel!
 
-    var liverAtlasCase: LiverAtlasCase! {
+    var laCase: LACase! {
         didSet {
-            configureView(liverAtlasCase: liverAtlasCase)
+            configureView(laCase: laCase)
         }
     }
     
-    func configureView(liverAtlasCase: LiverAtlasCase) {
-        diagnosisTextLabel?.text = liverAtlasCase.diagnosis.diagnosis
+    func configureView(laCase: LACase) {
+        diagnosisTextLabel?.text = laCase.diagnosis.diagnosis
         specificDiagnosisHeading?.text = "Specific diagnosis:"
-        specificDiagnosisLabel?.text = liverAtlasCase.specificDiagnosis
+        specificDiagnosisLabel?.text = laCase.specificDiagnosis
         diagnosticKeywordsHeading?.text = "Diagnostic categories:"
-        diagnosticKeywordsLabel?.text = diagnosticCategoriesText(forDiagnosis: liverAtlasCase.diagnosis)
+        diagnosticKeywordsLabel?.text = diagnosticCategoriesText(forDiagnosis: laCase.diagnosis)
         clinicalPresentationHeading?.text = "Clinical Presentation:"
-        clinicalPresentationLabel?.text = liverAtlasCase.clinicalPresentation
+        clinicalPresentationLabel?.text = laCase.clinicalPresentation
         notesHeading?.text = "Notes:"
-        notesLabel?.text = liverAtlasCase.notes
+        notesLabel?.text = laCase.notes
     }
 
-    func diagnosticCategoriesText(forDiagnosis diagnosis: LiverAtlasDiagnosis) -> String {
+    func diagnosticCategoriesText(forDiagnosis diagnosis: LADiagnosis) -> String {
         return diagnosis.categories.map({ $0.title }).joined(separator: ", ")
     }
     
@@ -149,7 +149,7 @@ class CaseDetailsPanelView: UIView {
     }
 
     override func prepareForInterfaceBuilder() {
-        liverAtlasCase = LiverAtlasIndex.instance.case6
+        laCase = LAIndex.instance.case6
         
         setNeedsUpdateConstraints()
     }

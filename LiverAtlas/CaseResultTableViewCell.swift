@@ -20,10 +20,10 @@ class CaseResultTableViewCell: UITableViewCell {
         // Initialization code
     }
     
-    func configure(liverAtlasCase: LiverAtlasCase) {
-        titleLabel?.text = liverAtlasCase.title
-        specificDiagnosisLabel?.text = liverAtlasCase.specificDiagnosis
-        clinicalPresentationLabel?.text = liverAtlasCase.clinicalPresentation
+    func configure(laCase: LACase) {
+        titleLabel?.text = laCase.title
+        specificDiagnosisLabel?.text = laCase.specificDiagnosis
+        clinicalPresentationLabel?.text = laCase.clinicalPresentation
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

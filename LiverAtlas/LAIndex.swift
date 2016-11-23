@@ -1,5 +1,5 @@
 //
-//  LiverAtlasIndex.swift
+//  LAIndex.swift
 //  LiverAtlas
 //
 //  Created by John on 11/16/16.
@@ -8,46 +8,63 @@
 
 import Foundation
 
+enum LACaseByDiagnosis {
+    case Diagnosis(diagnosis: String)
+    case SpecificDiagnosis(diagnosis: String, specificDiagnosis: String, laCase: LACase)
+    
+    var diagnosisName: String {
+        switch self {
+        case .Diagnosis(let diagnosis),
+             .SpecificDiagnosis(let diagnosis, _, _):
+            return diagnosis
+        }
+    }
+}
 
-class LiverAtlasIndex {
-    static var instance: LiverAtlasIndex = LiverAtlasIndex()
+
+
+class LAIndex {
+    static var instance: LAIndex = LAIndex()
     
     // raw cases
     
-    lazy var indexItems: [LiverAtlasIndexItem] = { self.loadLiverAtlasIndexItemsFromResourceFile() }()
-    lazy var allCases: [LiverAtlasCase] = { self.loadLiverAtlasAllCasesFromResourceFile() }()
-    lazy var case6: LiverAtlasCase = { self.loadCase6() }()
+    lazy var indexItems: [LAIndexItem] = { self.loadLAIndexItemsFromResourceFile() }()
+    lazy var allCases: [LACase] = { self.loadLAAllCasesFromResourceFile() }()
+    lazy var case6: LACase = { self.loadCase6() }()
     
     // internal
+    
+    
+    // json loading
     
     let indexJsonFilename = "liveratlas_api_cases"
     let allCasesJsonFilename = "liveratlas_api_all_cases"
     
-    func loadLiverAtlasIndexItemsFromResourceFile() -> [LiverAtlasIndexItem] {
+    func loadLAIndexItemsFromResourceFile() -> [LAIndexItem] {
         let jsonArray = jsonArrayForResource(filename: indexJsonFilename)!
-        return LiverAtlasJsonHelper.liverAtlasIndex(fromJson: jsonArray)!
+        return LAJsonHelper.laIndex(fromJson: jsonArray)!
     }
 
-    func loadLiverAtlasAllCasesFromResourceFile() -> [LiverAtlasCase] {
+    func loadLAAllCasesFromResourceFile() -> [LACase] {
         let jsonArray = jsonArrayForResource(filename: allCasesJsonFilename) as! [[String: AnyObject]]
-        return jsonArray.map { LiverAtlasJsonHelper.liverAtlasCase(fromJson: $0)! }
+        return jsonArray.map { LAJsonHelper.laCase(fromJson: $0)! }
     }
     
     let case6Filename = "liveratlas_api_case_6"
-    func loadCase6() -> LiverAtlasCase {
+    func loadCase6() -> LACase {
         let jsonDictionary = jsonDictionaryForResource(filename: case6Filename)!
-        return LiverAtlasJsonHelper.liverAtlasCase(fromJson: jsonDictionary)!
+        return LAJsonHelper.laCase(fromJson: jsonDictionary)!
     }
     
-    func fakeCase() -> LiverAtlasCase {
-        let diagnosis = LiverAtlasDiagnosis(diagnosis: "diagnosis",
+    func fakeCase() -> LACase {
+        let diagnosis = LADiagnosis(diagnosis: "diagnosis",
                                             categories: [],
                                             information: "information",
                                             pk: 1,
                                             modifiedData: Date(),
                                             synonyms: [])
         
-        let fakeCase = LiverAtlasCase(title: "title",
+        let fakeCase = LACase(title: "title",
                                       pk: 1,
                                       modifiedData: Date(),
                                       clinicalPresentation: "clinical presentation",

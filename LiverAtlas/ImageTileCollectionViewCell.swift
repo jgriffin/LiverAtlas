@@ -14,7 +14,7 @@ class ImageTileCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var imageTitle: UILabel!
     
-    var liverAtlasImage: LiverAtlasImage!
+    var laImage: LAImage!
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -24,15 +24,15 @@ class ImageTileCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
     }
     
-    func configure(liverAtlasImage: LiverAtlasImage) {
+    func configure(laImage: LAImage) {
         imageView?.image = nil
         
-        LiverAtlasCaseCrawler.instance.loadLiverAtlasImageForURL(imageURL: liverAtlasImage.image) { [weak self] (image: UIImage?)  in
+        LACaseCrawler.instance.loadLAImageForURL(imageURL: laImage.image) { [weak self] (image: UIImage?)  in
             assert(Thread.isMainThread)
 
             self?.imageView?.image = image            
         }
-        imageTitle?.text = liverAtlasImage.imagePhase
+        imageTitle?.text = laImage.imagePhase
     }
 
     override func awakeFromNib() {

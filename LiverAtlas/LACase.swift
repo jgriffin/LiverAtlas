@@ -8,19 +8,19 @@
 
 import Foundation
 
-struct LiverAtlasCase {
+struct LACase {
     let title: String
     let pk: Int
     let modifiedData: Date
     let clinicalPresentation: String
-    let diagnosis: LiverAtlasDiagnosis
+    let diagnosis: LADiagnosis
     let specificDiagnosis: String
     let notes: String
-    let ctmodality: [LiverAtlasCTModality]
-    let mrmodality: [LiverAtlasMRModality]
-    let usmodality: [LiverAtlasUSModality]
+    let ctmodality: [LACTModality]
+    let mrmodality: [LAMRModality]
+    let usmodality: [LAUSModality]
     
-    func imagingFeaturesForModality(modality: LiverAtlasModality) -> [LiverAtlasImagingFeature] {
+    func imagingFeaturesForModality(modality: LAModality) -> [LAImagingFeature] {
         switch modality {
         case .ct:
             return ctmodality.flatMap { $0.imagingFeatures }
@@ -31,7 +31,7 @@ struct LiverAtlasCase {
         }
     }
     
-    func structuralFeaturesForModality(modality: LiverAtlasModality) -> [LiverAtlasStructuralFeature] {
+    func structuralFeaturesForModality(modality: LAModality) -> [LAStructuralFeature] {
         switch modality {
         case .ct:
             return ctmodality.flatMap { $0.structuralFeatures }
@@ -44,16 +44,16 @@ struct LiverAtlasCase {
 
 }
 
-struct LiverAtlasDiagnosis {
+struct LADiagnosis {
     let diagnosis: String
-    let categories: [LiverAtlasCategory]
+    let categories: [LACategory]
     let information: String
     let pk: Int
     let modifiedData: Date
-    let synonyms: [ LiverAtlasSynonym ]
+    let synonyms: [ LASynonym ]
 }
 
-struct LiverAtlasCategory {
+struct LACategory {
     let id: Int
     let lft: Int
     let rgt: Int
@@ -64,18 +64,18 @@ struct LiverAtlasCategory {
     let modifiedDate: Date
 }
 
-struct LiverAtlasSynonym {
+struct LASynonym {
     let id: Int
     let name: String
     let modifiedDate: Date
     let diagnosis: Int
 }
 
-enum LiverAtlasModality {
+enum LAModality {
     case ct, mr, us
 }
 
-struct LiverAtlasCTModality {
+struct LACTModality {
     let pk: Int
     let title: String
     let modifiedDate: Date
@@ -83,12 +83,12 @@ struct LiverAtlasCTModality {
     let imagingFindings: String
     let quizLevel: Int
     let isPublic: Bool
-    let imagingFeatures: [LiverAtlasImagingFeature]
-    let structuralFeatures: [LiverAtlasStructuralFeature]
-    let images: [LiverAtlasImage]
+    let imagingFeatures: [LAImagingFeature]
+    let structuralFeatures: [LAStructuralFeature]
+    let images: [LAImage]
 }
 
-struct LiverAtlasMRModality {
+struct LAMRModality {
     let pk: Int
     let title: String
     let modifiedDate: Date
@@ -96,12 +96,12 @@ struct LiverAtlasMRModality {
     let imagingFindings: String
     let quizLevel: Int
     let isPublic: Bool
-    let imagingFeatures: [LiverAtlasImagingFeature]
-    let structuralFeatures: [LiverAtlasStructuralFeature]
-    let images: [LiverAtlasImage]
+    let imagingFeatures: [LAImagingFeature]
+    let structuralFeatures: [LAStructuralFeature]
+    let images: [LAImage]
 }
 
-struct LiverAtlasUSModality {
+struct LAUSModality {
     let pk: Int
     let title: String
     let modifiedDate: Date
@@ -109,12 +109,12 @@ struct LiverAtlasUSModality {
     let imagingFindings: String
     let quizLevel: Int
     let isPublic: Bool
-    let imagingFeatures: [LiverAtlasImagingFeature]
-    let structuralFeatures: [LiverAtlasStructuralFeature]
-    let images: [LiverAtlasImage]   
+    let imagingFeatures: [LAImagingFeature]
+    let structuralFeatures: [LAStructuralFeature]
+    let images: [LAImage]   
 }
 
-struct LiverAtlasImage {
+struct LAImage {
     let id: Int
     let image: URL
     let imagePhase: String
@@ -123,13 +123,13 @@ struct LiverAtlasImage {
     let modifiedDate: Date
 }
 
-struct LiverAtlasImagingFeature {
+struct LAImagingFeature {
     let id: Int
     let title: String
     let tree: String
 }
 
-struct LiverAtlasStructuralFeature {
+struct LAStructuralFeature {
     let id: Int
     let title: String
     let tree: String

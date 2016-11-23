@@ -1,5 +1,5 @@
 //
-//  LiverAtlasSearcherTests.swift
+//  LASearcherTests.swift
 //  LiverAtlas
 //
 //  Created by John on 11/19/16.
@@ -8,10 +8,10 @@
 
 import XCTest
 
-class LiverAtlasSearcherTests: XCTestCase {
-    let allCases = LiverAtlasIndex.instance.allCases
-    let justCase6 = [LiverAtlasIndex.instance.case6]
-    let searcher = LiverAtlasSearcher()
+class LASearcherTests: XCTestCase {
+    let allCases = LAIndex.instance.allCases
+    let justCase6 = [LAIndex.instance.case6]
+    let searcher = LASearcher()
     
     func testSearchingEmptyString_returnsAllCases() {
         let results = searcher.searchCases(casesToSearch: allCases, forSearchText: "")

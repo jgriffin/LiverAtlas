@@ -1,5 +1,5 @@
 //
-//  LiverAtlasScrapeTests.swift
+//  LAScrapeTests.swift
 //  LiverAtlas
 //
 //  Created by John on 11/5/16.
@@ -9,7 +9,7 @@
 import XCTest
 import Kanna
 
-class LiverAtlasScrapeTests: XCTestCase {
+class LAScrapeTests: XCTestCase {
         
     override func setUp() {
         super.setUp()
@@ -47,11 +47,11 @@ class LiverAtlasScrapeTests: XCTestCase {
         return doc
     }
     
-    func testLoadLiverAtlasIndex() {
+    func testLoadLAIndex() {
         let url = URL(string: "http://liveratlas.org/index/")!
         let doc = urlSessionSynchronousGetKannaHtml(url: url)!
 
-        let indexItems = LiverAtlasScraper.indexItemsFrom(indexHtml: doc)
+        let indexItems = LAScraper.indexItemsFrom(indexHtml: doc)
         XCTAssertEqual(indexItems.count, 564)
     }
     
@@ -59,7 +59,7 @@ class LiverAtlasScrapeTests: XCTestCase {
         let url = URL(string: "http://liveratlas.org/case/1")!
         let doc = urlSessionSynchronousGetKannaHtml(url: url)!
         
-        let details = LiverAtlasScraper.caseDetailsFrom(caseURL: url, detailsHtml: doc)
+        let details = LAScraper.caseDetailsFrom(caseURL: url, detailsHtml: doc)
         XCTAssertEqual(details?.caseNumberHeading, "Case 1:")
     }
     
@@ -67,22 +67,22 @@ class LiverAtlasScrapeTests: XCTestCase {
         let url = URL(string: "http://liveratlas.org/diagnosis/4")!
         let doc = urlSessionSynchronousGetKannaHtml(url: url)!
       
-        let diagnosisDetails = LiverAtlasScraper.diagnosisDetailsFrom(detailsHtml: doc)
+        let diagnosisDetails = LAScraper.diagnosisDetailsFrom(detailsHtml: doc)
         XCTAssertEqual(diagnosisDetails.count, 1)
     }
     
     func testLoadAllDiagnosis() {
-        let liverAtlastIndexURL = URL(string: "http://liveratlas.org/index/")!
+        let latIndexURL = URL(string: "http://liveratlas.org/index/")!
 
-        let indexHtml = urlSessionSynchronousGetKannaHtml(url: liverAtlastIndexURL)!
-        let indexItems = LiverAtlasScraper.indexItemsFrom(indexHtml: indexHtml).filter { item in
+        let indexHtml = urlSessionSynchronousGetKannaHtml(url: latIndexURL)!
+        let indexItems = LAScraper.indexItemsFrom(indexHtml: indexHtml).filter { item in
                 item.href.contains("case")
             }.prefix(3)
         
-        let cases = indexItems.flatMap { (item) -> LiverAtlasCaseDetails? in
-            let caseURL = URL(string:item.href, relativeTo: liverAtlastIndexURL)!
+        let cases = indexItems.flatMap { (item) -> LACaseDetails? in
+            let caseURL = URL(string:item.href, relativeTo: latIndexURL)!
             let caseHtml = urlSessionSynchronousGetKannaHtml(url: caseURL)
-            return LiverAtlasScraper.caseDetailsFrom(caseURL: caseURL, detailsHtml: caseHtml!)
+            return LAScraper.caseDetailsFrom(caseURL: caseURL, detailsHtml: caseHtml!)
         }
         XCTAssertEqual(cases.count, 3)
     }
@@ -91,7 +91,7 @@ class LiverAtlasScrapeTests: XCTestCase {
 
     func testFetcherGetIndexItemsReferencedFromIndex() {
         let expectation = self.expectation(description: "fetch liver atlas index")
-        let fetcher = LiverAtlasScraperFetcher()
+        let fetcher = LAScraperFetcher()
         fetcher.getIndexItemsReferencedFromIndex { (indexItems) in
             XCTAssertEqual(indexItems.count, 564)
             expectation.fulfill()
@@ -104,7 +104,7 @@ class LiverAtlasScrapeTests: XCTestCase {
         let url = URL(string: "http://liveratlas.org/case/1")!
         let expectation = self.expectation(description: "fetch liver atlas index")
         
-        let fetcher = LiverAtlasScraperFetcher()
+        let fetcher = LAScraperFetcher()
         fetcher.getCaseDetailsFor(caseDetailURL: url) { (caseDetail) in
             expectation.fulfill()
         }
@@ -116,7 +116,7 @@ class LiverAtlasScrapeTests: XCTestCase {
         let url = URL(string: "http://liveratlas.org/case/19")!
         let expectation = self.expectation(description: "fetch liver atlas index")
         
-        let fetcher = LiverAtlasScraperFetcher()
+        let fetcher = LAScraperFetcher()
         fetcher.getCaseDetailsFor(caseDetailURL: url) { (caseDetail) in
             expectation.fulfill()
         }
@@ -128,7 +128,7 @@ class LiverAtlasScrapeTests: XCTestCase {
         let url = URL(string: "http://liveratlas.org/case/160")!
         let expectation = self.expectation(description: "fetch liver atlas index")
         
-        let fetcher = LiverAtlasScraperFetcher()
+        let fetcher = LAScraperFetcher()
         fetcher.getCaseDetailsFor(caseDetailURL: url) { (caseDetail) in
             expectation.fulfill()
         }
@@ -139,7 +139,7 @@ class LiverAtlasScrapeTests: XCTestCase {
     func testFetcherCaseDetailsReferencedFromIndex() {
         self.measure() {
             let expectation = self.expectation(description: "fetch liver atlas index")
-            let fetcher = LiverAtlasScraperFetcher()
+            let fetcher = LAScraperFetcher()
             fetcher.getIndexItemsReferencedFromIndex(completion: fetcher.fetchCaseDetailsForIndexItems)
             
             fetcher.fetcherGroup.notify(queue: DispatchQueue.main) {

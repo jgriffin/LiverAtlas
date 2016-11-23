@@ -1,5 +1,5 @@
 //
-//  LiverAtlasJsonHelper.swift
+//  LAJsonHelper.swift
 //  LiverAtlas
 //
 //  Created by John on 11/15/16.
@@ -9,16 +9,16 @@
 import Foundation
 
 
-struct LiverAtlasJsonHelper {
-    static func liverAtlasIndex(fromJson json: Any) -> [LiverAtlasIndexItem]? {
+struct LAJsonHelper {
+    static func laIndex(fromJson json: Any) -> [LAIndexItem]? {
         guard let jsonArray = json as? [[String:AnyObject]] else {
             return nil
         }
         
-        return jsonArray.flatMap { liverAtlasIndexItem(fromJson: $0)! }
+        return jsonArray.flatMap { laIndexItem(fromJson: $0)! }
     }
     
-    static func liverAtlasIndexItem(fromJson json: [String: AnyObject]) -> LiverAtlasIndexItem? {
+    static func laIndexItem(fromJson json: [String: AnyObject]) -> LAIndexItem? {
         guard
             let title = json["title"] as? String,
             let pk = json["pk"] as? Int,
@@ -28,17 +28,17 @@ struct LiverAtlasJsonHelper {
                 return nil
         }
     
-        return LiverAtlasIndexItem(title: title, pk: pk, modifiedDate: date, url: url)
+        return LAIndexItem(title: title, pk: pk, modifiedDate: date, url: url)
     }
 
-    static func liverAtlasCase(fromJson json: [String: AnyObject]) -> LiverAtlasCase? {
+    static func laCase(fromJson json: [String: AnyObject]) -> LACase? {
         guard
             let title = json["title"] as? String,
             let pk = json["pk"] as? Int,
             let modifiedDate = modifiedDateFromJson(jsonDictionary: json),
             let clinicalPresentation = json["clinical_presentation"] as? String,
             let diagnosisJsonDictionary = json["diagnosis"] as? [String: AnyObject],
-            let diagnosis = liverAtlasDiagnosis(fromJson: diagnosisJsonDictionary),
+            let diagnosis = laDiagnosis(fromJson: diagnosisJsonDictionary),
             let specificDiagnosis = json["specific_diagnosis"] as? String,
             let notes = json["notes"] as? String,
             let ctModalitiesJson = json["ctmodality"] as? [[String: AnyObject]],
@@ -47,11 +47,11 @@ struct LiverAtlasJsonHelper {
                 return nil
         }
 
-        let ctModalities = ctModalitiesJson.flatMap { liverAtlasCTModality(fromJson: $0) }
-        let mrModalities = mrModalitiesJson.flatMap { liverAtlasMRModality(fromJson: $0) }
-        let usModalities = usModalitiesJson.flatMap { liverAtlasUSModality(fromJson: $0) }
+        let ctModalities = ctModalitiesJson.flatMap { laCTModality(fromJson: $0) }
+        let mrModalities = mrModalitiesJson.flatMap { laMRModality(fromJson: $0) }
+        let usModalities = usModalitiesJson.flatMap { laUSModality(fromJson: $0) }
         
-        return LiverAtlasCase(title: title,
+        return LACase(title: title,
                               pk: pk,
                               modifiedData: modifiedDate,
                               clinicalPresentation: clinicalPresentation,
@@ -63,7 +63,7 @@ struct LiverAtlasJsonHelper {
                               usmodality: usModalities)
     }
 
-    static func liverAtlasDiagnosis(fromJson json: [String: AnyObject]) -> LiverAtlasDiagnosis? {
+    static func laDiagnosis(fromJson json: [String: AnyObject]) -> LADiagnosis? {
         guard
             let diagnosis = json["diagnosis"] as? String,
             let categoriesJsonArray = json["categories"] as? [[String:AnyObject]],
@@ -74,10 +74,10 @@ struct LiverAtlasJsonHelper {
                 return nil
         }
         
-        let categories = categoriesJsonArray.map { liverAtlasCategory(fromJson: $0)! }
-        let synonyms = synonymsJsonArray.map { liverAtlasSynonym(fromJson: $0)! }
+        let categories = categoriesJsonArray.map { laCategory(fromJson: $0)! }
+        let synonyms = synonymsJsonArray.map { laSynonym(fromJson: $0)! }
         
-        return LiverAtlasDiagnosis(diagnosis: diagnosis,
+        return LADiagnosis(diagnosis: diagnosis,
                                    categories: categories,
                                    information: information,
                                    pk: pk,
@@ -85,7 +85,7 @@ struct LiverAtlasJsonHelper {
                                    synonyms: synonyms)
     }
 
-    static func liverAtlasCategory(fromJson json: [String: AnyObject]) -> LiverAtlasCategory? {
+    static func laCategory(fromJson json: [String: AnyObject]) -> LACategory? {
         guard
             let id = json["id"] as? Int,
             let lft = json["lft"] as? Int,
@@ -98,7 +98,7 @@ struct LiverAtlasJsonHelper {
                 return nil
         }
         
-        return LiverAtlasCategory(id: id,
+        return LACategory(id: id,
                                   lft: lft,
                                   rgt: rgt,
                                   treeID: treeID,
@@ -108,7 +108,7 @@ struct LiverAtlasJsonHelper {
                                   modifiedDate: modifiedDate)
     }
 
-    static func liverAtlasSynonym(fromJson json: [String: AnyObject]) -> LiverAtlasSynonym? {
+    static func laSynonym(fromJson json: [String: AnyObject]) -> LASynonym? {
         guard
             let id = json["id"] as? Int,
             let name = json["name"] as? String,
@@ -117,13 +117,13 @@ struct LiverAtlasJsonHelper {
                 return nil
         }
         
-        return LiverAtlasSynonym(id: id,
+        return LASynonym(id: id,
                                  name: name,
                                  modifiedDate: modifiedDate,
                                  diagnosis: diagnosis)
     }
     
-    static func liverAtlasCTModality(fromJson json: [String: AnyObject]) -> LiverAtlasCTModality? {
+    static func laCTModality(fromJson json: [String: AnyObject]) -> LACTModality? {
         guard
             let pk = json["pk"] as? Int,
             let title = json["title"] as? String,
@@ -138,11 +138,11 @@ struct LiverAtlasJsonHelper {
                 return nil
         }
         
-        let imagingFeatures = imagingFeaturesJsonArray.map { liverAtlasImagingFeature(fromJson: $0)! }
-        let structuralFeatures = structuralFeaturesJsonArray.map { liverAtlasStructuralFeature(fromJson: $0)! }
-        let images = imagesJsonArray.map { liverAtlasImage(fromJson: $0)! }
+        let imagingFeatures = imagingFeaturesJsonArray.map { laImagingFeature(fromJson: $0)! }
+        let structuralFeatures = structuralFeaturesJsonArray.map { laStructuralFeature(fromJson: $0)! }
+        let images = imagesJsonArray.map { laImage(fromJson: $0)! }
         
-        return LiverAtlasCTModality(pk: pk,
+        return LACTModality(pk: pk,
                                     title: title,
                                     modifiedDate: modifiedDate,
                                     specificDiagnosis: specificDiagnosis,
@@ -154,7 +154,7 @@ struct LiverAtlasJsonHelper {
                                     images: images)
     }
 
-    static func liverAtlasMRModality(fromJson json: [String: AnyObject]) -> LiverAtlasMRModality? {
+    static func laMRModality(fromJson json: [String: AnyObject]) -> LAMRModality? {
         guard
             let pk = json["pk"] as? Int,
             let title = json["title"] as? String,
@@ -169,11 +169,11 @@ struct LiverAtlasJsonHelper {
                 return nil
         }
         
-        let imagingFeatures = imagingFeaturesJsonArray.map { liverAtlasImagingFeature(fromJson: $0)! }
-        let structuralFeatures = structuralFeaturesJsonArray.map { liverAtlasStructuralFeature(fromJson: $0)! }
-        let images = imagesJsonArray.map { liverAtlasImage(fromJson: $0)! }
+        let imagingFeatures = imagingFeaturesJsonArray.map { laImagingFeature(fromJson: $0)! }
+        let structuralFeatures = structuralFeaturesJsonArray.map { laStructuralFeature(fromJson: $0)! }
+        let images = imagesJsonArray.map { laImage(fromJson: $0)! }
         
-        return LiverAtlasMRModality(pk: pk,
+        return LAMRModality(pk: pk,
                                     title: title,
                                     modifiedDate: modifiedDate,
                                     specificDiagnosis: specificDiagnosis,
@@ -185,7 +185,7 @@ struct LiverAtlasJsonHelper {
                                     images: images)
     }
     
-    static func liverAtlasUSModality(fromJson json: [String: AnyObject]) -> LiverAtlasUSModality? {
+    static func laUSModality(fromJson json: [String: AnyObject]) -> LAUSModality? {
         guard
             let pk = json["pk"] as? Int,
             let title = json["title"] as? String,
@@ -200,11 +200,11 @@ struct LiverAtlasJsonHelper {
                 return nil
         }
         
-        let imagingFeatures = imagingFeaturesJsonArray.map { liverAtlasImagingFeature(fromJson: $0)! }
-        let structuralFeatures = structuralFeaturesJsonArray.map { liverAtlasStructuralFeature(fromJson: $0)! }
-        let images = imagesJsonArray.map { liverAtlasImage(fromJson: $0)! }
+        let imagingFeatures = imagingFeaturesJsonArray.map { laImagingFeature(fromJson: $0)! }
+        let structuralFeatures = structuralFeaturesJsonArray.map { laStructuralFeature(fromJson: $0)! }
+        let images = imagesJsonArray.map { laImage(fromJson: $0)! }
         
-        return LiverAtlasUSModality(pk: pk,
+        return LAUSModality(pk: pk,
                                     title: title,
                                     modifiedDate: modifiedDate,
                                     specificDiagnosis: specificDiagnosis,
@@ -216,7 +216,7 @@ struct LiverAtlasJsonHelper {
                                     images: images)
     }
 
-    static func liverAtlasImagingFeature(fromJson json: [String: AnyObject]) -> LiverAtlasImagingFeature! {
+    static func laImagingFeature(fromJson json: [String: AnyObject]) -> LAImagingFeature! {
         guard
             let id = json["id"] as? Int,
             let title = json["title"] as? String,
@@ -224,10 +224,10 @@ struct LiverAtlasJsonHelper {
                 return nil
         }
 
-        return LiverAtlasImagingFeature(id: id, title: title, tree: tree)
+        return LAImagingFeature(id: id, title: title, tree: tree)
     }
     
-    static func liverAtlasStructuralFeature(fromJson json: [String: AnyObject]) -> LiverAtlasStructuralFeature! {
+    static func laStructuralFeature(fromJson json: [String: AnyObject]) -> LAStructuralFeature! {
         guard
             let id = json["id"] as? Int,
             let title = json["title"] as? String,
@@ -235,10 +235,10 @@ struct LiverAtlasJsonHelper {
                 return nil
         }
         
-        return LiverAtlasStructuralFeature(id: id, title: title, tree: tree)
+        return LAStructuralFeature(id: id, title: title, tree: tree)
     }
     
-    static func liverAtlasImage(fromJson json: [String: AnyObject]) -> LiverAtlasImage! {
+    static func laImage(fromJson json: [String: AnyObject]) -> LAImage! {
         guard
             let id = json["id"] as? Int,
             let imageURLString = json["image"] as? String,
@@ -250,7 +250,7 @@ struct LiverAtlasJsonHelper {
                 return nil
         }
         
-        return LiverAtlasImage(id: id,
+        return LAImage(id: id,
                                image: imageURL,
                                imagePhase: imagePhase,
                                imageCaption: imageCaption,
@@ -277,8 +277,8 @@ struct LiverAtlasJsonHelper {
         guard let _ = dateString else {
             return nil
         }
-        return LiverAtlasJsonHelper.dateFormatter.date(from: dateString!) ??
-            LiverAtlasJsonHelper.dateFormatterWithFractionalSeconds.date(from: dateString!)
+        return LAJsonHelper.dateFormatter.date(from: dateString!) ??
+            LAJsonHelper.dateFormatterWithFractionalSeconds.date(from: dateString!)
     }
     
     static func modifiedDateFromJson(jsonDictionary: [String: AnyObject]) -> Date? {

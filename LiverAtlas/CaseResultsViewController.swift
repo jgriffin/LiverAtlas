@@ -15,22 +15,22 @@ class CaseResultsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableViewHeaderResultSummaryLabel: UILabel!
     
-    lazy var searchController: LiverAtlasSearchController = { self.createSearchController() }()
+    lazy var searchController: LASearchController = { self.createSearchController() }()
     var hiddenRightBarButtonItems: [UIBarButtonItem]?
     
-    var liverAtlasCases: [LiverAtlasCase]? {
+    var laCases: [LACase]? {
         didSet {
             guard let _ = tableViewHeaderResultSummaryLabel else {
                 return
             }
 
-            tableViewHeaderResultSummaryLabel.text = "There are \(liverAtlasCases?.count ?? 0) cases matching the current search"
+            tableViewHeaderResultSummaryLabel.text = "There are \(laCases?.count ?? 0) cases matching the current search"
             tableView?.reloadData()
         }
     }
     
-    func configure(liverAtlasCases: [LiverAtlasCase]) {
-        self.liverAtlasCases = liverAtlasCases
+    func configure(laCases: [LACase]) {
+        self.laCases = laCases
     }
 
     override func viewDidLoad() {
@@ -43,11 +43,21 @@ class CaseResultsViewController: UIViewController {
                                  bundle: Bundle(for: type(of:self))),
                            forCellReuseIdentifier: CaseResultTableViewCell.identifier)
         
-        liverAtlasCases = liverAtlasCases ?? LiverAtlasIndex.instance.allCases
+        laCases = laCases ?? LAIndex.instance.allCases
     }
     
 
     @IBAction func searchAction(_ sender: Any) {
+        definesPresentationContext = true
+        
+        let searchBar = searchController.searchController.searchBar
+        searchBar.sizeToFit()
+        navigationItem.titleView = searchBar
+        navigationItem.hidesBackButton = true
+        
+        hiddenRightBarButtonItems = navigationItem.rightBarButtonItems
+        navigationItem.rightBarButtonItem = nil
+
         searchController.searchCases()
     }
     
@@ -55,10 +65,10 @@ class CaseResultsViewController: UIViewController {
         switch segue.identifier! {
         case CaseResultsViewController.caseDetailSegueIdentifier:
             let indexPath = sender as! IndexPath
-            let liverAtlasCase = liverAtlasCases![indexPath.item]
+            let laCase = laCases![indexPath.item]
             let caseDetailVC = segue.destination as! CaseDetailsViewController
             
-            caseDetailVC.liverAtlasCase = liverAtlasCase
+            caseDetailVC.laCase = laCase
             
         default:
             NSLog("unrecognized segue")
@@ -80,7 +90,7 @@ extension CaseResultsViewController: UITableViewDelegate {
 extension CaseResultsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return liverAtlasCases?.count ?? 0
+        return laCases?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -88,8 +98,8 @@ extension CaseResultsViewController: UITableViewDataSource {
         let caseResultCell = tableView.dequeueReusableCell(withIdentifier: CaseResultTableViewCell.identifier,
                                                           for: indexPath) as! CaseResultTableViewCell
         
-        let theCase = liverAtlasCases![indexPath.row]
-        caseResultCell.configure(liverAtlasCase: theCase)
+        let theCase = laCases![indexPath.row]
+        caseResultCell.configure(laCase: theCase)
         
         return caseResultCell
     }
@@ -97,24 +107,13 @@ extension CaseResultsViewController: UITableViewDataSource {
 
 extension CaseResultsViewController: UISearchControllerDelegate {
     
-    func createSearchController() -> LiverAtlasSearchController {
-        return LiverAtlasSearchController(delegate: self,
+    func createSearchController() -> LASearchController {
+        return LASearchController(delegate: self,
                                           searchControllerDelegate: self)
     }
     
     func presentSearchController(_ searchController: UISearchController) {
-        if let _ = navigationItem.titleView {
-            return
-        }
-        
-        searchController.searchBar.sizeToFit()
-        navigationItem.titleView = searchController.searchBar
-        navigationItem.hidesBackButton = true
-        
-        hiddenRightBarButtonItems = navigationItem.rightBarButtonItems
-        navigationItem.rightBarButtonItem = nil
-        
-        searchController.searchBar.becomeFirstResponder()
+//        searchController.searchBar.becomeFirstResponder()
     }
     
     func didDismissSearchController(_ searchController: UISearchController) {
@@ -124,14 +123,14 @@ extension CaseResultsViewController: UISearchControllerDelegate {
     }
 }
 
-extension CaseResultsViewController: LiverAtlasSearchControllerDelegate {
+extension CaseResultsViewController: LASearchControllerDelegate {
     
-    func didSelect(liverAtlasCase: LiverAtlasCase) {
+    func didSelect(laCase: LACase) {
         // TODO: push details vc
     }
     
-    func didEndSearch(withCases filteredResults: [LiverAtlasCase]) {
-        self.configure(liverAtlasCases: filteredResults)
+    func didEndSearch(withCases filteredResults: [LACase]) {
+        self.configure(laCases: filteredResults)
     }
 }
 

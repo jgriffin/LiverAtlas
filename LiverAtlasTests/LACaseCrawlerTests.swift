@@ -1,5 +1,5 @@
 //
-//  LiverAtlasCaseCrawlerTests.swift
+//  LACaseCrawlerTests.swift
 //  LiverAtlas
 //
 //  Created by John on 11/16/16.
@@ -8,16 +8,16 @@
 
 import XCTest
 
-class LiverAtlasCaseCrawlerTests: XCTestCase {
+class LACaseCrawlerTests: XCTestCase {
     
     func testFetchIndex() {
-        let crawler = LiverAtlasCaseCrawler()
+        let crawler = LACaseCrawler()
         
         let expectation = self.expectation(description: "Index Fetcher")
 
-        crawler.loadLiverAtlasIndex { liverAtlasIndex in
-            XCTAssertNotNil(liverAtlasIndex)
-            XCTAssertEqual(liverAtlasIndex?.count ?? 0, 352)
+        crawler.loadLAIndex { laIndex in
+            XCTAssertNotNil(laIndex)
+            XCTAssertEqual(laIndex?.count ?? 0, 352)
 
             expectation.fulfill()
         }
@@ -26,12 +26,12 @@ class LiverAtlasCaseCrawlerTests: XCTestCase {
     }
 
     func testFetchSomeCasesFromIndexItems() {
-        let someIndexItems = Array(LiverAtlasIndex().loadLiverAtlasIndexItemsFromResourceFile().prefix(3))
+        let someIndexItems = Array(LAIndex().loadLAIndexItemsFromResourceFile().prefix(3))
         
-        let crawler = LiverAtlasCaseCrawler()
+        let crawler = LACaseCrawler()
         let expectation = self.expectation(description: "Case Crawler working")
         
-        crawler.loadAllLiverAtlasCases(forIndexItems: someIndexItems) { (caseItems) in
+        crawler.loadAllLACases(forIndexItems: someIndexItems) { (caseItems) in
             XCTAssertNotNil(caseItems)
             XCTAssertEqual(caseItems!.count, 3)
             expectation.fulfill()
@@ -42,13 +42,13 @@ class LiverAtlasCaseCrawlerTests: XCTestCase {
     
     func slow_testMeasureFetchAllCasesFromIndexItems() {
         self.measure { 
-            let allIndexItems = LiverAtlasIndex().loadLiverAtlasIndexItemsFromResourceFile()
+            let allIndexItems = LAIndex().loadLAIndexItemsFromResourceFile()
             XCTAssertEqual(allIndexItems.count, 352)
 
-            let crawler = LiverAtlasCaseCrawler()
+            let crawler = LACaseCrawler()
             let expectation = self.expectation(description: "Case Crawler working")
             
-            crawler.loadAllLiverAtlasCases(forIndexItems: allIndexItems) { (caseItems) in
+            crawler.loadAllLACases(forIndexItems: allIndexItems) { (caseItems) in
                 XCTAssertNotNil(caseItems)
                 XCTAssertEqual(caseItems!.count, 352)
                 expectation.fulfill()
@@ -59,11 +59,11 @@ class LiverAtlasCaseCrawlerTests: XCTestCase {
     }
     
     func slow_testFetchAllCasesFromIndexItemsToJson() {
-        let crawler = LiverAtlasCaseCrawler()
+        let crawler = LACaseCrawler()
         let expectation = self.expectation(description: "Case Crawler working")
         
-        let allIndexItems = LiverAtlasIndex().loadLiverAtlasIndexItemsFromResourceFile()
-        crawler.loadAllLiverAtlasCasesJson(forIndexItems: allIndexItems) { (caseItemsJson) in
+        let allIndexItems = LAIndex().loadLAIndexItemsFromResourceFile()
+        crawler.loadAllLACasesJson(forIndexItems: allIndexItems) { (caseItemsJson) in
             if let _ = caseItemsJson,
                 let jsonData = try? JSONSerialization.data(withJSONObject: caseItemsJson!, options: .prettyPrinted) {
                 

@@ -17,43 +17,43 @@ class CaseDetailsViewController: UIViewController {
     @IBOutlet weak var mrModalityPanelView: MRModalityPanelView!
     @IBOutlet weak var usModalityPanelView: USModalityPanelView!
 
-    lazy var searchController: LiverAtlasSearchController = { self.createSearchController() }()
+    lazy var searchController: LASearchController = { self.createSearchController() }()
     var hiddenRightBarButtonItems: [UIBarButtonItem]?
     
-    var liverAtlasCase: LiverAtlasCase? {
+    var laCase: LACase? {
         didSet {
-            self.configureView(liverAtlasCase: liverAtlasCase!)
+            self.configureView(laCase: laCase!)
         }
     }
     
-    func configureView(liverAtlasCase: LiverAtlasCase) {
+    func configureView(laCase: LACase) {
         guard caseDetailsPanelView != nil else {
             return
         }
         
-        navigationItem.title = "Case \(liverAtlasCase.pk)"
+        navigationItem.title = "Case \(laCase.pk)"
         
-        caseDetailsPanelView.liverAtlasCase = liverAtlasCase
+        caseDetailsPanelView.laCase = laCase
 
-        configureModalityPanels(liverAtlasCase: liverAtlasCase)
+        configureModalityPanels(laCase: laCase)
         
         // setup way to present new views
         ctModalityPanelView.parentNavigationController = self.navigationController
     }
 
-    func configureModalityPanels(liverAtlasCase: LiverAtlasCase) {
-        if let ctmodality = liverAtlasCase.ctmodality.first {
+    func configureModalityPanels(laCase: LACase) {
+        if let ctmodality = laCase.ctmodality.first {
             ctModalityPanelView.configure(ctmodality: ctmodality)
         }
-        if let mrmodality = liverAtlasCase.mrmodality.first {
+        if let mrmodality = laCase.mrmodality.first {
             mrModalityPanelView.configure(mrmodality: mrmodality)
         }
-        if let usmodality = liverAtlasCase.usmodality.first {
+        if let usmodality = laCase.usmodality.first {
             usModalityPanelView.configure(usmodality: usmodality)
         }
-        ctModalityPanelView.isHidden = liverAtlasCase.ctmodality.isEmpty
-        mrModalityPanelView.isHidden = liverAtlasCase.mrmodality.isEmpty
-        usModalityPanelView.isHidden = liverAtlasCase.usmodality.isEmpty
+        ctModalityPanelView.isHidden = laCase.ctmodality.isEmpty
+        mrModalityPanelView.isHidden = laCase.mrmodality.isEmpty
+        usModalityPanelView.isHidden = laCase.usmodality.isEmpty
     }
 
     override func viewDidLoad() {
@@ -66,8 +66,8 @@ class CaseDetailsViewController: UIViewController {
         mrModalityPanelView.liverImagesCollectionView.dataSource = self
         usModalityPanelView.liverImagesCollectionView.dataSource = self
 
-        if let _ = liverAtlasCase {
-            configureView(liverAtlasCase: liverAtlasCase!)
+        if let _ = laCase {
+            configureView(laCase: laCase!)
         }
         
         definesPresentationContext = true
@@ -86,11 +86,11 @@ extension CaseDetailsViewController: UICollectionViewDataSource {
                                numberOfItemsInSection section: Int) -> Int {
         switch collectionView {
         case ctModalityPanelView.liverImagesCollectionView:
-            return liverAtlasCase?.ctmodality.count ?? 0
+            return laCase?.ctmodality.count ?? 0
         case mrModalityPanelView.liverImagesCollectionView:
-            return liverAtlasCase?.mrmodality.count ?? 0
+            return laCase?.mrmodality.count ?? 0
         case usModalityPanelView.liverImagesCollectionView:
-            return liverAtlasCase?.usmodality.count ?? 0
+            return laCase?.usmodality.count ?? 0
         default:
             fatalError("unrecognized collection view")
         }
@@ -102,9 +102,9 @@ extension CaseDetailsViewController: UICollectionViewDataSource {
         let imageTileCell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageTileCollectionViewCell.identifier,
                                                              for: indexPath) as! ImageTileCollectionViewCell
 
-        let liverAtlasImage = self.liverAtlasImage(forCollectionView: collectionView,
+        let laImage = self.laImage(forCollectionView: collectionView,
                                                    cellAtIndexPath: indexPath)
-        imageTileCell.configure(liverAtlasImage: liverAtlasImage)
+        imageTileCell.configure(laImage: laImage)
         
         return imageTileCell
     }
@@ -115,15 +115,15 @@ extension CaseDetailsViewController: UICollectionViewDataSource {
         return CGSize(width: 100, height: 150)
     }
     
-    func liverAtlasImage(forCollectionView collectionView: UICollectionView,
-                         cellAtIndexPath indexPath: IndexPath) -> LiverAtlasImage {
+    func laImage(forCollectionView collectionView: UICollectionView,
+                         cellAtIndexPath indexPath: IndexPath) -> LAImage {
         switch collectionView {
         case ctModalityPanelView.liverImagesCollectionView:
-            return liverAtlasCase!.ctmodality.first!.images[indexPath.item]
+            return laCase!.ctmodality.first!.images[indexPath.item]
         case mrModalityPanelView.liverImagesCollectionView:
-            return liverAtlasCase!.mrmodality.first!.images[indexPath.item]
+            return laCase!.mrmodality.first!.images[indexPath.item]
         case usModalityPanelView.liverImagesCollectionView:
-            return liverAtlasCase!.usmodality.first!.images[indexPath.item]
+            return laCase!.usmodality.first!.images[indexPath.item]
         default:
             fatalError("unrecognized collection view")
         }
@@ -133,7 +133,7 @@ extension CaseDetailsViewController: UICollectionViewDataSource {
 extension CaseDetailsViewController: UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let image = liverAtlasImage(forCollectionView: collectionView,
+        let image = laImage(forCollectionView: collectionView,
                                     cellAtIndexPath: indexPath)
         performSegue(withIdentifier: CaseDetailsViewController.showImagingSequeIdentifier,
                      sender: image)
@@ -142,7 +142,7 @@ extension CaseDetailsViewController: UICollectionViewDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case .some(CaseDetailsViewController.showImagingSequeIdentifier):
-            if let image = sender as? LiverAtlasImage {
+            if let image = sender as? LAImage {
                 (segue.destination as? ImagingViewController)?.loadWithImage(imageURL: image.image)
             }
             break
@@ -155,8 +155,8 @@ extension CaseDetailsViewController: UICollectionViewDelegate {
 
 extension CaseDetailsViewController: UISearchControllerDelegate {
     
-    func createSearchController() -> LiverAtlasSearchController {
-        return LiverAtlasSearchController(delegate: self,
+    func createSearchController() -> LASearchController {
+        return LASearchController(delegate: self,
                                           searchControllerDelegate: self)
     }
 
@@ -182,13 +182,13 @@ extension CaseDetailsViewController: UISearchControllerDelegate {
     }
 }
 
-extension CaseDetailsViewController: LiverAtlasSearchControllerDelegate {
+extension CaseDetailsViewController: LASearchControllerDelegate {
     
-    func didSelect(liverAtlasCase: LiverAtlasCase) {
+    func didSelect(laCase: LACase) {
         
     }
     
-    func didEndSearch(withCases filteredResults: [LiverAtlasCase]) {
+    func didEndSearch(withCases filteredResults: [LACase]) {
         guard let navController = navigationController else {
             return
         }
@@ -200,7 +200,7 @@ extension CaseDetailsViewController: LiverAtlasSearchControllerDelegate {
             .instantiateViewController(withIdentifier: CaseResultsViewController.storyboardIdentifier)
             as! CaseResultsViewController
 
-        resultsViewController.liverAtlasCases = filteredResults
+        resultsViewController.laCases = filteredResults
         
         let _ = navController.popToRootViewController(animated: false)
         navController.pushViewController(resultsViewController, animated: true)

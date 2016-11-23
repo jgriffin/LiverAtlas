@@ -64,8 +64,8 @@ extension AppDelegate: UISplitViewControllerDelegate {
                 return false
         }
         
-        if topAsCaseDetailController.liverAtlasCase == nil {
-            topAsCaseDetailController.liverAtlasCase = LiverAtlasIndex.instance.case6
+        if topAsCaseDetailController.laCase == nil {
+            topAsCaseDetailController.laCase = LAIndex.instance.case6
             // Return true to indicate that we have handled the collapse by doing nothing; the secondary controller will be discarded.
             return true
         }

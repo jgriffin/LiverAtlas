@@ -18,11 +18,11 @@ class FilterTableViewController: UITableViewController {
     
     // selected modality and filters
     
-    let filterer = LiverAtlasFilterer(allCases: nil,
-                                      modality: LiverAtlasModality.ct)
+    let filterer = LAFilterer(allCases: nil,
+                                      modality: LAModality.ct)
     
-    var expandedFilterSections = Set<LiverAtlasFilterType>()
-    var selectedFeatures = Set<LiverAtlasFilter>()
+    var expandedFilterSections = Set<LAFilterType>()
+    var selectedFeatures = Set<LAFilter>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +41,7 @@ class FilterTableViewController: UITableViewController {
     @IBAction func doneAction(_ sender: Any) {
         if let detailsNavController = splitViewController?.viewControllers.last as? UINavigationController,
             let caseResultsVC = detailsNavController.topViewController as? CaseResultsViewController {
-            caseResultsVC.liverAtlasCases = filterer.filteredCases(fromCases: filterer.modalityFilteredCases,
+            caseResultsVC.laCases = filterer.filteredCases(fromCases: filterer.modalityFilteredCases,
                                                                     passingFilters: Array(selectedFeatures))
             // done?
             return
@@ -54,7 +54,7 @@ class FilterTableViewController: UITableViewController {
         
         let filteredCases = filterer.filteredCases(fromCases: filterer.modalityFilteredCases,
                                                    passingFilters: Array(selectedFeatures))
-        caseResultsVC.configure(liverAtlasCases: filteredCases)
+        caseResultsVC.configure(laCases: filteredCases)
         
         caseResultsVC.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
         caseResultsVC.navigationItem.leftItemsSupplementBackButton = true
@@ -71,7 +71,7 @@ class FilterTableViewController: UITableViewController {
             fatalError()
         }
         
-        let selectedModality: LiverAtlasModality = {
+        let selectedModality: LAModality = {
             switch segmentedControl.selectedSegmentIndex {
             case 0: return .ct
             case 1: return .mr
@@ -107,13 +107,13 @@ class FilterTableViewController: UITableViewController {
 
 extension FilterTableViewController: ExpandableFilterSectionDelegate { // UITableViewDataSource
 
-    func sectionExpansionToggle(isExpanded: Bool, forFilterType filterType: LiverAtlasFilterType) {
+    func sectionExpansionToggle(isExpanded: Bool, forFilterType filterType: LAFilterType) {
         if isExpanded {
             expandedFilterSections.insert(filterType)
         } else {
             expandedFilterSections.remove(filterType)
         }
-        let sectionIndex = { (filterType: LiverAtlasFilterType) -> Int in
+        let sectionIndex = { (filterType: LAFilterType) -> Int in
             switch filterType {
             case .diagnosisCategory: return 0
             case .structuralFeature: return 1

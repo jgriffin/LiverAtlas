@@ -9,7 +9,7 @@
 import Foundation
 
 
-struct LiverAtlasIndexItem {
+struct LAIndexItem {
     let title: String
     let pk: Int
     let modifiedDate: Date

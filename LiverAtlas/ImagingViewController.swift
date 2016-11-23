@@ -16,7 +16,7 @@ class ImagingViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     
     func loadWithImage(imageURL: URL) {
-        LiverAtlasCaseCrawler.instance.loadLiverAtlasImageForURL(imageURL: imageURL) { [weak self] image in
+        LACaseCrawler.instance.loadLAImageForURL(imageURL: imageURL) { [weak self] image in
             assert(Thread.isMainThread)
             guard let _ = image else {
                 return

@@ -1,6 +1,6 @@
 //
-//  LiverAtlasUITests.swift
-//  LiverAtlasUITests
+//  LAUITests.swift
+//  LAUITests
 //
 //  Created by John on 11/3/16.
 //  Copyright © 2016 John Griffin. All rights reserved.
@@ -8,7 +8,7 @@
 
 import XCTest
 
-class LiverAtlasUITests: XCTestCase {
+class LAUITests: XCTestCase {
         
     override func setUp() {
         super.setUp()

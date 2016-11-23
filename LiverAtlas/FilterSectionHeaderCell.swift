@@ -9,16 +9,16 @@
 import UIKit
 
 protocol ExpandableFilterSectionDelegate {
-    func sectionExpansionToggle(isExpanded: Bool, forFilterType filterType:LiverAtlasFilterType)
+    func sectionExpansionToggle(isExpanded: Bool, forFilterType filterType:LAFilterType)
 }
 
 class FilterSectionHeaderView: UITableViewHeaderFooterView {
 
-    var filterType: LiverAtlasFilterType!
+    var filterType: LAFilterType!
     var delegate: ExpandableFilterSectionDelegate!
     var isExpanded: Bool!
     
-    func configure(filterType: LiverAtlasFilterType,
+    func configure(filterType: LAFilterType,
                    isExpanded: Bool,
                    delegate: ExpandableFilterSectionDelegate) {
         self.filterType = filterType

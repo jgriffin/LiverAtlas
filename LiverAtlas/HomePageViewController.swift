@@ -10,13 +10,14 @@ import UIKit
 
 class HomePageViewController: UIViewController {
     static let homeToDetailsSegueIdentifier = "HomeToCaseDetailsSegue"
+    static let homeToIndexSegueIdentifier = "HomeToIndexSegue"
     
     @IBOutlet weak var searchBarButtonItem: UIBarButtonItem!
     @IBOutlet weak var filterBarButtonItem: UIBarButtonItem!
 
-    var activeFilters = [LiverAtlasFilter]()
+    var activeFilters = [LAFilter]()
     
-    lazy var liverAtlasSearchController: LiverAtlasSearchController = {
+    lazy var laSearchController: LASearchController = {
         self.createSearchController()
     }()
     
@@ -29,15 +30,17 @@ class HomePageViewController: UIViewController {
     }
 
     @IBAction func searchCases(_ sender: Any) {
-        let _ = liverAtlasSearchController
-        liverAtlasSearchController.searchCases()
+        let _ = laSearchController
+        definesPresentationContext = true
+        
+        laSearchController.searchCases()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case .some(HomePageViewController.homeToDetailsSegueIdentifier):
             let detailsVC = segue.destination as! CaseDetailsViewController
-            detailsVC.liverAtlasCase = LiverAtlasIndex.instance.case6
+            detailsVC.laCase = LAIndex.instance.case6
         default:
             NSLog("unhandled segue with identifier: \(segue.identifier)" )
         }
@@ -45,10 +48,10 @@ class HomePageViewController: UIViewController {
     
 }
 
-extension HomePageViewController: UISearchControllerDelegate, LiverAtlasSearchControllerDelegate {
+extension HomePageViewController: UISearchControllerDelegate, LASearchControllerDelegate {
     
-    func createSearchController() -> LiverAtlasSearchController {
-        return LiverAtlasSearchController(delegate: self,
+    func createSearchController() -> LASearchController {
+        return LASearchController(delegate: self,
                                           searchControllerDelegate: self)
     }
 
@@ -72,11 +75,11 @@ extension HomePageViewController: UISearchControllerDelegate, LiverAtlasSearchCo
         navigationItem.rightBarButtonItems = hiddenRightBarButtonItems
     }
     
-    func didSelect(liverAtlasCase: LiverAtlasCase) {
+    func didSelect(laCase: LACase) {
         
     }
     
-    func didEndSearch(withCases filteredResults: [LiverAtlasCase]) {
+    func didEndSearch(withCases filteredResults: [LACase]) {
         guard let navController = navigationController else {
             return
         }
@@ -88,7 +91,7 @@ extension HomePageViewController: UISearchControllerDelegate, LiverAtlasSearchCo
             .instantiateViewController(withIdentifier: CaseResultsViewController.storyboardIdentifier)
             as! CaseResultsViewController
         
-        resultsViewController.liverAtlasCases = filteredResults
+        resultsViewController.laCases = filteredResults
         
         let _ = navController.popToRootViewController(animated: false)
         navController.pushViewController(resultsViewController, animated: true)

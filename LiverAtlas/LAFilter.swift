@@ -1,5 +1,5 @@
 //
-//  LiverAtlasFilter.swift
+//  LAFilter.swift
 //  LiverAtlas
 //
 //  Created by John on 11/20/16.
@@ -9,25 +9,25 @@
 import Foundation
 
 
-enum LiverAtlasFilterType {
+enum LAFilterType {
     case diagnosisCategory, structuralFeature, imagingFeature
 }
 
-struct LiverAtlasFilter: Hashable {
-    let filterType: LiverAtlasFilterType
+struct LAFilter: Hashable {
+    let filterType: LAFilterType
     let filterString: String
     
     var hashValue: Int {
         return (31 &* filterType.hashValue) &+ filterString.hashValue
     }
 }
-func ==(lhs: LiverAtlasFilter, rhs: LiverAtlasFilter) -> Bool {
+func ==(lhs: LAFilter, rhs: LAFilter) -> Bool {
     return lhs.filterType == rhs.filterType && lhs.filterString == rhs.filterString
 }
 
 
-struct LiverAtlasFilterGroup {
-    let filterType: LiverAtlasFilterType
-    let filters: [LiverAtlasFilter]
+struct LAFilterGroup {
+    let filterType: LAFilterType
+    let filters: [LAFilter]
 }
 

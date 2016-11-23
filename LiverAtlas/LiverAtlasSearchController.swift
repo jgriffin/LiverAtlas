@@ -1,5 +1,5 @@
 //
-//  LiverAtlasSearchController.swift
+//  LASearchController.swift
 //  LiverAtlas
 //
 //  Created by John on 11/19/16.
@@ -9,23 +9,23 @@
 import Foundation
 import UIKit
 
-protocol LiverAtlasSearchControllerDelegate {
+protocol LASearchControllerDelegate {
     
-    func didEndSearch(withCases: [LiverAtlasCase])
+    func didEndSearch(withCases: [LACase])
     
-    func didSelect(liverAtlasCase: LiverAtlasCase)
+    func didSelect(laCase: LACase)
 
 }
 
 
 
-class LiverAtlasSearchController: NSObject {
-    var delegate: LiverAtlasSearchControllerDelegate?
+class LASearchController: NSObject {
+    var delegate: LASearchControllerDelegate?
     
     var searchController: UISearchController!
     var searchResultsController: SearchResultsViewController!
     
-    init(delegate: LiverAtlasSearchControllerDelegate,
+    init(delegate: LASearchControllerDelegate,
          searchControllerDelegate: UISearchControllerDelegate) {
         
         self.delegate = delegate
@@ -36,7 +36,7 @@ class LiverAtlasSearchController: NSObject {
     
     func createSearchAndResultsControllers(searchControllerDelegate: UISearchControllerDelegate) {
         searchResultsController = SearchResultsViewController()
-        searchResultsController.casesToSearch = LiverAtlasIndex.instance.allCases
+        searchResultsController.casesToSearch = LAIndex.instance.allCases
         searchResultsController.tableView.delegate = self
         
         searchController = UISearchController(searchResultsController: searchResultsController)
@@ -49,6 +49,7 @@ class LiverAtlasSearchController: NSObject {
         searchBar.translatesAutoresizingMaskIntoConstraints = false
         searchBar.sizeToFit()
         searchBar.autocapitalizationType = .none
+        searchBar.showsCancelButton = true
         searchBar.delegate = self
     }
     
@@ -57,7 +58,7 @@ class LiverAtlasSearchController: NSObject {
     }
 }
 
-extension LiverAtlasSearchController: UISearchBarDelegate {
+extension LASearchController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
@@ -72,12 +73,12 @@ extension LiverAtlasSearchController: UISearchBarDelegate {
     }
 }
 
-extension LiverAtlasSearchController: UITableViewDelegate {
+extension LASearchController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let liverAtlasCase = searchResultsController.filteredCases[indexPath.item]
+        let laCase = searchResultsController.filteredCases[indexPath.item]
         
-        delegate?.didSelect(liverAtlasCase: liverAtlasCase)
+        delegate?.didSelect(laCase: laCase)
         searchController.isActive = false
     }
 

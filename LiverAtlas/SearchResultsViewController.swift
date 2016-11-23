@@ -9,14 +9,14 @@
 import UIKit
 
 class SearchResultsViewController: UITableViewController {
-    let searcher = LiverAtlasSearcher()
+    let searcher = LASearcher()
     
-    var casesToSearch: [LiverAtlasCase]! {
+    var casesToSearch: [LACase]! {
         didSet {
             filteredCases = casesToSearch
         }
     }
-    var filteredCases: [LiverAtlasCase]! {
+    var filteredCases: [LACase]! {
         didSet {
             tableView.reloadData()
         }
@@ -47,8 +47,8 @@ class SearchResultsViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: CaseResultTableViewCell.identifier,
                                                  for: indexPath) as! CaseResultTableViewCell
         
-        let liverAtlasCase = filteredCases[indexPath.item]
-        cell.configure(liverAtlasCase: liverAtlasCase)
+        let laCase = filteredCases[indexPath.item]
+        cell.configure(laCase: laCase)
         
         return cell
     }    

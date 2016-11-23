@@ -1,5 +1,5 @@
 //
-//  LiverAtlasFilterTests.swift
+//  LAFilterTests.swift
 //  LiverAtlas
 //
 //  Created by John on 11/20/16.
@@ -8,10 +8,10 @@
 
 import XCTest
 
-class LiverAtlasFilterTests: XCTestCase {
-    let allCases = LiverAtlasIndex.instance.allCases
-    let case6 = LiverAtlasIndex.instance.case6
-    let filterer = LiverAtlasFilterer(allCases: nil, modality: .ct)
+class LAFilterTests: XCTestCase {
+    let allCases = LAIndex.instance.allCases
+    let case6 = LAIndex.instance.case6
+    let filterer = LAFilterer(allCases: nil, modality: .ct)
     
     func testFilterGroups() {
         let filterGroups = filterer.filterGroups(fromAllModalityCases: [case6], withModality: .ct)
@@ -37,5 +37,12 @@ class LiverAtlasFilterTests: XCTestCase {
         let filteredCases = filterer.filteredCases(fromCases: allCases, passingFilter: firstFilter)
         XCTAssertEqual(filteredCases.count, 1)
     }
+
+    func casesByDiagnosis() {
+        let byDiagnosis = filterer.modalityFilteredCasesByDiagnoses
+        
+        XCTAssertEqual(byDiagnosis.count, 352)
+    }
+    
 
 }

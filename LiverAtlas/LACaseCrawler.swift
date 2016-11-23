@@ -1,5 +1,5 @@
 //
-//  LiverAtlasCaseCrawler.swift
+//  LACaseCrawler.swift
 //  LiverAtlas
 //
 //  Created by John on 11/16/16.
@@ -9,35 +9,35 @@
 import UIKit
 
 
-class LiverAtlasCaseCrawler: NSObject, URLSessionDelegate, URLSessionTaskDelegate {
-    static var instance: LiverAtlasCaseCrawler = LiverAtlasCaseCrawler()
+class LACaseCrawler: NSObject, URLSessionDelegate, URLSessionTaskDelegate {
+    static var instance: LACaseCrawler = LACaseCrawler()
     lazy var session: URLSession = self.createURLSession()
     
     // LiverAtlas objects
 
-    let liverAtlasIndexUrl = URL(string:"http://liveratlas.org/api/cases/")!
+    let laIndexUrl = URL(string:"http://liveratlas.org/api/cases/")!
     
-    func loadLiverAtlasIndex(completion: @escaping ([LiverAtlasIndexItem]?) -> Void) {
-        loadLiverAtlasIndexJson { atlasIndexJson in
+    func loadLAIndex(completion: @escaping ([LAIndexItem]?) -> Void) {
+        loadLAIndexJson { atlasIndexJson in
             guard let _ = atlasIndexJson,
-                let atlasIndex = LiverAtlasJsonHelper.liverAtlasIndex(fromJson: atlasIndexJson!) else {
+                let atlasIndex = LAJsonHelper.laIndex(fromJson: atlasIndexJson!) else {
                     return completion(nil)
             }
             completion(atlasIndex)
         }
     }
 
-    func loadLiverAtlasCase(indexItem: LiverAtlasIndexItem, callback: @escaping (LiverAtlasCase?) -> Void) {
-        loadLiverAtlasCase(url: indexItem.url, callback: callback)
+    func loadLACase(indexItem: LAIndexItem, callback: @escaping (LACase?) -> Void) {
+        loadLACase(url: indexItem.url, callback: callback)
     }
     
-    func loadLiverAtlasCase(url: URL, callback: @escaping (LiverAtlasCase?) -> Void) {
+    func loadLACase(url: URL, callback: @escaping (LACase?) -> Void) {
         
-        loadLiverAtlasCaseJson(url: url) { dowloadedJsonDictionary in
+        loadLACaseJson(url: url) { dowloadedJsonDictionary in
             assert(Thread.isMainThread)
             guard
                 let jsonDictionary = dowloadedJsonDictionary,
-                let atlasCase = LiverAtlasJsonHelper.liverAtlasCase(fromJson: jsonDictionary) else {
+                let atlasCase = LAJsonHelper.laCase(fromJson: jsonDictionary) else {
                     callback(nil)
                     return
             }
@@ -45,24 +45,24 @@ class LiverAtlasCaseCrawler: NSObject, URLSessionDelegate, URLSessionTaskDelegat
         }
     }
 
-    func loadAllLiverAtlasCases(forIndexItems indexItems: [LiverAtlasIndexItem],
-                                completion: @escaping ([LiverAtlasCase]?) -> Void) {
+    func loadAllLACases(forIndexItems indexItems: [LAIndexItem],
+                                completion: @escaping ([LACase]?) -> Void) {
         
-        loadAllLiverAtlasCasesJson(forIndexItems: indexItems) { (jsonCasesDictionaryArray: [[String: AnyObject]]?) in
+        loadAllLACasesJson(forIndexItems: indexItems) { (jsonCasesDictionaryArray: [[String: AnyObject]]?) in
             assert(Thread.isMainThread)
             guard let _ = jsonCasesDictionaryArray else {
                 completion(nil)
                 return
             }
             
-            let liverAtlasCases = jsonCasesDictionaryArray!.map {
-                LiverAtlasJsonHelper.liverAtlasCase(fromJson: $0)!
+            let laCases = jsonCasesDictionaryArray!.map {
+                LAJsonHelper.laCase(fromJson: $0)!
             }
-            completion(liverAtlasCases)
+            completion(laCases)
         }
     }
     
-    func loadLiverAtlasImageForURL(imageURL: URL, callback: @escaping (UIImage?) -> Void) {
+    func loadLAImageForURL(imageURL: URL, callback: @escaping (UIImage?) -> Void) {
         
         let downloadImageTask = session.dataTask(with: imageURL) { (data, reponse, error) in
             var imageResult: UIImage?
@@ -83,8 +83,8 @@ class LiverAtlasCaseCrawler: NSObject, URLSessionDelegate, URLSessionTaskDelegat
 
     // Json objects
     
-    func loadLiverAtlasIndexJson(completion: @escaping ([[String: AnyObject]]?) -> Void) {
-        let fetchIndexTask = session.dataTask(with: liverAtlasIndexUrl) { (data, response, error) in
+    func loadLAIndexJson(completion: @escaping ([[String: AnyObject]]?) -> Void) {
+        let fetchIndexTask = session.dataTask(with: laIndexUrl) { (data, response, error) in
             assert(!Thread.isMainThread)
             
             var indexItemsResponse: [[String: AnyObject]]?
@@ -114,7 +114,7 @@ class LiverAtlasCaseCrawler: NSObject, URLSessionDelegate, URLSessionTaskDelegat
         fetchIndexTask.resume()
     }
     
-    func loadLiverAtlasCaseJson(url: URL, callback: @escaping ([String: AnyObject]?) -> Void) {
+    func loadLACaseJson(url: URL, callback: @escaping ([String: AnyObject]?) -> Void) {
         
         let downloadImageTask = session.dataTask(with: url) { (data, reponse, error) in
             guard
@@ -134,33 +134,33 @@ class LiverAtlasCaseCrawler: NSObject, URLSessionDelegate, URLSessionTaskDelegat
         downloadImageTask.resume()
     }
 
-    func loadAllLiverAtlasCasesJson(forIndexItems indexItems: [LiverAtlasIndexItem],
+    func loadAllLACasesJson(forIndexItems indexItems: [LAIndexItem],
                                     completion: @escaping ([[String: AnyObject]]?) -> Void) {
         
         // the fetcher groups allow us to know whether fetches are in progress
         let fetcherGroup = DispatchGroup()
         
-        var liverAtlasCases = [[String: AnyObject]]()
+        var laCases = [[String: AnyObject]]()
         
         for indexItem in indexItems {
             fetcherGroup.enter()
             
-            loadLiverAtlasCaseJson(url: indexItem.url, callback: { (liverAtlasCaseJson) in
+            loadLACaseJson(url: indexItem.url, callback: { (laCaseJson) in
                 assert(Thread.isMainThread)
-                guard let liverCase = liverAtlasCaseJson else {
+                guard let liverCase = laCaseJson else {
                     NSLog("error downloading indexItem: \(indexItem.pk)")
                     fetcherGroup.leave()
                     return
                 }
                 
-                liverAtlasCases.append(liverCase)
+                laCases.append(liverCase)
                 fetcherGroup.leave()
             })
             
         }
         
         fetcherGroup.notify(queue: DispatchQueue.main, execute: {
-            completion(liverAtlasCases)
+            completion(laCases)
         })
     }
     

@@ -1,5 +1,5 @@
 //
-//  LiverAtlasCasesTests.swift
+//  LACasesTests.swift
 //  LiverAtlas
 //
 //  Created by John on 11/15/16.
@@ -8,7 +8,7 @@
 
 import XCTest
 
-class LiverAtlasIndexTests: XCTestCase {
+class LAIndexTests: XCTestCase {
     let casesFilename = "liveratlas_api_cases"
     
     func jsonArrayForResource(filename: String) -> NSArray! {
@@ -25,7 +25,7 @@ class LiverAtlasIndexTests: XCTestCase {
 
     func testLoadCaseIndexItemFromJson() {
         let firstJsonItem = jsonArrayForResource(filename: casesFilename)!.firstObject! as! [String: AnyObject]
-        let caseIndexItem = LiverAtlasJsonHelper.liverAtlasIndexItem(fromJson: firstJsonItem)
+        let caseIndexItem = LAJsonHelper.laIndexItem(fromJson: firstJsonItem)
         XCTAssertNotNil(caseIndexItem)
     }
 
@@ -33,23 +33,21 @@ class LiverAtlasIndexTests: XCTestCase {
         let jsonArray = jsonArrayForResource(filename: casesFilename)!
         XCTAssertEqual(jsonArray.count, 352)
 
-        let cases = LiverAtlasJsonHelper.liverAtlasIndex(fromJson: jsonArray)
+        let cases = LAJsonHelper.laIndex(fromJson: jsonArray)
         XCTAssertEqual(cases?.count, 352)
     }
 
-    func testLiverAtlasIndex() {
-        let index = LiverAtlasIndex()
+    func testLAIndex() {
+        let index = LAIndex()
         
         XCTAssertEqual(index.indexItems.count, 352)
     }
 
-    func testLiverAtlasIndexAllCases() {
-        let index = LiverAtlasIndex()
+    func testLAIndexAllCases() {
+        let index = LAIndex()
         
         XCTAssertEqual(index.allCases.count, 352)
     }
-
-    
     
     
 

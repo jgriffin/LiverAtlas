@@ -251,11 +251,11 @@ struct LAJsonHelper {
         }
         
         return LAImage(id: id,
-                               image: imageURL,
-                               imagePhase: imagePhase,
-                               imageCaption: imageCaption,
-                               order: order,
-                               modifiedDate: modifiedDate)
+                       imageURL: imageURL,
+                       imagePhase: imagePhase,
+                       imageCaption: imageCaption,
+                       order: order,
+                       modifiedDate: modifiedDate)
     }
 
     //

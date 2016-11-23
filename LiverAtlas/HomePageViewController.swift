@@ -17,10 +17,7 @@ class HomePageViewController: UIViewController {
 
     var activeFilters = [LAFilter]()
     
-    lazy var laSearchController: LASearchController = {
-        self.createSearchController()
-    }()
-    
+    lazy var laSearchController: LASearchController = { self.createSearchController() }()
     var hiddenRightBarButtonItems: [UIBarButtonItem]?
 
     override func viewDidLoad() {
@@ -73,6 +70,7 @@ extension HomePageViewController: UISearchControllerDelegate, LASearchController
         navigationItem.titleView = nil
         navigationItem.hidesBackButton = false
         navigationItem.rightBarButtonItems = hiddenRightBarButtonItems
+        hiddenRightBarButtonItems = nil
     }
     
     func didSelect(laCase: LACase) {

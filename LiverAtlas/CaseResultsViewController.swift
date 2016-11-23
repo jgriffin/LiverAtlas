@@ -16,7 +16,7 @@ class CaseResultsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableViewHeaderResultSummaryLabel: UILabel!
     
-    lazy var searchController: LASearchController = { self.createSearchController() }()
+    lazy var laSearchController: LASearchController = { self.createSearchController() }()
     var hiddenRightBarButtonItems: [UIBarButtonItem]?
     
     var laCases: [LACase]? {
@@ -49,16 +49,8 @@ class CaseResultsViewController: UIViewController {
 
     @IBAction func searchAction(_ sender: Any) {
         definesPresentationContext = true
-        
-        let searchBar = searchController.searchController.searchBar
-        searchBar.sizeToFit()
-        navigationItem.titleView = searchBar
-        navigationItem.hidesBackButton = true
-        
-        hiddenRightBarButtonItems = navigationItem.rightBarButtonItems
-        navigationItem.rightBarButtonItem = nil
 
-        searchController.searchCases()
+        laSearchController.searchCases()
     }
     
     @IBAction func homeAction(_ sender: Any) {
@@ -127,13 +119,25 @@ extension CaseResultsViewController: UISearchControllerDelegate {
     }
     
     func presentSearchController(_ searchController: UISearchController) {
-//        searchController.searchBar.becomeFirstResponder()
+        guard let _ = navigationItem.titleView  else {
+            // already presented
+            return
+        }
+        
+        navigationItem.titleView = searchController.searchBar
+        navigationItem.hidesBackButton = true
+        
+        hiddenRightBarButtonItems = navigationItem.rightBarButtonItems
+        navigationItem.rightBarButtonItems = nil
+        
+        searchController.searchBar.becomeFirstResponder()
     }
     
     func didDismissSearchController(_ searchController: UISearchController) {
         navigationItem.titleView = nil
         navigationItem.hidesBackButton = false
         navigationItem.rightBarButtonItems = hiddenRightBarButtonItems
+        hiddenRightBarButtonItems = nil
     }
 }
 

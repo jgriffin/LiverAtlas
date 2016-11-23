@@ -15,7 +15,20 @@ class ImagingViewController: UIViewController {
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var imageView: UIImageView!
     
-    func loadWithImage(imageURL: URL) {
+    var laImage: LAImage! {
+        didSet {
+            loadWithImage(imageURL: laImage.imageURL)
+        }
+    }
+    
+    
+    func configure(laImage: LAImage) {
+        self.laImage = laImage
+    }
+        
+    // helpers
+    
+    private func loadWithImage(imageURL: URL) {
         LACaseCrawler.instance.loadLAImageForURL(imageURL: imageURL) { [weak self] image in
             assert(Thread.isMainThread)
             guard let _ = image else {
@@ -25,7 +38,7 @@ class ImagingViewController: UIViewController {
         }
     }
     
-    func loadImage(image: UIImage) {
+    private func loadImage(image: UIImage) {
         let size = image.size
         
         self.imageView.image = image

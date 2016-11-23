@@ -143,7 +143,7 @@ extension CaseDetailsViewController: UICollectionViewDelegate {
         switch segue.identifier {
         case .some(CaseDetailsViewController.showImagingSequeIdentifier):
             if let image = sender as? LAImage {
-                (segue.destination as? ImagingViewController)?.loadWithImage(imageURL: image.image)
+                (segue.destination as? ImagingViewController)?.configure(laImage: image)
             }
             break
         default:

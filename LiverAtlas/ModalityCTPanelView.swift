@@ -54,11 +54,11 @@ extension CTModalityPanelView: UICollectionViewDataSource {
 
 extension CTModalityPanelView:  UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let imageURL = ctmodality.images[indexPath.item].image
+        let laImage = ctmodality.images[indexPath.item]
 
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let imagingController = storyboard.instantiateViewController(withIdentifier: ImagingViewController.identifier) as! ImagingViewController
-        imagingController.loadWithImage(imageURL: imageURL)
+        imagingController.configure(laImage: laImage)
         
         parentNavigationController?.pushViewController(imagingController, animated: true)
     }

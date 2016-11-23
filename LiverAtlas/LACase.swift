@@ -128,7 +128,7 @@ struct LAUSModality {
 
 struct LAImage {
     let id: Int
-    let image: URL
+    let imageURL: URL
     let imagePhase: String
     let imageCaption: String
     let order: Int

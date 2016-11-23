@@ -27,7 +27,7 @@ class CaseResultImageCollectionViewCell: UICollectionViewCell {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         self.contentView.addSubview(imageView)
         
-        let views = ["imageView": imageView]
+        let views = ["imageView": imageView!]
         let visualFormats = ["H:|[imageView]|", "V:|[imageView]|"]
         let constraints = visualFormats.flatMap { (visualFormat) -> [NSLayoutConstraint] in
             NSLayoutConstraint.constraints(withVisualFormat: visualFormat,
@@ -41,9 +41,9 @@ class CaseResultImageCollectionViewCell: UICollectionViewCell {
         self.laImage = laImage
         self.imageView.image = nil
         
-        LACaseCrawler.instance.loadLAImageForURL(imageURL: laImage.image) { [weak self] (image: UIImage?)  in
+        LACaseCrawler.instance.loadLAImageForURL(imageURL: laImage.imageURL) { [weak self] (image: UIImage?)  in
             assert(Thread.isMainThread)
-            guard laImage.image == self?.laImage.image else {
+            guard laImage.imageURL == self?.laImage.imageURL else {
                     return
             }
 

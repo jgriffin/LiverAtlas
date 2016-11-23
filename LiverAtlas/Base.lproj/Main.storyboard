@@ -498,31 +498,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" alwaysBounceHorizontal="YES" minimumZoomScale="0.5" maximumZoomScale="6" translatesAutoresizingMaskIntoConstraints="NO" id="5Bu-P3-cWA">
-                                <rect key="frame" x="0.0" y="-2" width="375" height="667"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" alwaysBounceVertical="YES" alwaysBounceHorizontal="YES" maximumZoomScale="5" translatesAutoresizingMaskIntoConstraints="NO" id="5Bu-P3-cWA">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qWP-Ow-Hrr" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="755"/>
-                                        <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" placeholderIntrinsicWidth="482" placeholderIntrinsicHeight="755" translatesAutoresizingMaskIntoConstraints="NO" id="0bU-5G-sPI">
-                                                <rect key="frame" x="-53.5" y="0.0" width="482" height="755"/>
-                                            </imageView>
-                                        </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstItem="0bU-5G-sPI" firstAttribute="centerX" secondItem="qWP-Ow-Hrr" secondAttribute="centerX" id="2w1-Qf-XGO"/>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" secondItem="0bU-5G-sPI" secondAttribute="height" id="4JX-gp-qAW"/>
-                                            <constraint firstItem="0bU-5G-sPI" firstAttribute="centerY" secondItem="qWP-Ow-Hrr" secondAttribute="centerY" id="TnW-Iv-qpi"/>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" secondItem="0bU-5G-sPI" secondAttribute="width" priority="750" id="ZOc-wa-9cj"/>
-                                        </constraints>
-                                    </view>
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="482" placeholderIntrinsicHeight="755" translatesAutoresizingMaskIntoConstraints="NO" id="0bU-5G-sPI">
+                                        <rect key="frame" x="0.0" y="0.0" width="482" height="755"/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.031372549020000001" green="0.027450980390000001" blue="0.074509803920000006" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="qWP-Ow-Hrr" firstAttribute="top" secondItem="5Bu-P3-cWA" secondAttribute="top" id="ItD-tO-Mky"/>
-                                    <constraint firstAttribute="trailing" secondItem="qWP-Ow-Hrr" secondAttribute="trailing" id="Px2-VJ-xD4"/>
-                                    <constraint firstItem="qWP-Ow-Hrr" firstAttribute="leading" secondItem="5Bu-P3-cWA" secondAttribute="leading" id="aGb-6P-80e"/>
-                                    <constraint firstAttribute="bottom" secondItem="qWP-Ow-Hrr" secondAttribute="bottom" id="yCN-Vv-fIn"/>
+                                    <constraint firstAttribute="trailing" secondItem="0bU-5G-sPI" secondAttribute="trailing" id="SYx-0I-pi9"/>
+                                    <constraint firstAttribute="bottom" secondItem="0bU-5G-sPI" secondAttribute="bottom" id="Sb9-d6-rIm"/>
+                                    <constraint firstItem="0bU-5G-sPI" firstAttribute="top" secondItem="5Bu-P3-cWA" secondAttribute="top" id="uoV-pu-Utq"/>
+                                    <constraint firstItem="0bU-5G-sPI" firstAttribute="leading" secondItem="5Bu-P3-cWA" secondAttribute="leading" id="yhj-aS-Q7v"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="delegate" destination="FQ5-a5-NfL" id="MvF-y8-3IC"/>
@@ -532,15 +520,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="5Bu-P3-cWA" secondAttribute="trailing" id="CQ1-4g-49Y"/>
+                            <constraint firstItem="0bU-5G-sPI" firstAttribute="width" relation="greaterThanOrEqual" secondItem="sRL-wi-YxU" secondAttribute="width" priority="750" id="CRp-HP-ZXk"/>
                             <constraint firstItem="5Bu-P3-cWA" firstAttribute="leading" secondItem="sRL-wi-YxU" secondAttribute="leading" id="IlS-S3-qIV"/>
-                            <constraint firstItem="qWP-Ow-Hrr" firstAttribute="width" secondItem="sRL-wi-YxU" secondAttribute="width" priority="750" id="KSc-Fi-MRj"/>
                             <constraint firstAttribute="bottom" secondItem="5Bu-P3-cWA" secondAttribute="bottom" id="WDP-O6-vwm"/>
                             <constraint firstItem="5Bu-P3-cWA" firstAttribute="top" secondItem="sRL-wi-YxU" secondAttribute="top" id="eqP-5o-Q7i"/>
-                            <constraint firstItem="qWP-Ow-Hrr" firstAttribute="height" secondItem="sRL-wi-YxU" secondAttribute="height" priority="750" id="rlQ-Ax-ALx"/>
+                            <constraint firstItem="0bU-5G-sPI" firstAttribute="height" relation="greaterThanOrEqual" secondItem="sRL-wi-YxU" secondAttribute="height" priority="750" id="nHZ-qw-lYA"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="contentView" destination="qWP-Ow-Hrr" id="Koo-MT-qDA"/>
                         <outlet property="imageView" destination="0bU-5G-sPI" id="T2u-xf-1JI"/>
                         <outlet property="scrollView" destination="5Bu-P3-cWA" id="EcT-CE-XHF"/>
                     </connections>

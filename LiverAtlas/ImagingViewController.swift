@@ -25,7 +25,20 @@ class ImagingViewController: UIViewController {
     func configure(laImage: LAImage) {
         self.laImage = laImage
     }
-        
+
+    var hidesBarOnTapSave: Bool?
+    override func viewWillAppear(_ animated: Bool) {
+        hidesBarOnTapSave = navigationController?.hidesBarsOnTap
+        navigationController?.hidesBarsOnTap = true
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        if let _ = hidesBarOnTapSave {
+            navigationController?.hidesBarsOnTap = hidesBarOnTapSave!
+        }
+    }
+    
+    
     // helpers
     
     private func loadWithImage(imageURL: URL) {

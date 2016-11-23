@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let _ = splitViewController.viewControllers.first! as! UINavigationController
         let detailsNavigationController = splitViewController.viewControllers.last! as! UINavigationController
         detailsNavigationController.hidesBarsOnTap = true
-
+        
         let firstDetailsPage = detailsNavigationController.topViewController!
         firstDetailsPage.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
         firstDetailsPage.navigationItem.leftItemsSupplementBackButton = true

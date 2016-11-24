@@ -62,30 +62,21 @@ extension AppDelegate: UISplitViewControllerDelegate {
     func splitViewController(_ splitViewController: UISplitViewController,
                              collapseSecondary secondaryViewController:UIViewController,
                              onto primaryViewController:UIViewController) -> Bool {
-        guard let secondaryAsNavController = secondaryViewController as? UINavigationController else { return false
-        }
-        guard (secondaryAsNavController.topViewController as? HomePageViewController) != nil else {
-            return false
-        }
-//        if topAsDetailController.detailItem == nil {
-//            // Return true to indicate that we have handled the collapse by doing nothing; the secondary controller will be discarded.
-            return true
-//        }
-
         return false
-        
-//        
-//        guard let secondaryAsNavController = secondaryViewController as? UINavigationController,
-//            let topAsCaseDetailController = secondaryAsNavController.topViewController as? CaseDetailsViewController else {
-//                return false
-//        }
-//        
-//        if topAsCaseDetailController.laCase == nil {
-//            topAsCaseDetailController.laCase = LAIndex.instance.case6
-//            // Return true to indicate that we have handled the collapse by doing nothing; the secondary controller will be discarded.
-//            return true
-//        }
-//        return false
+    }
+    
+    func targetDisplayModeForAction(in svc: UISplitViewController) -> UISplitViewControllerDisplayMode {
+        switch svc.displayMode {
+        case .allVisible:
+            return .primaryHidden
+        case .primaryHidden:
+            break
+        case .primaryOverlay:
+            break
+        case .automatic:
+            fatalError("display mode can't be automatic")
+        }
+        return .automatic
     }
 }
 

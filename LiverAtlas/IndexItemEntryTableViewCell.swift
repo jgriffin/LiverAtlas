@@ -30,7 +30,7 @@ class IndexItemEntryTableViewCell: UITableViewCell {
     
     override func updateConstraints() {
         print("ran updateConstraints")
-        
+        super.updateConstraints()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

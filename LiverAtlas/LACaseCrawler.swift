@@ -1,5 +1,5 @@
 //
-//  LACaseCrawler.swift
+//  LACaseFetcher.swift
 //  LiverAtlas
 //
 //  Created by John on 11/16/16.
@@ -9,8 +9,8 @@
 import UIKit
 
 
-class LACaseCrawler: NSObject, URLSessionDelegate, URLSessionTaskDelegate {
-    static var instance: LACaseCrawler = LACaseCrawler()
+class LACaseFetcher: NSObject, URLSessionDelegate, URLSessionTaskDelegate {
+    static var instance: LACaseFetcher = LACaseFetcher()
     lazy var session: URLSession = self.createURLSession()
     
     // LiverAtlas objects
@@ -62,13 +62,22 @@ class LACaseCrawler: NSObject, URLSessionDelegate, URLSessionTaskDelegate {
         }
     }
     
-    func loadLAImageForURL(imageURL: URL, callback: @escaping (UIImage?) -> Void) {
+    // images
+    
+    var imageURLCache = NSCache<NSString, UIImage>()
+    
+    func loadLAImageForURL(imageURL: URL, callback: @escaping (UIImage?, Bool) -> Void) {
+        
+        if let image = imageURLCache.object(forKey: imageURL.absoluteString as NSString) {
+            return callback(image, true)
+        }
+        
         
         let downloadImageTask = session.dataTask(with: imageURL) { (data, reponse, error) in
             var imageResult: UIImage?
             defer {
                 DispatchQueue.main.async {
-                    callback(imageResult)
+                    callback(imageResult, false)
                 }
             }
             
@@ -77,6 +86,7 @@ class LACaseCrawler: NSObject, URLSessionDelegate, URLSessionTaskDelegate {
             }
             
             imageResult = UIImage(data: data!)
+            self.imageURLCache.setObject(imageResult!, forKey: imageURL.absoluteString as NSString)
         }
         downloadImageTask.resume()
     }

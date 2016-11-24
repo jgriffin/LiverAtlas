@@ -1,5 +1,5 @@
 //
-//  LACaseCrawlerTests.swift
+//  LACaseFetcherTests.swift
 //  LiverAtlas
 //
 //  Created by John on 11/16/16.
@@ -8,10 +8,10 @@
 
 import XCTest
 
-class LACaseCrawlerTests: XCTestCase {
+class LACaseFetcherTests: XCTestCase {
     
     func testFetchIndex() {
-        let crawler = LACaseCrawler()
+        let crawler = LACaseFetcher()
         
         let expectation = self.expectation(description: "Index Fetcher")
 
@@ -28,7 +28,7 @@ class LACaseCrawlerTests: XCTestCase {
     func testFetchSomeCasesFromIndexItems() {
         let someIndexItems = Array(LAIndex().loadLAIndexItemsFromResourceFile().prefix(3))
         
-        let crawler = LACaseCrawler()
+        let crawler = LACaseFetcher()
         let expectation = self.expectation(description: "Case Crawler working")
         
         crawler.loadAllLACases(forIndexItems: someIndexItems) { (caseItems) in
@@ -45,7 +45,7 @@ class LACaseCrawlerTests: XCTestCase {
             let allIndexItems = LAIndex().loadLAIndexItemsFromResourceFile()
             XCTAssertEqual(allIndexItems.count, 352)
 
-            let crawler = LACaseCrawler()
+            let crawler = LACaseFetcher()
             let expectation = self.expectation(description: "Case Crawler working")
             
             crawler.loadAllLACases(forIndexItems: allIndexItems) { (caseItems) in
@@ -59,7 +59,7 @@ class LACaseCrawlerTests: XCTestCase {
     }
     
     func slow_testFetchAllCasesFromIndexItemsToJson() {
-        let crawler = LACaseCrawler()
+        let crawler = LACaseFetcher()
         let expectation = self.expectation(description: "Case Crawler working")
         
         let allIndexItems = LAIndex().loadLAIndexItemsFromResourceFile()

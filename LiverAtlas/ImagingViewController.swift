@@ -42,7 +42,7 @@ class ImagingViewController: UIViewController {
     // helpers
     
     private func loadWithImage(imageURL: URL) {
-        LACaseCrawler.instance.loadLAImageForURL(imageURL: imageURL) { [weak self] image in
+        LACaseFetcher.instance.loadLAImageForURL(imageURL: imageURL) { [weak self] (image, wasCached) in
             assert(Thread.isMainThread)
             guard let _ = image else {
                 return

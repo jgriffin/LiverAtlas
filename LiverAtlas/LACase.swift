@@ -24,12 +24,14 @@ struct LACase {
 extension LACase {
 
     func imagesForModality(modality: LAModality) -> [LAImage] {
-        // TODO: select only one modality
-        let ctImages = self.ctmodality.flatMap { $0.images }
-        let mrImages = self.ctmodality.flatMap { $0.images }
-        let usImages = self.ctmodality.flatMap { $0.images }
-        
-        return Array([ctImages, mrImages, usImages].joined())
+        switch modality {
+        case .ct:
+            return ctmodality.flatMap { $0.images }
+        case .mr:
+            return mrmodality.flatMap { $0.images }
+        case .us:
+            return usmodality.flatMap { $0.images }
+        }
     }
     
     func imagingFeaturesForModality(modality: LAModality) -> [LAImagingFeature] {

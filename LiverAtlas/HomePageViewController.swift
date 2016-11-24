@@ -23,7 +23,7 @@ class HomePageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        definesPresentationContext = true
+//        definesPresentationContext = true
     }
 
     @IBAction func searchCases(_ sender: Any) {

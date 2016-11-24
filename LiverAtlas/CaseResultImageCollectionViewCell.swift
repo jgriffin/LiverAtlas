@@ -41,7 +41,7 @@ class CaseResultImageCollectionViewCell: UICollectionViewCell {
         self.laImage = laImage
         self.imageView.image = nil
         
-        LACaseCrawler.instance.loadLAImageForURL(imageURL: laImage.imageURL) { [weak self] (image: UIImage?)  in
+        LACaseFetcher.instance.loadLAImageForURL(imageURL: laImage.imageURL) { [weak self] (image: UIImage?, wasCached: Bool)  in
             assert(Thread.isMainThread)
             guard laImage.imageURL == self?.laImage.imageURL else {
                     return
@@ -50,7 +50,8 @@ class CaseResultImageCollectionViewCell: UICollectionViewCell {
             self?.imageView.alpha = 0.0
             self?.imageView.image = image
             
-            UIView.animate(withDuration: 0.25, animations: {
+            let duration = wasCached ? 0.0 : 0.25
+            UIView.animate(withDuration: duration, animations: {
                 self?.imageView.alpha = 1.0
             })
         }

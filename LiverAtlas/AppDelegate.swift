@@ -21,9 +21,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let splitViewController = self.window!.rootViewController as! UISplitViewController
         splitViewController.delegate = self
 
-        let _ = splitViewController.viewControllers.first! as! UINavigationController
+//        let masterNavigationController = splitViewController.viewControllers.first! as! UINavigationController
+//        let _ = masterNavigationController.topViewController as! FiltersViewController
+//        
         let detailsNavigationController = splitViewController.viewControllers.last! as! UINavigationController
-        detailsNavigationController.hidesBarsOnTap = true
+//        detailsNavigationController.hidesBarsOnTap = true
         
         let firstDetailsPage = detailsNavigationController.topViewController!
         firstDetailsPage.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
@@ -60,17 +62,30 @@ extension AppDelegate: UISplitViewControllerDelegate {
     func splitViewController(_ splitViewController: UISplitViewController,
                              collapseSecondary secondaryViewController:UIViewController,
                              onto primaryViewController:UIViewController) -> Bool {
-        guard let secondaryAsNavController = secondaryViewController as? UINavigationController,
-            let topAsCaseDetailController = secondaryAsNavController.topViewController as? CaseDetailsViewController else {
-                return false
+        guard let secondaryAsNavController = secondaryViewController as? UINavigationController else { return false
         }
-        
-        if topAsCaseDetailController.laCase == nil {
-            topAsCaseDetailController.laCase = LAIndex.instance.case6
-            // Return true to indicate that we have handled the collapse by doing nothing; the secondary controller will be discarded.
+        guard (secondaryAsNavController.topViewController as? HomePageViewController) != nil else {
+            return false
+        }
+//        if topAsDetailController.detailItem == nil {
+//            // Return true to indicate that we have handled the collapse by doing nothing; the secondary controller will be discarded.
             return true
-        }
+//        }
+
         return false
+        
+//        
+//        guard let secondaryAsNavController = secondaryViewController as? UINavigationController,
+//            let topAsCaseDetailController = secondaryAsNavController.topViewController as? CaseDetailsViewController else {
+//                return false
+//        }
+//        
+//        if topAsCaseDetailController.laCase == nil {
+//            topAsCaseDetailController.laCase = LAIndex.instance.case6
+//            // Return true to indicate that we have handled the collapse by doing nothing; the secondary controller will be discarded.
+//            return true
+//        }
+//        return false
     }
 }
 

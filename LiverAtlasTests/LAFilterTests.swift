@@ -10,11 +10,11 @@ import XCTest
 
 class LAFilterTests: XCTestCase {
     let allCases = LAIndex.instance.allCases
-    let case6 = LAIndex.instance.case6
     let filterer = LAFilterer(allCases: nil, modality: .ct)
     
     func testFilterGroups() {
-        let filterGroups = filterer.filterGroups(fromAllModalityCases: [case6], withModality: .ct)
+        let case6FilteredCases = FilteredCases(cases: [LAIndex.instance.case6], modality: .ct, filters: [])
+        let filterGroups = filterer.filterGroups(fromFilteredCases: case6FilteredCases)
         
         let diagnosisGroup = filterGroups[0]
         XCTAssertEqual(diagnosisGroup.filterType, .diagnosisCategory)
@@ -23,7 +23,8 @@ class LAFilterTests: XCTestCase {
     }
 
     func testAllFilterGroups() {
-        let filterGroups = filterer.filterGroups(fromAllModalityCases: allCases, withModality: .ct)
+        let allCTFilteredCases = FilteredCases(cases: allCases, modality: .ct, filters: [])
+        let filterGroups = filterer.filterGroups(fromFilteredCases: allCTFilteredCases)
         
         XCTAssertEqual(filterGroups.count, 3)
         let diagnosisGroup = filterGroups[0]
@@ -31,11 +32,13 @@ class LAFilterTests: XCTestCase {
     }
 
     func testFilteredCases() {
-        let filterGroups = filterer.filterGroups(fromAllModalityCases: allCases, withModality: .ct)
+        let allCTFilteredCases = FilteredCases(cases: allCases, modality: .ct, filters: [])
+        let filterGroups = filterer.filterGroups(fromFilteredCases: allCTFilteredCases)
         let firstFilter = filterGroups.first!.filters.first!
         
-        let filteredCases = filterer.filteredCases(fromCases: allCases, passingFilter: firstFilter)
-        XCTAssertEqual(filteredCases.count, 1)
+        let filteredCases = filterer.filteredCases(fromFilteredCases: allCTFilteredCases,
+                                                   passingFilter: firstFilter)
+        XCTAssertEqual(filteredCases.cases.count, 1)
     }
 
     func casesByDiagnosis() {

@@ -29,9 +29,9 @@ class CaseResultTableViewCell: UITableViewCell {
                                       forCellWithReuseIdentifier: CaseResultTableViewCell.resultTableViewImageCellIdentifier)
     }
     
-    func configure(laCase: LACase) {
+    func configure(laCase: LACase, modalityFilter: LAModality) {
         self.laCase = laCase
-        self.laImages = laCase.imagesForModality(modality: .ct)
+        self.laImages = laCase.imagesForModality(modality: modalityFilter)
         imagesCollectionView.reloadData()
         
         titleLabel?.text = laCase.title

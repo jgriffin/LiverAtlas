@@ -8,6 +8,12 @@
 
 import Foundation
 
+struct FilteredCases {
+    let cases: [LACase]
+    let modality: LAModality
+    let filters: [LAFilter]
+}
+
 
 class LAFilterer {
     
@@ -28,19 +34,18 @@ class LAFilterer {
         }
     }
     
-    var modalityFilteredCases: [LACase] {
+    var modalityFilteredCases: FilteredCases {
         if _modalityFilteredCases == nil {
-            _modalityFilteredCases = filterCases(fromCases: allCases,
+            _modalityFilteredCases = filteredCases(fromCases: allCases,
                                                  withModality: activeModality)
         }
         return _modalityFilteredCases!
     }
-    var _modalityFilteredCases: [LACase]?
+    var _modalityFilteredCases: FilteredCases?
     
     var modalityFilterGroups: [LAFilterGroup] {
         if _modalityFilterGroups == nil {
-            _modalityFilterGroups = filterGroups(fromAllModalityCases: modalityFilteredCases,
-                                                 withModality: activeModality)
+            _modalityFilterGroups = filterGroups(fromFilteredCases: modalityFilteredCases)
         }
         return _modalityFilterGroups!
     }
@@ -48,7 +53,7 @@ class LAFilterer {
     
     var modalityFilteredCasesByDiagnoses: [LACaseByDiagnosis] {
         if _modalityByDiagnoses == nil {
-            _modalityByDiagnoses = casesByDiagnosis(fromCases: modalityFilteredCases)
+            _modalityByDiagnoses = casesByDiagnosis(fromFilteredCases: modalityFilteredCases)
         }
         
         return _modalityByDiagnoses!
@@ -60,9 +65,9 @@ class LAFilterer {
     var activeFilters =  Set<LAFilter>()
     var activeSearchTerm: String?
     
-    func filterCases(fromCases theCases: [LACase],
-                     withModality modality: LAModality) -> [LACase] {
-        return theCases.filter { (aCase: LACase) -> Bool in
+    func filteredCases(fromCases theCases: [LACase],
+                     withModality modality: LAModality) -> FilteredCases {
+        let filteredCases = theCases.filter { (aCase: LACase) -> Bool in
             switch modality {
             case .ct:
                 return !aCase.ctmodality.isEmpty
@@ -72,14 +77,14 @@ class LAFilterer {
                 return !aCase.usmodality.isEmpty
             }
         }
+        return FilteredCases(cases: filteredCases, modality: modality, filters: [])
     }
     
     // extract the filter groups from cases
     
-    func filterGroups(fromAllModalityCases theCases: [LACase],
-                      withModality modality: LAModality) -> [LAFilterGroup] {
+    func filterGroups(fromFilteredCases filteredCases: FilteredCases) -> [LAFilterGroup] {
         let diagnosisFiltersGroup: LAFilterGroup = {
-            let theDiagnoses = theCases.flatMap { $0.diagnosis.categories.map({ $0.title}) }
+            let theDiagnoses = filteredCases.cases.flatMap { $0.diagnosis.categories.map({ $0.title}) }
             let uniqueDiagnoses = Set(theDiagnoses).sorted()
             let diagnosesFilters = uniqueDiagnoses.map {
                 LAFilter(filterType: .diagnosisCategory, filterString: $0)
@@ -90,8 +95,8 @@ class LAFilterer {
         }()
         
         let structuralFiltersGroup: LAFilterGroup = {
-            let theStructuralFeatureNames = theCases.flatMap { (aCase: LACase) -> [String] in
-                aCase.structuralFeaturesForModality(modality: modality).map { $0.title }
+            let theStructuralFeatureNames = filteredCases.cases.flatMap { (aCase: LACase) -> [String] in
+                aCase.structuralFeaturesForModality(modality: filteredCases.modality).map { $0.title }
             }
             let uniqueStructuralFeatures = Set(theStructuralFeatureNames).sorted()
             let structuralFilters = uniqueStructuralFeatures.map { (featureName) -> LAFilter in
@@ -103,8 +108,8 @@ class LAFilterer {
         
         let imagingFiltersGroup: LAFilterGroup = {
             // imagine features group
-            let theImagingFeatureNames = theCases.flatMap { (aCase: LACase) -> [String] in
-                aCase.imagingFeaturesForModality(modality: modality).map { $0.title }
+            let theImagingFeatureNames = filteredCases.cases.flatMap { (aCase: LACase) -> [String] in
+                aCase.imagingFeaturesForModality(modality: filteredCases.modality).map { $0.title }
             }
             let uniqueImagingFeatures = Set(theImagingFeatureNames).sorted()
             let imagingFilters = uniqueImagingFeatures.map { (featureName) -> LAFilter in
@@ -118,7 +123,7 @@ class LAFilterer {
     
     // by diagnosis
     
-    func casesByDiagnosis(fromCases theCases: [LACase]) -> [LACaseByDiagnosis] {
+    func casesByDiagnosis(fromFilteredCases filteredCases: FilteredCases) -> [LACaseByDiagnosis] {
         
         let casesBySpecificDiagnosis = allCases.map { aCase -> LACaseByDiagnosis in
             return LACaseByDiagnosis.SpecificDiagnosis(diagnosis: aCase.diagnosis.diagnosis,
@@ -152,28 +157,33 @@ class LAFilterer {
     
     // filter a list of cases
     
-    func filteredCases(fromCases theCases: [LACase],
-                       passingFilter filter: LAFilter) -> [LACase] {
+    func filteredCases(fromFilteredCases filteredCases: FilteredCases,
+                       passingFilter filter: LAFilter) -> FilteredCases {
+        var cases: [LACase]
         switch filter.filterType {
         case .diagnosisCategory:
-            return filteredCases(fromCases: theCases, withDiagnosisContaining: filter.filterString)
+            cases = casesFiltered(fromCases: filteredCases.cases, withDiagnosisContaining: filter.filterString)
         case .structuralFeature:
-            return filteredCases(fromCases: theCases, withStructuralFeatureContaining: filter.filterString)
+            cases = casesFiltered(fromCases: filteredCases.cases, withStructuralFeatureContaining: filter.filterString)
         case .imagingFeature:
-            return filteredCases(fromCases: theCases, withImagingFeatureContaining: filter.filterString)
+            cases = casesFiltered(fromCases: filteredCases.cases, withImagingFeatureContaining: filter.filterString)
         }
+        
+        return FilteredCases(cases: cases, modality: filteredCases.modality, filters: filteredCases.filters + [filter])
     }
     
-    func filteredCases(fromCases theCases: [LACase],
-                       passingFilters filters: [LAFilter]) -> [LACase] {
-        var filteredCases: [LACase] = theCases
+    func filteredCases(fromFilteredCases: FilteredCases,
+                       passingFilters filters: [LAFilter]) -> FilteredCases {
+        var filteredCases = fromFilteredCases
         
         for filter in filters {
-            filteredCases = self.filteredCases(fromCases: filteredCases,
+            filteredCases = self.filteredCases(fromFilteredCases: filteredCases,
                                                passingFilter: filter)
-            if filteredCases.isEmpty {
+            if filteredCases.cases.isEmpty {
                 // no results - we're done already
-                return []
+                return FilteredCases(cases: [],
+                                     modality: fromFilteredCases.modality,
+                                     filters: fromFilteredCases.filters + filters)
             }
         }
         
@@ -185,15 +195,15 @@ class LAFilterer {
     // filter helpers
     
     
-    func filteredCases(fromCases theCases: [LACase],
-                       withDiagnosisContaining filterString: String) -> [LACase] {
+    func casesFiltered(fromCases theCases: [LACase],
+               withDiagnosisContaining filterString: String) -> [LACase] {
         return theCases.filter { theCase in
             theCase.diagnosis.diagnosis.localizedCaseInsensitiveContains(filterString)
         }
     }
     
-    func filteredCases(fromCases theCases: [LACase],
-                       withStructuralFeatureContaining filterString: String) -> [LACase] {
+    func casesFiltered(fromCases theCases: [LACase],
+               withStructuralFeatureContaining filterString: String) -> [LACase] {
         
         let structuralFeatureContainsFilterString = {
             (structuralFeature: LAStructuralFeature) -> Bool in
@@ -210,8 +220,8 @@ class LAFilterer {
         }
     }
     
-    func filteredCases(fromCases theCases: [LACase],
-                       withImagingFeatureContaining filterString: String) -> [LACase] {
+    func casesFiltered(fromCases theCases: [LACase],
+               withImagingFeatureContaining filterString: String) -> [LACase] {
         
         let imagingFeatureContainsFilterString = {
             (imagingFeature: LAStructuralFeature) -> Bool in

@@ -8,7 +8,20 @@
 
 import Foundation
 
+struct SearchResults {
+    let fromFilteredCases: FilteredCases
+    let searchString: String
+    let cases: [LACase]
+}
+
 class LASearcher {
+
+    func searchCases(fromFilteredCases: FilteredCases, forSearchText searchText: String) -> SearchResults {
+        let cases = searchCases(casesToSearch: fromFilteredCases.cases, forSearchText: searchText)
+        return SearchResults(fromFilteredCases: fromFilteredCases,
+                             searchString: searchText,
+                             cases:cases)
+    }
     
     func searchCases(casesToSearch: [LACase], forSearchText searchText: String) -> [LACase] {
         if searchText.isEmpty {

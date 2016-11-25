@@ -19,19 +19,22 @@ class CaseResultsViewController: UIViewController {
     lazy var laSearchController: LASearchController = { self.createSearchController() }()
     var hiddenRightBarButtonItems: [UIBarButtonItem]?
     
-    var laCases: [LACase]? {
+    var searchResults: SearchResults! {
         didSet {
             guard let _ = tableViewHeaderResultSummaryLabel else {
                 return
             }
 
-            tableViewHeaderResultSummaryLabel.text = "There are \(laCases?.count ?? 0) cases matching the current search"
+            tableViewHeaderResultSummaryLabel.text = "There are \(searchResults.cases.count ) cases matching the current search"
             tableView?.reloadData()
         }
     }
     
-    func configure(laCases: [LACase]) {
-        self.laCases = laCases
+    
+    func configure(filteredCases: FilteredCases) {
+        self.searchResults = SearchResults(fromFilteredCases: filteredCases,
+                                           searchString: "",
+                                           cases: filteredCases.cases)
     }
 
     override func viewDidLoad() {
@@ -43,8 +46,11 @@ class CaseResultsViewController: UIViewController {
         tableView.register(UINib(nibName: "CaseResultTableViewCell",
                                  bundle: Bundle(for: type(of:self))),
                            forCellReuseIdentifier: CaseResultTableViewCell.identifier)
-        
-        laCases = laCases ?? LAIndex.instance.allCases
+
+        if searchResults == nil {
+            let filteredCases = FilteredCases(cases: LAIndex.instance.allCases, modality: .ct, filters: [])
+            configure(filteredCases: filteredCases)
+        }
     }
 
     @IBAction func searchAction(_ sender: Any) {
@@ -71,7 +77,7 @@ class CaseResultsViewController: UIViewController {
         switch segue.identifier! {
         case CaseResultsViewController.caseDetailSegueIdentifier:
             let indexPath = sender as! IndexPath
-            let laCase = laCases![indexPath.item]
+            let laCase = searchResults.cases[indexPath.item]
             let caseDetailVC = segue.destination as! CaseDetailsViewController
             
             caseDetailVC.laCase = laCase
@@ -96,7 +102,7 @@ extension CaseResultsViewController: UITableViewDelegate {
 extension CaseResultsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return laCases?.count ?? 0
+        return searchResults.cases.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -104,8 +110,8 @@ extension CaseResultsViewController: UITableViewDataSource {
         let caseResultCell = tableView.dequeueReusableCell(withIdentifier: CaseResultTableViewCell.identifier,
                                                           for: indexPath) as! CaseResultTableViewCell
         
-        let theCase = laCases![indexPath.row]
-        caseResultCell.configure(laCase: theCase)
+        let theCase = searchResults.cases[indexPath.row]
+        caseResultCell.configure(laCase: theCase, modalityFilter: searchResults.fromFilteredCases.modality)
         
         return caseResultCell
     }
@@ -147,8 +153,8 @@ extension CaseResultsViewController: LASearchControllerDelegate {
         // TODO: push details vc
     }
     
-    func didEndSearch(withCases filteredResults: [LACase]) {
-        self.configure(laCases: filteredResults)
+    func didEndSearch(withSearchResults: SearchResults) {
+        self.searchResults = withSearchResults
     }
 }
 

@@ -188,7 +188,7 @@ extension CaseDetailsViewController: LASearchControllerDelegate {
         
     }
     
-    func didEndSearch(withCases filteredResults: [LACase]) {
+    func didEndSearch(withSearchResults: SearchResults) {
         guard let navController = navigationController else {
             return
         }
@@ -200,7 +200,7 @@ extension CaseDetailsViewController: LASearchControllerDelegate {
             .instantiateViewController(withIdentifier: CaseResultsViewController.storyboardIdentifier)
             as! CaseResultsViewController
 
-        resultsViewController.laCases = filteredResults
+        resultsViewController.searchResults = withSearchResults
         
         let _ = navController.popToRootViewController(animated: false)
         navController.pushViewController(resultsViewController, animated: true)

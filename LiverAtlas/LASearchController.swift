@@ -9,14 +9,12 @@
 import Foundation
 import UIKit
 
+
+
 protocol LASearchControllerDelegate {
-    
-    func didEndSearch(withCases: [LACase])
-    
+    func didEndSearch(withSearchResults: SearchResults)
     func didSelect(laCase: LACase)
-
 }
-
 
 
 class LASearchController: NSObject {
@@ -36,7 +34,9 @@ class LASearchController: NSObject {
     
     func createSearchAndResultsControllers(searchControllerDelegate: UISearchControllerDelegate) {
         searchResultsController = SearchResultsViewController()
-        searchResultsController.casesToSearch = LAIndex.instance.allCases
+        searchResultsController.configure(filteredCasesToSearch: FilteredCases(cases: LAIndex.instance.allCases,
+                                                                               modality: .ct,
+                                                                               filters: []))
         searchResultsController.tableView.delegate = self
         
         searchController = UISearchController(searchResultsController: searchResultsController)
@@ -63,12 +63,12 @@ extension LASearchController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
         guard !searchBar.text!.isEmpty,
-            let filteredResults = searchResultsController?.filteredCases,
-            !filteredResults.isEmpty else {
+            let searchResults = searchResultsController?.searchResults,
+            !searchResults.cases.isEmpty else {
                 return
         }
         
-        delegate?.didEndSearch(withCases: filteredResults)
+        delegate?.didEndSearch(withSearchResults: searchResults)
         searchController.isActive = false
     }
 }
@@ -76,7 +76,7 @@ extension LASearchController: UISearchBarDelegate {
 extension LASearchController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let laCase = searchResultsController.filteredCases[indexPath.item]
+        let laCase = searchResultsController.searchResults.cases[indexPath.item]
         
         delegate?.didSelect(laCase: laCase)
         searchController.isActive = false

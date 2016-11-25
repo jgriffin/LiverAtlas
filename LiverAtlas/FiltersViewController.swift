@@ -19,7 +19,7 @@ class FiltersViewController: UITableViewController {
     // selected modality and filters
     
     let filterer = LAFilterer(allCases: nil,
-                                      modality: LAModality.ct)
+                              modality: LAModality.ct)
     
     var expandedFilterSections = Set<LAFilterType>()
     var selectedFeatures = Set<LAFilter>()
@@ -41,9 +41,11 @@ class FiltersViewController: UITableViewController {
     @IBAction func doneAction(_ sender: Any) {
         if let detailsNavController = splitViewController?.viewControllers.last as? UINavigationController,
             let caseResultsVC = detailsNavController.topViewController as? CaseResultsViewController {
-            caseResultsVC.laCases = filterer.filteredCases(fromCases: filterer.modalityFilteredCases,
-                                                                    passingFilters: Array(selectedFeatures))
-            // done?
+            
+            let filteredCases = filterer.filteredCases(fromFilteredCases: filterer.modalityFilteredCases,
+                                                       passingFilters: Array(selectedFeatures))
+            caseResultsVC.configure(filteredCases: filteredCases)
+
             return
         }
         
@@ -52,9 +54,9 @@ class FiltersViewController: UITableViewController {
         
         let caseResultsVC = storyboard.instantiateViewController(withIdentifier: CaseResultsViewControllerIdentifier) as! CaseResultsViewController
         
-        let filteredCases = filterer.filteredCases(fromCases: filterer.modalityFilteredCases,
+        let filteredCases = filterer.filteredCases(fromFilteredCases: filterer.modalityFilteredCases,
                                                    passingFilters: Array(selectedFeatures))
-        caseResultsVC.configure(laCases: filteredCases)
+        caseResultsVC.configure(filteredCases: filteredCases)
         
         caseResultsVC.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
         caseResultsVC.navigationItem.leftItemsSupplementBackButton = true

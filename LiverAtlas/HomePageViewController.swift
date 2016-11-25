@@ -45,7 +45,7 @@ class HomePageViewController: UIViewController {
     
 }
 
-extension HomePageViewController: UISearchControllerDelegate, LASearchControllerDelegate {
+extension HomePageViewController: UISearchControllerDelegate {
     
     func createSearchController() -> LASearchController {
         return LASearchController(delegate: self,
@@ -72,12 +72,15 @@ extension HomePageViewController: UISearchControllerDelegate, LASearchController
         navigationItem.rightBarButtonItems = hiddenRightBarButtonItems
         hiddenRightBarButtonItems = nil
     }
+}
+
+extension HomePageViewController: LASearchControllerDelegate {
     
     func didSelect(laCase: LACase) {
         
     }
     
-    func didEndSearch(withCases filteredResults: [LACase]) {
+    func didEndSearch(withSearchResults: SearchResults) {
         guard let navController = navigationController else {
             return
         }
@@ -85,13 +88,13 @@ extension HomePageViewController: UISearchControllerDelegate, LASearchController
         // CaseResultsViewController
         let storyboard = UIStoryboard(name: "Main",
                                       bundle: Bundle(for: type(of:self)))
-        let resultsViewController = storyboard
+        let caseResultsVC = storyboard
             .instantiateViewController(withIdentifier: CaseResultsViewController.storyboardIdentifier)
             as! CaseResultsViewController
         
-        resultsViewController.laCases = filteredResults
+        caseResultsVC.searchResults = withSearchResults
         
         let _ = navController.popToRootViewController(animated: false)
-        navController.pushViewController(resultsViewController, animated: true)
+        navController.pushViewController(caseResultsVC, animated: true)
     }
 }

@@ -11,15 +11,22 @@ import UIKit
 class SearchResultsViewController: UITableViewController {
     let searcher = LASearcher()
     
-    var casesToSearch: [LACase]! {
+    var filteredCasesToSearch: FilteredCases! {
         didSet {
-            filteredCases = casesToSearch
+            searchResults = SearchResults(fromFilteredCases: filteredCasesToSearch,
+                                          searchString: "",
+                                          cases: filteredCasesToSearch.cases)
         }
     }
-    var filteredCases: [LACase]! {
+    
+    var searchResults: SearchResults! {
         didSet {
             tableView.reloadData()
         }
+    }
+    
+    func configure(filteredCasesToSearch: FilteredCases) {
+        self.filteredCasesToSearch = filteredCasesToSearch
     }
     
     override func viewDidLoad() {
@@ -40,15 +47,15 @@ class SearchResultsViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return filteredCases?.count ?? 0
+        return searchResults.cases.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CaseResultTableViewCell.identifier,
                                                  for: indexPath) as! CaseResultTableViewCell
         
-        let laCase = filteredCases[indexPath.item]
-        cell.configure(laCase: laCase)
+        let laCase = searchResults.cases[indexPath.item]
+        cell.configure(laCase: laCase, modalityFilter: searchResults.fromFilteredCases.modality)
         
         return cell
     }    
@@ -63,6 +70,7 @@ extension SearchResultsViewController: UISearchResultsUpdating {
         // show even when empty
         self.view.isHidden = false
         
-        filteredCases = searcher.searchCases(casesToSearch: casesToSearch, forSearchText: searchText)
+        searchResults = searcher.searchCases(fromFilteredCases: filteredCasesToSearch,
+                                             forSearchText: searchText)
     }
 }

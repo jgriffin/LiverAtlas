@@ -59,6 +59,17 @@ class CaseResultsViewController: UIViewController {
         laSearchController.searchCases(filteredCasesToSearch: searchResults.fromFilteredCases)
     }
     
+    @IBAction func filtersAction(_ sender: Any) {
+        let filtersViewControllerStoryboardID = "filtersViewControllerStoryboardID"
+
+        let storyboard = UIStoryboard(name: "Main",
+                                      bundle: Bundle(for: type(of:self)))
+        
+        let filtersVC = storyboard.instantiateViewController(withIdentifier: filtersViewControllerStoryboardID) as! FiltersViewController
+        navigationController?.pushViewController(filtersVC, animated: true)
+    }
+    
+    
     @IBAction func homeAction(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main",
                                       bundle: Bundle(for: type(of:self)))
@@ -81,7 +92,7 @@ class CaseResultsViewController: UIViewController {
             let caseDetailVC = segue.destination as! CaseDetailsViewController
             
             caseDetailVC.laCase = laCase
-            
+                        
         default:
             NSLog("unrecognized segue")
         }
@@ -94,7 +105,6 @@ extension CaseResultsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: CaseResultsViewController.caseDetailSegueIdentifier,
                      sender: indexPath)
-        
     }
     
 }
@@ -125,7 +135,7 @@ extension CaseResultsViewController: UISearchControllerDelegate {
     }
     
     func presentSearchController(_ searchController: UISearchController) {
-        guard let _ = navigationItem.titleView  else {
+        guard navigationItem.titleView == nil else {
             // already presented
             return
         }
@@ -150,7 +160,13 @@ extension CaseResultsViewController: UISearchControllerDelegate {
 extension CaseResultsViewController: LASearchControllerDelegate {
     
     func didSelect(laCase: LACase) {
-        // TODO: push details vc
+        let storyboard = UIStoryboard(name: "Main",
+                                      bundle: Bundle(for: type(of:self)))
+        
+        let caseDetailsVC = storyboard.instantiateViewController(withIdentifier: CaseDetailsViewController.storyboardIdentifier) as! CaseDetailsViewController
+        caseDetailsVC.laCase = laCase
+        
+        navigationController?.pushViewController(caseDetailsVC, animated: true)
     }
     
     func didEndSearch(withSearchResults: SearchResults) {
@@ -158,5 +174,11 @@ extension CaseResultsViewController: LASearchControllerDelegate {
     }
 }
 
-
+extension CaseResultsViewController: FilterViewDelegate {
+    func didChangeFilter(filteredCases: FilteredCases) {
+        searchResults = SearchResults(fromFilteredCases: filteredCases,
+                                      searchString: "",
+                                      cases: filteredCases.cases)
+    }
+}
 

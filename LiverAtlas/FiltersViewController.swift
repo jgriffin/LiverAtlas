@@ -8,6 +8,11 @@
 
 import UIKit
 
+protocol FilterViewDelegate {
+    func didChangeFilter(filteredCases: FilteredCases)
+}
+
+
 class FiltersViewController: UITableViewController {
     let filterItemReuseIdentifier = "FilterItemCellIdentifier"
     let sectionHeaderReuseIdentifier = "SectionHeaderCellIdentifier"
@@ -15,6 +20,8 @@ class FiltersViewController: UITableViewController {
     let CaseResultsViewControllerIdentifier = "CaseResultsViewControllerStoryboardIdentifier"
 
     @IBOutlet var modalitySegmentedControl: UISegmentedControl!
+    
+    var filtersViewControllerDelegate: FilterViewDelegate?
     
     // selected modality and filters
     
@@ -37,34 +44,18 @@ class FiltersViewController: UITableViewController {
         expandedFilterSections = [.diagnosisCategory]
         selectedFeatures = Set()
     }
-
+    
     @IBAction func doneAction(_ sender: Any) {
-        if let detailsNavController = splitViewController?.viewControllers.last as? UINavigationController,
-            let caseResultsVC = detailsNavController.topViewController as? CaseResultsViewController {
-            
-            let filteredCases = filterer.filteredCases(fromFilteredCases: filterer.modalityFilteredCases,
-                                                       passingFilters: Array(selectedFeatures))
-            caseResultsVC.configure(filteredCases: filteredCases)
+        let filteredCases = filterer.filteredCases(
+            fromFilteredCases: filterer.modalityFilteredCases,
+            passingFilters: Array(selectedFeatures))
 
-            return
-        }
+        filtersViewControllerDelegate?.didChangeFilter(filteredCases: filteredCases)
         
-        let storyboard = UIStoryboard(name: "Main",
-                                      bundle: Bundle(for: type(of:self)))
-        
-        let caseResultsVC = storyboard.instantiateViewController(withIdentifier: CaseResultsViewControllerIdentifier) as! CaseResultsViewController
-        
-        let filteredCases = filterer.filteredCases(fromFilteredCases: filterer.modalityFilteredCases,
-                                                   passingFilters: Array(selectedFeatures))
-        caseResultsVC.configure(filteredCases: filteredCases)
-        
-        caseResultsVC.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
-        caseResultsVC.navigationItem.leftItemsSupplementBackButton = true
-
-        let detailNavController = UINavigationController(rootViewController: caseResultsVC)
-
-        showDetailViewController(detailNavController, sender: self)
+        let _ = navigationController?.popViewController(animated: true)
     }
+    
+    
 
     // MARK: Modality Filters
     

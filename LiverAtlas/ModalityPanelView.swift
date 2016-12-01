@@ -8,8 +8,13 @@
 
 import UIKit
 
+protocol ModalityPanelHostDelegate {
+    func modalityPanel(_ modalityPanel: ModalityPanelView,
+                       didSelectImage laImage: LAImage?,
+                       withIndex imageIndex: Int)
+}
+
 class ModalityPanelView: UIView {
-    @IBOutlet var view: UIView!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var specificDiagnosisHeading: UILabel!
     @IBOutlet var specificDiagnosisLabel: UILabel!
@@ -19,7 +24,7 @@ class ModalityPanelView: UIView {
     @IBOutlet var structuralFeaturesHeading: UILabel!
     @IBOutlet var structuralFeaturesLabel: UILabel!
     
-    var parentNavigationController: UINavigationController!
+    var modalityPanelHostDelegate: ModalityPanelHostDelegate?
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!
@@ -31,7 +36,7 @@ class ModalityPanelView: UIView {
         commonInit()
     }
     
-    func commonInit() {
+    private func commonInit() {
         titleLabel = UILabel()
         specificDiagnosisHeading = UILabel()
         specificDiagnosisLabel = UILabel()
@@ -46,6 +51,7 @@ class ModalityPanelView: UIView {
         liverImagesCollectionView = IntrinsicSizeCollectionView(frame: self.bounds,
                                                                 collectionViewLayout: imagesLayout )
         liverImagesCollectionView.backgroundColor = UIColor.white
+        liverImagesCollectionView.delegate = self
         
         let views: [UIView] = [
             titleLabel,
@@ -136,3 +142,12 @@ class ModalityPanelView: UIView {
         super.prepareForInterfaceBuilder()
     }
 }
+
+extension ModalityPanelView:  UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        modalityPanelHostDelegate?.modalityPanel(self,
+                                                 didSelectImage: nil,
+                                                 withIndex: indexPath.item)
+    }
+}
+

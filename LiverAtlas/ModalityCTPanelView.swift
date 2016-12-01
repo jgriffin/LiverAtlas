@@ -22,8 +22,24 @@ class CTModalityPanelView: ModalityPanelView {
         structuralFeaturesLabel.text = ctmodality.structuralFeatures.map { $0.title }
             .joined(separator: ", ")
         
+        
         liverImagesCollectionView.reloadData()
     }
+    
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        commonInit()
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        commonInit()
+    }
+    
+    func commonInit() {
+        liverImagesCollectionView.dataSource = self
+   }
+
     
     override func prepareForInterfaceBuilder() {
         let case6 = LAIndex.instance.case6
@@ -49,18 +65,6 @@ extension CTModalityPanelView: UICollectionViewDataSource {
         cell.configure(laImage: ctmodality.images[indexPath.item])
         
         return cell
-    }
-}
-
-extension CTModalityPanelView:  UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let laImage = ctmodality.images[indexPath.item]
-
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let imagingController = storyboard.instantiateViewController(withIdentifier: ImagingViewController.identifier) as! ImagingViewController
-        imagingController.configure(laImage: laImage)
-        
-        parentNavigationController?.pushViewController(imagingController, animated: true)
     }
 }
 

@@ -19,7 +19,7 @@ class CaseDetailsPanelView: UIView {
     @IBOutlet var clinicalPresentationLabel: UILabel!
     @IBOutlet var notesHeading: UILabel!
     @IBOutlet var notesLabel: UILabel!
-
+    
     var laCase: LACase! {
         didSet {
             configureView(laCase: laCase)

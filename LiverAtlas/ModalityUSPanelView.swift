@@ -21,8 +21,25 @@ class USModalityPanelView: ModalityPanelView {
             .joined(separator: ", ")
         structuralFeaturesLabel.text = usmodality.structuralFeatures.map { $0.title }
             .joined(separator: ", ")
+
+        liverImagesCollectionView.dataSource = self
         
         liverImagesCollectionView.reloadData()
+    }
+    
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        commonInit()
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        commonInit()
+    }
+    
+    func commonInit() {
+        liverImagesCollectionView.dataSource = self
+        liverImagesCollectionView.delegate = self
     }
 
     override func prepareForInterfaceBuilder() {
@@ -47,18 +64,6 @@ extension USModalityPanelView: UICollectionViewDataSource {
         cell.configure(laImage: usmodality.images[indexPath.item])
         
         return cell
-    }
-}
-
-extension USModalityPanelView:  UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let laImage = usmodality.images[indexPath.item]
-
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let imagingController = storyboard.instantiateViewController(withIdentifier: ImagingViewController.identifier) as! ImagingViewController
-        imagingController.configure(laImage: laImage)
-        
-        parentNavigationController?.pushViewController(imagingController, animated: true)
     }
 }
 

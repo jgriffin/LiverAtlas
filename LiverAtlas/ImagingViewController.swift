@@ -21,7 +21,6 @@ class ImagingViewController: UIViewController {
         }
     }
     
-    
     func configure(laImage: LAImage) {
         self.laImage = laImage
     }
@@ -42,6 +41,10 @@ class ImagingViewController: UIViewController {
     // helpers
     
     private func loadWithImage(imageURL: URL) {
+        guard let _ = imageView else {
+            return
+        }
+        
         LACaseFetcher.instance.loadLAImageForURL(imageURL: imageURL) { [weak self] (image, wasCached) in
             assert(Thread.isMainThread)
             guard let _ = image else {
@@ -63,6 +66,10 @@ class ImagingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let _ = laImage {
+            loadWithImage(imageURL: laImage.imageURL)
+        }
     }
 
 }

@@ -58,6 +58,8 @@
 		D6D6F7CA1DDEA74200FAC4A8 /* liveratlas_api_all_cases.json in Resources */ = {isa = PBXBuildFile; fileRef = D6D6F7C81DDEA74200FAC4A8 /* liveratlas_api_all_cases.json */; };
 		D6D6F7CC1DDEB0B500FAC4A8 /* CaseResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D6F7CB1DDEB0B500FAC4A8 /* CaseResultsViewController.swift */; };
 		D6D96E5D1DE5513E00F89D9B /* CaseResultImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D96E5C1DE5513E00F89D9B /* CaseResultImageCollectionViewCell.swift */; };
+		D6D96EBA1DEE3F2800F89D9B /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D96EB91DEE3F2800F89D9B /* QuizViewController.swift */; };
+		D6D96EBD1DEF508900F89D9B /* QuizContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D96EBC1DEF508800F89D9B /* QuizContentView.swift */; };
 		D6DC852E1DDEE700000F0D31 /* CaseDetailsPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DC852D1DDEE700000F0D31 /* CaseDetailsPanelView.swift */; };
 		D6DC85301DDEE868000F0D31 /* DesignCanvas.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6DC852F1DDEE868000F0D31 /* DesignCanvas.xib */; };
 		D6DCA0B61DD03AAB004A6A63 /* IntrinsicSizeCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DCA0B51DD03AAB004A6A63 /* IntrinsicSizeCollectionView.swift */; };
@@ -139,6 +141,8 @@
 		D6D6F7C81DDEA74200FAC4A8 /* liveratlas_api_all_cases.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = liveratlas_api_all_cases.json; sourceTree = "<group>"; };
 		D6D6F7CB1DDEB0B500FAC4A8 /* CaseResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaseResultsViewController.swift; sourceTree = "<group>"; };
 		D6D96E5C1DE5513E00F89D9B /* CaseResultImageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaseResultImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		D6D96EB91DEE3F2800F89D9B /* QuizViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizViewController.swift; sourceTree = "<group>"; };
+		D6D96EBC1DEF508800F89D9B /* QuizContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizContentView.swift; sourceTree = "<group>"; };
 		D6DC852D1DDEE700000F0D31 /* CaseDetailsPanelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaseDetailsPanelView.swift; sourceTree = "<group>"; };
 		D6DC852F1DDEE868000F0D31 /* DesignCanvas.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DesignCanvas.xib; sourceTree = "<group>"; };
 		D6DCA0B51DD03AAB004A6A63 /* IntrinsicSizeCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntrinsicSizeCollectionView.swift; sourceTree = "<group>"; };
@@ -201,6 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				D6DC852D1DDEE700000F0D31 /* CaseDetailsPanelView.swift */,
+				D6BE1DB21DCB8BD800305B7D /* CaseDetailsViewController.swift */,
 				D6BAF6451DDCED0A00C9D17F /* ImageTileCollectionViewCell.swift */,
 				D6BAF6461DDCED0A00C9D17F /* ImageTileCollectionViewCell.xib */,
 				D6DCA0B51DD03AAB004A6A63 /* IntrinsicSizeCollectionView.swift */,
@@ -232,33 +237,28 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
-		D6BAF6431DDCE6DF00C9D17F /* View */ = {
+		D6BAF6431DDCE6DF00C9D17F /* Views and Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				D62061FA1DE0F19300CA0E14 /* Case Details */,
 				D6BE1DB71DCB8BD800305B7D /* Assets.xcassets */,
-				D6B1B3FB1DE0D15C0094EF40 /* CaseResultTableViewCell.swift */,
-				D6B1B3FC1DE0D15C0094EF40 /* CaseResultTableViewCell.xib */,
+				D62061FA1DE0F19300CA0E14 /* Case Details */,
+				D6D96E5C1DE5513E00F89D9B /* CaseResultImageCollectionViewCell.swift */,
 				D6DC852F1DDEE868000F0D31 /* DesignCanvas.xib */,
-				D63605B41DCBC10100F20A65 /* IndexItemEntryTableViewCell.swift */,
+				D6D96EBF1DEF50D400F89D9B /* Filters */,
+				D6D96EC11DEF513500F89D9B /* Home */,
+				D6D96EC01DEF512B00F89D9B /* Imaging */,
 				D6BE1DB91DCB8BD800305B7D /* LaunchScreen.storyboard */,
 				D6BE1DB41DCB8BD800305B7D /* Main.storyboard */,
-				D6A7F4681DE3F7DF009D8E65 /* FilterSectionHeaderCell.swift */,
-				D6D96E5C1DE5513E00F89D9B /* CaseResultImageCollectionViewCell.swift */,
+				D6D96EBB1DEF504500F89D9B /* Quiz */,
+				D6D96EBE1DEF50AC00F89D9B /* Search Results */,
 			);
-			name = View;
+			name = "Views and Controllers";
 			sourceTree = "<group>";
 		};
 		D6BAF6441DDCE6FB00C9D17F /* View Controller */ = {
 			isa = PBXGroup;
 			children = (
 				D67E26E41DE52316004AA893 /* IndexViewController.swift */,
-				D6BE1DB21DCB8BD800305B7D /* CaseDetailsViewController.swift */,
-				D6D6F7CB1DDEB0B500FAC4A8 /* CaseResultsViewController.swift */,
-				D63605B01DCBB97B00F20A65 /* FiltersViewController.swift */,
-				D65DE1AB1DE111350064E043 /* HomePageViewController.swift */,
-				D6572A841DDD3B0C00981848 /* ImagingViewController.swift */,
-				D6B1B3F91DE0CE620094EF40 /* SearchResultsViewController.swift */,
 			);
 			name = "View Controller";
 			sourceTree = "<group>";
@@ -291,7 +291,7 @@
 				D6BE1DAB1DCB8BD800305B7D /* AppDelegate.swift */,
 				D6BE1DBC1DCB8BD800305B7D /* Info.plist */,
 				D6BAF61D1DDBE9C000C9D17F /* Model */,
-				D6BAF6431DDCE6DF00C9D17F /* View */,
+				D6BAF6431DDCE6DF00C9D17F /* Views and Controllers */,
 				D6BAF6441DDCE6FB00C9D17F /* View Controller */,
 			);
 			path = LiverAtlas;
@@ -317,6 +317,52 @@
 				D6BE1DD21DCB8BD800305B7D /* Info.plist */,
 			);
 			path = LiverAtlasUITests;
+			sourceTree = "<group>";
+		};
+		D6D96EBB1DEF504500F89D9B /* Quiz */ = {
+			isa = PBXGroup;
+			children = (
+				D6D96EBC1DEF508800F89D9B /* QuizContentView.swift */,
+				D6D96EB91DEE3F2800F89D9B /* QuizViewController.swift */,
+			);
+			name = Quiz;
+			sourceTree = "<group>";
+		};
+		D6D96EBE1DEF50AC00F89D9B /* Search Results */ = {
+			isa = PBXGroup;
+			children = (
+				D6D6F7CB1DDEB0B500FAC4A8 /* CaseResultsViewController.swift */,
+				D6B1B3FB1DE0D15C0094EF40 /* CaseResultTableViewCell.swift */,
+				D6B1B3FC1DE0D15C0094EF40 /* CaseResultTableViewCell.xib */,
+				D6B1B3F91DE0CE620094EF40 /* SearchResultsViewController.swift */,
+			);
+			name = "Search Results";
+			sourceTree = "<group>";
+		};
+		D6D96EBF1DEF50D400F89D9B /* Filters */ = {
+			isa = PBXGroup;
+			children = (
+				D6A7F4681DE3F7DF009D8E65 /* FilterSectionHeaderCell.swift */,
+				D63605B01DCBB97B00F20A65 /* FiltersViewController.swift */,
+				D63605B41DCBC10100F20A65 /* IndexItemEntryTableViewCell.swift */,
+			);
+			name = Filters;
+			sourceTree = "<group>";
+		};
+		D6D96EC01DEF512B00F89D9B /* Imaging */ = {
+			isa = PBXGroup;
+			children = (
+				D6572A841DDD3B0C00981848 /* ImagingViewController.swift */,
+			);
+			name = Imaging;
+			sourceTree = "<group>";
+		};
+		D6D96EC11DEF513500F89D9B /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				D65DE1AB1DE111350064E043 /* HomePageViewController.swift */,
+			);
+			name = Home;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -620,6 +666,7 @@
 				D6B1B3FA1DE0CE620094EF40 /* SearchResultsViewController.swift in Sources */,
 				D6DCA0B61DD03AAB004A6A63 /* IntrinsicSizeCollectionView.swift in Sources */,
 				D697B26D1DE4F7E0002F6388 /* LAFilterer.swift in Sources */,
+				D6D96EBD1DEF508900F89D9B /* QuizContentView.swift in Sources */,
 				D6BAF6401DDCE6BF00C9D17F /* ModalityCTPanelView.swift in Sources */,
 				D6BAF63B1DDCD47B00C9D17F /* LAIndex.swift in Sources */,
 				D6DC852E1DDEE700000F0D31 /* CaseDetailsPanelView.swift in Sources */,
@@ -637,6 +684,7 @@
 				D6BAF62D1DDC07D800C9D17F /* LACase.swift in Sources */,
 				D6BAF6361DDCBD3800C9D17F /* LACaseCrawler.swift in Sources */,
 				D63605B51DCBC10100F20A65 /* IndexItemEntryTableViewCell.swift in Sources */,
+				D6D96EBA1DEE3F2800F89D9B /* QuizViewController.swift in Sources */,
 				D6FAB9EA1DE21FD500CAFE95 /* LAFilter.swift in Sources */,
 				D6D96E5D1DE5513E00F89D9B /* CaseResultImageCollectionViewCell.swift in Sources */,
 			);

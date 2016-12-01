@@ -8,20 +8,6 @@
 
 import Foundation
 
-enum LACaseByDiagnosis {
-    case Diagnosis(diagnosis: String)
-    case SpecificDiagnosis(diagnosis: String, specificDiagnosis: String, laCase: LACase)
-    
-    var diagnosisName: String {
-        switch self {
-        case .Diagnosis(let diagnosis),
-             .SpecificDiagnosis(let diagnosis, _, _):
-            return diagnosis
-        }
-    }
-}
-
-
 
 class LAIndex {
     static var instance: LAIndex = LAIndex()

@@ -56,7 +56,7 @@ class CaseResultsViewController: UIViewController {
     @IBAction func searchAction(_ sender: Any) {
         definesPresentationContext = true
 
-        laSearchController.searchCases()
+        laSearchController.searchCases(filteredCasesToSearch: searchResults.fromFilteredCases)
     }
     
     @IBAction func homeAction(_ sender: Any) {

@@ -53,7 +53,8 @@ class LASearchController: NSObject {
         searchBar.delegate = self
     }
     
-    @IBAction func searchCases() {
+    func searchCases(filteredCasesToSearch: FilteredCases) {
+        searchResultsController.configure(filteredCasesToSearch: filteredCasesToSearch)
         searchController.isActive = true
     }
 }

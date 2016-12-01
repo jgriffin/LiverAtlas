@@ -12,8 +12,22 @@ struct FilteredCases {
     let cases: [LACase]
     let modality: LAModality
     let filters: [LAFilter]
+    
+    
 }
 
+enum LACaseByDiagnosis {
+    case Diagnosis(diagnosis: String)
+    case SpecificDiagnosis(diagnosis: String, specificDiagnosis: String, laCase: LACase)
+    
+    var diagnosisName: String {
+        switch self {
+        case .Diagnosis(let diagnosis),
+             .SpecificDiagnosis(let diagnosis, _, _):
+            return diagnosis
+        }
+    }
+}
 
 class LAFilterer {
     
@@ -153,6 +167,22 @@ class LAFilterer {
         return byDiagnoses
     }
     
+    func diagnosesAndSpecificDiagnoses(fromFilteredCases filteredCases: FilteredCases) -> (diagnoses: [String], specificDiagnoses: [String]) {
+        var diagnosesBuilder = [String]()
+        var specificDiagnosesBuilder = [String]()
+        
+        let byDiagnosis = self.casesByDiagnosis(fromFilteredCases: filteredCases)
+        byDiagnosis.forEach { (caseByDiagnosis: LACaseByDiagnosis) in
+            switch caseByDiagnosis {
+            case .Diagnosis(let diagnosis):
+                diagnosesBuilder.append(diagnosis)
+            case .SpecificDiagnosis(_, let specificDiagnosis, _):
+                specificDiagnosesBuilder.append(specificDiagnosis)
+            }
+        }
+        
+        return (diagnoses: diagnosesBuilder, specificDiagnoses: specificDiagnosesBuilder)
+    }
 
     
     // filter a list of cases

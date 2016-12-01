@@ -18,18 +18,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        let splitViewController = self.window!.rootViewController as! UISplitViewController
-        splitViewController.delegate = self
-
-//        let masterNavigationController = splitViewController.viewControllers.first! as! UINavigationController
-//        let _ = masterNavigationController.topViewController as! FiltersViewController
-//        
-        let detailsNavigationController = splitViewController.viewControllers.last! as! UINavigationController
-//        detailsNavigationController.hidesBarsOnTap = true
-        
-        let firstDetailsPage = detailsNavigationController.topViewController!
-        firstDetailsPage.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
-        firstDetailsPage.navigationItem.leftItemsSupplementBackButton = true
+        if let splitViewController = self.window!.rootViewController as? UISplitViewController {
+            splitViewController.delegate = self
+            
+            //        let masterNavigationController = splitViewController.viewControllers.first! as! UINavigationController
+            //        let _ = masterNavigationController.topViewController as! FiltersViewController
+            //
+            let detailsNavigationController = splitViewController.viewControllers.last! as! UINavigationController
+            //        detailsNavigationController.hidesBarsOnTap = true
+            
+            let firstDetailsPage = detailsNavigationController.topViewController!
+            firstDetailsPage.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
+            firstDetailsPage.navigationItem.leftItemsSupplementBackButton = true
+        }
 
         return true
     }

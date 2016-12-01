@@ -36,9 +36,6 @@ class CaseDetailsViewController: UIViewController {
         caseDetailsPanelView.laCase = laCase
 
         configureModalityPanels(laCase: laCase)
-        
-        // setup way to present new views
-        ctModalityPanelView.parentNavigationController = self.navigationController
     }
 
     func configureModalityPanels(laCase: LACase) {
@@ -54,102 +51,48 @@ class CaseDetailsViewController: UIViewController {
         ctModalityPanelView.isHidden = laCase.ctmodality.isEmpty
         mrModalityPanelView.isHidden = laCase.mrmodality.isEmpty
         usModalityPanelView.isHidden = laCase.usmodality.isEmpty
+        
+        ctModalityPanelView.modalityPanelHostDelegate = self
+        mrModalityPanelView.modalityPanelHostDelegate = self
+        usModalityPanelView.modalityPanelHostDelegate = self
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        ctModalityPanelView.liverImagesCollectionView.delegate = self
-        mrModalityPanelView.liverImagesCollectionView.delegate = self
-        usModalityPanelView.liverImagesCollectionView.delegate = self
-        ctModalityPanelView.liverImagesCollectionView.dataSource = self
-        mrModalityPanelView.liverImagesCollectionView.dataSource = self
-        usModalityPanelView.liverImagesCollectionView.dataSource = self
-
         if let _ = laCase {
             configureView(laCase: laCase!)
         }
         
         definesPresentationContext = true
     }
-
-    @IBAction func searchCases(_ sender: Any) {
-        searchController.searchCases()
-    }
-
 }
 
 
-extension CaseDetailsViewController: UICollectionViewDataSource {
-
-    func collectionView(_ collectionView: UICollectionView,
-                               numberOfItemsInSection section: Int) -> Int {
-        switch collectionView {
-        case ctModalityPanelView.liverImagesCollectionView:
-            return laCase?.ctmodality.count ?? 0
-        case mrModalityPanelView.liverImagesCollectionView:
-            return laCase?.mrmodality.count ?? 0
-        case usModalityPanelView.liverImagesCollectionView:
-            return laCase?.usmodality.count ?? 0
-        default:
-            fatalError("unrecognized collection view")
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView,
-                               cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+extension CaseDetailsViewController: ModalityPanelHostDelegate {
+ 
+    func modalityPanel(_ modalityPanel: ModalityPanelView,
+                       didSelectImage laImage: LAImage?,
+                       withIndex imageIndex: Int) {
         
-        let imageTileCell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageTileCollectionViewCell.identifier,
-                                                             for: indexPath) as! ImageTileCollectionViewCell
-
-        let laImage = self.laImage(forCollectionView: collectionView,
-                                                   cellAtIndexPath: indexPath)
-        imageTileCell.configure(laImage: laImage)
+        var selectedImage: LAImage
         
-        return imageTileCell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView,
-                                 collectionViewLayout: UICollectionViewLayout,
-                                 sizeForItemAtIndexPath: IndexPath) -> CGSize {
-        return CGSize(width: 100, height: 150)
-    }
-    
-    func laImage(forCollectionView collectionView: UICollectionView,
-                         cellAtIndexPath indexPath: IndexPath) -> LAImage {
-        switch collectionView {
-        case ctModalityPanelView.liverImagesCollectionView:
-            return laCase!.ctmodality.first!.images[indexPath.item]
-        case mrModalityPanelView.liverImagesCollectionView:
-            return laCase!.mrmodality.first!.images[indexPath.item]
-        case usModalityPanelView.liverImagesCollectionView:
-            return laCase!.usmodality.first!.images[indexPath.item]
+        switch modalityPanel {
+        case ctModalityPanelView:
+            selectedImage = laCase!.ctmodality.first!.images[imageIndex]
+        case mrModalityPanelView:
+            selectedImage = laCase!.mrmodality.first!.images[imageIndex]
+        case usModalityPanelView:
+            selectedImage = laCase!.usmodality.first!.images[imageIndex]
         default:
-            fatalError("unrecognized collection view")
+            fatalError()
         }
-    }
-}
-
-extension CaseDetailsViewController: UICollectionViewDelegate {
-
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let image = laImage(forCollectionView: collectionView,
-                                    cellAtIndexPath: indexPath)
-        performSegue(withIdentifier: CaseDetailsViewController.showImagingSequeIdentifier,
-                     sender: image)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        switch segue.identifier {
-        case .some(CaseDetailsViewController.showImagingSequeIdentifier):
-            if let image = sender as? LAImage {
-                (segue.destination as? ImagingViewController)?.configure(laImage: image)
-            }
-            break
-        default:
-            NSLog("handled segue indetifier: \(segue.identifier)")
-            break
-        }
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let imagingController = storyboard.instantiateViewController(withIdentifier: ImagingViewController.identifier) as! ImagingViewController
+        imagingController.configure(laImage: selectedImage)
+        
+        navigationController?.pushViewController(imagingController, animated: true)
     }
 }
 

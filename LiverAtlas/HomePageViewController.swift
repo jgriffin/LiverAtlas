@@ -22,15 +22,16 @@ class HomePageViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-//        definesPresentationContext = true
     }
 
     @IBAction func searchCases(_ sender: Any) {
         let _ = laSearchController
         definesPresentationContext = true
         
-        laSearchController.searchCases()
+        let allFilteredCases = FilteredCases(cases: LAIndex.instance.allCases,
+                                             modality: .ct,
+                                             filters: [])
+        laSearchController.searchCases(filteredCasesToSearch: allFilteredCases)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

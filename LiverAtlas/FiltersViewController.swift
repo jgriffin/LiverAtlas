@@ -17,7 +17,7 @@ class FiltersViewController: UITableViewController {
     let filterItemReuseIdentifier = "FilterItemCellIdentifier"
     let sectionHeaderReuseIdentifier = "SectionHeaderCellIdentifier"
     let FilterViewToCaseResultsSegue = "FilterViewToCaseResultsSegue"
-    let CaseResultsViewControllerIdentifier = "CaseResultsViewControllerStoryboardIdentifier"
+    let CasesViewControllerIdentifier = "CasesViewControllerStoryboardIdentifier"
 
     @IBOutlet var modalitySegmentedControl: UISegmentedControl!
     
@@ -45,14 +45,23 @@ class FiltersViewController: UITableViewController {
         selectedFeatures = Set()
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        if isBeingDismissed || isMovingFromParentViewController {
+            let filteredCases = filterer.filteredCases(
+                fromFilteredCases: filterer.modalityFilteredCases,
+                passingFilters: Array(selectedFeatures))
+            
+            filtersViewControllerDelegate?.didChangeFilter(filteredCases: filteredCases)
+        }
+    }
+    
+    
     @IBAction func doneAction(_ sender: Any) {
-        let filteredCases = filterer.filteredCases(
-            fromFilteredCases: filterer.modalityFilteredCases,
-            passingFilters: Array(selectedFeatures))
-
-        filtersViewControllerDelegate?.didChangeFilter(filteredCases: filteredCases)
-        
-        let _ = navigationController?.popViewController(animated: true)
+        if let _ = presentingViewController {
+            presentingViewController?.dismiss(animated: true, completion: nil)
+        } else {
+            let _ = navigationController?.popViewController(animated: true)
+        }
     }
     
     

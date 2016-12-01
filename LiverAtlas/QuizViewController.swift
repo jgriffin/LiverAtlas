@@ -80,9 +80,7 @@ extension QuizViewController: ModalityPanelHostDelegate {
     func modalityPanel(_ modalityPanel: ModalityPanelView,
                        didSelectImage laImage: LAImage?,
                        withIndex imageIndex: Int) {
-        
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let imagingController = storyboard.instantiateViewController(withIdentifier: ImagingViewController.identifier) as! ImagingViewController
+        let imagingController = MainStoryboard.instantiate(withStoryboardID: .imagingID) as! ImagingViewController
         imagingController.configure(laImage: laImage!)
         
         navigationController?.pushViewController(imagingController, animated: true)

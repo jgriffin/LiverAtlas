@@ -9,8 +9,6 @@
 import UIKit
 
 class ImagingViewController: UIViewController {
-    static let identifier = "ImagingViewController"
-    
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var imageView: UIImageView!

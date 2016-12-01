@@ -22,8 +22,8 @@
 		D697B26E1DE4F7E0002F6388 /* LAFilterer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D697B26C1DE4F7E0002F6388 /* LAFilterer.swift */; };
 		D6A7F4691DE3F7DF009D8E65 /* FilterSectionHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A7F4681DE3F7DF009D8E65 /* FilterSectionHeaderCell.swift */; };
 		D6B1B3FA1DE0CE620094EF40 /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B1B3F91DE0CE620094EF40 /* SearchResultsViewController.swift */; };
-		D6B1B3FD1DE0D15C0094EF40 /* CaseResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B1B3FB1DE0D15C0094EF40 /* CaseResultTableViewCell.swift */; };
-		D6B1B3FE1DE0D15C0094EF40 /* CaseResultTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6B1B3FC1DE0D15C0094EF40 /* CaseResultTableViewCell.xib */; };
+		D6B1B3FD1DE0D15C0094EF40 /* CasesViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B1B3FB1DE0D15C0094EF40 /* CasesViewCell.swift */; };
+		D6B1B3FE1DE0D15C0094EF40 /* CaseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6B1B3FC1DE0D15C0094EF40 /* CaseTableViewCell.xib */; };
 		D6BAF6201DDBE9DB00C9D17F /* liveratlas_api_case_6.json in Resources */ = {isa = PBXBuildFile; fileRef = D6BAF61E1DDBE9DB00C9D17F /* liveratlas_api_case_6.json */; };
 		D6BAF6211DDBE9DB00C9D17F /* liveratlas_api_cases.json in Resources */ = {isa = PBXBuildFile; fileRef = D6BAF61F1DDBE9DB00C9D17F /* liveratlas_api_cases.json */; };
 		D6BAF6261DDBEA3900C9D17F /* LAIndexItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BAF6251DDBEA3900C9D17F /* LAIndexItem.swift */; };
@@ -56,7 +56,7 @@
 		D6CC09511DDFEAA700CBC598 /* ModalityPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CC09501DDFEAA700CBC598 /* ModalityPanelView.swift */; };
 		D6D6F7C91DDEA74200FAC4A8 /* liveratlas_api_all_cases.json in Resources */ = {isa = PBXBuildFile; fileRef = D6D6F7C81DDEA74200FAC4A8 /* liveratlas_api_all_cases.json */; };
 		D6D6F7CA1DDEA74200FAC4A8 /* liveratlas_api_all_cases.json in Resources */ = {isa = PBXBuildFile; fileRef = D6D6F7C81DDEA74200FAC4A8 /* liveratlas_api_all_cases.json */; };
-		D6D6F7CC1DDEB0B500FAC4A8 /* CaseResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D6F7CB1DDEB0B500FAC4A8 /* CaseResultsViewController.swift */; };
+		D6D6F7CC1DDEB0B500FAC4A8 /* CasesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D6F7CB1DDEB0B500FAC4A8 /* CasesViewController.swift */; };
 		D6D96E5D1DE5513E00F89D9B /* CaseResultImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D96E5C1DE5513E00F89D9B /* CaseResultImageCollectionViewCell.swift */; };
 		D6D96EBA1DEE3F2800F89D9B /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D96EB91DEE3F2800F89D9B /* QuizViewController.swift */; };
 		D6D96EBD1DEF508900F89D9B /* QuizContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D96EBC1DEF508800F89D9B /* QuizContentView.swift */; };
@@ -66,6 +66,7 @@
 		D6FAB9EA1DE21FD500CAFE95 /* LAFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FAB9E91DE21FD500CAFE95 /* LAFilter.swift */; };
 		D6FAB9EB1DE21FD500CAFE95 /* LAFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FAB9E91DE21FD500CAFE95 /* LAFilter.swift */; };
 		D6FAB9ED1DE2725600CAFE95 /* LAFilterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FAB9EC1DE2725600CAFE95 /* LAFilterTests.swift */; };
+		D6FBFF1D1DF0E856007A5CEC /* MainStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FBFF1C1DF0E856007A5CEC /* MainStoryboard.swift */; };
 		E15505037D637206A15D8B94 /* Pods_LiverAtlasUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76490D144A99A7D88A1A3664 /* Pods_LiverAtlasUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -107,8 +108,8 @@
 		D697B26C1DE4F7E0002F6388 /* LAFilterer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LAFilterer.swift; sourceTree = "<group>"; };
 		D6A7F4681DE3F7DF009D8E65 /* FilterSectionHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterSectionHeaderCell.swift; sourceTree = "<group>"; };
 		D6B1B3F91DE0CE620094EF40 /* SearchResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
-		D6B1B3FB1DE0D15C0094EF40 /* CaseResultTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaseResultTableViewCell.swift; sourceTree = "<group>"; };
-		D6B1B3FC1DE0D15C0094EF40 /* CaseResultTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CaseResultTableViewCell.xib; sourceTree = "<group>"; };
+		D6B1B3FB1DE0D15C0094EF40 /* CasesViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CasesViewCell.swift; sourceTree = "<group>"; };
+		D6B1B3FC1DE0D15C0094EF40 /* CaseTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CaseTableViewCell.xib; sourceTree = "<group>"; };
 		D6BAF61E1DDBE9DB00C9D17F /* liveratlas_api_case_6.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = liveratlas_api_case_6.json; sourceTree = "<group>"; };
 		D6BAF61F1DDBE9DB00C9D17F /* liveratlas_api_cases.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = liveratlas_api_cases.json; sourceTree = "<group>"; };
 		D6BAF6251DDBEA3900C9D17F /* LAIndexItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LAIndexItem.swift; sourceTree = "<group>"; };
@@ -139,7 +140,7 @@
 		D6CC094D1DDFDD5600CBC598 /* ModalityUSPanelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalityUSPanelView.swift; sourceTree = "<group>"; };
 		D6CC09501DDFEAA700CBC598 /* ModalityPanelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalityPanelView.swift; sourceTree = "<group>"; };
 		D6D6F7C81DDEA74200FAC4A8 /* liveratlas_api_all_cases.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = liveratlas_api_all_cases.json; sourceTree = "<group>"; };
-		D6D6F7CB1DDEB0B500FAC4A8 /* CaseResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaseResultsViewController.swift; sourceTree = "<group>"; };
+		D6D6F7CB1DDEB0B500FAC4A8 /* CasesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CasesViewController.swift; sourceTree = "<group>"; };
 		D6D96E5C1DE5513E00F89D9B /* CaseResultImageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaseResultImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		D6D96EB91DEE3F2800F89D9B /* QuizViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizViewController.swift; sourceTree = "<group>"; };
 		D6D96EBC1DEF508800F89D9B /* QuizContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizContentView.swift; sourceTree = "<group>"; };
@@ -148,6 +149,7 @@
 		D6DCA0B51DD03AAB004A6A63 /* IntrinsicSizeCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntrinsicSizeCollectionView.swift; sourceTree = "<group>"; };
 		D6FAB9E91DE21FD500CAFE95 /* LAFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LAFilter.swift; sourceTree = "<group>"; };
 		D6FAB9EC1DE2725600CAFE95 /* LAFilterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LAFilterTests.swift; sourceTree = "<group>"; };
+		D6FBFF1C1DF0E856007A5CEC /* MainStoryboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainStoryboard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -250,7 +252,7 @@
 				D6BE1DB91DCB8BD800305B7D /* LaunchScreen.storyboard */,
 				D6BE1DB41DCB8BD800305B7D /* Main.storyboard */,
 				D6D96EBB1DEF504500F89D9B /* Quiz */,
-				D6D96EBE1DEF50AC00F89D9B /* Search Results */,
+				D6D96EBE1DEF50AC00F89D9B /* Cases */,
 			);
 			name = "Views and Controllers";
 			sourceTree = "<group>";
@@ -293,6 +295,7 @@
 				D6BAF61D1DDBE9C000C9D17F /* Model */,
 				D6BAF6431DDCE6DF00C9D17F /* Views and Controllers */,
 				D6BAF6441DDCE6FB00C9D17F /* View Controller */,
+				D6FBFF1C1DF0E856007A5CEC /* MainStoryboard.swift */,
 			);
 			path = LiverAtlas;
 			sourceTree = "<group>";
@@ -328,15 +331,15 @@
 			name = Quiz;
 			sourceTree = "<group>";
 		};
-		D6D96EBE1DEF50AC00F89D9B /* Search Results */ = {
+		D6D96EBE1DEF50AC00F89D9B /* Cases */ = {
 			isa = PBXGroup;
 			children = (
-				D6D6F7CB1DDEB0B500FAC4A8 /* CaseResultsViewController.swift */,
-				D6B1B3FB1DE0D15C0094EF40 /* CaseResultTableViewCell.swift */,
-				D6B1B3FC1DE0D15C0094EF40 /* CaseResultTableViewCell.xib */,
+				D6D6F7CB1DDEB0B500FAC4A8 /* CasesViewController.swift */,
+				D6B1B3FB1DE0D15C0094EF40 /* CasesViewCell.swift */,
+				D6B1B3FC1DE0D15C0094EF40 /* CaseTableViewCell.xib */,
 				D6B1B3F91DE0CE620094EF40 /* SearchResultsViewController.swift */,
 			);
-			name = "Search Results";
+			name = Cases;
 			sourceTree = "<group>";
 		};
 		D6D96EBF1DEF50D400F89D9B /* Filters */ = {
@@ -489,7 +492,7 @@
 				D6BE1DB81DCB8BD800305B7D /* Assets.xcassets in Resources */,
 				D6BAF6421DDCE6D100C9D17F /* ModalityPanelView.xib in Resources */,
 				D6DC85301DDEE868000F0D31 /* DesignCanvas.xib in Resources */,
-				D6B1B3FE1DE0D15C0094EF40 /* CaseResultTableViewCell.xib in Resources */,
+				D6B1B3FE1DE0D15C0094EF40 /* CaseTableViewCell.xib in Resources */,
 				D6BE1DB61DCB8BD800305B7D /* Main.storyboard in Resources */,
 				D6BAF6211DDBE9DB00C9D17F /* liveratlas_api_cases.json in Resources */,
 			);
@@ -670,10 +673,11 @@
 				D6BAF6401DDCE6BF00C9D17F /* ModalityCTPanelView.swift in Sources */,
 				D6BAF63B1DDCD47B00C9D17F /* LAIndex.swift in Sources */,
 				D6DC852E1DDEE700000F0D31 /* CaseDetailsPanelView.swift in Sources */,
-				D6B1B3FD1DE0D15C0094EF40 /* CaseResultTableViewCell.swift in Sources */,
+				D6FBFF1D1DF0E856007A5CEC /* MainStoryboard.swift in Sources */,
+				D6B1B3FD1DE0D15C0094EF40 /* CasesViewCell.swift in Sources */,
 				D65DE1AC1DE111350064E043 /* HomePageViewController.swift in Sources */,
 				D63605B11DCBB97B00F20A65 /* FiltersViewController.swift in Sources */,
-				D6D6F7CC1DDEB0B500FAC4A8 /* CaseResultsViewController.swift in Sources */,
+				D6D6F7CC1DDEB0B500FAC4A8 /* CasesViewController.swift in Sources */,
 				D6CC09511DDFEAA700CBC598 /* ModalityPanelView.swift in Sources */,
 				D6CC094F1DDFDD5600CBC598 /* ModalityUSPanelView.swift in Sources */,
 				D6BAF6471DDCED0A00C9D17F /* ImageTileCollectionViewCell.swift in Sources */,

@@ -9,9 +9,6 @@
 import UIKit
 
 class CaseDetailsViewController: UIViewController {
-    static let storyboardIdentifier = "CaseDetailsViewController"
-    static let showImagingSequeIdentifier = "CaseDetailToImagingSegue"
-
     @IBOutlet weak var caseDetailsPanelView: CaseDetailsPanelView!
     @IBOutlet weak var ctModalityPanelView: CTModalityPanelView!
     @IBOutlet weak var mrModalityPanelView: MRModalityPanelView!
@@ -88,8 +85,7 @@ extension CaseDetailsViewController: ModalityPanelHostDelegate {
             fatalError()
         }
         
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let imagingController = storyboard.instantiateViewController(withIdentifier: ImagingViewController.identifier) as! ImagingViewController
+        let imagingController = MainStoryboard.instantiate(withStoryboardID: .imagingID) as! ImagingViewController
         imagingController.configure(laImage: selectedImage)
         
         navigationController?.pushViewController(imagingController, animated: true)
@@ -136,12 +132,8 @@ extension CaseDetailsViewController: LASearchControllerDelegate {
             return
         }
         
-        // CaseResultsViewController
-        let storyboard = UIStoryboard(name: "Main",
-                                      bundle: Bundle(for: type(of:self)))
-        let resultsViewController = storyboard
-            .instantiateViewController(withIdentifier: CaseResultsViewController.storyboardIdentifier)
-            as! CaseResultsViewController
+        // CasesViewController
+        let resultsViewController = MainStoryboard.instantiate(withStoryboardID: .casesID) as! CasesViewController
 
         resultsViewController.searchResults = withSearchResults
         

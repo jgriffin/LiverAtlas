@@ -1,5 +1,5 @@
 //
-//  CaseResultTableViewCell.swift
+//  CaseTableViewCell.swift
 //  LiverAtlas
 //
 //  Created by John on 11/19/16.
@@ -8,8 +8,8 @@
 
 import UIKit
 
-class CaseResultTableViewCell: UITableViewCell {
-    static let identifier = "CaseResultTableViewCellIdentifier"
+class CaseTableViewCell: UITableViewCell {
+    static let identifier = "CaseTableViewCellIdentifier"
     static let resultTableViewImageCellIdentifier = "ResultTableViewImageCellIdentifier"
     
     @IBOutlet weak var titleLabel: UILabel!
@@ -26,7 +26,7 @@ class CaseResultTableViewCell: UITableViewCell {
         imagesCollectionView.delegate = self
         
         imagesCollectionView.register(CaseResultImageCollectionViewCell.self,
-                                      forCellWithReuseIdentifier: CaseResultTableViewCell.resultTableViewImageCellIdentifier)
+                                      forCellWithReuseIdentifier: CaseTableViewCell.resultTableViewImageCellIdentifier)
     }
     
     func configure(laCase: LACase, modalityFilter: LAModality) {
@@ -39,7 +39,7 @@ class CaseResultTableViewCell: UITableViewCell {
     }
 }
 
-extension CaseResultTableViewCell: UICollectionViewDataSource {
+extension CaseTableViewCell: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView,
                                numberOfItemsInSection section: Int) -> Int {
@@ -50,7 +50,7 @@ extension CaseResultTableViewCell: UICollectionViewDataSource {
         let laImage = laImages[indexPath.item]
         
         let imageCell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: CaseResultTableViewCell.resultTableViewImageCellIdentifier,
+            withReuseIdentifier: CaseTableViewCell.resultTableViewImageCellIdentifier,
             for: indexPath) as! CaseResultImageCollectionViewCell
         
         imageCell.configure(laImage: laImage)
@@ -61,6 +61,6 @@ extension CaseResultTableViewCell: UICollectionViewDataSource {
 }
 
 
-extension CaseResultTableViewCell: UICollectionViewDelegate {
+extension CaseTableViewCell: UICollectionViewDelegate {
     
 }

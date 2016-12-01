@@ -9,9 +9,6 @@
 import UIKit
 
 class IndexViewController: UIViewController {
-    let diagnosisCellIdentifier = "DiagnosisTableCellIdentifier"
-    let specificDiagnosisCellIdentifier = "SpecificDiagnosisTableCellIdentifier"
-    
     @IBOutlet weak var tableView: UITableView!
     
     var filterer: LAFilterer = LAFilterer(allCases: nil, modality: LAModality.ct)
@@ -29,10 +26,7 @@ class IndexViewController: UIViewController {
     }
 
     @IBAction func homeAction(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "Main",
-                                      bundle: Bundle(for: type(of:self)))
-        
-        let homePageVC = storyboard.instantiateViewController(withIdentifier: CaseResultsViewController.homePageControllerIdentifier) as! HomePageViewController
+        let homePageVC = MainStoryboard.instantiate(withStoryboardID: .homePageID) as! HomePageViewController
         
         homePageVC.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
         homePageVC.navigationItem.leftItemsSupplementBackButton = true
@@ -58,12 +52,16 @@ extension IndexViewController: UITableViewDataSource {
         
         switch byDiagnosis {
         case let .Diagnosis(diagnosis):
-            let diagnosisCell = tableView.dequeueReusableCell(withIdentifier: diagnosisCellIdentifier, for: indexPath)
+            let diagnosisCell = tableView.dequeueReusableCell(
+                withIdentifier: CellID.diagnosisCellID.rawValue,
+                for: indexPath)
             diagnosisCell.textLabel?.text = diagnosis
             return diagnosisCell
             
         case let .SpecificDiagnosis(_, specific, _):
-            let diagnosisCell = tableView.dequeueReusableCell(withIdentifier: diagnosisCellIdentifier, for: indexPath)
+            let diagnosisCell = tableView.dequeueReusableCell(
+                withIdentifier: CellID.diagnosisCellID.rawValue,
+                for: indexPath)
             diagnosisCell.textLabel?.text = specific
             return diagnosisCell
         }

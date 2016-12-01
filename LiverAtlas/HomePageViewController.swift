@@ -9,9 +9,6 @@
 import UIKit
 
 class HomePageViewController: UIViewController {
-    static let homeToDetailsSegueIdentifier = "HomeToCaseDetailsSegue"
-    static let homeToIndexSegueIdentifier = "HomeToIndexSegue"
-    
     @IBOutlet weak var searchBarButtonItem: UIBarButtonItem!
     @IBOutlet weak var filterBarButtonItem: UIBarButtonItem!
 
@@ -36,7 +33,7 @@ class HomePageViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
-        case .some(HomePageViewController.homeToDetailsSegueIdentifier):
+        case .some(SegueID.homeToCaseDetailsSegueID.rawValue):
             let detailsVC = segue.destination as! CaseDetailsViewController
             detailsVC.laCase = LAIndex.instance.case6
         default:
@@ -86,12 +83,8 @@ extension HomePageViewController: LASearchControllerDelegate {
             return
         }
         
-        // CaseResultsViewController
-        let storyboard = UIStoryboard(name: "Main",
-                                      bundle: Bundle(for: type(of:self)))
-        let caseResultsVC = storyboard
-            .instantiateViewController(withIdentifier: CaseResultsViewController.storyboardIdentifier)
-            as! CaseResultsViewController
+        // CasesViewController
+        let caseResultsVC = MainStoryboard.instantiate(withStoryboardID: .casesID) as! CasesViewController
         
         caseResultsVC.searchResults = withSearchResults
         

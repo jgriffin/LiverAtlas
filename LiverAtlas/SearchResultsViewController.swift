@@ -35,9 +35,9 @@ class SearchResultsViewController: UITableViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 75
         
-        tableView.register(UINib(nibName:"CaseResultTableViewCell",
+        tableView.register(UINib(nibName:"CaseTableViewCell",
                                  bundle:Bundle(for: type(of:self))),
-                           forCellReuseIdentifier: CaseResultTableViewCell.identifier)
+                           forCellReuseIdentifier: CaseTableViewCell.identifier)
     }
 
     // TableView data source
@@ -51,8 +51,8 @@ class SearchResultsViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: CaseResultTableViewCell.identifier,
-                                                 for: indexPath) as! CaseResultTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: CaseTableViewCell.identifier,
+                                                 for: indexPath) as! CaseTableViewCell
         
         let laCase = searchResults.cases[indexPath.item]
         cell.configure(laCase: laCase, modalityFilter: searchResults.fromFilteredCases.modality)

@@ -1,5 +1,5 @@
 //
-//  CaseResultsViewController.swift
+//  CasesViewController.swift
 //  LiverAtlas
 //
 //  Created by John on 11/17/16.
@@ -8,11 +8,7 @@
 
 import UIKit
 
-class CaseResultsViewController: UIViewController {
-    static let storyboardIdentifier = "CaseResultsViewControllerStoryboardIdentifier"
-    static let caseDetailSegueIdentifier =  "CaseResultToCaseDetailSegue"
-    static let homePageControllerIdentifier = "HomePageViewControllerStoryboardIdentifier"
-    
+class CasesViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableViewHeaderResultSummaryLabel: UILabel!
     
@@ -43,9 +39,9 @@ class CaseResultsViewController: UIViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 100
         
-        tableView.register(UINib(nibName: "CaseResultTableViewCell",
+        tableView.register(UINib(nibName: "CaseTableViewCell",
                                  bundle: Bundle(for: type(of:self))),
-                           forCellReuseIdentifier: CaseResultTableViewCell.identifier)
+                           forCellReuseIdentifier: CaseTableViewCell.identifier)
 
         if searchResults == nil {
             let filteredCases = FilteredCases(cases: LAIndex.instance.allCases, modality: .ct, filters: [])
@@ -71,10 +67,7 @@ class CaseResultsViewController: UIViewController {
     
     
     @IBAction func homeAction(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "Main",
-                                      bundle: Bundle(for: type(of:self)))
-        
-        let homePageVC = storyboard.instantiateViewController(withIdentifier: CaseResultsViewController.homePageControllerIdentifier) as! HomePageViewController
+        let homePageVC = MainStoryboard.instantiate(withStoryboardID: .homePageID) as! HomePageViewController
         
         homePageVC.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
         homePageVC.navigationItem.leftItemsSupplementBackButton = true
@@ -85,8 +78,8 @@ class CaseResultsViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        switch segue.identifier! {
-        case CaseResultsViewController.caseDetailSegueIdentifier:
+        switch SegueID(rawValue:segue.identifier!) {
+        case .some(.casesToCaseDetailSegueID):
             let indexPath = sender as! IndexPath
             let laCase = searchResults.cases[indexPath.item]
             let caseDetailVC = segue.destination as! CaseDetailsViewController
@@ -100,16 +93,16 @@ class CaseResultsViewController: UIViewController {
 
 }
 
-extension CaseResultsViewController: UITableViewDelegate {
+extension CasesViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: CaseResultsViewController.caseDetailSegueIdentifier,
+        performSegue(withIdentifier: SegueID.casesToCaseDetailSegueID.rawValue,
                      sender: indexPath)
     }
     
 }
 
-extension CaseResultsViewController: UITableViewDataSource {
+extension CasesViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return searchResults.cases.count
@@ -117,8 +110,8 @@ extension CaseResultsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        let caseResultCell = tableView.dequeueReusableCell(withIdentifier: CaseResultTableViewCell.identifier,
-                                                          for: indexPath) as! CaseResultTableViewCell
+        let caseResultCell = tableView.dequeueReusableCell(withIdentifier: CaseTableViewCell.identifier,
+                                                          for: indexPath) as! CaseTableViewCell
         
         let theCase = searchResults.cases[indexPath.row]
         caseResultCell.configure(laCase: theCase, modalityFilter: searchResults.fromFilteredCases.modality)
@@ -127,7 +120,7 @@ extension CaseResultsViewController: UITableViewDataSource {
     }
 }
 
-extension CaseResultsViewController: UISearchControllerDelegate {
+extension CasesViewController: UISearchControllerDelegate {
     
     func createSearchController() -> LASearchController {
         return LASearchController(delegate: self,
@@ -157,13 +150,10 @@ extension CaseResultsViewController: UISearchControllerDelegate {
     }
 }
 
-extension CaseResultsViewController: LASearchControllerDelegate {
+extension CasesViewController: LASearchControllerDelegate {
     
     func didSelect(laCase: LACase) {
-        let storyboard = UIStoryboard(name: "Main",
-                                      bundle: Bundle(for: type(of:self)))
-        
-        let caseDetailsVC = storyboard.instantiateViewController(withIdentifier: CaseDetailsViewController.storyboardIdentifier) as! CaseDetailsViewController
+        let caseDetailsVC = MainStoryboard.instantiate(withStoryboardID: .caseDetailsID) as! CaseDetailsViewController
         caseDetailsVC.laCase = laCase
         
         navigationController?.pushViewController(caseDetailsVC, animated: true)
@@ -174,7 +164,7 @@ extension CaseResultsViewController: LASearchControllerDelegate {
     }
 }
 
-extension CaseResultsViewController: FilterViewDelegate {
+extension CasesViewController: FilterViewDelegate {
     func didChangeFilter(filteredCases: FilteredCases) {
         searchResults = SearchResults(fromFilteredCases: filteredCases,
                                       searchString: "",

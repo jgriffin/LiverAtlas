@@ -22,7 +22,7 @@
 		D697B26E1DE4F7E0002F6388 /* LAFilterer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D697B26C1DE4F7E0002F6388 /* LAFilterer.swift */; };
 		D6A7F4691DE3F7DF009D8E65 /* FilterSectionHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A7F4681DE3F7DF009D8E65 /* FilterSectionHeaderCell.swift */; };
 		D6B1B3FA1DE0CE620094EF40 /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B1B3F91DE0CE620094EF40 /* SearchResultsViewController.swift */; };
-		D6B1B3FD1DE0D15C0094EF40 /* CasesViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B1B3FB1DE0D15C0094EF40 /* CasesViewCell.swift */; };
+		D6B1B3FD1DE0D15C0094EF40 /* CaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B1B3FB1DE0D15C0094EF40 /* CaseTableViewCell.swift */; };
 		D6B1B3FE1DE0D15C0094EF40 /* CaseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6B1B3FC1DE0D15C0094EF40 /* CaseTableViewCell.xib */; };
 		D6BAF6201DDBE9DB00C9D17F /* liveratlas_api_case_6.json in Resources */ = {isa = PBXBuildFile; fileRef = D6BAF61E1DDBE9DB00C9D17F /* liveratlas_api_case_6.json */; };
 		D6BAF6211DDBE9DB00C9D17F /* liveratlas_api_cases.json in Resources */ = {isa = PBXBuildFile; fileRef = D6BAF61F1DDBE9DB00C9D17F /* liveratlas_api_cases.json */; };
@@ -108,7 +108,7 @@
 		D697B26C1DE4F7E0002F6388 /* LAFilterer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LAFilterer.swift; sourceTree = "<group>"; };
 		D6A7F4681DE3F7DF009D8E65 /* FilterSectionHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterSectionHeaderCell.swift; sourceTree = "<group>"; };
 		D6B1B3F91DE0CE620094EF40 /* SearchResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
-		D6B1B3FB1DE0D15C0094EF40 /* CasesViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CasesViewCell.swift; sourceTree = "<group>"; };
+		D6B1B3FB1DE0D15C0094EF40 /* CaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaseTableViewCell.swift; sourceTree = "<group>"; };
 		D6B1B3FC1DE0D15C0094EF40 /* CaseTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CaseTableViewCell.xib; sourceTree = "<group>"; };
 		D6BAF61E1DDBE9DB00C9D17F /* liveratlas_api_case_6.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = liveratlas_api_case_6.json; sourceTree = "<group>"; };
 		D6BAF61F1DDBE9DB00C9D17F /* liveratlas_api_cases.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = liveratlas_api_cases.json; sourceTree = "<group>"; };
@@ -335,7 +335,7 @@
 			isa = PBXGroup;
 			children = (
 				D6D6F7CB1DDEB0B500FAC4A8 /* CasesViewController.swift */,
-				D6B1B3FB1DE0D15C0094EF40 /* CasesViewCell.swift */,
+				D6B1B3FB1DE0D15C0094EF40 /* CaseTableViewCell.swift */,
 				D6B1B3FC1DE0D15C0094EF40 /* CaseTableViewCell.xib */,
 				D6B1B3F91DE0CE620094EF40 /* SearchResultsViewController.swift */,
 			);
@@ -674,7 +674,7 @@
 				D6BAF63B1DDCD47B00C9D17F /* LAIndex.swift in Sources */,
 				D6DC852E1DDEE700000F0D31 /* CaseDetailsPanelView.swift in Sources */,
 				D6FBFF1D1DF0E856007A5CEC /* MainStoryboard.swift in Sources */,
-				D6B1B3FD1DE0D15C0094EF40 /* CasesViewCell.swift in Sources */,
+				D6B1B3FD1DE0D15C0094EF40 /* CaseTableViewCell.swift in Sources */,
 				D65DE1AC1DE111350064E043 /* HomePageViewController.swift in Sources */,
 				D63605B11DCBB97B00F20A65 /* FiltersViewController.swift in Sources */,
 				D6D6F7CC1DDEB0B500FAC4A8 /* CasesViewController.swift in Sources */,

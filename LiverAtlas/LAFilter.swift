@@ -31,3 +31,21 @@ struct LAFilterGroup {
     let filters: [LAFilter]
 }
 
+struct FilteredCases {
+    let cases: [LACase]
+    let modality: LAModality
+    let filters: [LAFilter]
+}
+
+enum LACaseByDiagnosis {
+    case Diagnosis(diagnosis: String)
+    case SpecificDiagnosis(diagnosis: String, specificDiagnosis: String, laCase: LACase)
+    
+    var diagnosisName: String {
+        switch self {
+        case .Diagnosis(let diagnosis),
+             .SpecificDiagnosis(let diagnosis, _, _):
+            return diagnosis
+        }
+    }
+}

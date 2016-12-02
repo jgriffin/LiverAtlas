@@ -12,7 +12,7 @@ import UIKit
 
 
 protocol LASearchControllerDelegate {
-    func didEndSearch(withSearchResults: SearchResults)
+    func didEndSearch(withSearchString: String)
     func didSelect(laCase: LACase)
 }
 
@@ -34,9 +34,6 @@ class LASearchController: NSObject {
     
     func createSearchAndResultsControllers(searchControllerDelegate: UISearchControllerDelegate) {
         searchResultsController = SearchResultsViewController()
-        searchResultsController.configure(filteredCasesToSearch: FilteredCases(cases: LAIndex.instance.allCases,
-                                                                               modality: .ct,
-                                                                               filters: []))
         searchResultsController.tableView.delegate = self
         
         searchController = UISearchController(searchResultsController: searchResultsController)
@@ -53,8 +50,9 @@ class LASearchController: NSObject {
         searchBar.delegate = self
     }
     
-    func searchCases(filteredCasesToSearch: FilteredCases) {
-        searchResultsController.configure(filteredCasesToSearch: filteredCasesToSearch)
+    func searchCases(filteredCasesToSearch: FilteredCases, searchText: String) {
+        searchResultsController.configure(filteredCasesToSearch: filteredCasesToSearch,
+                                          searchText: searchText)
         searchController.isActive = true
     }
 }
@@ -63,13 +61,7 @@ extension LASearchController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
-        guard !searchBar.text!.isEmpty,
-            let searchResults = searchResultsController?.searchResults,
-            !searchResults.cases.isEmpty else {
-                return
-        }
-        
-        delegate?.didEndSearch(withSearchResults: searchResults)
+        delegate?.didEndSearch(withSearchString: searchBar.text!)
         searchController.isActive = false
     }
 }
@@ -77,7 +69,7 @@ extension LASearchController: UISearchBarDelegate {
 extension LASearchController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let laCase = searchResultsController.searchResults.cases[indexPath.item]
+        let laCase = searchResultsController.searchResultCases[indexPath.item]
         
         delegate?.didSelect(laCase: laCase)
         searchController.isActive = false

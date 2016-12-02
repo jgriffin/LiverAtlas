@@ -102,7 +102,7 @@ class QuizContentView: UIView {
     
     // configure
     
-    func configureView(laCase: LACase) {
+    func configure(laCase: LACase) {
         self.laCase = laCase
         
         clinicalPresentationLabel.text = laCase.clinicalPresentation
@@ -125,7 +125,7 @@ class QuizContentView: UIView {
     }
     
     override func prepareForInterfaceBuilder() {
-        configureView(laCase: LAIndex.instance.case6)
+        configure(laCase: LAIndex.instance.case6)
     }
 }
 

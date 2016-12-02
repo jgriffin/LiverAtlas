@@ -12,25 +12,42 @@ class CasesViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableViewHeaderResultSummaryLabel: UILabel!
     
-    lazy var laSearchController: LASearchController = { self.createSearchController() }()
-    var hiddenRightBarButtonItems: [UIBarButtonItem]?
-    
-    var searchResults: SearchResults! {
-        didSet {
-            guard let _ = tableViewHeaderResultSummaryLabel else {
-                return
-            }
+    fileprivate lazy var laSearchController: LASearchController = { self.createSearchController() }()
+    fileprivate var hiddenRightBarButtonItems: [UIBarButtonItem]?
 
-            tableViewHeaderResultSummaryLabel.text = "There are \(searchResults.cases.count ) cases matching the current search"
-            tableView?.reloadData()
+    fileprivate var filteredCases: FilteredCases! {
+        didSet {
+            _searchResultCases = nil
+            tableView.reloadData()
         }
     }
-    
+    fileprivate var searchString: String = "" {
+        didSet {
+            _searchResultCases = nil
+            tableView.reloadData()
+        }
+    }
+    fileprivate var searchResultCases: [LACase] {
+        guard filteredCases != nil else {
+            fatalError("need to call CasesViewController.configure")
+        }
+        
+        if _searchResultCases == nil {
+            _searchResultCases = LASearcher().searchCases(
+                fromFilteredCases: filteredCases,
+                forSearchText: searchString)
+            
+            updateHeader(filteredCases: filteredCases,
+                         searchText: searchString,
+                         resultCount: _searchResultCases!.count)
+        }
+        return _searchResultCases!
+    }
+    private var _searchResultCases: [LACase]?
     
     func configure(filteredCases: FilteredCases) {
-        self.searchResults = SearchResults(fromFilteredCases: filteredCases,
-                                           searchString: "",
-                                           cases: filteredCases.cases)
+        self.filteredCases = filteredCases
+        tableView.reloadData()
     }
 
     override func viewDidLoad() {
@@ -41,17 +58,22 @@ class CasesViewController: UIViewController {
         
         tableView.register(UINib(nibName: CaseTableViewCell.nibName, bundle: MainStoryboard.bundle),
                            forCellReuseIdentifier: CellID.caseTableViewCellID.rawValue)
-
-        if searchResults == nil {
-            let filteredCases = FilteredCases(cases: LAIndex.instance.allCases, modality: .ct, filters: [])
-            configure(filteredCases: filteredCases)
+        
+        if filteredCases == nil {
+            filteredCases = LAFilterer.instance.filteredCases
         }
+    }
+
+    private func updateHeader(filteredCases: FilteredCases,
+                              searchText: String,
+                              resultCount: Int) {
+        tableViewHeaderResultSummaryLabel.text = "There are \(resultCount ) cases matching the current search"
     }
 
     @IBAction func searchAction(_ sender: Any) {
         definesPresentationContext = true
 
-        laSearchController.searchCases(filteredCasesToSearch: searchResults.fromFilteredCases)
+        laSearchController.searchCases(filteredCasesToSearch: filteredCases, searchText: searchString)
     }
     
     @IBAction func filtersAction(_ sender: Any) {
@@ -80,10 +102,10 @@ class CasesViewController: UIViewController {
         switch SegueID(rawValue:segue.identifier!) {
         case .some(.casesToCaseDetailSegueID):
             let indexPath = sender as! IndexPath
-            let laCase = searchResults.cases[indexPath.item]
-            let caseDetailVC = segue.destination as! CaseDetailsViewController
+            let laCase = searchResultCases[indexPath.item]
             
-            caseDetailVC.laCase = laCase
+            let caseDetailVC = segue.destination as! CaseDetailsViewController
+            caseDetailVC.configure(laCase: laCase)
                         
         default:
             NSLog("unrecognized segue")
@@ -92,19 +114,12 @@ class CasesViewController: UIViewController {
 
 }
 
-extension CasesViewController: UITableViewDelegate {
-
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: SegueID.casesToCaseDetailSegueID.rawValue,
-                     sender: indexPath)
-    }
-    
-}
+// MARK: UI Table View
 
 extension CasesViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return searchResults.cases.count
+        return searchResultCases.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -112,12 +127,22 @@ extension CasesViewController: UITableViewDataSource {
             withIdentifier: CellID.caseTableViewCellID.rawValue,
             for: indexPath) as! CaseTableViewCell
         
-        let theCase = searchResults.cases[indexPath.row]
-        caseResultCell.configure(laCase: theCase, modalityFilter: searchResults.fromFilteredCases.modality)
+        let theCase = searchResultCases[indexPath.row]
+        caseResultCell.configure(laCase: theCase, modalityFilter: filteredCases.modality)
         
         return caseResultCell
     }
 }
+
+extension CasesViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: SegueID.casesToCaseDetailSegueID.rawValue,
+                     sender: indexPath)
+    }
+}
+
+// MARK: Search Controller
 
 extension CasesViewController: UISearchControllerDelegate {
     
@@ -153,21 +178,19 @@ extension CasesViewController: LASearchControllerDelegate {
     
     func didSelect(laCase: LACase) {
         let caseDetailsVC = MainStoryboard.instantiate(withStoryboardID: .caseDetailsID) as! CaseDetailsViewController
-        caseDetailsVC.laCase = laCase
+        caseDetailsVC.configure(laCase: laCase)
         
         navigationController?.pushViewController(caseDetailsVC, animated: true)
     }
     
-    func didEndSearch(withSearchResults: SearchResults) {
-        self.searchResults = withSearchResults
+    func didEndSearch(withSearchString searchString: String) {
+        self.searchString = searchString
     }
 }
 
 extension CasesViewController: FilterViewDelegate {
     func didChangeFilter(filteredCases: FilteredCases) {
-        searchResults = SearchResults(fromFilteredCases: filteredCases,
-                                      searchString: "",
-                                      cases: filteredCases.cases)
+        self.filteredCases = filteredCases
     }
 }
 

@@ -22,11 +22,11 @@ class CaseDetailsPanelView: UIView {
     
     var laCase: LACase! {
         didSet {
-            configureView(laCase: laCase)
+            configure(laCase: laCase)
         }
     }
     
-    func configureView(laCase: LACase) {
+    func configure(laCase: LACase) {
         diagnosisTextLabel?.text = laCase.diagnosis.diagnosis
         specificDiagnosisHeading?.text = "Specific diagnosis:"
         specificDiagnosisLabel?.text = laCase.specificDiagnosis

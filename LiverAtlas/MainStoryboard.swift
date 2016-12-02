@@ -35,6 +35,8 @@ enum SegueID: String {
     case homeToIndexSegueID = "HomeToIndexSegue"
     case casesToCaseDetailSegueID =  "CaseResultToCaseDetailSegue"
     case showImagingSequeID = "CaseDetailToImagingSegue"
+    case filterViewToCaseResultsSegue = "FilterViewToCaseResultsSegue"
+    case casesViewControllerIdentifier = "CasesViewControllerStoryboardIdentifier"
     
 }
 
@@ -45,5 +47,8 @@ enum CellID: String {
     case caseTableViewCellID = "CaseTableViewCellIdentifier"
     case resultTableViewImageCellID = "ResultTableViewImageCellIdentifier"
     case imageTileCollectionViewCellID = "ImageTileCollectionViewCell"
+
+    case filterItemReuseID = "FilterItemCellIdentifier"
+    case sectionHeaderReuseID = "SectionHeaderCellIdentifier"
 }
 

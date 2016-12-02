@@ -19,7 +19,7 @@ class QuizViewController: UIViewController {
     
     var laCase: LACase! {
         didSet {
-            quizContentView.configureView(laCase: laCase)
+            quizContentView.configure(laCase: laCase)
         }
     }
 

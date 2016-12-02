@@ -9,24 +9,35 @@
 import UIKit
 
 class SearchResultsViewController: UITableViewController {
-    let searcher = LASearcher()
+    private let searcher = LASearcher()
     
-    var filteredCasesToSearch: FilteredCases! {
+    fileprivate var filteredCasesToSearch: FilteredCases! {
         didSet {
-            searchResults = SearchResults(fromFilteredCases: filteredCasesToSearch,
-                                          searchString: "",
-                                          cases: filteredCasesToSearch.cases)
+            _searchResultCases = nil
         }
     }
-    
-    var searchResults: SearchResults! {
+    fileprivate var searchText: String = "" {
+        didSet {
+            _searchResultCases = nil
+        }
+    }
+    var searchResultCases: [LACase] {
+        if _searchResultCases == nil {
+            _searchResultCases = searcher.searchCases(
+                fromFilteredCases: filteredCasesToSearch,
+                forSearchText: searchText)
+        }
+        return _searchResultCases!
+    }
+    private var _searchResultCases: [LACase]? {
         didSet {
             tableView.reloadData()
         }
     }
-    
-    func configure(filteredCasesToSearch: FilteredCases) {
+
+    func configure(filteredCasesToSearch: FilteredCases, searchText: String ) {
         self.filteredCasesToSearch = filteredCasesToSearch
+        self.searchText = searchText
     }
     
     override func viewDidLoad() {
@@ -46,15 +57,15 @@ class SearchResultsViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return searchResults.cases.count
+        return searchResultCases.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CellID.caseTableViewCellID.rawValue,
                                                  for: indexPath) as! CaseTableViewCell
         
-        let laCase = searchResults.cases[indexPath.item]
-        cell.configure(laCase: laCase, modalityFilter: searchResults.fromFilteredCases.modality)
+        let laCase = searchResultCases[indexPath.item]
+        cell.configure(laCase: laCase, modalityFilter: filteredCasesToSearch.modality)
         
         return cell
     }    
@@ -64,12 +75,10 @@ extension SearchResultsViewController: UISearchResultsUpdating {
     
     func updateSearchResults(for searchController: UISearchController) {
         let sb = searchController.searchBar
-        let searchText = sb.text!
+        
+        searchText = sb.text!
         
         // show even when empty
         self.view.isHidden = false
-        
-        searchResults = searcher.searchCases(fromFilteredCases: filteredCasesToSearch,
-                                             forSearchText: searchText)
     }
 }

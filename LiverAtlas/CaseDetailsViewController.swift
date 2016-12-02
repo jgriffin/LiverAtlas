@@ -14,16 +14,11 @@ class CaseDetailsViewController: UIViewController {
     @IBOutlet weak var mrModalityPanelView: MRModalityPanelView!
     @IBOutlet weak var usModalityPanelView: USModalityPanelView!
 
-    lazy var searchController: LASearchController = { self.createSearchController() }()
-    var hiddenRightBarButtonItems: [UIBarButtonItem]?
+    fileprivate var laCase: LACase?
     
-    var laCase: LACase? {
-        didSet {
-            self.configureView(laCase: laCase!)
-        }
-    }
-    
-    func configureView(laCase: LACase) {
+    func configure(laCase: LACase) {
+        self.laCase = laCase
+        
         guard caseDetailsPanelView != nil else {
             return
         }
@@ -35,7 +30,7 @@ class CaseDetailsViewController: UIViewController {
         configureModalityPanels(laCase: laCase)
     }
 
-    func configureModalityPanels(laCase: LACase) {
+    private func configureModalityPanels(laCase: LACase) {
         if let ctmodality = laCase.ctmodality.first {
             ctModalityPanelView.configure(ctmodality: ctmodality)
         }
@@ -58,7 +53,7 @@ class CaseDetailsViewController: UIViewController {
         super.viewDidLoad()
         
         if let _ = laCase {
-            configureView(laCase: laCase!)
+            configure(laCase: laCase!)
         }
         
         definesPresentationContext = true
@@ -91,54 +86,3 @@ extension CaseDetailsViewController: ModalityPanelHostDelegate {
         navigationController?.pushViewController(imagingController, animated: true)
     }
 }
-
-extension CaseDetailsViewController: UISearchControllerDelegate {
-    
-    func createSearchController() -> LASearchController {
-        return LASearchController(delegate: self,
-                                          searchControllerDelegate: self)
-    }
-
-    func presentSearchController(_ searchController: UISearchController) {
-        if let _ = navigationItem.titleView {
-            return
-        }
-
-        searchController.searchBar.sizeToFit()
-        navigationItem.titleView = searchController.searchBar
-        navigationItem.hidesBackButton = true
-        
-        hiddenRightBarButtonItems = navigationItem.rightBarButtonItems
-        navigationItem.rightBarButtonItem = nil
-        
-        searchController.searchBar.becomeFirstResponder()
-    }
-    
-    func didDismissSearchController(_ searchController: UISearchController) {
-        navigationItem.titleView = nil
-        navigationItem.hidesBackButton = false
-        navigationItem.rightBarButtonItems = hiddenRightBarButtonItems
-    }
-}
-
-extension CaseDetailsViewController: LASearchControllerDelegate {
-    
-    func didSelect(laCase: LACase) {
-        
-    }
-    
-    func didEndSearch(withSearchResults: SearchResults) {
-        guard let navController = navigationController else {
-            return
-        }
-        
-        // CasesViewController
-        let resultsViewController = MainStoryboard.instantiate(withStoryboardID: .casesID) as! CasesViewController
-
-        resultsViewController.searchResults = withSearchResults
-        
-        let _ = navController.popToRootViewController(animated: false)
-        navController.pushViewController(resultsViewController, animated: true)
-    }
-}
-

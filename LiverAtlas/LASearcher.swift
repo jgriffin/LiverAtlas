@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct SearchResults {
+struct SearchResultCases {
     let fromFilteredCases: FilteredCases
     let searchString: String
     let cases: [LACase]
@@ -16,11 +16,8 @@ struct SearchResults {
 
 class LASearcher {
 
-    func searchCases(fromFilteredCases: FilteredCases, forSearchText searchText: String) -> SearchResults {
-        let cases = searchCases(casesToSearch: fromFilteredCases.cases, forSearchText: searchText)
-        return SearchResults(fromFilteredCases: fromFilteredCases,
-                             searchString: searchText,
-                             cases:cases)
+    func searchCases(fromFilteredCases: FilteredCases, forSearchText searchText: String) -> [LACase] {
+        return searchCases(casesToSearch: fromFilteredCases.cases, forSearchText: searchText)
     }
     
     func searchCases(casesToSearch: [LACase], forSearchText searchText: String) -> [LACase] {

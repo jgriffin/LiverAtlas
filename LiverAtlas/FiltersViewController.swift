@@ -14,14 +14,10 @@ protocol FilterViewDelegate {
 
 
 class FiltersViewController: UITableViewController {
-    let filterItemReuseIdentifier = "FilterItemCellIdentifier"
-    let sectionHeaderReuseIdentifier = "SectionHeaderCellIdentifier"
-    let FilterViewToCaseResultsSegue = "FilterViewToCaseResultsSegue"
-    let CasesViewControllerIdentifier = "CasesViewControllerStoryboardIdentifier"
 
     @IBOutlet var modalitySegmentedControl: UISegmentedControl!
     
-    var filtersViewControllerDelegate: FilterViewDelegate?
+    var delegate: FilterViewDelegate?
     
     // selected modality and filters
     
@@ -39,7 +35,7 @@ class FiltersViewController: UITableViewController {
         self.tableView.sectionHeaderHeight = UITableViewAutomaticDimension
         self.tableView.estimatedSectionHeaderHeight = 50; //Set this to any value that works for you.
         self.tableView.register(FilterSectionHeaderView.self,
-                                forHeaderFooterViewReuseIdentifier: sectionHeaderReuseIdentifier)
+                                forHeaderFooterViewReuseIdentifier: CellID.sectionHeaderReuseID.rawValue)
         
         expandedFilterSections = [.diagnosisCategory]
         selectedFeatures = Set()
@@ -51,7 +47,7 @@ class FiltersViewController: UITableViewController {
                 fromFilteredCases: filterer.modalityFilteredCases,
                 passingFilters: Array(selectedFeatures))
             
-            filtersViewControllerDelegate?.didChangeFilter(filteredCases: filteredCases)
+            delegate?.didChangeFilter(filteredCases: filteredCases)
         }
     }
     
@@ -136,7 +132,8 @@ extension FiltersViewController: ExpandableFilterSectionDelegate { // UITableVie
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let filterGroup = filterer.modalityFilterGroups[section]
         
-        let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: sectionHeaderReuseIdentifier) as! FilterSectionHeaderView
+        let headerView = tableView.dequeueReusableHeaderFooterView(
+            withIdentifier: CellID.sectionHeaderReuseID.rawValue) as! FilterSectionHeaderView
         
         let isExpanded = expandedFilterSections.contains(filterGroup.filterType)
         headerView.configure(filterType: filterGroup.filterType,
@@ -156,7 +153,8 @@ extension FiltersViewController: ExpandableFilterSectionDelegate { // UITableVie
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let filterItem = filterer.modalityFilterGroups[indexPath.section].filters[indexPath.item]
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: filterItemReuseIdentifier, for: indexPath)
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: CellID.filterItemReuseID.rawValue, for: indexPath)
         
         cell.textLabel?.text = filterItem.filterString
         cell.accessoryType = selectedFeatures.contains(filterItem) ? .checkmark : .none

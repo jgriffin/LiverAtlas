@@ -9,8 +9,6 @@
 import UIKit
 
 class CaseTableViewCell: UITableViewCell {
-    static let identifier = "CaseTableViewCellIdentifier"
-    static let resultTableViewImageCellIdentifier = "ResultTableViewImageCellIdentifier"
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var specificDiagnosisLabel: UILabel!
@@ -26,7 +24,7 @@ class CaseTableViewCell: UITableViewCell {
         imagesCollectionView.delegate = self
         
         imagesCollectionView.register(CaseResultImageCollectionViewCell.self,
-                                      forCellWithReuseIdentifier: CaseTableViewCell.resultTableViewImageCellIdentifier)
+                                      forCellWithReuseIdentifier: CellID.resultTableViewImageCellID.rawValue)
     }
     
     func configure(laCase: LACase, modalityFilter: LAModality) {
@@ -50,7 +48,7 @@ extension CaseTableViewCell: UICollectionViewDataSource {
         let laImage = laImages[indexPath.item]
         
         let imageCell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: CaseTableViewCell.resultTableViewImageCellIdentifier,
+            withReuseIdentifier: CellID.resultTableViewImageCellID.rawValue,
             for: indexPath) as! CaseResultImageCollectionViewCell
         
         imageCell.configure(laImage: laImage)

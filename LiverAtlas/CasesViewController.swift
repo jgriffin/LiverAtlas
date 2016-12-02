@@ -41,7 +41,7 @@ class CasesViewController: UIViewController {
         
         tableView.register(UINib(nibName: "CaseTableViewCell",
                                  bundle: Bundle(for: type(of:self))),
-                           forCellReuseIdentifier: CaseTableViewCell.identifier)
+                           forCellReuseIdentifier: CellID.caseTableViewCellID.rawValue)
 
         if searchResults == nil {
             let filteredCases = FilteredCases(cases: LAIndex.instance.allCases, modality: .ct, filters: [])
@@ -109,9 +109,9 @@ extension CasesViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
-        let caseResultCell = tableView.dequeueReusableCell(withIdentifier: CaseTableViewCell.identifier,
-                                                          for: indexPath) as! CaseTableViewCell
+        let caseResultCell = tableView.dequeueReusableCell(
+            withIdentifier: CellID.caseTableViewCellID.rawValue,
+            for: indexPath) as! CaseTableViewCell
         
         let theCase = searchResults.cases[indexPath.row]
         caseResultCell.configure(laCase: theCase, modalityFilter: searchResults.fromFilteredCases.modality)

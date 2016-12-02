@@ -16,7 +16,7 @@ struct MainStoryboard {
     static func instantiate(withStoryboardID id: StoryboardID) -> UIViewController {
         return MainStoryboard.instance.instantiateViewController(withIdentifier: id.rawValue)
     }
-
+    
 }
 
 enum StoryboardID: String {
@@ -36,5 +36,9 @@ enum SegueID: String {
 
 enum CellID: String {
     case diagnosisCellID = "DiagnosisTableCellIdentifier"
-    case specificDiagnosisCellID = "SpecificDiagnosisTableCellIdentifier"    
+    case specificDiagnosisCellID = "SpecificDiagnosisTableCellIdentifier"
+    case caseResultTableViewCellID = "caseResultTableViewCellID"
+    case caseTableViewCellID = "CaseTableViewCellIdentifier"
+    case resultTableViewImageCellID = "ResultTableViewImageCellIdentifier"
 }
+

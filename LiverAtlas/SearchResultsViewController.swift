@@ -37,7 +37,7 @@ class SearchResultsViewController: UITableViewController {
         
         tableView.register(UINib(nibName:"CaseTableViewCell",
                                  bundle:Bundle(for: type(of:self))),
-                           forCellReuseIdentifier: CaseTableViewCell.identifier)
+                           forCellReuseIdentifier: CellID.caseTableViewCellID.rawValue)
     }
 
     // TableView data source
@@ -51,7 +51,7 @@ class SearchResultsViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: CaseTableViewCell.identifier,
+        let cell = tableView.dequeueReusableCell(withIdentifier: CellID.caseTableViewCellID.rawValue,
                                                  for: indexPath) as! CaseTableViewCell
         
         let laCase = searchResults.cases[indexPath.item]

@@ -77,41 +77,11 @@ class CasesViewController: UIViewController {
     }
     
     @IBAction func filtersAction(_ sender: Any) {
-        let filtersViewControllerStoryboardID = "filtersViewControllerStoryboardID"
-
-        let storyboard = UIStoryboard(name: "Main",
-                                      bundle: Bundle(for: type(of:self)))
+        let filtersVC = MainStoryboard.instantiate(withStoryboardID: .filtersID) as! FiltersViewController
+        filtersVC.delegate = self
         
-        let filtersVC = storyboard.instantiateViewController(withIdentifier: filtersViewControllerStoryboardID) as! FiltersViewController
         navigationController?.pushViewController(filtersVC, animated: true)
     }
-    
-    
-    @IBAction func homeAction(_ sender: Any) {
-        let homePageVC = MainStoryboard.instantiate(withStoryboardID: .homePageID) as! HomePageViewController
-        
-        homePageVC.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
-        homePageVC.navigationItem.leftItemsSupplementBackButton = true
-        
-        let detailNavController = UINavigationController(rootViewController: homePageVC)
-        
-        showDetailViewController(detailNavController, sender: self)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        switch SegueID(rawValue:segue.identifier!) {
-        case .some(.casesToCaseDetailSegueID):
-            let indexPath = sender as! IndexPath
-            let laCase = searchResultCases[indexPath.item]
-            
-            let caseDetailVC = segue.destination as! CaseDetailsViewController
-            caseDetailVC.configure(laCase: laCase)
-                        
-        default:
-            NSLog("unrecognized segue")
-        }
-    }
-
 }
 
 // MARK: UI Table View
@@ -137,8 +107,12 @@ extension CasesViewController: UITableViewDataSource {
 extension CasesViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: SegueID.casesToCaseDetailSegueID.rawValue,
-                     sender: indexPath)
+        let laCase = searchResultCases[indexPath.item]
+
+        let caseDetailsVC = MainStoryboard.instantiate(withStoryboardID: .caseDetailsID) as! CaseDetailsViewController
+        caseDetailsVC.configure(laCase: laCase)
+        
+        navigationController?.pushViewController(caseDetailsVC, animated: true)
     }
 }
 

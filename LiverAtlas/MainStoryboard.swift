@@ -20,7 +20,6 @@ class MainStoryboard {
     static func instantiate(withStoryboardID id: StoryboardID) -> UIViewController {
         return MainStoryboard.instance.instantiateViewController(withIdentifier: id.rawValue)
     }
-    
 }
 
 enum StoryboardID: String {
@@ -28,6 +27,8 @@ enum StoryboardID: String {
     case casesID = "CasesViewControllerStoryboardIdentifier"
     case caseDetailsID = "CaseDetailsViewController"
     case imagingID = "ImagingViewController"
+    case filtersID = "filtersViewControllerStoryboardID"
+
 }
 
 enum SegueID: String {

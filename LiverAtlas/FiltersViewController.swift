@@ -14,18 +14,14 @@ protocol FilterViewDelegate {
 
 
 class FiltersViewController: UITableViewController {
-
     @IBOutlet var modalitySegmentedControl: UISegmentedControl!
     
     var delegate: FilterViewDelegate?
     
-    // selected modality and filters
-    
-    let filterer = LAFilterer(allCases: nil,
-                              modality: LAModality.ct)
-    
-    var expandedFilterSections = Set<LAFilterType>()
-    var selectedFeatures = Set<LAFilter>()
+    // tie to the LAFilterer.instance so filter changes are rememberd across the app
+    fileprivate let filterer = LAFilterer.instance
+    fileprivate var expandedFilterSections = Set<LAFilterType>()
+    fileprivate var selectedFeatures = Set<LAFilter>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,8 +33,9 @@ class FiltersViewController: UITableViewController {
         self.tableView.register(FilterSectionHeaderView.self,
                                 forHeaderFooterViewReuseIdentifier: CellID.sectionHeaderReuseID.rawValue)
         
+        modalitySegmentedControl.selectedSegmentIndex = modalityToSegmentIndexMap[filterer.activeModality]!
         expandedFilterSections = [.diagnosisCategory]
-        selectedFeatures = Set()
+        selectedFeatures = Set(filterer.activeFilters)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -51,7 +48,6 @@ class FiltersViewController: UITableViewController {
         }
     }
     
-    
     @IBAction func doneAction(_ sender: Any) {
         if let _ = presentingViewController {
             presentingViewController?.dismiss(animated: true, completion: nil)
@@ -59,24 +55,19 @@ class FiltersViewController: UITableViewController {
             let _ = navigationController?.popViewController(animated: true)
         }
     }
-    
-    
 
     // MARK: Modality Filters
+    
+    let modalityToSegmentIndexMap: [LAModality: Int] = [.ct: 0, .mr: 1, .us: 2]
     
     @IBAction func modalityChanged(_ sender: Any) {
         guard let segmentedControl = sender as? UISegmentedControl else {
             fatalError()
         }
         
-        let selectedModality: LAModality = {
-            switch segmentedControl.selectedSegmentIndex {
-            case 0: return .ct
-            case 1: return .mr
-            case 2: return .us
-            default: fatalError()
-            }
-        }()
+        let selectedModality: LAModality = modalityToSegmentIndexMap.first(where: { (modality, index) -> Bool in
+            index == segmentedControl.selectedSegmentIndex
+        })!.key
         
         filterer.activeModality = selectedModality
         tableView?.reloadData()
@@ -99,8 +90,6 @@ class FiltersViewController: UITableViewController {
         tableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
     }
     
-    // MARK: - Segues
- 
 }
 
 extension FiltersViewController: ExpandableFilterSectionDelegate { // UITableViewDataSource

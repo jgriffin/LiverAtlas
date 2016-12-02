@@ -37,7 +37,7 @@ class LAFilterer {
     var modalityFilteredCases: FilteredCases {
         if _modalityFilteredCases == nil {
             _modalityFilteredCases = filteredCases(fromCases: allCases,
-                                                 withModality: activeModality)
+                                                   withModality: activeModality)
         }
         return _modalityFilteredCases!
     }
@@ -215,24 +215,13 @@ extension LAFilterer { // groups and diagnoses
     }
     
     func casesByDiagnosis(fromFilteredCases filteredCases: FilteredCases) -> [LACaseByDiagnosis] {
-        
-        let casesBySpecificDiagnosis = allCases.map { aCase -> LACaseByDiagnosis in
+        let casesBySpecificDiagnosisSorted = filteredCases.cases.map( { aCase -> LACaseByDiagnosis in
             return LACaseByDiagnosis.SpecificDiagnosis(diagnosis: aCase.diagnosis.diagnosis,
                                                        specificDiagnosis: aCase.specificDiagnosis,
                                                        laCase: aCase)
-        }
-        
-        let casesBySpecificDiagnosisSorted = casesBySpecificDiagnosis.sorted { (lhs, rhs) -> Bool in
-            guard case let LACaseByDiagnosis.SpecificDiagnosis(lhsDiagnosis, lhsSpecific, _) = lhs,
-                case let LACaseByDiagnosis.SpecificDiagnosis(rhsDiagnosis, rhsSpecific, _) = rhs else {
-                    fatalError()
-            }
-            
-            return (lhsDiagnosis < rhsDiagnosis) || ((lhsDiagnosis == rhsDiagnosis) && lhsSpecific <= rhsSpecific)
-        }
+        }).sorted(by:compareBySpecificDiagnosis)
         
         var byDiagnoses = [LACaseByDiagnosis]()
-        
         for specific in casesBySpecificDiagnosisSorted {
             if specific.diagnosisName != byDiagnoses.last?.diagnosisName {
                 // add a diagnosis header
@@ -242,6 +231,15 @@ extension LAFilterer { // groups and diagnoses
         }
         
         return byDiagnoses
+    }
+    
+    func compareBySpecificDiagnosis(lhs: LACaseByDiagnosis, rhs:LACaseByDiagnosis) -> Bool {
+        guard case let LACaseByDiagnosis.SpecificDiagnosis(lhsDiagnosis, lhsSpecific, _) = lhs,
+            case let LACaseByDiagnosis.SpecificDiagnosis(rhsDiagnosis, rhsSpecific, _) = rhs else {
+                fatalError()
+        }
+        
+        return (lhsDiagnosis < rhsDiagnosis) || ((lhsDiagnosis == rhsDiagnosis) && lhsSpecific <= rhsSpecific)
     }
     
     func diagnosesAndSpecificDiagnoses(fromFilteredCases filteredCases: FilteredCases) -> (diagnoses: [String], specificDiagnoses: [String]) {

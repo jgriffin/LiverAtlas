@@ -39,8 +39,7 @@ class CasesViewController: UIViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 100
         
-        tableView.register(UINib(nibName: "CaseTableViewCell",
-                                 bundle: Bundle(for: type(of:self))),
+        tableView.register(UINib(nibName: CaseTableViewCell.nibName, bundle: MainStoryboard.bundle),
                            forCellReuseIdentifier: CellID.caseTableViewCellID.rawValue)
 
         if searchResults == nil {

@@ -9,7 +9,7 @@
 import UIKit
 
 class ImageTileCollectionViewCell: UICollectionViewCell {
-    static let identifier = "ImageTileCollectionViewCell"
+    static let nibName = "ImageTileCollectionViewCell"
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var imageTitle: UILabel!

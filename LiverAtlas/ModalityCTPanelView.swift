@@ -61,7 +61,9 @@ extension CTModalityPanelView: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageTileCollectionViewCell.identifier, for: indexPath) as! ImageTileCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: CellID.imageTileCollectionViewCellID.rawValue,
+            for: indexPath) as! ImageTileCollectionViewCell
         cell.configure(laImage: ctmodality.images[indexPath.item])
         
         return cell

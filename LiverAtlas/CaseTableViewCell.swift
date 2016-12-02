@@ -9,6 +9,7 @@
 import UIKit
 
 class CaseTableViewCell: UITableViewCell {
+    static let nibName = "CaseTableViewCell"
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var specificDiagnosisLabel: UILabel!

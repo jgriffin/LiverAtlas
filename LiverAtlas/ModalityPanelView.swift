@@ -70,9 +70,9 @@ class ModalityPanelView: UIView {
 
         styleTheLabels()
         
-        liverImagesCollectionView.register(UINib(nibName: "ImageTileCollectionViewCell",
-                                                 bundle: Bundle(for: type(of:self))),
-                                           forCellWithReuseIdentifier: ImageTileCollectionViewCell.identifier)
+        liverImagesCollectionView.register(
+            UINib(nibName: ImageTileCollectionViewCell.nibName, bundle: MainStoryboard.bundle),
+            forCellWithReuseIdentifier: CellID.imageTileCollectionViewCellID.rawValue)
     }
 
     func styleTheLabels() {

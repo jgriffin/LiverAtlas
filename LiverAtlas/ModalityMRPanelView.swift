@@ -60,7 +60,9 @@ extension MRModalityPanelView: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageTileCollectionViewCell.identifier, for: indexPath) as! ImageTileCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: CellID.imageTileCollectionViewCellID.rawValue,
+            for: indexPath) as! ImageTileCollectionViewCell
         cell.configure(laImage: mrmodality.images[indexPath.item])
         
         return cell

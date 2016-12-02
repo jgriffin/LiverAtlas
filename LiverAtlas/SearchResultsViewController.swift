@@ -35,8 +35,7 @@ class SearchResultsViewController: UITableViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 75
         
-        tableView.register(UINib(nibName:"CaseTableViewCell",
-                                 bundle:Bundle(for: type(of:self))),
+        tableView.register(UINib(nibName: CaseTableViewCell.nibName, bundle: MainStoryboard.bundle),
                            forCellReuseIdentifier: CellID.caseTableViewCellID.rawValue)
     }
 

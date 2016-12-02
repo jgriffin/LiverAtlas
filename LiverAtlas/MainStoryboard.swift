@@ -9,10 +9,14 @@
 import UIKit
 
 
-struct MainStoryboard {
+class MainStoryboard {
     static var instance = UIStoryboard(name: "Main",
-                                       bundle: Bundle(for: MainStoryboard.self as! AnyClass ))
+                                       bundle: MainStoryboard.bundle)
 
+    static var bundle: Bundle {
+        return Bundle(for: MainStoryboard.self)
+    }
+    
     static func instantiate(withStoryboardID id: StoryboardID) -> UIViewController {
         return MainStoryboard.instance.instantiateViewController(withIdentifier: id.rawValue)
     }
@@ -40,5 +44,6 @@ enum CellID: String {
     case caseResultTableViewCellID = "caseResultTableViewCellID"
     case caseTableViewCellID = "CaseTableViewCellIdentifier"
     case resultTableViewImageCellID = "ResultTableViewImageCellIdentifier"
+    case imageTileCollectionViewCellID = "ImageTileCollectionViewCell"
 }
 

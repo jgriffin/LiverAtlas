@@ -11,6 +11,7 @@ import UIKit
 class CasesViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableViewHeaderResultSummaryLabel: UILabel!
+    @IBOutlet weak var filtersBarButtonItem: UIBarButtonItem!
     
     fileprivate lazy var laSearchController: LASearchController = { self.createSearchController() }()
     fileprivate var hiddenRightBarButtonItems: [UIBarButtonItem]?
@@ -18,6 +19,7 @@ class CasesViewController: UIViewController {
     fileprivate var filteredCases: FilteredCases! {
         didSet {
             _searchResultCases = nil
+            updateFiltersButton(modality: filteredCases.modality)
             tableView.reloadData()
         }
     }
@@ -59,9 +61,12 @@ class CasesViewController: UIViewController {
         tableView.register(UINib(nibName: CaseTableViewCell.nibName, bundle: MainStoryboard.bundle),
                            forCellReuseIdentifier: CellID.caseTableViewCellID.rawValue)
         
+        filtersBarButtonItem.possibleTitles = ["CT","MR","US"]
+        
         if filteredCases == nil {
             filteredCases = LAFilterer.instance.filteredCases
         }
+        
     }
 
     private func updateHeader(filteredCases: FilteredCases,
@@ -69,6 +74,18 @@ class CasesViewController: UIViewController {
                               resultCount: Int) {
         tableViewHeaderResultSummaryLabel.text = "There are \(resultCount ) cases matching the current search"
     }
+    
+    private func updateFiltersButton(modality: LAModality) {
+        var buttonText: String
+        switch modality {
+        case .ct: buttonText = "CT"
+        case .mr: buttonText = "MR"
+        case .us: buttonText = "US"
+        }
+        
+        filtersBarButtonItem.title = buttonText
+    }
+
 
     @IBAction func searchAction(_ sender: Any) {
         definesPresentationContext = true

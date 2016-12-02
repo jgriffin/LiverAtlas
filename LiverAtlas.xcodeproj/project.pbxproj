@@ -243,26 +243,25 @@
 			isa = PBXGroup;
 			children = (
 				D6BE1DB71DCB8BD800305B7D /* Assets.xcassets */,
+				D6D96EC11DEF513500F89D9B /* Home */,
+				D6BAF6441DDCE6FB00C9D17F /* Index */,
+				D6D96EBE1DEF50AC00F89D9B /* Cases */,
 				D62061FA1DE0F19300CA0E14 /* Case Details */,
 				D6D96E5C1DE5513E00F89D9B /* CaseResultImageCollectionViewCell.swift */,
 				D6DC852F1DDEE868000F0D31 /* DesignCanvas.xib */,
-				D6D96EBF1DEF50D400F89D9B /* Filters */,
-				D6D96EC11DEF513500F89D9B /* Home */,
 				D6D96EC01DEF512B00F89D9B /* Imaging */,
-				D6BE1DB91DCB8BD800305B7D /* LaunchScreen.storyboard */,
-				D6BE1DB41DCB8BD800305B7D /* Main.storyboard */,
+				D6D96EBF1DEF50D400F89D9B /* Filters */,
 				D6D96EBB1DEF504500F89D9B /* Quiz */,
-				D6D96EBE1DEF50AC00F89D9B /* Cases */,
 			);
 			name = "Views and Controllers";
 			sourceTree = "<group>";
 		};
-		D6BAF6441DDCE6FB00C9D17F /* View Controller */ = {
+		D6BAF6441DDCE6FB00C9D17F /* Index */ = {
 			isa = PBXGroup;
 			children = (
 				D67E26E41DE52316004AA893 /* IndexViewController.swift */,
 			);
-			name = "View Controller";
+			name = Index;
 			sourceTree = "<group>";
 		};
 		D6BE1D9F1DCB8BD800305B7D = {
@@ -294,7 +293,8 @@
 				D6BE1DBC1DCB8BD800305B7D /* Info.plist */,
 				D6BAF61D1DDBE9C000C9D17F /* Model */,
 				D6BAF6431DDCE6DF00C9D17F /* Views and Controllers */,
-				D6BAF6441DDCE6FB00C9D17F /* View Controller */,
+				D6BE1DB91DCB8BD800305B7D /* LaunchScreen.storyboard */,
+				D6BE1DB41DCB8BD800305B7D /* Main.storyboard */,
 				D6FBFF1C1DF0E856007A5CEC /* MainStoryboard.swift */,
 			);
 			path = LiverAtlas;

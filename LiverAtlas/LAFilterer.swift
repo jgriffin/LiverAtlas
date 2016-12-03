@@ -43,8 +43,8 @@ class LAFilterer {
     
     var modalityFilteredCases: FilteredCases {
         if _modalityFilteredCases == nil {
-            _modalityFilteredCases = filteredCases(fromCases: allCases,
-                                                   withModality: activeModality)
+            _modalityFilteredCases = LAFilterer.filteredCases(fromCases: allCases,
+                                                              withModality: activeModality)
         }
         return _modalityFilteredCases!
     }
@@ -71,9 +71,8 @@ class LAFilterer {
     
     var filteredCases: FilteredCases {
         if _filteredCases == nil {
-            _filteredCases = self.filteredCases(
-                fromFilteredCases: modalityFilteredCases,
-                passingFilters: Array(activeFilters))
+            _filteredCases = LAFilterer.filteredCases(fromFilteredCases: modalityFilteredCases,
+                                                      passingFilters: Array(activeFilters))
         }
         
         return _filteredCases!
@@ -83,7 +82,7 @@ class LAFilterer {
 
 extension LAFilterer { // helpers
     
-    func filteredCases(fromCases theCases: [LACase],
+    static func filteredCases(fromCases theCases: [LACase],
                      withModality modality: LAModality) -> FilteredCases {
         let filteredCases = theCases.filter { (aCase: LACase) -> Bool in
             switch modality {
@@ -98,7 +97,7 @@ extension LAFilterer { // helpers
         return FilteredCases(cases: filteredCases, modality: modality, filters: [])
     }
     
-    func filteredCases(fromFilteredCases: FilteredCases,
+    static func filteredCases(fromFilteredCases: FilteredCases,
                        passingFilters filters: [LAFilter]) -> FilteredCases {
         var filteredCases = fromFilteredCases
         
@@ -116,7 +115,7 @@ extension LAFilterer { // helpers
         return filteredCases
     }
 
-    func filteredCases(fromFilteredCases filteredCases: FilteredCases,
+    static func filteredCases(fromFilteredCases filteredCases: FilteredCases,
                        passingFilter filter: LAFilter) -> FilteredCases {
         var cases: [LACase]
         switch filter.filterType {
@@ -136,14 +135,14 @@ extension LAFilterer { // helpers
 
     // filter specific fields
     
-    func casesWithDiagnosis(containing filterString: String,
+    static func casesWithDiagnosis(containing filterString: String,
                             fromCases theCases: [LACase]) -> [LACase] {
         return theCases.filter { theCase in
             theCase.diagnosis.diagnosis.localizedCaseInsensitiveContains(filterString)
         }
     }
     
-    func casesWithStructuralFeature(containing filterString: String,
+    static func casesWithStructuralFeature(containing filterString: String,
                                     fromCases theCases: [LACase]) -> [LACase] {
         
         let structuralFeatureContainsFilterString = {
@@ -161,7 +160,7 @@ extension LAFilterer { // helpers
         }
     }
     
-    func casesWithImagingFeature(containing filterString: String,
+    static func casesWithImagingFeature(containing filterString: String,
                                  fromCases theCases: [LACase]) -> [LACase] {
         
         let imagingFeatureContainsFilterString = {
@@ -223,9 +222,7 @@ extension LAFilterer { // groups and diagnoses
     
     static func casesByDiagnosis(fromFilteredCases filteredCases: FilteredCases) -> [LACaseByDiagnosis] {
         let casesBySpecificDiagnosisSorted = filteredCases.cases.map( { aCase -> LACaseByDiagnosis in
-            return LACaseByDiagnosis.SpecificDiagnosis(diagnosis: aCase.diagnosis.diagnosis,
-                                                       specificDiagnosis: aCase.specificDiagnosis,
-                                                       laCase: aCase)
+            LACaseByDiagnosis.specificDiagnosis(fromCase: aCase)
         }).sorted(by:compareBySpecificDiagnosis)
         
         var byDiagnoses = [LACaseByDiagnosis]()

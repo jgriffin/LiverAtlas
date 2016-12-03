@@ -47,7 +47,7 @@ class FiltersViewController: UITableViewController {
             LAFilterer.instance.activeModality = filterer.activeModality
             LAFilterer.instance.activeFilters = filterer.activeFilters
             
-            let filteredCases = filterer.filteredCases(
+            let filteredCases = LAFilterer.filteredCases(
                 fromFilteredCases: filterer.modalityFilteredCases,
                 passingFilters: Array(filterer.activeFilters))
             

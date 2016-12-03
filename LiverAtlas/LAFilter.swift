@@ -48,4 +48,17 @@ enum LACaseByDiagnosis {
             return diagnosis
         }
     }
+    
+    static func specificDiagnosis(fromCase laCase: LACase) -> LACaseByDiagnosis {
+        // the specific diagnosis in the diagnosis isn't what we really want
+        // the modality.specificDiagnosis has different (and better) text
+        let modalitySpecificDiagnosis: String? = laCase.ctmodality.first?.specificDiagnosis ??
+            laCase.mrmodality.first?.specificDiagnosis ??
+            laCase.ctmodality.first?.specificDiagnosis
+        
+        return LACaseByDiagnosis.SpecificDiagnosis(
+            diagnosis: laCase.diagnosis.diagnosis,
+            specificDiagnosis: modalitySpecificDiagnosis ?? laCase.specificDiagnosis,
+            laCase: laCase)
+    }
 }

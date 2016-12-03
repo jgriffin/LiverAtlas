@@ -75,23 +75,51 @@ extension IndexViewController: UITableViewDataSource {
         case let .Diagnosis(diagnosis):
             let diagnosisCell = tableView.dequeueReusableCell(
                 withIdentifier: CellID.diagnosisCellID.rawValue,
-                for: indexPath)
-            diagnosisCell.textLabel?.text = diagnosis
+                for: indexPath) as! IndexTableViewCell
+            diagnosisCell.titleLabel.text = diagnosis
             return diagnosisCell
             
         case let .SpecificDiagnosis(_, specific, _):
             let diagnosisCell = tableView.dequeueReusableCell(
-                withIdentifier: CellID.diagnosisCellID.rawValue,
-                for: indexPath)
-            diagnosisCell.textLabel?.text = specific
+                withIdentifier: CellID.specificDiagnosisCellID.rawValue,
+                for: indexPath) as! IndexTableViewCell
+            diagnosisCell.titleLabel.text = specific
             return diagnosisCell
         }
     }
-    
+}
+
+extension IndexViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let byDiagnosis = filteredCasesByDiagnoses[indexPath.item]
+        
+        switch byDiagnosis {
+        case let .Diagnosis(diagnosis):
+            let diagnosisFilter = LAFilter(filterType: .diagnosisCategory,
+                                           filterString: diagnosis)
+            let casesWithDiagnosis = LAFilterer.filteredCases(fromFilteredCases: filteredCases,
+                                                              passingFilter: diagnosisFilter)
+            
+            let casesVC = MainStoryboard.instantiate(withStoryboardID: .casesID) as! CasesViewController
+            casesVC.configure(filteredCases: casesWithDiagnosis)
+            navigationController?.pushViewController(casesVC, animated: true)
+            
+        case let .SpecificDiagnosis(_, _, laCase):
+            let detailsVC = MainStoryboard.instantiate(withStoryboardID: .caseDetailsID) as! CaseDetailsViewController
+            detailsVC.configure(laCase: laCase)
+            
+            navigationController?.pushViewController(detailsVC, animated: true)
+        }
+    }
 }
 
 extension IndexViewController: FilterViewDelegate {
     func didChangeFilter(filteredCases: FilteredCases) {
         self.filteredCases = filteredCases
     }
+}
+
+class IndexTableViewCell: UITableViewCell {
+    @IBOutlet weak var titleLabel: UILabel!
+    
 }

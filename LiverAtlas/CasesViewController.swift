@@ -20,13 +20,13 @@ class CasesViewController: UIViewController {
         didSet {
             _searchResultCases = nil
             updateFiltersButton(modality: filteredCases.modality)
-            tableView.reloadData()
+            tableView?.reloadData()
         }
     }
     fileprivate var searchString: String = "" {
         didSet {
             _searchResultCases = nil
-            tableView.reloadData()
+            tableView?.reloadData()
         }
     }
     fileprivate var searchResultCases: [LACase] {
@@ -49,7 +49,6 @@ class CasesViewController: UIViewController {
     
     func configure(filteredCases: FilteredCases) {
         self.filteredCases = filteredCases
-        tableView.reloadData()
     }
 
     override func viewDidLoad() {

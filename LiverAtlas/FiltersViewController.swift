@@ -18,10 +18,8 @@ class FiltersViewController: UITableViewController {
     
     var delegate: FilterViewDelegate?
     
-    // tie to the LAFilterer.instance so filter changes are rememberd across the app
-    fileprivate let filterer = LAFilterer.instance
+    fileprivate var filterer: LAFilterer!
     fileprivate var expandedFilterSections = Set<LAFilterType>()
-    fileprivate var selectedFeatures = Set<LAFilter>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,16 +31,25 @@ class FiltersViewController: UITableViewController {
         self.tableView.register(FilterSectionHeaderView.self,
                                 forHeaderFooterViewReuseIdentifier: CellID.sectionHeaderReuseID.rawValue)
         
+        // clone LAFilterer.instance 
+        // so filter changes are rememberd across the app
+        filterer = LAFilterer(filterer: LAFilterer.instance)
+        
         modalitySegmentedControl.selectedSegmentIndex = modalityToSegmentIndexMap[filterer.activeModality]!
         expandedFilterSections = [.diagnosisCategory]
-        selectedFeatures = Set(filterer.activeFilters)
+        
+        updateFiltersPrompt()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         if isBeingDismissed || isMovingFromParentViewController {
+            // write back changes to LAFilterer.instance (unless cancelled)
+            LAFilterer.instance.activeModality = filterer.activeModality
+            LAFilterer.instance.activeFilters = filterer.activeFilters
+            
             let filteredCases = filterer.filteredCases(
                 fromFilteredCases: filterer.modalityFilteredCases,
-                passingFilters: Array(selectedFeatures))
+                passingFilters: Array(filterer.activeFilters))
             
             delegate?.didChangeFilter(filteredCases: filteredCases)
         }
@@ -73,20 +80,42 @@ class FiltersViewController: UITableViewController {
         tableView?.reloadData()
     }
 
+    // features filter5s
+    
+    @IBAction func clearFiltersAction(_ sender: Any) {
+        filterer.activeFilters.removeAll()
+        tableView.reloadData()         // update item selections
+        updateFiltersPrompt()
+    }
+    
+    func updateActiveFilters(filter: LAFilter, shouldActivate: Bool) {
+        if shouldActivate {
+            filterer.activeFilters.insert(filter)
+        } else {
+            filterer.activeFilters.remove(filter)
+        }
+        
+        updateFiltersPrompt()
+    }
+    
+    func updateFiltersPrompt() {
+        let filterCount = filterer.activeFilters.count
+        
+        let caseCount = filterer.filteredCases.cases.count
+        navigationItem.title = "\(caseCount) cases filtered"
+
+        navigationItem.prompt = filterCount == 0 ?
+            "No filters selected" : "\(filterCount) filters selected"
+    }
     
     // MARK: - UITableViewDelegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let filterGroup = filterer.modalityFilterGroups[indexPath.section]
         let filter = filterGroup.filters[indexPath.row]
-        let isSelected = selectedFeatures.contains(filter)
+        let isSelected = filterer.activeFilters.contains(filter)
         
-        if isSelected {
-            selectedFeatures.remove(filter)
-        } else {
-            selectedFeatures.insert(filter)
-        }
-
+        updateActiveFilters(filter: filter, shouldActivate: !isSelected)
         tableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
     }
     
@@ -146,7 +175,7 @@ extension FiltersViewController: ExpandableFilterSectionDelegate { // UITableVie
             withIdentifier: CellID.filterItemReuseID.rawValue, for: indexPath)
         
         cell.textLabel?.text = filterItem.filterString
-        cell.accessoryType = selectedFeatures.contains(filterItem) ? .checkmark : .none
+        cell.accessoryType = filterer.activeFilters.contains(filterItem) ? .checkmark : .none
         
         return cell
     }

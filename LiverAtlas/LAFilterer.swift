@@ -9,12 +9,19 @@
 import Foundation
 
 class LAFilterer {
-    static var instance = LAFilterer(allCases: nil, modality: .ct)
+    static var instance = LAFilterer(allCases: nil, modality: .ct, activeFilters: nil)
     let allCases: [LACase]
     
-    init(allCases: [LACase]?, modality: LAModality) {
+    init(allCases: [LACase]?, modality: LAModality, activeFilters: Set<LAFilter>?) {
         self.allCases = allCases ?? LAIndex.instance.allCases
         self.activeModality = modality
+        self.activeFilters = activeFilters ?? Set<LAFilter>()
+    }
+    
+    convenience init(filterer: LAFilterer) {
+        self.init(allCases: filterer.allCases,
+                  modality: filterer.activeModality,
+                  activeFilters: filterer.activeFilters)
     }
 
     var activeModality: LAModality!  {
@@ -26,7 +33,7 @@ class LAFilterer {
         }
     }
     
-    var activeFilters = Set<LAFilter>() {
+    var activeFilters: Set<LAFilter>! {
         didSet {
             _filteredCases = nil
         }

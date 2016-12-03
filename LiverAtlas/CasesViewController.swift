@@ -39,7 +39,7 @@ class CasesViewController: UIViewController {
                 fromFilteredCases: filteredCases,
                 forSearchText: searchString)
             
-            updateHeader(filteredCases: filteredCases,
+            updateFilterHeader(filteredCases: filteredCases,
                          searchText: searchString,
                          resultCount: _searchResultCases!.count)
         }
@@ -69,10 +69,30 @@ class CasesViewController: UIViewController {
         
     }
 
-    private func updateHeader(filteredCases: FilteredCases,
+    private func updateFilterHeader(filteredCases: FilteredCases,
                               searchText: String,
                               resultCount: Int) {
-        tableViewHeaderResultSummaryLabel.text = "There are \(resultCount ) cases matching the current search"
+        navigationItem.title = "\(resultCount ) Cases"
+        
+        var promptStrings = [String]()
+        var filtersString: String?
+        
+        let activeFiltersCount = filteredCases.filters.count
+        if activeFiltersCount != 0 {
+            promptStrings.append("\(activeFiltersCount) filters active")
+            
+            filtersString = "Showing cases with features: " + 
+                filteredCases.filters.map { $0.filterString }.joined(separator: ", ")
+        }
+
+        if !searchText.isEmpty {
+            let searchPrompt = "Containing \"\(searchText)\""
+            promptStrings.append(searchPrompt)
+        }
+        
+        navigationItem.prompt = promptStrings.isEmpty ? nil : promptStrings.joined(separator: ". ")
+        
+        tableViewHeaderResultSummaryLabel.text = filtersString
     }
     
     private func updateFiltersButton(modality: LAModality) {
@@ -86,7 +106,6 @@ class CasesViewController: UIViewController {
         filtersBarButtonItem.title = buttonText
     }
 
-
     @IBAction func searchAction(_ sender: Any) {
         definesPresentationContext = true
 
@@ -98,6 +117,8 @@ class CasesViewController: UIViewController {
         filtersVC.delegate = self
         
         navigationController?.pushViewController(filtersVC, animated: true)
+        
+        navigationItem.title = "Cases"
     }
 }
 

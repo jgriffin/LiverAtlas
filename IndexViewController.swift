@@ -10,30 +10,51 @@ import UIKit
 
 class IndexViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var filtersBarButtonItem: UIBarButtonItem!
+
+    fileprivate var filteredCases: FilteredCases! {
+        didSet {
+            updateFiltersButton(modality: filteredCases.modality)
+            _filteredCasesByDiagnoses = nil
+            tableView.reloadData()
+        }
+    }
     
-    var filterer: LAFilterer = LAFilterer(allCases: nil, modality: LAModality.ct)
+    fileprivate var filteredCasesByDiagnoses: [LACaseByDiagnosis] {
+        if _filteredCasesByDiagnoses == nil {
+            _filteredCasesByDiagnoses = LAFilterer.casesByDiagnosis(fromFilteredCases: filteredCases)
+        }
+        return _filteredCasesByDiagnoses!
+    }
+    var _filteredCasesByDiagnoses: [LACaseByDiagnosis]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 40
+        
+        if filteredCases == nil {
+            filteredCases = LAFilterer.instance.filteredCases
+        }
+    }
+    
+    @IBAction func filtersAction(_ sender: Any) {
+        let filtersVC = MainStoryboard.instantiate(withStoryboardID: .filtersID) as! FiltersViewController
+        filtersVC.delegate = self
+        
+        navigationController?.pushViewController(filtersVC, animated: true)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    @IBAction func homeAction(_ sender: Any) {
-        let homePageVC = MainStoryboard.instantiate(withStoryboardID: .homePageID) as! HomePageViewController
+    private func updateFiltersButton(modality: LAModality) {
+        var buttonText: String
+        switch modality {
+        case .ct: buttonText = "CT"
+        case .mr: buttonText = "MR"
+        case .us: buttonText = "US"
+        }
         
-        homePageVC.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
-        homePageVC.navigationItem.leftItemsSupplementBackButton = true
-        
-        let detailNavController = UINavigationController(rootViewController: homePageVC)
-        
-        showDetailViewController(detailNavController, sender: self)
+        filtersBarButtonItem.title = buttonText
     }
 }
 
@@ -44,11 +65,11 @@ extension IndexViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return filterer.modalityFilteredCasesByDiagnoses.count
+        return filteredCasesByDiagnoses.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let byDiagnosis = filterer.modalityFilteredCasesByDiagnoses[indexPath.item]
+        let byDiagnosis = filteredCasesByDiagnoses[indexPath.item]
         
         switch byDiagnosis {
         case let .Diagnosis(diagnosis):
@@ -68,7 +89,9 @@ extension IndexViewController: UITableViewDataSource {
     }
     
 }
-//
-//extension IndexViewController: UITableViewDelegate {
-//    
-//}
+
+extension IndexViewController: FilterViewDelegate {
+    func didChangeFilter(filteredCases: FilteredCases) {
+        self.filteredCases = filteredCases
+    }
+}

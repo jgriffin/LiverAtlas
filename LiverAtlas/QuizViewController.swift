@@ -40,7 +40,7 @@ class QuizViewController: UIViewController {
     
     func populateDiagnoses() {
         laFilterer = LAFilterer(allCases: nil, modality: .ct)
-        let diagnosesAndSpecific = laFilterer.diagnosesAndSpecificDiagnoses(
+        let diagnosesAndSpecific = LAFilterer.diagnosesAndSpecificDiagnoses(
             fromFilteredCases: laFilterer.modalityFilteredCases)
 
         diagnosesChoices = diagnosesAndSpecific.diagnoses

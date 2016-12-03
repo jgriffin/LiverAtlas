@@ -53,7 +53,7 @@ class LAFilterer {
     
     var modalityFilteredCasesByDiagnoses: [LACaseByDiagnosis] {
         if _modalityByDiagnoses == nil {
-            _modalityByDiagnoses = casesByDiagnosis(fromFilteredCases: modalityFilteredCases)
+            _modalityByDiagnoses = LAFilterer.casesByDiagnosis(fromFilteredCases: modalityFilteredCases)
         }
         
         return _modalityByDiagnoses!
@@ -214,7 +214,7 @@ extension LAFilterer { // groups and diagnoses
         return [diagnosisFiltersGroup, structuralFiltersGroup, imagingFiltersGroup]
     }
     
-    func casesByDiagnosis(fromFilteredCases filteredCases: FilteredCases) -> [LACaseByDiagnosis] {
+    static func casesByDiagnosis(fromFilteredCases filteredCases: FilteredCases) -> [LACaseByDiagnosis] {
         let casesBySpecificDiagnosisSorted = filteredCases.cases.map( { aCase -> LACaseByDiagnosis in
             return LACaseByDiagnosis.SpecificDiagnosis(diagnosis: aCase.diagnosis.diagnosis,
                                                        specificDiagnosis: aCase.specificDiagnosis,
@@ -233,7 +233,7 @@ extension LAFilterer { // groups and diagnoses
         return byDiagnoses
     }
     
-    func compareBySpecificDiagnosis(lhs: LACaseByDiagnosis, rhs:LACaseByDiagnosis) -> Bool {
+    static func compareBySpecificDiagnosis(lhs: LACaseByDiagnosis, rhs:LACaseByDiagnosis) -> Bool {
         guard case let LACaseByDiagnosis.SpecificDiagnosis(lhsDiagnosis, lhsSpecific, _) = lhs,
             case let LACaseByDiagnosis.SpecificDiagnosis(rhsDiagnosis, rhsSpecific, _) = rhs else {
                 fatalError()
@@ -242,11 +242,11 @@ extension LAFilterer { // groups and diagnoses
         return (lhsDiagnosis < rhsDiagnosis) || ((lhsDiagnosis == rhsDiagnosis) && lhsSpecific <= rhsSpecific)
     }
     
-    func diagnosesAndSpecificDiagnoses(fromFilteredCases filteredCases: FilteredCases) -> (diagnoses: [String], specificDiagnoses: [String]) {
+    static func diagnosesAndSpecificDiagnoses(fromFilteredCases filteredCases: FilteredCases) -> (diagnoses: [String], specificDiagnoses: [String]) {
             var diagnosesBuilder = [String]()
             var specificDiagnosesBuilder = [String]()
             
-            let byDiagnosis = self.casesByDiagnosis(fromFilteredCases: filteredCases)
+            let byDiagnosis = casesByDiagnosis(fromFilteredCases: filteredCases)
             byDiagnosis.forEach { (caseByDiagnosis: LACaseByDiagnosis) in
                 switch caseByDiagnosis {
                 case .Diagnosis(let diagnosis):

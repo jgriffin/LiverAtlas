@@ -477,156 +477,177 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="4Cs-eq-rEj" userLabel="Header Stack View">
-                                <rect key="frame" x="16" y="84" width="343" height="60"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cf0-9F-GCZ" userLabel="Scroll View Content">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Liver Imaging Atlas" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nUf-V8-Pk9">
-                                        <rect key="frame" x="31" y="0.0" width="281.5" height="33.5"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A Refererence for Liver Imaging" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WFk-7R-PKn">
-                                        <rect key="frame" x="18.5" y="33.5" width="306.5" height="26.5"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                            </stackView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gh5-eW-dfU" userLabel="Middle View">
-                                <rect key="frame" x="20" y="184" width="335" height="297.5"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="752" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="itU-hM-C57">
-                                        <rect key="frame" x="0.0" y="0.0" width="335" height="46"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                        <state key="normal" title="Browse"/>
-                                        <connections>
-                                            <segue destination="pP0-ji-nDq" kind="show" id="4Pm-Bl-Ftv"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="752" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1gB-k9-a6w" userLabel="Search">
-                                        <rect key="frame" x="0.0" y="46" width="335" height="46"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                        <state key="normal" title="Search"/>
-                                        <connections>
-                                            <segue destination="xsU-RI-o1L" kind="show" id="MKq-p3-5hH"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="752" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Owt-PG-2bQ" userLabel="Quiz">
-                                        <rect key="frame" x="0.0" y="92" width="335" height="46"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                        <state key="normal" title="Learn"/>
-                                        <connections>
-                                            <segue destination="Ni2-j4-Bxh" kind="show" id="d0Q-DQ-mSE"/>
-                                        </connections>
-                                    </button>
-                                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="500" image="Portal _Venuos_1" translatesAutoresizingMaskIntoConstraints="NO" id="zIA-Kv-Rjp">
-                                        <rect key="frame" x="20" y="158" width="295" height="125"/>
-                                        <gestureRecognizers/>
-                                        <connections>
-                                            <outletCollection property="gestureRecognizers" destination="oEo-Ja-gUb" appends="YES" id="Yd7-iK-HEa"/>
-                                        </connections>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="powered by: doradiaology.com" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rvf-kp-LS8">
-                                        <rect key="frame" x="0.0" y="283" width="335" height="14.5"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstItem="zIA-Kv-Rjp" firstAttribute="top" secondItem="Owt-PG-2bQ" secondAttribute="bottom" constant="20" id="3GI-99-yaS"/>
-                                    <constraint firstItem="1gB-k9-a6w" firstAttribute="top" secondItem="itU-hM-C57" secondAttribute="bottom" id="Anl-SB-JAj"/>
-                                    <constraint firstAttribute="trailing" secondItem="1gB-k9-a6w" secondAttribute="trailing" id="Cgc-qL-JX7"/>
-                                    <constraint firstItem="rvf-kp-LS8" firstAttribute="top" secondItem="zIA-Kv-Rjp" secondAttribute="bottom" id="D93-I8-r53"/>
-                                    <constraint firstItem="1gB-k9-a6w" firstAttribute="leading" secondItem="gh5-eW-dfU" secondAttribute="leading" id="DNe-0x-D8L"/>
-                                    <constraint firstAttribute="trailing" secondItem="rvf-kp-LS8" secondAttribute="trailing" id="GiU-yK-MeJ"/>
-                                    <constraint firstItem="Owt-PG-2bQ" firstAttribute="leading" secondItem="gh5-eW-dfU" secondAttribute="leading" id="Jes-7z-h2A"/>
-                                    <constraint firstItem="rvf-kp-LS8" firstAttribute="leading" secondItem="gh5-eW-dfU" secondAttribute="leading" id="Nh2-6f-eNh"/>
-                                    <constraint firstAttribute="trailing" secondItem="itU-hM-C57" secondAttribute="trailing" id="Nmg-EF-3vF"/>
-                                    <constraint firstAttribute="trailing" secondItem="Owt-PG-2bQ" secondAttribute="trailing" id="X5Q-0T-zBT"/>
-                                    <constraint firstItem="zIA-Kv-Rjp" firstAttribute="leading" secondItem="gh5-eW-dfU" secondAttribute="leading" constant="20" id="Z7C-kA-fvI"/>
-                                    <constraint firstItem="itU-hM-C57" firstAttribute="top" secondItem="gh5-eW-dfU" secondAttribute="top" id="Zw6-ho-oMm"/>
-                                    <constraint firstAttribute="bottom" secondItem="rvf-kp-LS8" secondAttribute="bottom" id="bGr-xr-GWl"/>
-                                    <constraint firstItem="itU-hM-C57" firstAttribute="leading" secondItem="gh5-eW-dfU" secondAttribute="leading" id="n8P-lZ-tgm"/>
-                                    <constraint firstAttribute="trailing" secondItem="zIA-Kv-Rjp" secondAttribute="trailing" constant="20" id="oZf-Uf-meq"/>
-                                    <constraint firstItem="Owt-PG-2bQ" firstAttribute="top" secondItem="1gB-k9-a6w" secondAttribute="bottom" id="xpo-45-Pd9"/>
-                                </constraints>
-                            </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="YJd-he-Ba2" userLabel="Footer Stack Stack View">
-                                <rect key="frame" x="16" y="521.5" width="343" height="125.5"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="QME-Ma-xq3">
-                                        <rect key="frame" x="72.5" y="0.0" width="198.5" height="55.5"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="359" placeholderIntrinsicHeight="60" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="4Cs-eq-rEj" userLabel="Header Stack View">
+                                        <rect key="frame" x="8" y="0.0" width="359" height="60"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Editors:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1v3-QX-tAu">
-                                                <rect key="frame" x="77.5" y="0.0" width="43.5" height="14.5"/>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Liver Imaging Atlas" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nUf-V8-Pk9">
+                                                <rect key="frame" x="39" y="0.0" width="281.5" height="33.5"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Orpheus Kolokythas, MD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f96-lg-4KU">
-                                                <rect key="frame" x="0.0" y="14.5" width="198.5" height="20.5"/>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="David Coy, MD, PhD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZBl-Hd-lcO">
-                                                <rect key="frame" x="20.5" y="35" width="157.5" height="20.5"/>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A Refererence for Liver Imaging" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WFk-7R-PKn">
+                                                <rect key="frame" x="26.5" y="33.5" width="306.5" height="26.5"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="hFJ-nJ-ujM">
-                                        <rect key="frame" x="37.5" y="75.5" width="268" height="50"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="75T-69-l7b" userLabel="Middle Space">
+                                        <rect key="frame" x="0.0" y="60" width="375" height="354.5"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="W-Logo_RegistrationMark_Purple_26851" translatesAutoresizingMaskIntoConstraints="NO" id="c35-OY-wQP">
-                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="50" id="ZSf-lw-HgE"/>
-                                                    <constraint firstAttribute="height" constant="50" id="j5x-Qo-z9H"/>
-                                                </constraints>
-                                            </imageView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="TxF-o3-ne7">
-                                                <rect key="frame" x="60" y="7" width="208" height="36"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gh5-eW-dfU" userLabel="Middle View">
+                                                <rect key="frame" x="0.0" y="108.5" width="375" height="138"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DEPARTMENT of RADIOLOGY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ll-ni-gK9">
-                                                        <rect key="frame" x="0.0" y="0.0" width="208" height="18"/>
-                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="752" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="itU-hM-C57">
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="46"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                                        <state key="normal" title="Browse"/>
+                                                        <connections>
+                                                            <segue destination="pP0-ji-nDq" kind="show" id="4Pm-Bl-Ftv"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="752" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1gB-k9-a6w" userLabel="Search">
+                                                        <rect key="frame" x="0.0" y="46" width="375" height="46"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                                        <state key="normal" title="Search"/>
+                                                        <connections>
+                                                            <segue destination="xsU-RI-o1L" kind="show" id="MKq-p3-5hH"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="752" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Owt-PG-2bQ" userLabel="Quiz">
+                                                        <rect key="frame" x="0.0" y="92" width="375" height="46"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                                        <state key="normal" title="Learn"/>
+                                                        <connections>
+                                                            <segue destination="Ni2-j4-Bxh" kind="show" id="d0Q-DQ-mSE"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstItem="1gB-k9-a6w" firstAttribute="top" secondItem="itU-hM-C57" secondAttribute="bottom" id="Anl-SB-JAj"/>
+                                                    <constraint firstAttribute="trailing" secondItem="1gB-k9-a6w" secondAttribute="trailing" id="Cgc-qL-JX7"/>
+                                                    <constraint firstItem="1gB-k9-a6w" firstAttribute="leading" secondItem="gh5-eW-dfU" secondAttribute="leading" id="DNe-0x-D8L"/>
+                                                    <constraint firstItem="Owt-PG-2bQ" firstAttribute="leading" secondItem="gh5-eW-dfU" secondAttribute="leading" id="Jes-7z-h2A"/>
+                                                    <constraint firstAttribute="trailing" secondItem="itU-hM-C57" secondAttribute="trailing" id="Nmg-EF-3vF"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Owt-PG-2bQ" secondAttribute="trailing" id="X5Q-0T-zBT"/>
+                                                    <constraint firstItem="itU-hM-C57" firstAttribute="top" secondItem="gh5-eW-dfU" secondAttribute="top" id="Zw6-ho-oMm"/>
+                                                    <constraint firstItem="itU-hM-C57" firstAttribute="leading" secondItem="gh5-eW-dfU" secondAttribute="leading" id="n8P-lZ-tgm"/>
+                                                    <constraint firstAttribute="bottom" secondItem="Owt-PG-2bQ" secondAttribute="bottom" id="s5d-JF-uuF"/>
+                                                    <constraint firstItem="Owt-PG-2bQ" firstAttribute="top" secondItem="1gB-k9-a6w" secondAttribute="bottom" id="xpo-45-Pd9"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="gh5-eW-dfU" secondAttribute="bottom" constant="20" id="4K3-XK-w6K"/>
+                                            <constraint firstAttribute="trailing" secondItem="gh5-eW-dfU" secondAttribute="trailing" id="OZL-F5-37k"/>
+                                            <constraint firstItem="gh5-eW-dfU" firstAttribute="centerY" secondItem="75T-69-l7b" secondAttribute="centerY" id="e4v-lV-8Ie"/>
+                                            <constraint firstItem="gh5-eW-dfU" firstAttribute="top" relation="greaterThanOrEqual" secondItem="75T-69-l7b" secondAttribute="top" constant="20" id="ehX-GY-DtZ"/>
+                                            <constraint firstItem="gh5-eW-dfU" firstAttribute="leading" secondItem="75T-69-l7b" secondAttribute="leading" id="s0P-Co-kKS"/>
+                                        </constraints>
+                                    </view>
+                                    <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="359" placeholderIntrinsicHeight="180.5" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="YJd-he-Ba2" userLabel="Footer Stack Stack View">
+                                        <rect key="frame" x="8" y="414.5" width="359" height="180.5"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="QME-Ma-xq3">
+                                                <rect key="frame" x="80.5" y="0.0" width="198.5" height="55.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Editors:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1v3-QX-tAu">
+                                                        <rect key="frame" x="77.5" y="0.0" width="43.5" height="14.5"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UNIVERSITY of WASHINGTON" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="du2-k5-e2k">
-                                                        <rect key="frame" x="0.0" y="18" width="208" height="18"/>
-                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Orpheus Kolokythas, MD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f96-lg-4KU">
+                                                        <rect key="frame" x="0.0" y="14.5" width="198.5" height="20.5"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="David Coy, MD, PhD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZBl-Hd-lcO">
+                                                        <rect key="frame" x="20.5" y="35" width="157.5" height="20.5"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
                                             </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="t0K-wd-IFf">
+                                                <rect key="frame" x="132.5" y="75.5" width="94" height="35"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iOS App:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cnK-GU-qDl">
+                                                        <rect key="frame" x="22" y="0.0" width="50" height="14.5"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="John Griffin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3tH-Q4-TkJ" userLabel="John Griffin">
+                                                        <rect key="frame" x="0.0" y="14.5" width="94" height="20.5"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="hFJ-nJ-ujM">
+                                                <rect key="frame" x="45.5" y="130.5" width="268" height="50"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="W-Logo_RegistrationMark_Purple_26851" translatesAutoresizingMaskIntoConstraints="NO" id="c35-OY-wQP">
+                                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="50" id="ZSf-lw-HgE"/>
+                                                            <constraint firstAttribute="height" constant="50" id="j5x-Qo-z9H"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="TxF-o3-ne7">
+                                                        <rect key="frame" x="60" y="7" width="208" height="36"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DEPARTMENT of RADIOLOGY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ll-ni-gK9">
+                                                                <rect key="frame" x="0.0" y="0.0" width="208" height="18"/>
+                                                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UNIVERSITY of WASHINGTON" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="du2-k5-e2k">
+                                                                <rect key="frame" x="0.0" y="18" width="208" height="18"/>
+                                                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
                                     </stackView>
                                 </subviews>
-                            </stackView>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="4Cs-eq-rEj" firstAttribute="top" secondItem="cf0-9F-GCZ" secondAttribute="top" id="6mG-Vi-vM2"/>
+                                    <constraint firstItem="4Cs-eq-rEj" firstAttribute="leading" secondItem="cf0-9F-GCZ" secondAttribute="leadingMargin" id="7NP-hi-rkc"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="YJd-he-Ba2" secondAttribute="trailing" id="Flh-HK-zXM"/>
+                                    <constraint firstAttribute="bottom" secondItem="YJd-he-Ba2" secondAttribute="bottom" constant="8" id="L78-tH-5Hr"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="4Cs-eq-rEj" secondAttribute="trailing" id="ds5-NO-xPX"/>
+                                    <constraint firstItem="YJd-he-Ba2" firstAttribute="top" secondItem="75T-69-l7b" secondAttribute="bottom" id="kK6-KT-qRO"/>
+                                    <constraint firstItem="YJd-he-Ba2" firstAttribute="leading" secondItem="cf0-9F-GCZ" secondAttribute="leadingMargin" id="pH5-iJ-nRB"/>
+                                    <constraint firstItem="75T-69-l7b" firstAttribute="top" secondItem="4Cs-eq-rEj" secondAttribute="bottom" id="wBz-o5-AQG"/>
+                                    <constraint firstAttribute="trailing" secondItem="75T-69-l7b" secondAttribute="trailing" id="wHf-4f-Fo6"/>
+                                    <constraint firstItem="75T-69-l7b" firstAttribute="leading" secondItem="cf0-9F-GCZ" secondAttribute="leading" id="ypY-7E-BFg"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="4Cs-eq-rEj" firstAttribute="top" secondItem="ePe-Cw-0s5" secondAttribute="bottom" constant="20" id="8bt-Kp-NoD"/>
-                            <constraint firstItem="gh5-eW-dfU" firstAttribute="top" secondItem="4Cs-eq-rEj" secondAttribute="bottom" constant="40" id="E7f-f0-Naf"/>
-                            <constraint firstItem="gh5-eW-dfU" firstAttribute="centerY" secondItem="gTo-kF-yX7" secondAttribute="centerY" priority="250" id="Fbo-6N-xbq"/>
-                            <constraint firstItem="gh5-eW-dfU" firstAttribute="leading" secondItem="gTo-kF-yX7" secondAttribute="leading" constant="20" id="Jf7-Hl-esM"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="YJd-he-Ba2" secondAttribute="trailing" id="L73-76-vTn"/>
-                            <constraint firstItem="YJd-he-Ba2" firstAttribute="top" relation="greaterThanOrEqual" secondItem="gh5-eW-dfU" secondAttribute="bottom" constant="40" id="M05-dD-KsW"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="4Cs-eq-rEj" secondAttribute="trailing" id="Ywe-8k-R8w"/>
-                            <constraint firstItem="gh5-eW-dfU" firstAttribute="centerX" secondItem="gTo-kF-yX7" secondAttribute="centerX" priority="250" id="c6X-Lf-yrh"/>
-                            <constraint firstItem="YJd-he-Ba2" firstAttribute="leading" secondItem="gTo-kF-yX7" secondAttribute="leadingMargin" id="h43-3q-slg"/>
-                            <constraint firstItem="YJd-he-Ba2" firstAttribute="bottom" secondItem="I8y-nL-B09" secondAttribute="top" constant="-20" id="qd8-zi-A66"/>
-                            <constraint firstAttribute="trailing" secondItem="gh5-eW-dfU" secondAttribute="trailing" constant="20" id="rR5-cY-92M"/>
-                            <constraint firstItem="4Cs-eq-rEj" firstAttribute="leading" secondItem="gTo-kF-yX7" secondAttribute="leadingMargin" id="uZ4-Yx-7ky"/>
+                            <constraint firstItem="I8y-nL-B09" firstAttribute="top" secondItem="cf0-9F-GCZ" secondAttribute="bottom" id="0TU-DH-Hnp"/>
+                            <constraint firstAttribute="trailing" secondItem="cf0-9F-GCZ" secondAttribute="trailing" id="DmH-aA-o61"/>
+                            <constraint firstItem="cf0-9F-GCZ" firstAttribute="top" secondItem="ePe-Cw-0s5" secondAttribute="bottom" id="gUB-px-I8r"/>
+                            <constraint firstItem="cf0-9F-GCZ" firstAttribute="leading" secondItem="gTo-kF-yX7" secondAttribute="leading" id="vci-i3-n3p"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Liver Atlas" id="e6h-Cl-Hx5">
@@ -724,11 +745,11 @@
                                 <rect key="frame" x="0.0" y="66" width="375" height="68"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tMl-lp-Lln" id="szT-cI-C9z">
-                                    <rect key="frame" x="0.0" y="0.0" width="336" height="67.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="336" height="67"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uOH-PT-Rm8">
-                                            <rect key="frame" x="15" y="0.0" width="321" height="67.5"/>
+                                            <rect key="frame" x="15" y="0.0" width="321" height="67"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
                                             <nil key="textColor"/>
@@ -760,11 +781,11 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="68"/>
                     <autoresizingMask key="autoresizingMask"/>
                     <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dCz-ew-25b" id="bnV-i7-niI">
-                        <rect key="frame" x="0.0" y="0.0" width="336" height="67.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="336" height="67"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Structural Features" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YRm-gZ-rle">
-                                <rect key="frame" x="15" y="0.0" width="321" height="67.5"/>
+                                <rect key="frame" x="15" y="0.0" width="321" height="67"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
                                 <nil key="textColor"/>
@@ -779,10 +800,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Portal _Venuos_1" width="700" height="561"/>
         <image name="W-Logo_RegistrationMark_Purple_26851" width="184" height="123"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Jro-dM-lNy"/>
+        <segue reference="MKq-p3-5hH"/>
     </inferredMetricsTieBreakers>
 </document>

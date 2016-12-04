@@ -11,206 +11,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Case Details View Controller-->
-        <scene sceneID="yUG-lL-AsK">
-            <objects>
-                <viewController storyboardIdentifier="CaseDetailsViewController" title="Detail" automaticallyAdjustsScrollViewInsets="NO" id="JEX-9P-axG" userLabel="Case Details View Controller" customClass="CaseDetailsViewController" customModule="LiverAtlas" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="SYR-Wa-9uf"/>
-                        <viewControllerLayoutGuide type="bottom" id="GAO-Cl-Wes"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="svH-Pt-448">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oCk-R6-gIV">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oKq-4p-H75" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="2043.5"/>
-                                        <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="826" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="0oc-zU-88g" userLabel="Vertical Stack View">
-                                                <rect key="frame" x="8" y="8" width="359" height="2027.5"/>
-                                                <subviews>
-                                                    <view contentMode="scaleToFill" placeholderIntrinsicWidth="359" placeholderIntrinsicHeight="267.5" translatesAutoresizingMaskIntoConstraints="NO" id="c0A-qH-zcc" customClass="CaseDetailsPanelView" customModule="LiverAtlas" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="359" height="352"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </view>
-                                                    <view contentMode="scaleToFill" placeholderIntrinsicWidth="359" placeholderIntrinsicHeight="550.5" translatesAutoresizingMaskIntoConstraints="NO" id="Dew-pL-fPM" userLabel="CTModality View" customClass="CTModalityPanelView" customModule="LiverAtlas" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="360" width="359" height="550.5"/>
-                                                        <subviews>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mce-fB-CLI" userLabel="Top Border">
-                                                                <rect key="frame" x="0.0" y="-4" width="359" height="0.0"/>
-                                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="0.5" id="FRx-Oj-Xam"/>
-                                                                </constraints>
-                                                            </view>
-                                                        </subviews>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <constraints>
-                                                            <constraint firstItem="mce-fB-CLI" firstAttribute="top" secondItem="Dew-pL-fPM" secondAttribute="top" constant="-4" id="CxG-21-7v8"/>
-                                                            <constraint firstAttribute="trailing" secondItem="mce-fB-CLI" secondAttribute="trailing" id="jtu-DX-sEM"/>
-                                                            <constraint firstItem="mce-fB-CLI" firstAttribute="leading" secondItem="Dew-pL-fPM" secondAttribute="leading" id="qFy-I3-fU2"/>
-                                                        </constraints>
-                                                    </view>
-                                                    <view contentMode="scaleToFill" placeholderIntrinsicWidth="359" placeholderIntrinsicHeight="550.5" translatesAutoresizingMaskIntoConstraints="NO" id="rYx-5Z-nXs" userLabel="MRModality View" customClass="CTModalityPanelView" customModule="LiverAtlas" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="918.5" width="359" height="550.5"/>
-                                                        <subviews>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nZD-u0-v0D" userLabel="Top Border">
-                                                                <rect key="frame" x="0.0" y="-4" width="359" height="1"/>
-                                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="0.5" id="77W-2T-msi"/>
-                                                                </constraints>
-                                                            </view>
-                                                        </subviews>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="trailing" secondItem="nZD-u0-v0D" secondAttribute="trailing" id="6bs-y4-lV4"/>
-                                                            <constraint firstItem="nZD-u0-v0D" firstAttribute="top" secondItem="rYx-5Z-nXs" secondAttribute="top" constant="-4" id="WpN-2r-qjh"/>
-                                                            <constraint firstItem="nZD-u0-v0D" firstAttribute="leading" secondItem="rYx-5Z-nXs" secondAttribute="leading" id="gkI-m3-QZl"/>
-                                                        </constraints>
-                                                    </view>
-                                                    <view contentMode="scaleToFill" placeholderIntrinsicWidth="359" placeholderIntrinsicHeight="550.5" translatesAutoresizingMaskIntoConstraints="NO" id="Leq-s8-QT3" userLabel="USModality View" customClass="CTModalityPanelView" customModule="LiverAtlas" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="1477" width="359" height="550.5"/>
-                                                        <subviews>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XfW-6T-ikc" userLabel="Top Border">
-                                                                <rect key="frame" x="0.0" y="-4" width="359" height="0.0"/>
-                                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="0.5" id="Psn-uP-28w"/>
-                                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="0.5" id="Txs-rb-42f"/>
-                                                                </constraints>
-                                                            </view>
-                                                        </subviews>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="trailing" secondItem="XfW-6T-ikc" secondAttribute="trailing" id="WfZ-10-43J"/>
-                                                            <constraint firstItem="XfW-6T-ikc" firstAttribute="top" secondItem="Leq-s8-QT3" secondAttribute="top" constant="-4" id="pSV-t2-jcR"/>
-                                                            <constraint firstItem="XfW-6T-ikc" firstAttribute="leading" secondItem="Leq-s8-QT3" secondAttribute="leading" id="xLq-Px-YLI"/>
-                                                        </constraints>
-                                                    </view>
-                                                </subviews>
-                                            </stackView>
-                                        </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="trailingMargin" secondItem="0oc-zU-88g" secondAttribute="trailing" id="EPT-FG-UBy"/>
-                                            <constraint firstAttribute="bottomMargin" secondItem="0oc-zU-88g" secondAttribute="bottom" id="JqL-2j-XkP"/>
-                                            <constraint firstItem="0oc-zU-88g" firstAttribute="leading" secondItem="oKq-4p-H75" secondAttribute="leadingMargin" id="Zrt-43-7bv"/>
-                                            <constraint firstItem="0oc-zU-88g" firstAttribute="top" secondItem="oKq-4p-H75" secondAttribute="topMargin" id="q2h-5b-MYs"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="oKq-4p-H75" firstAttribute="leading" secondItem="oCk-R6-gIV" secondAttribute="leading" id="8YQ-cL-P9I"/>
-                                    <constraint firstAttribute="bottom" secondItem="oKq-4p-H75" secondAttribute="bottom" id="Jin-es-foj"/>
-                                    <constraint firstItem="oKq-4p-H75" firstAttribute="top" secondItem="oCk-R6-gIV" secondAttribute="top" id="rCo-4B-oIO"/>
-                                    <constraint firstAttribute="trailing" secondItem="oKq-4p-H75" secondAttribute="trailing" id="smF-fQ-RDP"/>
-                                </constraints>
-                            </scrollView>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="oCk-R6-gIV" secondAttribute="trailing" id="0F3-2S-LMS"/>
-                            <constraint firstItem="oCk-R6-gIV" firstAttribute="top" secondItem="SYR-Wa-9uf" secondAttribute="bottom" id="B3T-Lf-M4H"/>
-                            <constraint firstItem="oKq-4p-H75" firstAttribute="width" secondItem="svH-Pt-448" secondAttribute="width" id="OkG-4w-YAI"/>
-                            <constraint firstItem="oCk-R6-gIV" firstAttribute="leading" secondItem="svH-Pt-448" secondAttribute="leading" id="eKa-VK-QPd"/>
-                            <constraint firstAttribute="bottom" secondItem="oCk-R6-gIV" secondAttribute="bottom" id="nFA-op-LmU"/>
-                        </constraints>
-                    </view>
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Detail" id="mOI-FS-AaM">
-                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="yzm-OR-cHk"/>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="caseDetailsPanelView" destination="c0A-qH-zcc" id="Vr4-9D-zKp"/>
-                        <outlet property="ctModalityPanelView" destination="Dew-pL-fPM" id="ohf-FZ-rGq"/>
-                        <outlet property="mrModalityPanelView" destination="rYx-5Z-nXs" id="8Fh-aG-6P5"/>
-                        <outlet property="usModalityPanelView" destination="Leq-s8-QT3" id="BtR-i7-5n7"/>
-                        <segue destination="FQ5-a5-NfL" kind="show" identifier="CaseDetailToImagingSegue" id="LJ9-Yq-2Gl"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="FJe-Yq-33r" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2670" y="-583"/>
-        </scene>
-        <!--Results Scene-->
-        <scene sceneID="Pji-uy-goa">
-            <objects>
-                <viewController storyboardIdentifier="CasesViewControllerStoryboardIdentifier" id="xsU-RI-o1L" userLabel="Results Scene" customClass="CasesViewController" customModule="LiverAtlas" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="wAA-ux-29Y"/>
-                        <viewControllerLayoutGuide type="bottom" id="u5M-PS-gVm"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="c6d-Ng-0S1">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="104" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="T7Z-Gg-tRS" customClass="Case">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <view key="tableHeaderView" contentMode="scaleToFill" id="G5u-CQ-dA1" userLabel="Result Header">
-                                    <rect key="frame" x="0.0" y="64" width="375" height="44"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="There are 24 CT case matching the current search" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PD7-Y0-QvQ" userLabel="Result Summary">
-                                            <rect key="frame" x="8" y="8" width="359" height="28"/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <constraints>
-                                        <constraint firstAttribute="trailingMargin" secondItem="PD7-Y0-QvQ" secondAttribute="trailing" id="XIL-xd-ViN"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="PD7-Y0-QvQ" secondAttribute="bottom" id="jGG-mj-ubP"/>
-                                        <constraint firstItem="PD7-Y0-QvQ" firstAttribute="leading" secondItem="G5u-CQ-dA1" secondAttribute="leadingMargin" id="mkq-yg-ngk"/>
-                                        <constraint firstItem="PD7-Y0-QvQ" firstAttribute="top" secondItem="G5u-CQ-dA1" secondAttribute="topMargin" id="nQT-DU-sLC"/>
-                                    </constraints>
-                                </view>
-                                <connections>
-                                    <outlet property="dataSource" destination="xsU-RI-o1L" id="yaL-b9-eGI"/>
-                                    <outlet property="delegate" destination="xsU-RI-o1L" id="tbP-S8-xFZ"/>
-                                </connections>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="T7Z-Gg-tRS" secondAttribute="trailing" id="KmI-Pe-Xj1"/>
-                            <constraint firstItem="T7Z-Gg-tRS" firstAttribute="top" secondItem="c6d-Ng-0S1" secondAttribute="top" id="cXV-QJ-0n5"/>
-                            <constraint firstItem="u5M-PS-gVm" firstAttribute="top" secondItem="T7Z-Gg-tRS" secondAttribute="bottom" id="ru4-3D-ygW"/>
-                            <constraint firstItem="T7Z-Gg-tRS" firstAttribute="leading" secondItem="c6d-Ng-0S1" secondAttribute="leading" id="tAh-7c-RPI"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="Matching Cases" id="0C5-CE-HWc">
-                        <rightBarButtonItems>
-                            <barButtonItem systemItem="search" id="qUM-1P-Z1t">
-                                <connections>
-                                    <action selector="searchAction:" destination="xsU-RI-o1L" id="zm7-5W-z3N"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem title="CT" id="6BO-Ma-r5H">
-                                <inset key="imageInsets" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
-                                <connections>
-                                    <action selector="filtersAction:" destination="xsU-RI-o1L" id="dW7-7b-8b3"/>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
-                    </navigationItem>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                    <connections>
-                        <outlet property="filtersBarButtonItem" destination="6BO-Ma-r5H" id="HNz-fP-zCh"/>
-                        <outlet property="tableView" destination="T7Z-Gg-tRS" id="Zi1-q8-r3a"/>
-                        <outlet property="tableViewHeaderResultSummaryLabel" destination="PD7-Y0-QvQ" id="8su-fY-cpD"/>
-                        <segue destination="JEX-9P-axG" kind="show" identifier="CaseResultToCaseDetailSegue" id="Ism-8i-gJv"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="CfT-OU-zTB" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1558" y="-583"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="8wa-Sc-oRy">
             <objects>
@@ -225,245 +25,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cOw-gz-W1P" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-898" y="-583"/>
-        </scene>
-        <!--Quiz View Controller-->
-        <scene sceneID="w4t-yu-CZd">
-            <objects>
-                <viewController id="Ni2-j4-Bxh" customClass="QuizViewController" customModule="LiverAtlas" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="IeG-LN-kFs"/>
-                        <viewControllerLayoutGuide type="bottom" id="NNL-8B-npZ"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="r3I-Dj-s0v">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pov-Ch-4rn">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="YnF-0v-rHM">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="2143.5"/>
-                                        <subviews>
-                                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="375" placeholderIntrinsicHeight="377" translatesAutoresizingMaskIntoConstraints="NO" id="QuH-6M-9E6" userLabel="Quiz View">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="377"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Diagnosis" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kHN-57-TUZ" userLabel="Diagnosis">
-                                                        <rect key="frame" x="0.0" y="8" width="375" height="20.5"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E3v-f5-zqE" userLabel="Diagnosis Picker View">
-                                                        <rect key="frame" x="0.0" y="28.5" width="375" height="120"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="120" id="B4l-AN-8Vo"/>
-                                                        </constraints>
-                                                        <connections>
-                                                            <outlet property="dataSource" destination="Ni2-j4-Bxh" id="g0Y-hQ-sbM"/>
-                                                            <outlet property="delegate" destination="Ni2-j4-Bxh" id="WTi-Pq-81V"/>
-                                                        </connections>
-                                                    </pickerView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Specific Diagnosis" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bvQ-XB-pdJ" userLabel="Specific Diagnosis">
-                                                        <rect key="frame" x="0.0" y="168.5" width="375" height="20.5"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UH4-VL-16e" userLabel="Specific Diagnosis Picker View">
-                                                        <rect key="frame" x="0.0" y="189" width="375" height="120"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="120" id="6Zf-zi-PrL"/>
-                                                        </constraints>
-                                                        <connections>
-                                                            <outlet property="dataSource" destination="Ni2-j4-Bxh" id="0Vv-Lv-CF2"/>
-                                                            <outlet property="delegate" destination="Ni2-j4-Bxh" id="Ggb-g7-tLK"/>
-                                                        </connections>
-                                                    </pickerView>
-                                                    <button opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="375" placeholderIntrinsicHeight="40" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zdl-ob-MAc">
-                                                        <rect key="frame" x="0.0" y="317" width="375" height="52"/>
-                                                        <state key="normal" title="Submit"/>
-                                                    </button>
-                                                </subviews>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <constraints>
-                                                    <constraint firstItem="bvQ-XB-pdJ" firstAttribute="leading" secondItem="QuH-6M-9E6" secondAttribute="leading" id="5a9-7f-eY8"/>
-                                                    <constraint firstItem="kHN-57-TUZ" firstAttribute="leading" secondItem="QuH-6M-9E6" secondAttribute="leading" id="7wY-Na-Pgv"/>
-                                                    <constraint firstAttribute="bottom" secondItem="Zdl-ob-MAc" secondAttribute="bottom" constant="8" id="8Hc-cL-5zo"/>
-                                                    <constraint firstItem="UH4-VL-16e" firstAttribute="leading" secondItem="QuH-6M-9E6" secondAttribute="leading" id="8lx-nF-mle"/>
-                                                    <constraint firstAttribute="trailing" secondItem="Zdl-ob-MAc" secondAttribute="trailing" id="MEx-Ui-06h"/>
-                                                    <constraint firstAttribute="trailing" secondItem="E3v-f5-zqE" secondAttribute="trailing" id="UqI-Jj-fjH"/>
-                                                    <constraint firstAttribute="trailing" secondItem="UH4-VL-16e" secondAttribute="trailing" id="YaN-jE-v3B"/>
-                                                    <constraint firstItem="UH4-VL-16e" firstAttribute="top" secondItem="bvQ-XB-pdJ" secondAttribute="bottom" id="a7g-52-4UG"/>
-                                                    <constraint firstItem="kHN-57-TUZ" firstAttribute="top" secondItem="QuH-6M-9E6" secondAttribute="top" constant="8" id="bmL-mX-odb"/>
-                                                    <constraint firstItem="Zdl-ob-MAc" firstAttribute="top" secondItem="UH4-VL-16e" secondAttribute="bottom" constant="8" id="c5A-oa-7gv"/>
-                                                    <constraint firstItem="E3v-f5-zqE" firstAttribute="top" secondItem="kHN-57-TUZ" secondAttribute="bottom" id="chx-dD-68F"/>
-                                                    <constraint firstItem="bvQ-XB-pdJ" firstAttribute="top" secondItem="E3v-f5-zqE" secondAttribute="bottom" constant="20" id="gfx-No-NQ7"/>
-                                                    <constraint firstAttribute="trailing" secondItem="kHN-57-TUZ" secondAttribute="trailing" id="iUx-h7-Te7"/>
-                                                    <constraint firstItem="Zdl-ob-MAc" firstAttribute="leading" secondItem="QuH-6M-9E6" secondAttribute="leading" id="mh9-pt-8Nb"/>
-                                                    <constraint firstItem="E3v-f5-zqE" firstAttribute="leading" secondItem="QuH-6M-9E6" secondAttribute="leading" id="pBa-LF-giI"/>
-                                                    <constraint firstAttribute="trailing" secondItem="bvQ-XB-pdJ" secondAttribute="trailing" id="pv8-47-85E"/>
-                                                </constraints>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cKd-Vq-MbJ" userLabel="Separator">
-                                                <rect key="frame" x="0.0" y="397" width="375" height="2"/>
-                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="2" id="wtx-9q-0Oh"/>
-                                                </constraints>
-                                            </view>
-                                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="375" placeholderIntrinsicHeight="1724.5" translatesAutoresizingMaskIntoConstraints="NO" id="Sdg-W1-PcF" userLabel="Quiz Presentation View" customClass="QuizContentView" customModule="LiverAtlas" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="419" width="375" height="1724.5"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            </view>
-                                        </subviews>
-                                    </stackView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="YnF-0v-rHM" firstAttribute="top" secondItem="Pov-Ch-4rn" secondAttribute="top" id="3lB-Jq-t4G"/>
-                                    <constraint firstAttribute="trailing" secondItem="YnF-0v-rHM" secondAttribute="trailing" id="H1Q-dg-ogz"/>
-                                    <constraint firstAttribute="bottom" secondItem="YnF-0v-rHM" secondAttribute="bottom" id="lx7-FL-1iP"/>
-                                    <constraint firstItem="YnF-0v-rHM" firstAttribute="leading" secondItem="Pov-Ch-4rn" secondAttribute="leading" id="zBf-ul-rmC"/>
-                                </constraints>
-                            </scrollView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="Pov-Ch-4rn" firstAttribute="leading" secondItem="r3I-Dj-s0v" secondAttribute="leading" id="2L3-XX-u4q"/>
-                            <constraint firstItem="YnF-0v-rHM" firstAttribute="width" secondItem="r3I-Dj-s0v" secondAttribute="width" id="4WE-jp-hKJ"/>
-                            <constraint firstAttribute="bottom" secondItem="Pov-Ch-4rn" secondAttribute="bottom" id="IOS-EM-cUy"/>
-                            <constraint firstAttribute="trailing" secondItem="Pov-Ch-4rn" secondAttribute="trailing" id="J1f-Si-9Xj"/>
-                            <constraint firstItem="Pov-Ch-4rn" firstAttribute="top" secondItem="r3I-Dj-s0v" secondAttribute="top" id="fKg-WU-FTn"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="diagnosisPicker" destination="E3v-f5-zqE" id="M80-Aj-X6w"/>
-                        <outlet property="quizContentView" destination="Sdg-W1-PcF" id="DtT-wx-Q8w"/>
-                        <outlet property="specificDiagnosisPicker" destination="UH4-VL-16e" id="yWw-Ox-qDe"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="erV-bo-HJE" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1556" y="168.6656671664168"/>
-        </scene>
-        <!--Index View Controller-->
-        <scene sceneID="jFp-32-Ezo">
-            <objects>
-                <viewController id="pP0-ji-nDq" userLabel="Index View Controller" customClass="IndexViewController" customModule="LiverAtlas" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="lRJ-KZ-tCH"/>
-                        <viewControllerLayoutGuide type="bottom" id="db7-Ap-WwB"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="YJ1-0P-MvV">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="39" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zrr-39-rIG">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <view key="tableHeaderView" contentMode="scaleToFill" id="kic-a7-V12" userLabel="Header View">
-                                    <rect key="frame" x="0.0" y="64" width="375" height="44"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Each case listed by its Diagnosis and sorted alphabetically" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YEZ-LZ-EH5">
-                                            <rect key="frame" x="8" y="8" width="359" height="28"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <constraints>
-                                        <constraint firstAttribute="trailingMargin" secondItem="YEZ-LZ-EH5" secondAttribute="trailing" id="8K5-Ag-e8q"/>
-                                        <constraint firstItem="YEZ-LZ-EH5" firstAttribute="top" secondItem="kic-a7-V12" secondAttribute="topMargin" id="IjE-Xg-Hoc"/>
-                                        <constraint firstItem="YEZ-LZ-EH5" firstAttribute="leading" secondItem="kic-a7-V12" secondAttribute="leadingMargin" id="MGT-n1-rvC"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="YEZ-LZ-EH5" secondAttribute="bottom" id="tQM-jq-eWp"/>
-                                    </constraints>
-                                </view>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DiagnosisTableCellIdentifier" id="2AX-7w-gVh" userLabel="Diagnosis Table View Cell" customClass="IndexTableViewCell" customModule="LiverAtlas" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="83" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2AX-7w-gVh" id="Tnt-Hf-xdZ">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Diagnosis" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rUv-5m-AKA">
-                                                    <rect key="frame" x="8" y="8" width="359" height="28"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="rUv-5m-AKA" secondAttribute="trailing" id="HIG-mw-lrC"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="rUv-5m-AKA" secondAttribute="bottom" id="SJH-d0-Dr5"/>
-                                                <constraint firstItem="rUv-5m-AKA" firstAttribute="leading" secondItem="Tnt-Hf-xdZ" secondAttribute="leadingMargin" id="v71-aq-dYb"/>
-                                                <constraint firstItem="rUv-5m-AKA" firstAttribute="top" secondItem="Tnt-Hf-xdZ" secondAttribute="topMargin" id="v8G-sU-djz"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="titleLabel" destination="rUv-5m-AKA" id="r1y-zh-eGG"/>
-                                        </connections>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SpecificDiagnosisTableCellIdentifier" id="rDt-FN-sUF" userLabel="Specific Diagnosis Table View Cell" customClass="IndexTableViewCell" customModule="LiverAtlas" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="127" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rDt-FN-sUF" id="uuW-o2-wUX">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="44"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Specific Diagnosis" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OaM-qm-x3Z">
-                                                    <rect key="frame" x="28" y="8" width="306" height="28"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="OaM-qm-x3Z" firstAttribute="top" secondItem="uuW-o2-wUX" secondAttribute="topMargin" id="07A-M9-ZGW"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="OaM-qm-x3Z" secondAttribute="trailing" id="PcY-cO-ZiX"/>
-                                                <constraint firstItem="OaM-qm-x3Z" firstAttribute="leading" secondItem="uuW-o2-wUX" secondAttribute="leadingMargin" constant="20" id="mEl-cK-tId"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="OaM-qm-x3Z" secondAttribute="bottom" id="r2x-fi-XfP"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="titleLabel" destination="OaM-qm-x3Z" id="2G2-hw-BvK"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="pP0-ji-nDq" id="roi-Rw-Hh5"/>
-                                    <outlet property="delegate" destination="pP0-ji-nDq" id="T0M-gi-vaC"/>
-                                </connections>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="zrr-39-rIG" firstAttribute="top" secondItem="YJ1-0P-MvV" secondAttribute="topMargin" id="VSh-wg-MT8"/>
-                            <constraint firstItem="db7-Ap-WwB" firstAttribute="top" secondItem="zrr-39-rIG" secondAttribute="bottom" id="cch-Mf-NeH"/>
-                            <constraint firstAttribute="trailing" secondItem="zrr-39-rIG" secondAttribute="trailing" id="oAz-2d-r5a"/>
-                            <constraint firstItem="zrr-39-rIG" firstAttribute="leading" secondItem="YJ1-0P-MvV" secondAttribute="leading" id="wTm-F2-ETO"/>
-                        </constraints>
-                    </view>
-                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
-                    <navigationItem key="navigationItem" title="Index" id="xy1-om-awk">
-                        <barButtonItem key="rightBarButtonItem" title="CT" id="buC-rA-UA8">
-                            <inset key="imageInsets" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
-                            <connections>
-                                <action selector="filtersAction:" destination="pP0-ji-nDq" id="5LL-8p-LNU"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                    <connections>
-                        <outlet property="filtersBarButtonItem" destination="buC-rA-UA8" id="fsd-YQ-dbc"/>
-                        <outlet property="tableView" destination="zrr-39-rIG" id="1vp-ZJ-drm"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="oUH-UT-hac" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1559" y="-1350"/>
+            <point key="canvasLocation" x="-866" y="-1351"/>
         </scene>
         <!--Home Page View Controller-->
         <scene sceneID="f1c-u7-4fz">
@@ -652,7 +214,445 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pdz-nW-tLR" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="oEo-Ja-gUb"/>
             </objects>
-            <point key="canvasLocation" x="241" y="-583"/>
+            <point key="canvasLocation" x="330" y="-1352"/>
+        </scene>
+        <!--Index View Controller-->
+        <scene sceneID="jFp-32-Ezo">
+            <objects>
+                <viewController id="pP0-ji-nDq" userLabel="Index View Controller" customClass="IndexViewController" customModule="LiverAtlas" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="lRJ-KZ-tCH"/>
+                        <viewControllerLayoutGuide type="bottom" id="db7-Ap-WwB"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="YJ1-0P-MvV">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="39" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zrr-39-rIG">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <view key="tableHeaderView" contentMode="scaleToFill" id="kic-a7-V12" userLabel="Header View">
+                                    <rect key="frame" x="0.0" y="64" width="375" height="60"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Each case listed by its Diagnosis and sorted alphabetically" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YEZ-LZ-EH5">
+                                            <rect key="frame" x="8" y="8" width="359" height="44"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="YEZ-LZ-EH5" secondAttribute="trailing" id="8K5-Ag-e8q"/>
+                                        <constraint firstItem="YEZ-LZ-EH5" firstAttribute="top" secondItem="kic-a7-V12" secondAttribute="topMargin" id="IjE-Xg-Hoc"/>
+                                        <constraint firstItem="YEZ-LZ-EH5" firstAttribute="leading" secondItem="kic-a7-V12" secondAttribute="leadingMargin" id="MGT-n1-rvC"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="YEZ-LZ-EH5" secondAttribute="bottom" id="tQM-jq-eWp"/>
+                                    </constraints>
+                                </view>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DiagnosisTableCellIdentifier" id="2AX-7w-gVh" userLabel="Diagnosis Table View Cell" customClass="IndexTableViewCell" customModule="LiverAtlas" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="99" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2AX-7w-gVh" id="Tnt-Hf-xdZ">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Diagnosis" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rUv-5m-AKA">
+                                                    <rect key="frame" x="8" y="8" width="359" height="28"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="rUv-5m-AKA" secondAttribute="trailing" id="HIG-mw-lrC"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="rUv-5m-AKA" secondAttribute="bottom" id="SJH-d0-Dr5"/>
+                                                <constraint firstItem="rUv-5m-AKA" firstAttribute="leading" secondItem="Tnt-Hf-xdZ" secondAttribute="leadingMargin" id="v71-aq-dYb"/>
+                                                <constraint firstItem="rUv-5m-AKA" firstAttribute="top" secondItem="Tnt-Hf-xdZ" secondAttribute="topMargin" id="v8G-sU-djz"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="titleLabel" destination="rUv-5m-AKA" id="r1y-zh-eGG"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SpecificDiagnosisTableCellIdentifier" id="rDt-FN-sUF" userLabel="Specific Diagnosis Table View Cell" customClass="IndexTableViewCell" customModule="LiverAtlas" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="143" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rDt-FN-sUF" id="uuW-o2-wUX">
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Specific Diagnosis" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OaM-qm-x3Z">
+                                                    <rect key="frame" x="8" y="8" width="326" height="28"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="OaM-qm-x3Z" firstAttribute="top" secondItem="uuW-o2-wUX" secondAttribute="topMargin" id="07A-M9-ZGW"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="OaM-qm-x3Z" secondAttribute="trailing" id="PcY-cO-ZiX"/>
+                                                <constraint firstItem="OaM-qm-x3Z" firstAttribute="leading" secondItem="uuW-o2-wUX" secondAttribute="leadingMargin" id="mEl-cK-tId"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="OaM-qm-x3Z" secondAttribute="bottom" id="r2x-fi-XfP"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="titleLabel" destination="OaM-qm-x3Z" id="2G2-hw-BvK"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="pP0-ji-nDq" id="roi-Rw-Hh5"/>
+                                    <outlet property="delegate" destination="pP0-ji-nDq" id="T0M-gi-vaC"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="zrr-39-rIG" firstAttribute="top" secondItem="YJ1-0P-MvV" secondAttribute="topMargin" id="VSh-wg-MT8"/>
+                            <constraint firstItem="db7-Ap-WwB" firstAttribute="top" secondItem="zrr-39-rIG" secondAttribute="bottom" id="cch-Mf-NeH"/>
+                            <constraint firstAttribute="trailing" secondItem="zrr-39-rIG" secondAttribute="trailing" id="oAz-2d-r5a"/>
+                            <constraint firstItem="zrr-39-rIG" firstAttribute="leading" secondItem="YJ1-0P-MvV" secondAttribute="leading" id="wTm-F2-ETO"/>
+                        </constraints>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
+                    <navigationItem key="navigationItem" title="Index" id="xy1-om-awk">
+                        <barButtonItem key="rightBarButtonItem" title="CT" id="buC-rA-UA8">
+                            <inset key="imageInsets" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
+                            <connections>
+                                <action selector="filtersAction:" destination="pP0-ji-nDq" id="5LL-8p-LNU"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="filtersBarButtonItem" destination="buC-rA-UA8" id="fsd-YQ-dbc"/>
+                        <outlet property="tableView" destination="zrr-39-rIG" id="1vp-ZJ-drm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oUH-UT-hac" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1559" y="-1350"/>
+        </scene>
+        <!--Results Scene-->
+        <scene sceneID="Pji-uy-goa">
+            <objects>
+                <viewController storyboardIdentifier="CasesViewControllerStoryboardIdentifier" id="xsU-RI-o1L" userLabel="Results Scene" customClass="CasesViewController" customModule="LiverAtlas" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wAA-ux-29Y"/>
+                        <viewControllerLayoutGuide type="bottom" id="u5M-PS-gVm"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="c6d-Ng-0S1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="104" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="T7Z-Gg-tRS" customClass="Case">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <view key="tableHeaderView" contentMode="scaleToFill" id="G5u-CQ-dA1" userLabel="Result Header">
+                                    <rect key="frame" x="0.0" y="64" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="There are 24 CT case matching the current search" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PD7-Y0-QvQ" userLabel="Result Summary">
+                                            <rect key="frame" x="8" y="8" width="359" height="28"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="PD7-Y0-QvQ" secondAttribute="trailing" id="XIL-xd-ViN"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="PD7-Y0-QvQ" secondAttribute="bottom" id="jGG-mj-ubP"/>
+                                        <constraint firstItem="PD7-Y0-QvQ" firstAttribute="leading" secondItem="G5u-CQ-dA1" secondAttribute="leadingMargin" id="mkq-yg-ngk"/>
+                                        <constraint firstItem="PD7-Y0-QvQ" firstAttribute="top" secondItem="G5u-CQ-dA1" secondAttribute="topMargin" id="nQT-DU-sLC"/>
+                                    </constraints>
+                                </view>
+                                <connections>
+                                    <outlet property="dataSource" destination="xsU-RI-o1L" id="yaL-b9-eGI"/>
+                                    <outlet property="delegate" destination="xsU-RI-o1L" id="tbP-S8-xFZ"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="T7Z-Gg-tRS" secondAttribute="trailing" id="KmI-Pe-Xj1"/>
+                            <constraint firstItem="T7Z-Gg-tRS" firstAttribute="top" secondItem="c6d-Ng-0S1" secondAttribute="top" id="cXV-QJ-0n5"/>
+                            <constraint firstItem="u5M-PS-gVm" firstAttribute="top" secondItem="T7Z-Gg-tRS" secondAttribute="bottom" id="ru4-3D-ygW"/>
+                            <constraint firstItem="T7Z-Gg-tRS" firstAttribute="leading" secondItem="c6d-Ng-0S1" secondAttribute="leading" id="tAh-7c-RPI"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Matching Cases" id="0C5-CE-HWc">
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="search" id="qUM-1P-Z1t">
+                                <connections>
+                                    <action selector="searchAction:" destination="xsU-RI-o1L" id="zm7-5W-z3N"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="CT" id="6BO-Ma-r5H">
+                                <inset key="imageInsets" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
+                                <connections>
+                                    <action selector="filtersAction:" destination="xsU-RI-o1L" id="dW7-7b-8b3"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="filtersBarButtonItem" destination="6BO-Ma-r5H" id="HNz-fP-zCh"/>
+                        <outlet property="tableView" destination="T7Z-Gg-tRS" id="Zi1-q8-r3a"/>
+                        <outlet property="tableViewHeaderResultSummaryLabel" destination="PD7-Y0-QvQ" id="8su-fY-cpD"/>
+                        <segue destination="JEX-9P-axG" kind="show" identifier="CaseResultToCaseDetailSegue" id="Ism-8i-gJv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CfT-OU-zTB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1558" y="-583"/>
+        </scene>
+        <!--Quiz View Controller-->
+        <scene sceneID="w4t-yu-CZd">
+            <objects>
+                <viewController id="Ni2-j4-Bxh" customClass="QuizViewController" customModule="LiverAtlas" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="IeG-LN-kFs"/>
+                        <viewControllerLayoutGuide type="bottom" id="NNL-8B-npZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="r3I-Dj-s0v">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pov-Ch-4rn">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="YnF-0v-rHM">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="2143.5"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="375" placeholderIntrinsicHeight="377" translatesAutoresizingMaskIntoConstraints="NO" id="QuH-6M-9E6" userLabel="Quiz View">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="377"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Diagnosis" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kHN-57-TUZ" userLabel="Diagnosis">
+                                                        <rect key="frame" x="0.0" y="8" width="375" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E3v-f5-zqE" userLabel="Diagnosis Picker View">
+                                                        <rect key="frame" x="0.0" y="28.5" width="375" height="120"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="120" id="B4l-AN-8Vo"/>
+                                                        </constraints>
+                                                        <connections>
+                                                            <outlet property="dataSource" destination="Ni2-j4-Bxh" id="g0Y-hQ-sbM"/>
+                                                            <outlet property="delegate" destination="Ni2-j4-Bxh" id="WTi-Pq-81V"/>
+                                                        </connections>
+                                                    </pickerView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Specific Diagnosis" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bvQ-XB-pdJ" userLabel="Specific Diagnosis">
+                                                        <rect key="frame" x="0.0" y="168.5" width="375" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UH4-VL-16e" userLabel="Specific Diagnosis Picker View">
+                                                        <rect key="frame" x="0.0" y="189" width="375" height="120"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="120" id="6Zf-zi-PrL"/>
+                                                        </constraints>
+                                                        <connections>
+                                                            <outlet property="dataSource" destination="Ni2-j4-Bxh" id="0Vv-Lv-CF2"/>
+                                                            <outlet property="delegate" destination="Ni2-j4-Bxh" id="Ggb-g7-tLK"/>
+                                                        </connections>
+                                                    </pickerView>
+                                                    <button opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="375" placeholderIntrinsicHeight="40" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zdl-ob-MAc">
+                                                        <rect key="frame" x="0.0" y="317" width="375" height="52"/>
+                                                        <state key="normal" title="Submit"/>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstItem="bvQ-XB-pdJ" firstAttribute="leading" secondItem="QuH-6M-9E6" secondAttribute="leading" id="5a9-7f-eY8"/>
+                                                    <constraint firstItem="kHN-57-TUZ" firstAttribute="leading" secondItem="QuH-6M-9E6" secondAttribute="leading" id="7wY-Na-Pgv"/>
+                                                    <constraint firstAttribute="bottom" secondItem="Zdl-ob-MAc" secondAttribute="bottom" constant="8" id="8Hc-cL-5zo"/>
+                                                    <constraint firstItem="UH4-VL-16e" firstAttribute="leading" secondItem="QuH-6M-9E6" secondAttribute="leading" id="8lx-nF-mle"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Zdl-ob-MAc" secondAttribute="trailing" id="MEx-Ui-06h"/>
+                                                    <constraint firstAttribute="trailing" secondItem="E3v-f5-zqE" secondAttribute="trailing" id="UqI-Jj-fjH"/>
+                                                    <constraint firstAttribute="trailing" secondItem="UH4-VL-16e" secondAttribute="trailing" id="YaN-jE-v3B"/>
+                                                    <constraint firstItem="UH4-VL-16e" firstAttribute="top" secondItem="bvQ-XB-pdJ" secondAttribute="bottom" id="a7g-52-4UG"/>
+                                                    <constraint firstItem="kHN-57-TUZ" firstAttribute="top" secondItem="QuH-6M-9E6" secondAttribute="top" constant="8" id="bmL-mX-odb"/>
+                                                    <constraint firstItem="Zdl-ob-MAc" firstAttribute="top" secondItem="UH4-VL-16e" secondAttribute="bottom" constant="8" id="c5A-oa-7gv"/>
+                                                    <constraint firstItem="E3v-f5-zqE" firstAttribute="top" secondItem="kHN-57-TUZ" secondAttribute="bottom" id="chx-dD-68F"/>
+                                                    <constraint firstItem="bvQ-XB-pdJ" firstAttribute="top" secondItem="E3v-f5-zqE" secondAttribute="bottom" constant="20" id="gfx-No-NQ7"/>
+                                                    <constraint firstAttribute="trailing" secondItem="kHN-57-TUZ" secondAttribute="trailing" id="iUx-h7-Te7"/>
+                                                    <constraint firstItem="Zdl-ob-MAc" firstAttribute="leading" secondItem="QuH-6M-9E6" secondAttribute="leading" id="mh9-pt-8Nb"/>
+                                                    <constraint firstItem="E3v-f5-zqE" firstAttribute="leading" secondItem="QuH-6M-9E6" secondAttribute="leading" id="pBa-LF-giI"/>
+                                                    <constraint firstAttribute="trailing" secondItem="bvQ-XB-pdJ" secondAttribute="trailing" id="pv8-47-85E"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cKd-Vq-MbJ" userLabel="Separator">
+                                                <rect key="frame" x="0.0" y="397" width="375" height="2"/>
+                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="2" id="wtx-9q-0Oh"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="375" placeholderIntrinsicHeight="1724.5" translatesAutoresizingMaskIntoConstraints="NO" id="Sdg-W1-PcF" userLabel="Quiz Presentation View" customClass="QuizContentView" customModule="LiverAtlas" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="419" width="375" height="1724.5"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="YnF-0v-rHM" firstAttribute="top" secondItem="Pov-Ch-4rn" secondAttribute="top" id="3lB-Jq-t4G"/>
+                                    <constraint firstAttribute="trailing" secondItem="YnF-0v-rHM" secondAttribute="trailing" id="H1Q-dg-ogz"/>
+                                    <constraint firstAttribute="bottom" secondItem="YnF-0v-rHM" secondAttribute="bottom" id="lx7-FL-1iP"/>
+                                    <constraint firstItem="YnF-0v-rHM" firstAttribute="leading" secondItem="Pov-Ch-4rn" secondAttribute="leading" id="zBf-ul-rmC"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Pov-Ch-4rn" firstAttribute="leading" secondItem="r3I-Dj-s0v" secondAttribute="leading" id="2L3-XX-u4q"/>
+                            <constraint firstItem="YnF-0v-rHM" firstAttribute="width" secondItem="r3I-Dj-s0v" secondAttribute="width" id="4WE-jp-hKJ"/>
+                            <constraint firstAttribute="bottom" secondItem="Pov-Ch-4rn" secondAttribute="bottom" id="IOS-EM-cUy"/>
+                            <constraint firstAttribute="trailing" secondItem="Pov-Ch-4rn" secondAttribute="trailing" id="J1f-Si-9Xj"/>
+                            <constraint firstItem="Pov-Ch-4rn" firstAttribute="top" secondItem="r3I-Dj-s0v" secondAttribute="top" id="fKg-WU-FTn"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="diagnosisPicker" destination="E3v-f5-zqE" id="M80-Aj-X6w"/>
+                        <outlet property="quizContentView" destination="Sdg-W1-PcF" id="DtT-wx-Q8w"/>
+                        <outlet property="specificDiagnosisPicker" destination="UH4-VL-16e" id="yWw-Ox-qDe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="erV-bo-HJE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1558" y="188"/>
+        </scene>
+        <!--Case Details View Controller-->
+        <scene sceneID="yUG-lL-AsK">
+            <objects>
+                <viewController storyboardIdentifier="CaseDetailsViewController" title="Detail" automaticallyAdjustsScrollViewInsets="NO" id="JEX-9P-axG" userLabel="Case Details View Controller" customClass="CaseDetailsViewController" customModule="LiverAtlas" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="SYR-Wa-9uf"/>
+                        <viewControllerLayoutGuide type="bottom" id="GAO-Cl-Wes"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="svH-Pt-448">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oCk-R6-gIV">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oKq-4p-H75" userLabel="Content View">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="2043.5"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="826" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="0oc-zU-88g" userLabel="Vertical Stack View">
+                                                <rect key="frame" x="8" y="8" width="359" height="2027.5"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" placeholderIntrinsicWidth="359" placeholderIntrinsicHeight="267.5" translatesAutoresizingMaskIntoConstraints="NO" id="c0A-qH-zcc" customClass="CaseDetailsPanelView" customModule="LiverAtlas" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="359" height="352"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" placeholderIntrinsicWidth="359" placeholderIntrinsicHeight="550.5" translatesAutoresizingMaskIntoConstraints="NO" id="Dew-pL-fPM" userLabel="CTModality View" customClass="CTModalityPanelView" customModule="LiverAtlas" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="360" width="359" height="550.5"/>
+                                                        <subviews>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mce-fB-CLI" userLabel="Top Border">
+                                                                <rect key="frame" x="0.0" y="-4" width="359" height="0.0"/>
+                                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="0.5" id="FRx-Oj-Xam"/>
+                                                                </constraints>
+                                                            </view>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <constraints>
+                                                            <constraint firstItem="mce-fB-CLI" firstAttribute="top" secondItem="Dew-pL-fPM" secondAttribute="top" constant="-4" id="CxG-21-7v8"/>
+                                                            <constraint firstAttribute="trailing" secondItem="mce-fB-CLI" secondAttribute="trailing" id="jtu-DX-sEM"/>
+                                                            <constraint firstItem="mce-fB-CLI" firstAttribute="leading" secondItem="Dew-pL-fPM" secondAttribute="leading" id="qFy-I3-fU2"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" placeholderIntrinsicWidth="359" placeholderIntrinsicHeight="550.5" translatesAutoresizingMaskIntoConstraints="NO" id="rYx-5Z-nXs" userLabel="MRModality View" customClass="CTModalityPanelView" customModule="LiverAtlas" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="918.5" width="359" height="550.5"/>
+                                                        <subviews>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nZD-u0-v0D" userLabel="Top Border">
+                                                                <rect key="frame" x="0.0" y="-4" width="359" height="1"/>
+                                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="0.5" id="77W-2T-msi"/>
+                                                                </constraints>
+                                                            </view>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="trailing" secondItem="nZD-u0-v0D" secondAttribute="trailing" id="6bs-y4-lV4"/>
+                                                            <constraint firstItem="nZD-u0-v0D" firstAttribute="top" secondItem="rYx-5Z-nXs" secondAttribute="top" constant="-4" id="WpN-2r-qjh"/>
+                                                            <constraint firstItem="nZD-u0-v0D" firstAttribute="leading" secondItem="rYx-5Z-nXs" secondAttribute="leading" id="gkI-m3-QZl"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" placeholderIntrinsicWidth="359" placeholderIntrinsicHeight="550.5" translatesAutoresizingMaskIntoConstraints="NO" id="Leq-s8-QT3" userLabel="USModality View" customClass="CTModalityPanelView" customModule="LiverAtlas" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="1477" width="359" height="550.5"/>
+                                                        <subviews>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XfW-6T-ikc" userLabel="Top Border">
+                                                                <rect key="frame" x="0.0" y="-4" width="359" height="0.0"/>
+                                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="0.5" id="Psn-uP-28w"/>
+                                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="0.5" id="Txs-rb-42f"/>
+                                                                </constraints>
+                                                            </view>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="trailing" secondItem="XfW-6T-ikc" secondAttribute="trailing" id="WfZ-10-43J"/>
+                                                            <constraint firstItem="XfW-6T-ikc" firstAttribute="top" secondItem="Leq-s8-QT3" secondAttribute="top" constant="-4" id="pSV-t2-jcR"/>
+                                                            <constraint firstItem="XfW-6T-ikc" firstAttribute="leading" secondItem="Leq-s8-QT3" secondAttribute="leading" id="xLq-Px-YLI"/>
+                                                        </constraints>
+                                                    </view>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailingMargin" secondItem="0oc-zU-88g" secondAttribute="trailing" id="EPT-FG-UBy"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="0oc-zU-88g" secondAttribute="bottom" id="JqL-2j-XkP"/>
+                                            <constraint firstItem="0oc-zU-88g" firstAttribute="leading" secondItem="oKq-4p-H75" secondAttribute="leadingMargin" id="Zrt-43-7bv"/>
+                                            <constraint firstItem="0oc-zU-88g" firstAttribute="top" secondItem="oKq-4p-H75" secondAttribute="topMargin" id="q2h-5b-MYs"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="oKq-4p-H75" firstAttribute="leading" secondItem="oCk-R6-gIV" secondAttribute="leading" id="8YQ-cL-P9I"/>
+                                    <constraint firstAttribute="bottom" secondItem="oKq-4p-H75" secondAttribute="bottom" id="Jin-es-foj"/>
+                                    <constraint firstItem="oKq-4p-H75" firstAttribute="top" secondItem="oCk-R6-gIV" secondAttribute="top" id="rCo-4B-oIO"/>
+                                    <constraint firstAttribute="trailing" secondItem="oKq-4p-H75" secondAttribute="trailing" id="smF-fQ-RDP"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="oCk-R6-gIV" secondAttribute="trailing" id="0F3-2S-LMS"/>
+                            <constraint firstItem="oCk-R6-gIV" firstAttribute="top" secondItem="SYR-Wa-9uf" secondAttribute="bottom" id="B3T-Lf-M4H"/>
+                            <constraint firstItem="oKq-4p-H75" firstAttribute="width" secondItem="svH-Pt-448" secondAttribute="width" id="OkG-4w-YAI"/>
+                            <constraint firstItem="oCk-R6-gIV" firstAttribute="leading" secondItem="svH-Pt-448" secondAttribute="leading" id="eKa-VK-QPd"/>
+                            <constraint firstAttribute="bottom" secondItem="oCk-R6-gIV" secondAttribute="bottom" id="nFA-op-LmU"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Detail" id="mOI-FS-AaM">
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="yzm-OR-cHk"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="caseDetailsPanelView" destination="c0A-qH-zcc" id="Vr4-9D-zKp"/>
+                        <outlet property="ctModalityPanelView" destination="Dew-pL-fPM" id="ohf-FZ-rGq"/>
+                        <outlet property="mrModalityPanelView" destination="rYx-5Z-nXs" id="8Fh-aG-6P5"/>
+                        <outlet property="usModalityPanelView" destination="Leq-s8-QT3" id="BtR-i7-5n7"/>
+                        <segue destination="FQ5-a5-NfL" kind="show" identifier="CaseDetailToImagingSegue" id="LJ9-Yq-2Gl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FJe-Yq-33r" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2670" y="-583"/>
         </scene>
         <!--Imaging View Controller-->
         <scene sceneID="tbh-3M-0Pe">
@@ -702,7 +702,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z4h-i1-GBd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3964" y="-583"/>
+            <point key="canvasLocation" x="3930" y="-583"/>
         </scene>
         <!--Filter View Controller-->
         <scene sceneID="smW-Zh-WAh">

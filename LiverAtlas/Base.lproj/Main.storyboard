@@ -180,9 +180,6 @@
                                             </stackView>
                                         </subviews>
                                         <edgeInsets key="layoutMargins" top="20" left="8" bottom="20" right="8"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isLayoutMarginsRelativeArrangement" value="YES"/>
-                                        </userDefinedRuntimeAttributes>
                                     </stackView>
                                 </subviews>
                                 <constraints>
@@ -338,7 +335,7 @@
         <!--Results Scene-->
         <scene sceneID="Pji-uy-goa">
             <objects>
-                <viewController storyboardIdentifier="CasesViewControllerStoryboardIdentifier" id="xsU-RI-o1L" userLabel="Results Scene" customClass="CasesViewController" customModule="LiverAtlas" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CasesViewControllerStoryboardIdentifier" automaticallyAdjustsScrollViewInsets="NO" id="xsU-RI-o1L" userLabel="Results Scene" customClass="CasesViewController" customModule="LiverAtlas" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="wAA-ux-29Y"/>
                         <viewControllerLayoutGuide type="bottom" id="u5M-PS-gVm"/>
@@ -347,11 +344,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="375" placeholderIntrinsicHeight="200" translatesAutoresizingMaskIntoConstraints="NO" id="0UB-Pi-BVi" userLabel="Lightbox View" customClass="LightboxView" customModule="LiverAtlas" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="375" height="200"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" priority="250" constant="200" id="sfN-mh-yBo"/>
+                                </constraints>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="104" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="T7Z-Gg-tRS" customClass="Case">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                                <rect key="frame" x="0.0" y="264" width="375" height="359"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="G5u-CQ-dA1" userLabel="Result Header">
-                                    <rect key="frame" x="0.0" y="64" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="There are 24 CT case matching the current search" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PD7-Y0-QvQ" userLabel="Result Summary">
@@ -377,8 +381,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="0UB-Pi-BVi" firstAttribute="leading" secondItem="c6d-Ng-0S1" secondAttribute="leading" id="4dg-Iv-sZE"/>
                             <constraint firstAttribute="trailing" secondItem="T7Z-Gg-tRS" secondAttribute="trailing" id="KmI-Pe-Xj1"/>
-                            <constraint firstItem="T7Z-Gg-tRS" firstAttribute="top" secondItem="c6d-Ng-0S1" secondAttribute="top" id="cXV-QJ-0n5"/>
+                            <constraint firstAttribute="trailing" secondItem="0UB-Pi-BVi" secondAttribute="trailing" id="OLh-LA-EBq"/>
+                            <constraint firstItem="T7Z-Gg-tRS" firstAttribute="top" secondItem="0UB-Pi-BVi" secondAttribute="bottom" id="RbS-aE-5q0"/>
+                            <constraint firstItem="0UB-Pi-BVi" firstAttribute="top" secondItem="wAA-ux-29Y" secondAttribute="bottom" id="h8o-nm-K1g"/>
                             <constraint firstItem="u5M-PS-gVm" firstAttribute="top" secondItem="T7Z-Gg-tRS" secondAttribute="bottom" id="ru4-3D-ygW"/>
                             <constraint firstItem="T7Z-Gg-tRS" firstAttribute="leading" secondItem="c6d-Ng-0S1" secondAttribute="leading" id="tAh-7c-RPI"/>
                         </constraints>
@@ -401,6 +408,7 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="filtersBarButtonItem" destination="6BO-Ma-r5H" id="HNz-fP-zCh"/>
+                        <outlet property="lightboxView" destination="0UB-Pi-BVi" id="LaP-jf-9CL"/>
                         <outlet property="tableView" destination="T7Z-Gg-tRS" id="Zi1-q8-r3a"/>
                         <outlet property="tableViewHeaderResultSummaryLabel" destination="PD7-Y0-QvQ" id="8su-fY-cpD"/>
                         <segue destination="JEX-9P-axG" kind="show" identifier="CaseResultToCaseDetailSegue" id="Ism-8i-gJv"/>
@@ -408,7 +416,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CfT-OU-zTB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1558" y="-583"/>
+            <point key="canvasLocation" x="1557.5999999999999" y="-583.3583208395803"/>
         </scene>
         <!--Quiz View Controller-->
         <scene sceneID="w4t-yu-CZd">

@@ -9,6 +9,7 @@
 import UIKit
 
 class CasesViewController: UIViewController {
+    @IBOutlet weak var lightboxView: LightboxView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableViewHeaderResultSummaryLabel: UILabel!
     @IBOutlet weak var filtersBarButtonItem: UIBarButtonItem!
@@ -21,6 +22,9 @@ class CasesViewController: UIViewController {
             _searchResultCases = nil
             updateFiltersButton(modality: filteredCases.modality)
             tableView?.reloadData()
+            
+            let modalityImages = filteredCases.cases.first?.modalityImages(forModality: filteredCases.modality)
+            lightboxView.configure(laModalityImages: modalityImages)
         }
     }
     fileprivate var searchString: String = "" {
@@ -49,6 +53,9 @@ class CasesViewController: UIViewController {
     
     func configure(filteredCases: FilteredCases) {
         self.filteredCases = filteredCases
+        
+        let images = filteredCases.cases.first?.modalityImages(forModality: filteredCases.modality)
+        lightboxView.configure(laModalityImages: images)
     }
 
     override func viewDidLoad() {

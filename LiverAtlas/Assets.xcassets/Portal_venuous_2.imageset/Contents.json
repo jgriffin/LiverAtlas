@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Poratl_venuous_2.jpg",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "Poratl_venuous_2.jpg",
       "scale" : "2x"
     },
     {

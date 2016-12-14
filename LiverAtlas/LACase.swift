@@ -23,20 +23,20 @@ struct LACase {
 
 extension LACase {
 
+    func modalityImages(forModality modality: LAModality) -> LAModalityImages {
+        switch modality {
+        case .ct:
+            return ctmodality.first!
+        case .mr:
+            return mrmodality.first!
+        case .us:
+            return usmodality.first!
+        }
+    }
+    
+    
     func imagesForModality(modality: LAModality) -> [LAImage] {
-        // take them all for now, because the filters are off
-        return ctmodality.flatMap { $0.images } +
-            mrmodality.flatMap { $0.images } +
-            usmodality.flatMap { $0.images }
-        
-//        switch modality {
-//        case .ct:
-//            return ctmodality.flatMap { $0.images }
-//        case .mr:
-//            return mrmodality.flatMap { $0.images }
-//        case .us:
-//            return usmodality.flatMap { $0.images }
-//        }
+        return modalityImages(forModality: modality).images
     }
     
     func imagingFeaturesForModality(modality: LAModality) -> [LAImagingFeature] {
@@ -51,14 +51,7 @@ extension LACase {
     }
     
     func structuralFeaturesForModality(modality: LAModality) -> [LAStructuralFeature] {
-        switch modality {
-        case .ct:
-            return ctmodality.flatMap { $0.structuralFeatures }
-        case .mr:
-            return mrmodality.flatMap { $0.structuralFeatures }
-        case .us:
-            return usmodality.flatMap { $0.structuralFeatures }
-        }
+        return modalityImages(forModality: modality).structuralFeatures
     }
 
 }
@@ -94,7 +87,7 @@ enum LAModality {
     case ct, mr, us
 }
 
-struct LACTModality {
+struct LAModalityImages {
     let pk: Int
     let title: String
     let modifiedDate: Date
@@ -107,31 +100,10 @@ struct LACTModality {
     let images: [LAImage]
 }
 
-struct LAMRModality {
-    let pk: Int
-    let title: String
-    let modifiedDate: Date
-    let specificDiagnosis: String
-    let imagingFindings: String
-    let quizLevel: Int
-    let isPublic: Bool
-    let imagingFeatures: [LAImagingFeature]
-    let structuralFeatures: [LAStructuralFeature]
-    let images: [LAImage]
-}
 
-struct LAUSModality {
-    let pk: Int
-    let title: String
-    let modifiedDate: Date
-    let specificDiagnosis: String
-    let imagingFindings: String
-    let quizLevel: Int
-    let isPublic: Bool
-    let imagingFeatures: [LAImagingFeature]
-    let structuralFeatures: [LAStructuralFeature]
-    let images: [LAImage]   
-}
+typealias LACTModality = LAModalityImages
+typealias LAMRModality = LAModalityImages
+typealias LAUSModality = LAModalityImages
 
 struct LAImage {
     let id: Int

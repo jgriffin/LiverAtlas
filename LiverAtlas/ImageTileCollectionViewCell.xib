@@ -18,11 +18,11 @@
                 <rect key="frame" x="0.0" y="0.0" width="200" height="254"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Portal _Venuos_1" translatesAutoresizingMaskIntoConstraints="NO" id="rme-EK-d8U" userLabel="Liver Image View">
-                        <rect key="frame" x="0.0" y="0.0" width="200" height="225.5"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Portal_Venuos_1" translatesAutoresizingMaskIntoConstraints="NO" id="rme-EK-d8U" userLabel="Liver Image View">
+                        <rect key="frame" x="0.0" y="0.0" width="200" height="225"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="Portal Venuous" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y1Q-zG-wSA">
-                        <rect key="frame" x="0.0" y="233.5" width="200" height="20.5"/>
+                        <rect key="frame" x="0.0" y="233" width="200" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -47,6 +47,6 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="Portal _Venuos_1" width="700" height="561"/>
+        <image name="Portal_Venuos_1" width="350" height="280"/>
     </resources>
 </document>

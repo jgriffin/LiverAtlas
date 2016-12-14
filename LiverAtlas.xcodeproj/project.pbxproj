@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		3EA12DE7615EEB2169F0DC9E /* Pods_LiverAtlasTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 641D99D7DA412BFD9CAB6D4D /* Pods_LiverAtlasTests.framework */; };
 		71E0991D7481BA657FF6A8FE /* Pods_LiverAtlas.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69551A3CC407B16394B8564F /* Pods_LiverAtlas.framework */; };
+		D60B39CA1DF4CE8700B44605 /* LightboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60B39C91DF4CE8700B44605 /* LightboxView.swift */; };
+		D60B39CD1DF9105000B44605 /* LighboxCollectionReusableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60B39CC1DF9105000B44605 /* LighboxCollectionReusableHeaderView.swift */; };
+		D60B39CF1DF9109700B44605 /* LightboxImageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60B39CE1DF9109700B44605 /* LightboxImageViewCell.swift */; };
 		D62061F61DE0D57000CA0E14 /* LASearcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62061F51DE0D57000CA0E14 /* LASearcher.swift */; };
 		D62061F81DE0D7F400CA0E14 /* LASearcherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62061F71DE0D7F400CA0E14 /* LASearcherTests.swift */; };
 		D62061F91DE0D82400CA0E14 /* LASearcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62061F51DE0D57000CA0E14 /* LASearcher.swift */; };
@@ -97,6 +100,9 @@
 		BD3CC62BC44AB7DC90A5508C /* Pods-LiverAtlasUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiverAtlasUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LiverAtlasUITests/Pods-LiverAtlasUITests.release.xcconfig"; sourceTree = "<group>"; };
 		CE090C35C5D15C6B457BDD39 /* Pods-LiverAtlasTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiverAtlasTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LiverAtlasTests/Pods-LiverAtlasTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D10CFD08294A25C9C3A6E9D9 /* Pods-LiverAtlasUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiverAtlasUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LiverAtlasUITests/Pods-LiverAtlasUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		D60B39C91DF4CE8700B44605 /* LightboxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightboxView.swift; sourceTree = "<group>"; };
+		D60B39CC1DF9105000B44605 /* LighboxCollectionReusableHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LighboxCollectionReusableHeaderView.swift; sourceTree = "<group>"; };
+		D60B39CE1DF9109700B44605 /* LightboxImageViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightboxImageViewCell.swift; sourceTree = "<group>"; };
 		D62061F51DE0D57000CA0E14 /* LASearcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LASearcher.swift; sourceTree = "<group>"; };
 		D62061F71DE0D7F400CA0E14 /* LASearcherTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LASearcherTests.swift; sourceTree = "<group>"; };
 		D63605B01DCBB97B00F20A65 /* FiltersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiltersViewController.swift; sourceTree = "<group>"; };
@@ -203,6 +209,16 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		D60B39CB1DF9101300B44605 /* Lightbox */ = {
+			isa = PBXGroup;
+			children = (
+				D60B39C91DF4CE8700B44605 /* LightboxView.swift */,
+				D60B39CC1DF9105000B44605 /* LighboxCollectionReusableHeaderView.swift */,
+				D60B39CE1DF9109700B44605 /* LightboxImageViewCell.swift */,
+			);
+			name = Lightbox;
+			sourceTree = "<group>";
+		};
 		D62061FA1DE0F19300CA0E14 /* Case Details */ = {
 			isa = PBXGroup;
 			children = (
@@ -252,6 +268,7 @@
 				D6D96EC01DEF512B00F89D9B /* Imaging */,
 				D6D96EBF1DEF50D400F89D9B /* Filters */,
 				D6D96EBB1DEF504500F89D9B /* Quiz */,
+				D60B39CB1DF9101300B44605 /* Lightbox */,
 			);
 			name = "Views and Controllers";
 			sourceTree = "<group>";
@@ -664,6 +681,7 @@
 				D65DE1AE1DE152470064E043 /* LASearchController.swift in Sources */,
 				D6572A851DDD3B0C00981848 /* ImagingViewController.swift in Sources */,
 				D6A7F4691DE3F7DF009D8E65 /* FilterSectionHeaderCell.swift in Sources */,
+				D60B39CA1DF4CE8700B44605 /* LightboxView.swift in Sources */,
 				D6BAF6311DDC0C0300C9D17F /* LAJsonHelper.swift in Sources */,
 				D6CC094E1DDFDD5600CBC598 /* ModalityMRPanelView.swift in Sources */,
 				D6B1B3FA1DE0CE620094EF40 /* SearchResultsViewController.swift in Sources */,
@@ -672,9 +690,11 @@
 				D6D96EBD1DEF508900F89D9B /* QuizContentView.swift in Sources */,
 				D6BAF6401DDCE6BF00C9D17F /* ModalityCTPanelView.swift in Sources */,
 				D6BAF63B1DDCD47B00C9D17F /* LAIndex.swift in Sources */,
+				D60B39CD1DF9105000B44605 /* LighboxCollectionReusableHeaderView.swift in Sources */,
 				D6DC852E1DDEE700000F0D31 /* CaseDetailsPanelView.swift in Sources */,
 				D6FBFF1D1DF0E856007A5CEC /* MainStoryboard.swift in Sources */,
 				D6B1B3FD1DE0D15C0094EF40 /* CaseTableViewCell.swift in Sources */,
+				D60B39CF1DF9109700B44605 /* LightboxImageViewCell.swift in Sources */,
 				D65DE1AC1DE111350064E043 /* HomePageViewController.swift in Sources */,
 				D63605B11DCBB97B00F20A65 /* FiltersViewController.swift in Sources */,
 				D6D6F7CC1DDEB0B500FAC4A8 /* CasesViewController.swift in Sources */,

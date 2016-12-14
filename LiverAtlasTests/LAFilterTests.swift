@@ -10,7 +10,7 @@ import XCTest
 
 class LAFilterTests: XCTestCase {
     let allCases = LAIndex.instance.allCases
-    let filterer = LAFilterer(allCases: nil, modality: .ct)
+    let filterer = LAFilterer(allCases: nil, modality: .ct, activeFilters: nil)
     
     func testFilterGroups() {
         let case6FilteredCases = FilteredCases(cases: [LAIndex.instance.case6], modality: .ct, filters: [])
@@ -36,7 +36,7 @@ class LAFilterTests: XCTestCase {
         let filterGroups = filterer.filterGroups(fromFilteredCases: allCTFilteredCases)
         let firstFilter = filterGroups.first!.filters.first!
         
-        let filteredCases = filterer.filteredCases(fromFilteredCases: allCTFilteredCases,
+        let filteredCases = LAFilterer.filteredCases(fromFilteredCases: allCTFilteredCases,
                                                    passingFilter: firstFilter)
         XCTAssertEqual(filteredCases.cases.count, 1)
     }

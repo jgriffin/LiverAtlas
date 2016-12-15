@@ -41,7 +41,8 @@ class CaseResultImageCollectionViewCell: UICollectionViewCell {
         self.laImage = laImage
         self.imageView.image = nil
         
-        LACaseFetcher.instance.loadLAImageForURL(imageURL: laImage.imageURL) { [weak self] (image: UIImage?, wasCached: Bool)  in
+        LACaseFetcher.instance.loadLAImageForURL(imageURL: laImage.imageURL) {
+            [weak self] (image: UIImage?, imageURL: URL, wasCached: Bool)  in
             assert(Thread.isMainThread)
             guard laImage.imageURL == self?.laImage.imageURL else {
                     return

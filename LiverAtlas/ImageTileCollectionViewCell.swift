@@ -27,7 +27,8 @@ class ImageTileCollectionViewCell: UICollectionViewCell {
     func configure(laImage: LAImage) {
         imageView?.image = nil
         
-        LACaseFetcher.instance.loadLAImageForURL(imageURL: laImage.imageURL) { [weak self] (image: UIImage?, wasCached: Bool)  in
+        LACaseFetcher.instance.loadLAImageForURL(imageURL: laImage.imageURL) {
+            [weak self] (image: UIImage?, imageURL: URL, wasCached: Bool)  in
             assert(Thread.isMainThread)
 
             self?.imageView?.image = image            

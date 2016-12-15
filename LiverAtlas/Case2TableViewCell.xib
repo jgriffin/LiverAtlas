@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="96" id="KGk-i7-Jjw" customClass="CaseTableViewCell" customModule="LiverAtlas" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="452" height="96"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="95.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="xsy-Q3-GR7">
+                        <rect key="frame" x="8" y="8.5" width="403" height="80"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PLd-jc-Wdo">
+                                <rect key="frame" x="0.0" y="0.0" width="100" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="4fX-Ip-a15"/>
+                                    <constraint firstAttribute="height" constant="80" id="bYk-B3-D21"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="aCZ-Yx-tXL">
+                                <rect key="frame" x="108" y="9.5" width="295" height="61.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="436" placeholderIntrinsicHeight="21" text="Abscess (amebic)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S6j-w5-xZl" userLabel="Title">
+                                        <rect key="frame" x="0.0" y="0.0" width="295" height="21"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" placeholderIntrinsicWidth="436" placeholderIntrinsicHeight="40.5" text="Thin wall and perifoca edema" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uem-O9-OU7" userLabel="Specific Diagnosis">
+                                        <rect key="frame" x="0.0" y="21" width="295" height="40.5"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="xsy-Q3-GR7" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="Bva-4l-xvk"/>
+                    <constraint firstItem="xsy-Q3-GR7" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="Ttu-Ss-hJA"/>
+                    <constraint firstAttribute="bottom" secondItem="xsy-Q3-GR7" secondAttribute="bottom" constant="8" id="YFU-e4-AcZ"/>
+                    <constraint firstAttribute="trailing" secondItem="xsy-Q3-GR7" secondAttribute="trailing" constant="8" id="o9B-VF-bet"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="imagingView" destination="PLd-jc-Wdo" id="AHq-EI-Qc7"/>
+                <outlet property="specificDiagnosisLabel" destination="uem-O9-OU7" id="Wfa-uI-AEJ"/>
+                <outlet property="titleLabel" destination="S6j-w5-xZl" id="Lhq-Mn-9bY"/>
+            </connections>
+            <point key="canvasLocation" x="100" y="80"/>
+        </tableViewCell>
+    </objects>
+</document>

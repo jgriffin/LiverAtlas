@@ -708,11 +708,11 @@
                                 <rect key="frame" x="0.0" y="66" width="375" height="68"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tMl-lp-Lln" id="szT-cI-C9z">
-                                    <rect key="frame" x="0.0" y="0.0" width="336" height="67"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="336" height="67.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uOH-PT-Rm8">
-                                            <rect key="frame" x="15" y="0.0" width="321" height="67"/>
+                                            <rect key="frame" x="15" y="0.0" width="321" height="67.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
                                             <nil key="textColor"/>
@@ -744,11 +744,11 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="68"/>
                     <autoresizingMask key="autoresizingMask"/>
                     <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dCz-ew-25b" id="bnV-i7-niI">
-                        <rect key="frame" x="0.0" y="0.0" width="336" height="67"/>
+                        <rect key="frame" x="0.0" y="0.0" width="336" height="67.5"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Structural Features" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YRm-gZ-rle">
-                                <rect key="frame" x="15" y="0.0" width="321" height="67"/>
+                                <rect key="frame" x="15" y="0.0" width="321" height="67.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
                                 <nil key="textColor"/>

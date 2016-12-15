@@ -66,10 +66,10 @@ class LACaseFetcher: NSObject, URLSessionDelegate, URLSessionTaskDelegate {
     
     var imageURLCache = NSCache<NSString, UIImage>()
     
-    func loadLAImageForURL(imageURL: URL, callback: @escaping (UIImage?, Bool) -> Void) {
+    func loadLAImageForURL(imageURL: URL, callback: @escaping (UIImage?, URL,Bool) -> Void) {
         
         if let image = imageURLCache.object(forKey: imageURL.absoluteString as NSString) {
-            return callback(image, true)
+            return callback(image, imageURL, true)
         }
         
         
@@ -77,7 +77,7 @@ class LACaseFetcher: NSObject, URLSessionDelegate, URLSessionTaskDelegate {
             var imageResult: UIImage?
             defer {
                 DispatchQueue.main.async {
-                    callback(imageResult, false)
+                    callback(imageResult, imageURL, false)
                 }
             }
             

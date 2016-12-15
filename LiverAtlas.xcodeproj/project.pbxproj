@@ -29,6 +29,7 @@
 		D6B1B3FD1DE0D15C0094EF40 /* CaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B1B3FB1DE0D15C0094EF40 /* CaseTableViewCell.swift */; };
 		D6B1B3FE1DE0D15C0094EF40 /* CaseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6B1B3FC1DE0D15C0094EF40 /* CaseTableViewCell.xib */; };
 		D6B225471E02419B00BE9F97 /* Case2TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6B225461E02419B00BE9F97 /* Case2TableViewCell.xib */; };
+		D6B225491E032F5200BE9F97 /* QuizStateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B225481E032F5200BE9F97 /* QuizStateMachine.swift */; };
 		D6BAF6201DDBE9DB00C9D17F /* liveratlas_api_case_6.json in Resources */ = {isa = PBXBuildFile; fileRef = D6BAF61E1DDBE9DB00C9D17F /* liveratlas_api_case_6.json */; };
 		D6BAF6211DDBE9DB00C9D17F /* liveratlas_api_cases.json in Resources */ = {isa = PBXBuildFile; fileRef = D6BAF61F1DDBE9DB00C9D17F /* liveratlas_api_cases.json */; };
 		D6BAF6261DDBEA3900C9D17F /* LAIndexItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BAF6251DDBEA3900C9D17F /* LAIndexItem.swift */; };
@@ -120,6 +121,7 @@
 		D6B1B3FB1DE0D15C0094EF40 /* CaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaseTableViewCell.swift; sourceTree = "<group>"; };
 		D6B1B3FC1DE0D15C0094EF40 /* CaseTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CaseTableViewCell.xib; sourceTree = "<group>"; };
 		D6B225461E02419B00BE9F97 /* Case2TableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Case2TableViewCell.xib; sourceTree = "<group>"; };
+		D6B225481E032F5200BE9F97 /* QuizStateMachine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizStateMachine.swift; sourceTree = "<group>"; };
 		D6BAF61E1DDBE9DB00C9D17F /* liveratlas_api_case_6.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = liveratlas_api_case_6.json; sourceTree = "<group>"; };
 		D6BAF61F1DDBE9DB00C9D17F /* liveratlas_api_cases.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = liveratlas_api_cases.json; sourceTree = "<group>"; };
 		D6BAF6251DDBEA3900C9D17F /* LAIndexItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LAIndexItem.swift; sourceTree = "<group>"; };
@@ -349,6 +351,7 @@
 			children = (
 				D6D96EBC1DEF508800F89D9B /* QuizContentView.swift */,
 				D6D96EB91DEE3F2800F89D9B /* QuizViewController.swift */,
+				D6B225481E032F5200BE9F97 /* QuizStateMachine.swift */,
 			);
 			name = Quiz;
 			sourceTree = "<group>";
@@ -704,6 +707,7 @@
 				D6B1B3FD1DE0D15C0094EF40 /* CaseTableViewCell.swift in Sources */,
 				D60B39CF1DF9109700B44605 /* LightboxImageViewCell.swift in Sources */,
 				D65DE1AC1DE111350064E043 /* HomePageViewController.swift in Sources */,
+				D6B225491E032F5200BE9F97 /* QuizStateMachine.swift in Sources */,
 				D63605B11DCBB97B00F20A65 /* FiltersViewController.swift in Sources */,
 				D6D6F7CC1DDEB0B500FAC4A8 /* CasesViewController.swift in Sources */,
 				D6CC09511DDFEAA700CBC598 /* ModalityPanelView.swift in Sources */,

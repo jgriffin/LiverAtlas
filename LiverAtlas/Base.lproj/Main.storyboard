@@ -427,26 +427,37 @@
                         <viewControllerLayoutGuide type="bottom" id="NNL-8B-npZ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="r3I-Dj-s0v">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pov-Ch-4rn">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pov-Ch-4rn">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="YnF-0v-rHM">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="2143.5"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="YnF-0v-rHM">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="2260"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="375" placeholderIntrinsicHeight="377" translatesAutoresizingMaskIntoConstraints="NO" id="QuH-6M-9E6" userLabel="Quiz View">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="377"/>
+                                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="375" placeholderIntrinsicHeight="1724.5" translatesAutoresizingMaskIntoConstraints="NO" id="Sdg-W1-PcF" customClass="QuizContentView" customModule="LiverAtlas" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="1724.5"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cKd-Vq-MbJ" userLabel="Separator">
+                                                <rect key="frame" x="0.0" y="1744.5" width="375" height="2"/>
+                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="2" id="wtx-9q-0Oh"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b6J-me-dFv" userLabel="Diagnosis Picker View">
+                                                <rect key="frame" x="0.0" y="1766.5" width="375" height="180.5"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Diagnosis" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kHN-57-TUZ" userLabel="Diagnosis">
-                                                        <rect key="frame" x="0.0" y="8" width="375" height="20.5"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Diagnosis" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kHN-57-TUZ" userLabel="Diagnosis">
+                                                        <rect key="frame" x="20" y="20" width="375" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E3v-f5-zqE" userLabel="Diagnosis Picker View">
-                                                        <rect key="frame" x="0.0" y="28.5" width="375" height="120"/>
+                                                    <pickerView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E3v-f5-zqE" userLabel="Diagnosis Picker">
+                                                        <rect key="frame" x="20" y="40.5" width="375" height="120"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="120" id="B4l-AN-8Vo"/>
                                                         </constraints>
@@ -455,14 +466,29 @@
                                                             <outlet property="delegate" destination="Ni2-j4-Bxh" id="WTi-Pq-81V"/>
                                                         </connections>
                                                     </pickerView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Specific Diagnosis" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bvQ-XB-pdJ" userLabel="Specific Diagnosis">
-                                                        <rect key="frame" x="0.0" y="168.5" width="375" height="20.5"/>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstItem="E3v-f5-zqE" firstAttribute="top" secondItem="kHN-57-TUZ" secondAttribute="bottom" id="5Kp-nt-HWB"/>
+                                                    <constraint firstItem="E3v-f5-zqE" firstAttribute="leading" secondItem="b6J-me-dFv" secondAttribute="leading" constant="20" id="5jd-lW-Qyt"/>
+                                                    <constraint firstItem="kHN-57-TUZ" firstAttribute="leading" secondItem="b6J-me-dFv" secondAttribute="leading" constant="20" id="BWU-eS-u3J"/>
+                                                    <constraint firstAttribute="trailing" secondItem="E3v-f5-zqE" secondAttribute="trailing" constant="20" id="EPS-gU-2bZ"/>
+                                                    <constraint firstItem="kHN-57-TUZ" firstAttribute="top" secondItem="b6J-me-dFv" secondAttribute="top" constant="20" id="Umn-Pe-LWJ"/>
+                                                    <constraint firstAttribute="bottom" secondItem="E3v-f5-zqE" secondAttribute="bottom" constant="20" id="kjC-EM-C84"/>
+                                                    <constraint firstAttribute="trailing" secondItem="kHN-57-TUZ" secondAttribute="trailing" constant="20" id="r9f-Jc-D7Y"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EXD-5N-5rp" userLabel="Specific Diagnosis View">
+                                                <rect key="frame" x="0.0" y="1967" width="375" height="180.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Specific Diagnosis" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bvQ-XB-pdJ" userLabel="Specific Diagnosis">
+                                                        <rect key="frame" x="20" y="20" width="375" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UH4-VL-16e" userLabel="Specific Diagnosis Picker View">
-                                                        <rect key="frame" x="0.0" y="189" width="375" height="120"/>
+                                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UH4-VL-16e" userLabel="Specific Diagnosis Picker">
+                                                        <rect key="frame" x="20" y="40.5" width="335" height="120"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="120" id="6Zf-zi-PrL"/>
                                                         </constraints>
@@ -471,41 +497,39 @@
                                                             <outlet property="delegate" destination="Ni2-j4-Bxh" id="Ggb-g7-tLK"/>
                                                         </connections>
                                                     </pickerView>
-                                                    <button opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="375" placeholderIntrinsicHeight="40" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zdl-ob-MAc">
-                                                        <rect key="frame" x="0.0" y="317" width="375" height="52"/>
-                                                        <state key="normal" title="Submit"/>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="UH4-VL-16e" secondAttribute="bottom" constant="20" id="23S-0A-974"/>
+                                                    <constraint firstItem="bvQ-XB-pdJ" firstAttribute="leading" secondItem="EXD-5N-5rp" secondAttribute="leading" constant="20" id="7WR-tS-tfG"/>
+                                                    <constraint firstAttribute="trailing" secondItem="UH4-VL-16e" secondAttribute="trailing" constant="20" id="A8A-RY-JQu"/>
+                                                    <constraint firstItem="UH4-VL-16e" firstAttribute="top" secondItem="bvQ-XB-pdJ" secondAttribute="bottom" id="fSy-9d-QKQ"/>
+                                                    <constraint firstAttribute="trailing" secondItem="bvQ-XB-pdJ" secondAttribute="trailing" constant="20" id="nMj-vh-KDq"/>
+                                                    <constraint firstItem="bvQ-XB-pdJ" firstAttribute="top" secondItem="EXD-5N-5rp" secondAttribute="top" constant="20" id="ni3-AN-lyC"/>
+                                                    <constraint firstItem="UH4-VL-16e" firstAttribute="leading" secondItem="EXD-5N-5rp" secondAttribute="leading" constant="20" id="vZi-hG-Y71"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OAk-5k-XFv" userLabel="Next Question View">
+                                                <rect key="frame" x="0.0" y="2167.5" width="375" height="92"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" placeholderIntrinsicWidth="375" placeholderIntrinsicHeight="40" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zdl-ob-MAc">
+                                                        <rect key="frame" x="20" y="20" width="335" height="52"/>
+                                                        <state key="normal" title="Next Patient"/>
+                                                        <connections>
+                                                            <action selector="nextPatientAction:" destination="Ni2-j4-Bxh" eventType="touchUpInside" id="8dI-rt-65C"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstItem="bvQ-XB-pdJ" firstAttribute="leading" secondItem="QuH-6M-9E6" secondAttribute="leading" id="5a9-7f-eY8"/>
-                                                    <constraint firstItem="kHN-57-TUZ" firstAttribute="leading" secondItem="QuH-6M-9E6" secondAttribute="leading" id="7wY-Na-Pgv"/>
-                                                    <constraint firstAttribute="bottom" secondItem="Zdl-ob-MAc" secondAttribute="bottom" constant="8" id="8Hc-cL-5zo"/>
-                                                    <constraint firstItem="UH4-VL-16e" firstAttribute="leading" secondItem="QuH-6M-9E6" secondAttribute="leading" id="8lx-nF-mle"/>
-                                                    <constraint firstAttribute="trailing" secondItem="Zdl-ob-MAc" secondAttribute="trailing" id="MEx-Ui-06h"/>
-                                                    <constraint firstAttribute="trailing" secondItem="E3v-f5-zqE" secondAttribute="trailing" id="UqI-Jj-fjH"/>
-                                                    <constraint firstAttribute="trailing" secondItem="UH4-VL-16e" secondAttribute="trailing" id="YaN-jE-v3B"/>
-                                                    <constraint firstItem="UH4-VL-16e" firstAttribute="top" secondItem="bvQ-XB-pdJ" secondAttribute="bottom" id="a7g-52-4UG"/>
-                                                    <constraint firstItem="kHN-57-TUZ" firstAttribute="top" secondItem="QuH-6M-9E6" secondAttribute="top" constant="8" id="bmL-mX-odb"/>
-                                                    <constraint firstItem="Zdl-ob-MAc" firstAttribute="top" secondItem="UH4-VL-16e" secondAttribute="bottom" constant="8" id="c5A-oa-7gv"/>
-                                                    <constraint firstItem="E3v-f5-zqE" firstAttribute="top" secondItem="kHN-57-TUZ" secondAttribute="bottom" id="chx-dD-68F"/>
-                                                    <constraint firstItem="bvQ-XB-pdJ" firstAttribute="top" secondItem="E3v-f5-zqE" secondAttribute="bottom" constant="20" id="gfx-No-NQ7"/>
-                                                    <constraint firstAttribute="trailing" secondItem="kHN-57-TUZ" secondAttribute="trailing" id="iUx-h7-Te7"/>
-                                                    <constraint firstItem="Zdl-ob-MAc" firstAttribute="leading" secondItem="QuH-6M-9E6" secondAttribute="leading" id="mh9-pt-8Nb"/>
-                                                    <constraint firstItem="E3v-f5-zqE" firstAttribute="leading" secondItem="QuH-6M-9E6" secondAttribute="leading" id="pBa-LF-giI"/>
-                                                    <constraint firstAttribute="trailing" secondItem="bvQ-XB-pdJ" secondAttribute="trailing" id="pv8-47-85E"/>
+                                                    <constraint firstAttribute="bottom" secondItem="Zdl-ob-MAc" secondAttribute="bottom" constant="20" id="2Ch-g3-2AA"/>
+                                                    <constraint firstItem="Zdl-ob-MAc" firstAttribute="leading" secondItem="OAk-5k-XFv" secondAttribute="leading" constant="20" id="LlG-G4-pLk"/>
+                                                    <constraint firstAttribute="bottom" secondItem="Zdl-ob-MAc" secondAttribute="bottom" constant="20" id="P5E-G1-Avr"/>
+                                                    <constraint firstItem="Zdl-ob-MAc" firstAttribute="top" secondItem="OAk-5k-XFv" secondAttribute="top" constant="20" id="TS2-1v-eEd"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Zdl-ob-MAc" secondAttribute="trailing" constant="20" id="hVL-il-rNw"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Zdl-ob-MAc" secondAttribute="trailing" constant="20" id="q0m-Gj-CWe"/>
+                                                    <constraint firstItem="Zdl-ob-MAc" firstAttribute="leading" secondItem="OAk-5k-XFv" secondAttribute="leading" constant="20" id="udC-dP-ogM"/>
                                                 </constraints>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cKd-Vq-MbJ" userLabel="Separator">
-                                                <rect key="frame" x="0.0" y="397" width="375" height="2"/>
-                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="2" id="wtx-9q-0Oh"/>
-                                                </constraints>
-                                            </view>
-                                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="375" placeholderIntrinsicHeight="1724.5" translatesAutoresizingMaskIntoConstraints="NO" id="Sdg-W1-PcF" userLabel="Quiz Presentation View" customClass="QuizContentView" customModule="LiverAtlas" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="419" width="375" height="1724.5"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </view>
                                         </subviews>
                                     </stackView>
@@ -527,10 +551,15 @@
                             <constraint firstItem="Pov-Ch-4rn" firstAttribute="top" secondItem="r3I-Dj-s0v" secondAttribute="top" id="fKg-WU-FTn"/>
                         </constraints>
                     </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="1000"/>
                     <connections>
                         <outlet property="diagnosisPicker" destination="E3v-f5-zqE" id="M80-Aj-X6w"/>
+                        <outlet property="diagnosisPickerView" destination="b6J-me-dFv" id="AKz-9a-l3p"/>
+                        <outlet property="nextQuestionView" destination="OAk-5k-XFv" id="Jd7-IA-jFG"/>
                         <outlet property="quizContentView" destination="Sdg-W1-PcF" id="DtT-wx-Q8w"/>
                         <outlet property="specificDiagnosisPicker" destination="UH4-VL-16e" id="yWw-Ox-qDe"/>
+                        <outlet property="specificDiagnosisPickerView" destination="EXD-5N-5rp" id="TGd-B5-aru"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="erV-bo-HJE" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -48,7 +48,16 @@ enum LACaseByDiagnosis {
             return diagnosis
         }
     }
-    
+
+    var specificDiagnosisName: String {
+        switch self {
+        case .Diagnosis(_):
+            fatalError("not a specific diagnosis")
+        case .SpecificDiagnosis(_, let specificDiagnosis, _):
+            return specificDiagnosis
+        }
+    }
+
     static func specificDiagnosis(fromCase laCase: LACase) -> LACaseByDiagnosis {
         // the specific diagnosis in the diagnosis isn't what we really want
         // the modality.specificDiagnosis has different (and better) text

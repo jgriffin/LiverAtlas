@@ -10,41 +10,97 @@ import UIKit
 
 class QuizViewController: UIViewController {
     @IBOutlet weak var quizContentView: QuizContentView!
-    @IBOutlet weak var diagnosisPicker: UIView!
-    @IBOutlet weak var specificDiagnosisPicker: UIView!
+    @IBOutlet weak var diagnosisPickerView: UIView!
+    @IBOutlet weak var diagnosisPicker: UIPickerView!
+    @IBOutlet weak var specificDiagnosisPickerView: UIView!
+    @IBOutlet weak var specificDiagnosisPicker: UIPickerView!
+    @IBOutlet weak var nextQuestionView: UIView!
     
     var laFilterer: LAFilterer!
     var diagnosesChoices: [String]!
     var specificDiagnosesChoices: [String]!
     
-    var laCase: LACase! {
+    fileprivate var laCase: LACase! {
         didSet {
-            quizContentView.configure(laCase: laCase)
+            quizContentView.configure(laCase: laCase, modality: laFilterer.activeModality)
         }
     }
+    fileprivate var quizStateMachine: QuizControllerStateMachine!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         quizContentView.modalityPanelHostDelegate = self
-        pickARandomCase()
-        populateDiagnoses()
-    }
 
-    func pickARandomCase() {
-        laCase = LAIndex.instance.case6
+        populateFilteredCasesAndDiagnoses()
+        
+        quizStateMachine = QuizControllerStateMachine(delegate: self)
+        quizStateMachine.transition(toState: .pickANewCase)
     }
     
     override func prepareForInterfaceBuilder() {
         laCase = LAIndex.instance.case6
     }
     
-    func populateDiagnoses() {
-        laFilterer = LAFilterer(allCases: nil, modality: .ct, activeFilters: nil)
+    func populateFilteredCasesAndDiagnoses() {
+        laFilterer = LAFilterer.instance
+        
         let diagnosesAndSpecific = LAFilterer.diagnosesAndSpecificDiagnoses(
             fromFilteredCases: laFilterer.modalityFilteredCases)
-
         diagnosesChoices = diagnosesAndSpecific.diagnoses
         specificDiagnosesChoices = diagnosesAndSpecific.specificDiagnoses
+    }
+    
+    func pickARandomCase() {
+        laCase = laFilterer.filteredCases.cases.first
+    }
+
+    @IBAction func nextPatientAction(_ sender: Any) {
+        assert(quizStateMachine.currentState == .wantANewCase)
+        quizStateMachine.transition(toState: .pickANewCase)
+    }
+}
+
+extension QuizViewController: QuizControllerStateMachineDelegate {
+    func didTransition(fromState: QuizState, toState: QuizState) {
+        switch toState {
+        case .uninitialized:
+            fatalError("should never get notified of .uninitialized")
+        case .pickANewCase:
+            // hide controls
+            diagnosisPickerView.isHidden = true
+            specificDiagnosisPickerView.isHidden = true
+            nextQuestionView.isHidden = true
+            
+            pickARandomCase()
+            quizStateMachine.transition(toState: .waitingForDiagnosis)
+            break
+        case .waitingForDiagnosis:
+            diagnosisPickerView.isHidden = false
+            diagnosisPickerView.isUserInteractionEnabled = true
+            break
+        case .wrongDiagnosis:
+            // TODO:
+            break
+        case .correctDiagnosis:
+            // TODO:
+            quizStateMachine.transition(toState: .waitingForSpecificDiagnosis)
+            break
+        case .waitingForSpecificDiagnosis:
+            diagnosisPickerView.isUserInteractionEnabled = false
+            specificDiagnosisPickerView.isHidden = false
+            specificDiagnosisPickerView.isUserInteractionEnabled = true
+            break
+        case .wrongSpecificDiagnosis:
+            // TODO:
+            break
+        case .correctSpecificDiagnosis:
+            specificDiagnosisPickerView.isUserInteractionEnabled = false
+            quizStateMachine.transition(toState: .wantANewCase)
+            break
+        case .wantANewCase:
+            nextQuestionView.isHidden = false
+            break
+        }
     }
 }
 
@@ -74,6 +130,28 @@ extension QuizViewController: UIPickerViewDataSource, UIPickerViewDelegate {
             fatalError("unhandled picker type")
         }
     }
+    
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        switch pickerView {
+        case diagnosisPicker:
+            let diagnosis = diagnosesChoices[row]
+            let isCorrectDiagnosis = diagnosis == laCase.diagnosis.diagnosis
+            let nextState: QuizState = isCorrectDiagnosis ? .correctDiagnosis : .wrongDiagnosis
+            
+            quizStateMachine.transition(toState: nextState)
+
+        case specificDiagnosisPicker:
+            let specificDiagnosis = specificDiagnosesChoices[row]
+            let correctSpecificDiagnosos = LACaseByDiagnosis.specificDiagnosis(fromCase: laCase).specificDiagnosisName
+            let isCorrectSpecificDiagnosis = specificDiagnosis == correctSpecificDiagnosos
+            let nextState: QuizState = isCorrectSpecificDiagnosis ? .correctSpecificDiagnosis : .wrongSpecificDiagnosis
+            
+            quizStateMachine.transition(toState: nextState)
+        default:
+            fatalError("unhandled picker type")
+        }
+    }
 }
 
 extension QuizViewController: ModalityPanelHostDelegate {
@@ -86,5 +164,6 @@ extension QuizViewController: ModalityPanelHostDelegate {
         navigationController?.pushViewController(imagingController, animated: true)
     }
 }
+
 
 

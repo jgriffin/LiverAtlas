@@ -12,10 +12,7 @@ import UIKit
 class QuizContentView: UIView {
     @IBOutlet var clinicalPresentationHeader: UILabel!
     @IBOutlet var clinicalPresentationLabel: UILabel!
-    @IBOutlet var modalityStackView: UIStackView!
-    @IBOutlet var ctModalityPanel: CTModalityPanelView!
-    @IBOutlet var mrModalityPanel: MRModalityPanelView!
-    @IBOutlet var usModalityPanel: USModalityPanelView!
+    @IBOutlet var modalityPanel: SingleModalityPanelView!
     
     var modalityPanelHostDelegate: ModalityPanelHostDelegate?
     
@@ -33,7 +30,6 @@ class QuizContentView: UIView {
     
     func commonInit() {
         createSubviews()
-        addSubviewConstraints()
     }
     
     // create
@@ -52,41 +48,27 @@ class QuizContentView: UIView {
         clinicalPresentationLabel.font = UIFont.preferredFont(forTextStyle: .body)
         self.addSubview(clinicalPresentationLabel)
         
-        ctModalityPanel = CTModalityPanelView()
-        ctModalityPanel.translatesAutoresizingMaskIntoConstraints = false
-        ctModalityPanel.modalityPanelHostDelegate = self
-        self.addSubview(ctModalityPanel)
+        modalityPanel = SingleModalityPanelView()
+        modalityPanel.translatesAutoresizingMaskIntoConstraints = false
+        modalityPanel.modalityPanelHostDelegate = self
+        self.addSubview(modalityPanel)
         
-        mrModalityPanel = MRModalityPanelView()
-        mrModalityPanel.translatesAutoresizingMaskIntoConstraints = false
-        mrModalityPanel.modalityPanelHostDelegate = self
-        self.addSubview(mrModalityPanel)
-        
-        usModalityPanel = USModalityPanelView()
-        usModalityPanel.translatesAutoresizingMaskIntoConstraints = false
-        usModalityPanel.modalityPanelHostDelegate = self
-        self.addSubview(usModalityPanel)
-        
-        modalityStackView = UIStackView(arrangedSubviews: [ctModalityPanel, mrModalityPanel, usModalityPanel])
-        modalityStackView.translatesAutoresizingMaskIntoConstraints = false
-        modalityStackView.axis = .vertical
-        modalityStackView.alignment = .fill
-        self.addSubview(modalityStackView)
+        addSubviewConstraints()
     }
     
     func addSubviewConstraints() {
         let views: [String: UIView] = [
             "cpHeading": clinicalPresentationHeader,
             "cp": clinicalPresentationLabel,
-            "modalityStackPanel": modalityStackView,
+            "modalityPanel": modalityPanel,
             ]
         
         let verticalConstraints = NSLayoutConstraint.constraints(
-            withVisualFormat: "V:|-[cpHeading][cp]-40-[modalityStackPanel]-|",
+            withVisualFormat: "V:|-[cpHeading][cp]-40-[modalityPanel]-|",
             options: [], metrics: nil, views: views)
         
         let fillToHorizontalMarginsVisualFormats = [
-            "H:|-[cpHeading]-|", "H:|-[cp]-|", "H:|-[modalityStackPanel]-|"
+            "H:|-[cpHeading]-|", "H:|-[cp]-|", "H:|-[modalityPanel]-|"
         ]
         
         let horizonalConstraints = fillToHorizontalMarginsVisualFormats.flatMap {
@@ -102,30 +84,15 @@ class QuizContentView: UIView {
     
     // configure
     
-    func configure(laCase: LACase) {
+    func configure(laCase: LACase, modality: LAModality) {
         self.laCase = laCase
         
         clinicalPresentationLabel.text = laCase.clinicalPresentation
-        configureModalityPanels(laCase: laCase)
-    }
-    
-    func configureModalityPanels(laCase: LACase) {
-        if let ctmodality = laCase.ctmodality.first {
-            ctModalityPanel.configure(ctmodality: ctmodality)
-        }
-        if let mrmodality = laCase.mrmodality.first {
-            mrModalityPanel.configure(mrmodality: mrmodality)
-        }
-        if let usmodality = laCase.usmodality.first {
-            usModalityPanel.configure(usmodality: usmodality)
-        }
-        ctModalityPanel.isHidden = laCase.ctmodality.isEmpty
-        mrModalityPanel.isHidden = laCase.mrmodality.isEmpty
-        usModalityPanel.isHidden = laCase.usmodality.isEmpty
+        modalityPanel.configure(laCase: laCase, modality: modality)
     }
     
     override func prepareForInterfaceBuilder() {
-        configure(laCase: LAIndex.instance.case6)
+        configure(laCase: LAIndex.instance.case6, modality: .ct)
     }
 }
 
@@ -134,22 +101,8 @@ extension QuizContentView: ModalityPanelHostDelegate {
     func modalityPanel(_ modalityPanel: ModalityPanelView,
                                 didSelectImage laImage: LAImage?,
                                 withIndex imageIndex: Int) {
-        var selectedImage = laImage
-        if selectedImage == nil {
-            switch modalityPanel {
-            case ctModalityPanel:
-                selectedImage = laCase.ctmodality.first!.images[imageIndex]
-            case usModalityPanel:
-                selectedImage = laCase.usmodality.first!.images[imageIndex]
-            case mrModalityPanel:
-                selectedImage = laCase.mrmodality.first!.images[imageIndex]
-            default:
-                fatalError()
-            }
-        }
-        
         modalityPanelHostDelegate!.modalityPanel(modalityPanel,
-                                                 didSelectImage: selectedImage,
+                                                 didSelectImage: laImage,
                                                  withIndex: imageIndex)
     }
 }

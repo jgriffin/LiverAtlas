@@ -23,8 +23,12 @@ class CasesViewController: UIViewController {
             updateFiltersButton(modality: filteredCases.modality)
             tableView?.reloadData()
             
-            let modalityImages = filteredCases.cases.first?.modalityImages(forModality: filteredCases.modality)
-            lightboxView.configure(laModalityImages: modalityImages)
+//            let modalityImages = filteredCases.cases.first?.modalityImages(forModality: filteredCases.modality)
+//            lightboxView.configure(laModalityImages: modalityImages)
+//            
+            DispatchQueue.main.async {
+                self.ensureLightboxSelection()
+            }
         }
     }
     fileprivate var searchString: String = "" {

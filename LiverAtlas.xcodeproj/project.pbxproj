@@ -17,6 +17,7 @@
 		D62061F91DE0D82400CA0E14 /* LASearcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62061F51DE0D57000CA0E14 /* LASearcher.swift */; };
 		D63605B11DCBB97B00F20A65 /* FiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63605B01DCBB97B00F20A65 /* FiltersViewController.swift */; };
 		D63605B51DCBC10100F20A65 /* IndexItemEntryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63605B41DCBC10100F20A65 /* IndexItemEntryTableViewCell.swift */; };
+		D647E1F71E023A5F008C70B5 /* SingleModalityPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D647E1F61E023A5F008C70B5 /* SingleModalityPanelView.swift */; };
 		D6572A851DDD3B0C00981848 /* ImagingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6572A841DDD3B0C00981848 /* ImagingViewController.swift */; };
 		D65DE1AC1DE111350064E043 /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65DE1AB1DE111350064E043 /* HomePageViewController.swift */; };
 		D65DE1AE1DE152470064E043 /* LASearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65DE1AD1DE152470064E043 /* LASearchController.swift */; };
@@ -107,6 +108,7 @@
 		D62061F71DE0D7F400CA0E14 /* LASearcherTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LASearcherTests.swift; sourceTree = "<group>"; };
 		D63605B01DCBB97B00F20A65 /* FiltersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiltersViewController.swift; sourceTree = "<group>"; };
 		D63605B41DCBC10100F20A65 /* IndexItemEntryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndexItemEntryTableViewCell.swift; sourceTree = "<group>"; };
+		D647E1F61E023A5F008C70B5 /* SingleModalityPanelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleModalityPanelView.swift; sourceTree = "<group>"; };
 		D6572A841DDD3B0C00981848 /* ImagingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagingViewController.swift; sourceTree = "<group>"; };
 		D65DE1AB1DE111350064E043 /* HomePageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
 		D65DE1AD1DE152470064E043 /* LASearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LASearchController.swift; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 				D6BAF6461DDCED0A00C9D17F /* ImageTileCollectionViewCell.xib */,
 				D6DCA0B51DD03AAB004A6A63 /* IntrinsicSizeCollectionView.swift */,
 				D6BAF63F1DDCE6BF00C9D17F /* ModalityCTPanelView.swift */,
+				D647E1F61E023A5F008C70B5 /* SingleModalityPanelView.swift */,
 				D6CC094C1DDFDD5600CBC598 /* ModalityMRPanelView.swift */,
 				D6CC09501DDFEAA700CBC598 /* ModalityPanelView.swift */,
 				D6BAF6411DDCE6D100C9D17F /* ModalityPanelView.xib */,
@@ -682,6 +685,7 @@
 				D6572A851DDD3B0C00981848 /* ImagingViewController.swift in Sources */,
 				D6A7F4691DE3F7DF009D8E65 /* FilterSectionHeaderCell.swift in Sources */,
 				D60B39CA1DF4CE8700B44605 /* LightboxView.swift in Sources */,
+				D647E1F71E023A5F008C70B5 /* SingleModalityPanelView.swift in Sources */,
 				D6BAF6311DDC0C0300C9D17F /* LAJsonHelper.swift in Sources */,
 				D6CC094E1DDFDD5600CBC598 /* ModalityMRPanelView.swift in Sources */,
 				D6B1B3FA1DE0CE620094EF40 /* SearchResultsViewController.swift in Sources */,

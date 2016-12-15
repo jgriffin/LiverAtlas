@@ -553,20 +553,16 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oKq-4p-H75" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="2043.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="871.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="826" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="0oc-zU-88g" userLabel="Vertical Stack View">
-                                                <rect key="frame" x="8" y="8" width="359" height="2027.5"/>
+                                                <rect key="frame" x="8" y="8" width="359" height="855.5"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" placeholderIntrinsicWidth="359" placeholderIntrinsicHeight="267.5" translatesAutoresizingMaskIntoConstraints="NO" id="c0A-qH-zcc" customClass="CaseDetailsPanelView" customModule="LiverAtlas" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="359" height="352"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </view>
-                                                    <view contentMode="scaleToFill" placeholderIntrinsicWidth="359" placeholderIntrinsicHeight="550.5" translatesAutoresizingMaskIntoConstraints="NO" id="Dew-pL-fPM" userLabel="CTModality View" customClass="CTModalityPanelView" customModule="LiverAtlas" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="360" width="359" height="550.5"/>
+                                                    <view contentMode="scaleToFill" placeholderIntrinsicWidth="359" placeholderIntrinsicHeight="550.5" translatesAutoresizingMaskIntoConstraints="NO" id="Dew-pL-fPM" userLabel="Single Modality View" customClass="SingleModalityPanelView" customModule="LiverAtlas" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="359" height="550.5"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mce-fB-CLI" userLabel="Top Border">
-                                                                <rect key="frame" x="0.0" y="-4" width="359" height="0.0"/>
+                                                                <rect key="frame" x="0.0" y="550.5" width="359" height="0.0"/>
                                                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="0.5" id="FRx-Oj-Xam"/>
@@ -575,47 +571,14 @@
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
-                                                            <constraint firstItem="mce-fB-CLI" firstAttribute="top" secondItem="Dew-pL-fPM" secondAttribute="top" constant="-4" id="CxG-21-7v8"/>
+                                                            <constraint firstItem="mce-fB-CLI" firstAttribute="top" secondItem="Dew-pL-fPM" secondAttribute="bottom" id="CxG-21-7v8"/>
                                                             <constraint firstAttribute="trailing" secondItem="mce-fB-CLI" secondAttribute="trailing" id="jtu-DX-sEM"/>
                                                             <constraint firstItem="mce-fB-CLI" firstAttribute="leading" secondItem="Dew-pL-fPM" secondAttribute="leading" id="qFy-I3-fU2"/>
                                                         </constraints>
                                                     </view>
-                                                    <view contentMode="scaleToFill" placeholderIntrinsicWidth="359" placeholderIntrinsicHeight="550.5" translatesAutoresizingMaskIntoConstraints="NO" id="rYx-5Z-nXs" userLabel="MRModality View" customClass="CTModalityPanelView" customModule="LiverAtlas" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="918.5" width="359" height="550.5"/>
-                                                        <subviews>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nZD-u0-v0D" userLabel="Top Border">
-                                                                <rect key="frame" x="0.0" y="-4" width="359" height="1"/>
-                                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="0.5" id="77W-2T-msi"/>
-                                                                </constraints>
-                                                            </view>
-                                                        </subviews>
+                                                    <view contentMode="scaleToFill" placeholderIntrinsicWidth="359" placeholderIntrinsicHeight="267.5" translatesAutoresizingMaskIntoConstraints="NO" id="c0A-qH-zcc" customClass="CaseDetailsPanelView" customModule="LiverAtlas" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="558.5" width="359" height="297"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="trailing" secondItem="nZD-u0-v0D" secondAttribute="trailing" id="6bs-y4-lV4"/>
-                                                            <constraint firstItem="nZD-u0-v0D" firstAttribute="top" secondItem="rYx-5Z-nXs" secondAttribute="top" constant="-4" id="WpN-2r-qjh"/>
-                                                            <constraint firstItem="nZD-u0-v0D" firstAttribute="leading" secondItem="rYx-5Z-nXs" secondAttribute="leading" id="gkI-m3-QZl"/>
-                                                        </constraints>
-                                                    </view>
-                                                    <view contentMode="scaleToFill" placeholderIntrinsicWidth="359" placeholderIntrinsicHeight="550.5" translatesAutoresizingMaskIntoConstraints="NO" id="Leq-s8-QT3" userLabel="USModality View" customClass="CTModalityPanelView" customModule="LiverAtlas" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="1477" width="359" height="550.5"/>
-                                                        <subviews>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XfW-6T-ikc" userLabel="Top Border">
-                                                                <rect key="frame" x="0.0" y="-4" width="359" height="0.0"/>
-                                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="0.5" id="Psn-uP-28w"/>
-                                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="0.5" id="Txs-rb-42f"/>
-                                                                </constraints>
-                                                            </view>
-                                                        </subviews>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="trailing" secondItem="XfW-6T-ikc" secondAttribute="trailing" id="WfZ-10-43J"/>
-                                                            <constraint firstItem="XfW-6T-ikc" firstAttribute="top" secondItem="Leq-s8-QT3" secondAttribute="top" constant="-4" id="pSV-t2-jcR"/>
-                                                            <constraint firstItem="XfW-6T-ikc" firstAttribute="leading" secondItem="Leq-s8-QT3" secondAttribute="leading" id="xLq-Px-YLI"/>
-                                                        </constraints>
                                                     </view>
                                                 </subviews>
                                             </stackView>
@@ -652,9 +615,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="caseDetailsPanelView" destination="c0A-qH-zcc" id="Vr4-9D-zKp"/>
-                        <outlet property="ctModalityPanelView" destination="Dew-pL-fPM" id="ohf-FZ-rGq"/>
-                        <outlet property="mrModalityPanelView" destination="rYx-5Z-nXs" id="8Fh-aG-6P5"/>
-                        <outlet property="usModalityPanelView" destination="Leq-s8-QT3" id="BtR-i7-5n7"/>
+                        <outlet property="modalityPanelView" destination="Dew-pL-fPM" id="tIZ-Wg-u55"/>
                         <segue destination="FQ5-a5-NfL" kind="show" identifier="CaseDetailToImagingSegue" id="LJ9-Yq-2Gl"/>
                     </connections>
                 </viewController>
@@ -747,11 +708,11 @@
                                 <rect key="frame" x="0.0" y="66" width="375" height="68"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tMl-lp-Lln" id="szT-cI-C9z">
-                                    <rect key="frame" x="0.0" y="0.0" width="336" height="67.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="336" height="67"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uOH-PT-Rm8">
-                                            <rect key="frame" x="15" y="0.0" width="321" height="67.5"/>
+                                            <rect key="frame" x="15" y="0.0" width="321" height="67"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
                                             <nil key="textColor"/>
@@ -783,11 +744,11 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="68"/>
                     <autoresizingMask key="autoresizingMask"/>
                     <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dCz-ew-25b" id="bnV-i7-niI">
-                        <rect key="frame" x="0.0" y="0.0" width="336" height="67.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="336" height="67"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Structural Features" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YRm-gZ-rle">
-                                <rect key="frame" x="15" y="0.0" width="321" height="67.5"/>
+                                <rect key="frame" x="15" y="0.0" width="321" height="67"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
                                 <nil key="textColor"/>

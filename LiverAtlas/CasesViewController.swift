@@ -198,7 +198,7 @@ extension CasesViewController: UITableViewDelegate {
         }
         
         let caseDetailsVC = MainStoryboard.instantiate(withStoryboardID: .caseDetailsID) as! CaseDetailsViewController
-        caseDetailsVC.configure(laCase: laCase)
+        caseDetailsVC.configure(laCase: laCase, modality: filteredCases.modality)
         
         navigationController?.pushViewController(caseDetailsVC, animated: true)
     }
@@ -240,7 +240,7 @@ extension CasesViewController: LASearchControllerDelegate {
     
     func didSelect(laCase: LACase) {
         let caseDetailsVC = MainStoryboard.instantiate(withStoryboardID: .caseDetailsID) as! CaseDetailsViewController
-        caseDetailsVC.configure(laCase: laCase)
+        caseDetailsVC.configure(laCase: laCase, modality: filteredCases.modality)
         
         navigationController?.pushViewController(caseDetailsVC, animated: true)
     }

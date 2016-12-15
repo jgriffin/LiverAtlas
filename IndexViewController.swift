@@ -106,7 +106,7 @@ extension IndexViewController: UITableViewDelegate {
             
         case let .SpecificDiagnosis(_, _, laCase):
             let detailsVC = MainStoryboard.instantiate(withStoryboardID: .caseDetailsID) as! CaseDetailsViewController
-            detailsVC.configure(laCase: laCase)
+            detailsVC.configure(laCase: laCase, modality: filteredCases.modality)
             
             navigationController?.pushViewController(detailsVC, animated: true)
         }

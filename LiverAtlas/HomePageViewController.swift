@@ -18,7 +18,7 @@ class HomePageViewController: UIViewController {
         switch segue.identifier {
         case .some(SegueID.homeToCaseDetailsSegueID.rawValue):
             let detailsVC = segue.destination as! CaseDetailsViewController
-            detailsVC.configure(laCase: LAIndex.instance.case6)
+            detailsVC.configure(laCase: LAIndex.instance.case6, modality: .ct)
         default:
             NSLog("unhandled segue with identifier: \(segue.identifier)" )
         }

@@ -100,6 +100,21 @@ struct LAModalityImages {
     let images: [LAImage]
 }
 
+import UIKit
+extension LAModalityImages {
+
+    var attributedImagingFindings: NSAttributedString? {
+        guard let htmlData = imagingFindings.data(using: String.Encoding.unicode),
+            let attrString = try? NSAttributedString(data: htmlData,
+                                                     options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType],
+                                                     documentAttributes: nil) else {
+            return nil
+        }
+        return attrString
+    }
+}
+
+
 
 typealias LACTModality = LAModalityImages
 typealias LAMRModality = LAModalityImages

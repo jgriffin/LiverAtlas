@@ -17,11 +17,11 @@ class LightboxView: UIView {
 
     func configure(laModalityImages modalityImages: LAModalityImages?) {
         self.laImages = modalityImages
-        headerView?.text = modalityImages?.imagingFindings
+        headerView?.text = modalityImages?.attributedImagingFindings?.string
         collectionView.reloadData()
         setNeedsLayout()
     }
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
@@ -39,7 +39,7 @@ class LightboxView: UIView {
         headerView.translatesAutoresizingMaskIntoConstraints = false
         headerView.numberOfLines = 2
         headerView.font = UIFont.preferredFont(forTextStyle: .title1)
-        headerView.text = laImages?.imagingFindings
+        headerView.text = nil
         addSubview(headerView)
         
         let flowLayout = UICollectionViewFlowLayout()
@@ -93,6 +93,18 @@ class LightboxView: UIView {
         let laCase = LAIndex.instance.case6
         configure(laModalityImages: laCase.ctmodality.first)
     }
+
+    private func attributedImagingFindings(imagingFindings: String?) -> NSAttributedString? {
+        if let findings = imagingFindings,
+            let htmlData = findings.data(using: String.Encoding.unicode),
+            let attrString = try? NSAttributedString(data: htmlData,
+                                                     options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType],
+                                                     documentAttributes: nil) {
+            return attrString
+        }
+        return nil
+    }
+
 }
 
 extension LightboxView: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {

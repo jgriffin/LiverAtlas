@@ -51,6 +51,12 @@ class CasesViewController: UIViewController {
     }
     private var _searchResultCases: [LACase]?
     
+    fileprivate var laSelectedCase: LACase? {
+        didSet {
+            lightboxView?.configure(laModalityImages: laSelectedCase?.modalityImages(forModality: filteredCases.modality))
+        }
+    }
+    
     func configure(filteredCases: FilteredCases) {
         self.filteredCases = filteredCases
         
@@ -149,10 +155,48 @@ extension CasesViewController: UITableViewDataSource {
 }
 
 extension CasesViewController: UITableViewDelegate {
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        ensureLightboxSelection()
+    }
+    
+    func ensureLightboxSelection() {
+        guard let visibleIndexPath = visibleIndexPath(nearIndexPath: tableView.indexPathForSelectedRow) else {
+            return
+        }
+        
+        if visibleIndexPath != tableView.indexPathForSelectedRow {
+            tableView.selectRow(at: visibleIndexPath, animated: true, scrollPosition: .none)
+            self.tableView(tableView, didSelectRowAt: visibleIndexPath)
+        }
+    }
+    
+    private func visibleIndexPath(nearIndexPath previousIndexPath: IndexPath?) -> IndexPath? {
+        guard let visibleRows = tableView.indexPathsForVisibleRows,
+            !visibleRows.isEmpty else {
+                return nil
+        }
+        
+        guard let indexPath = previousIndexPath else {
+            return visibleRows.first
+        }
+        
+        if visibleRows.contains(indexPath) {
+            return previousIndexPath
+        }
+
+        return visibleRows.last!.row < indexPath.row ? visibleRows.last : visibleRows.first
+    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let laCase = searchResultCases[indexPath.item]
 
+        guard laSelectedCase?.pk == laCase.pk else {
+            // show case in lighbox before navigation
+            laSelectedCase = laCase
+            return
+        }
+        
         let caseDetailsVC = MainStoryboard.instantiate(withStoryboardID: .caseDetailsID) as! CaseDetailsViewController
         caseDetailsVC.configure(laCase: laCase)
         

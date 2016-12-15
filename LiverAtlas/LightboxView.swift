@@ -51,7 +51,7 @@ class LightboxView: UIView {
         collectionView.layer.cornerRadius = 5
         collectionView.layer.borderWidth = 2
         collectionView.layer.borderColor = UIColor.darkGray.cgColor
-        collectionView.backgroundColor = UIColor.cyan        
+        collectionView.backgroundColor = UIColor.white
         addSubview(collectionView)
 
         registerReusableCollectionViews()

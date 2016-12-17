@@ -143,7 +143,7 @@ extension QuizViewController: UIPickerViewDataSource, UIPickerViewDelegate {
 
         case specificDiagnosisPicker:
             let specificDiagnosis = specificDiagnosesChoices[row]
-            let correctSpecificDiagnosos = LACaseByDiagnosis.specificDiagnosis(fromCase: laCase).specificDiagnosisName
+            let correctSpecificDiagnosos = SpecificDiagnosis(fromCase: laCase).specificDiagnosis
             let isCorrectSpecificDiagnosis = specificDiagnosis == correctSpecificDiagnosos
             let nextState: QuizState = isCorrectSpecificDiagnosis ? .correctSpecificDiagnosis : .wrongSpecificDiagnosis
             

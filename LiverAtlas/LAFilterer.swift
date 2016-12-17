@@ -58,14 +58,14 @@ class LAFilterer {
     }
     var _modalityFilterGroups:[LAFilterGroup]?
     
-    var modalityFilteredCasesByDiagnoses: [LACaseByDiagnosis] {
+    var modalityFilteredCasesByDiagnoses:[[SpecificDiagnosis]] {
         if _modalityByDiagnoses == nil {
             _modalityByDiagnoses = LAFilterer.casesByDiagnosis(fromFilteredCases: modalityFilteredCases)
         }
         
         return _modalityByDiagnoses!
     }
-    var _modalityByDiagnoses: [LACaseByDiagnosis]?
+    var _modalityByDiagnoses: [[SpecificDiagnosis]]?
     
     // filters
     
@@ -220,47 +220,42 @@ extension LAFilterer { // groups and diagnoses
         return [diagnosisFiltersGroup, structuralFiltersGroup, imagingFiltersGroup]
     }
     
-    static func casesByDiagnosis(fromFilteredCases filteredCases: FilteredCases) -> [LACaseByDiagnosis] {
-        let casesBySpecificDiagnosisSorted = filteredCases.cases.map( { aCase -> LACaseByDiagnosis in
-            LACaseByDiagnosis.specificDiagnosis(fromCase: aCase)
+    static func casesByDiagnosis(fromFilteredCases filteredCases: FilteredCases) -> [[SpecificDiagnosis]] {
+        let casesBySpecificDiagnosisSorted = filteredCases.cases.map( { laCase -> SpecificDiagnosis in
+            SpecificDiagnosis(fromCase: laCase)
         }).sorted(by:compareBySpecificDiagnosis)
         
-        var byDiagnoses = [LACaseByDiagnosis]()
+        // collect into groups
+        var byDiagnoses = [[SpecificDiagnosis]]()
         for specific in casesBySpecificDiagnosisSorted {
-            if specific.diagnosisName != byDiagnoses.last?.diagnosisName {
-                // add a diagnosis header
-                byDiagnoses.append(LACaseByDiagnosis.Diagnosis(diagnosis: specific.diagnosisName))
+            if specific.diagnosis != byDiagnoses.last?.first?.diagnosis {
+                // add a new section
+                byDiagnoses.append([SpecificDiagnosis]())
             }
-            byDiagnoses.append(specific)
+            byDiagnoses[byDiagnoses.count-1].append(specific)
         }
         
         return byDiagnoses
     }
-    
-    static func compareBySpecificDiagnosis(lhs: LACaseByDiagnosis, rhs:LACaseByDiagnosis) -> Bool {
-        guard case let LACaseByDiagnosis.SpecificDiagnosis(lhsDiagnosis, lhsSpecific, _) = lhs,
-            case let LACaseByDiagnosis.SpecificDiagnosis(rhsDiagnosis, rhsSpecific, _) = rhs else {
-                fatalError()
+
+    static func compareBySpecificDiagnosis(lhs: SpecificDiagnosis, rhs:SpecificDiagnosis) -> Bool {
+        if lhs.diagnosis < rhs.diagnosis {
+            return true
         }
-        
-        return (lhsDiagnosis < rhsDiagnosis) || ((lhsDiagnosis == rhsDiagnosis) && lhsSpecific <= rhsSpecific)
+        if lhs.diagnosis > rhs.diagnosis {
+            return false
+        }
+        return lhs.specificDiagnosis <= rhs.specificDiagnosis
     }
     
     static func diagnosesAndSpecificDiagnoses(fromFilteredCases filteredCases: FilteredCases) -> (diagnoses: [String], specificDiagnoses: [String]) {
-            var diagnosesBuilder = [String]()
-            var specificDiagnosesBuilder = [String]()
-            
-            let byDiagnosis = casesByDiagnosis(fromFilteredCases: filteredCases)
-            byDiagnosis.forEach { (caseByDiagnosis: LACaseByDiagnosis) in
-                switch caseByDiagnosis {
-                case .Diagnosis(let diagnosis):
-                    diagnosesBuilder.append(diagnosis)
-                case .SpecificDiagnosis(_, let specificDiagnosis, _):
-                    specificDiagnosesBuilder.append(specificDiagnosis)
-                }
-            }
-            
-            return (diagnoses: diagnosesBuilder, specificDiagnoses: specificDiagnosesBuilder)
+        let byDiagnosis = casesByDiagnosis(fromFilteredCases: filteredCases)
+
+        let diagnoses = byDiagnosis.map { $0.first!.diagnosis }
+        let specificDiagnoses = byDiagnosis.flatMap({ specificDiagnoses in
+            specificDiagnoses.flatMap { $0.specificDiagnosis }
+        })
+        return (diagnoses, specificDiagnoses)
     }
 }
 

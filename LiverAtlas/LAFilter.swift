@@ -37,37 +37,57 @@ struct FilteredCases {
     let filters: [LAFilter]
 }
 
-enum LACaseByDiagnosis {
-    case Diagnosis(diagnosis: String)
-    case SpecificDiagnosis(diagnosis: String, specificDiagnosis: String, laCase: LACase)
-    
-    var diagnosisName: String {
-        switch self {
-        case .Diagnosis(let diagnosis),
-             .SpecificDiagnosis(let diagnosis, _, _):
-            return diagnosis
-        }
-    }
 
-    var specificDiagnosisName: String {
-        switch self {
-        case .Diagnosis(_):
-            fatalError("not a specific diagnosis")
-        case .SpecificDiagnosis(_, let specificDiagnosis, _):
-            return specificDiagnosis
-        }
-    }
+struct SpecificDiagnosis {
+    let diagnosis: String
+    let specificDiagnosis: String
+    let laCase: LACase
 
-    static func specificDiagnosis(fromCase laCase: LACase) -> LACaseByDiagnosis {
+    init(fromCase laCase: LACase) {
         // the specific diagnosis in the diagnosis isn't what we really want
         // the modality.specificDiagnosis has different (and better) text
-        let modalitySpecificDiagnosis: String? = laCase.ctmodality.first?.specificDiagnosis ??
-            laCase.mrmodality.first?.specificDiagnosis ??
-            laCase.ctmodality.first?.specificDiagnosis
+        let modalitySpecificDiagnosis: String? =
+            laCase.ctmodality.first?.specificDiagnosis ??
+                laCase.mrmodality.first?.specificDiagnosis ??
+                laCase.ctmodality.first?.specificDiagnosis
         
-        return LACaseByDiagnosis.SpecificDiagnosis(
-            diagnosis: laCase.diagnosis.diagnosis,
-            specificDiagnosis: modalitySpecificDiagnosis ?? laCase.specificDiagnosis,
-            laCase: laCase)
+        diagnosis = laCase.diagnosis.diagnosis
+        specificDiagnosis = modalitySpecificDiagnosis ?? laCase.specificDiagnosis
+        self.laCase = laCase
     }
 }
+
+//enum LACaseByDiagnosis {
+//    case Diagnosis(diagnosis: String)
+//    case SpecificDiagnosis(diagnosis: String, specificDiagnosis: String, laCase: LACase)
+//    
+//    var diagnosisName: String {
+//        switch self {
+//        case .Diagnosis(let diagnosis),
+//             .SpecificDiagnosis(let diagnosis, _, _):
+//            return diagnosis
+//        }
+//    }
+//
+//    var specificDiagnosisName: String {
+//        switch self {
+//        case .Diagnosis(_):
+//            fatalError("not a specific diagnosis")
+//        case .SpecificDiagnosis(_, let specificDiagnosis, _):
+//            return specificDiagnosis
+//        }
+//    }
+//
+//    static func specificDiagnosis(fromCase laCase: LACase) -> LACaseByDiagnosis {
+//        // the specific diagnosis in the diagnosis isn't what we really want
+//        // the modality.specificDiagnosis has different (and better) text
+//        let modalitySpecificDiagnosis: String? = laCase.ctmodality.first?.specificDiagnosis ??
+//            laCase.mrmodality.first?.specificDiagnosis ??
+//            laCase.ctmodality.first?.specificDiagnosis
+//        
+//        return LACaseByDiagnosis.SpecificDiagnosis(
+//            diagnosis: laCase.diagnosis.diagnosis,
+//            specificDiagnosis: modalitySpecificDiagnosis ?? laCase.specificDiagnosis,
+//            laCase: laCase)
+//    }
+//}

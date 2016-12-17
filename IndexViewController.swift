@@ -20,20 +20,22 @@ class IndexViewController: UIViewController {
         }
     }
     
-    fileprivate var filteredCasesByDiagnoses: [LACaseByDiagnosis] {
+    fileprivate var filteredCasesByDiagnoses: [[SpecificDiagnosis]] {
         if _filteredCasesByDiagnoses == nil {
             _filteredCasesByDiagnoses = LAFilterer.casesByDiagnosis(fromFilteredCases: filteredCases)
         }
         return _filteredCasesByDiagnoses!
     }
-    var _filteredCasesByDiagnoses: [LACaseByDiagnosis]?
+    var _filteredCasesByDiagnoses: [[SpecificDiagnosis]]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 40
-        
+        tableView.register(IndexDiagnosisHeaderView.self,
+                           forHeaderFooterViewReuseIdentifier: CellID.diagnosisHeaderID.rawValue)
+
         if filteredCases == nil {
             filteredCases = LAFilterer.instance.filteredCases
         }
@@ -61,55 +63,43 @@ class IndexViewController: UIViewController {
 extension IndexViewController: UITableViewDataSource {
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return filteredCasesByDiagnoses.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let byDiagnosis = filteredCasesByDiagnoses[indexPath.item]
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = tableView.dequeueReusableHeaderFooterView(
+            withIdentifier: CellID.diagnosisHeaderID.rawValue) as! IndexDiagnosisHeaderView
+
+        let diagnosis = filteredCasesByDiagnoses[section].first!.diagnosis
+        header.configure(title: diagnosis)
         
-        switch byDiagnosis {
-        case let .Diagnosis(diagnosis):
-            let diagnosisCell = tableView.dequeueReusableCell(
-                withIdentifier: CellID.diagnosisCellID.rawValue,
-                for: indexPath) as! IndexTableViewCell
-            diagnosisCell.titleLabel.text = diagnosis
-            return diagnosisCell
-            
-        case let .SpecificDiagnosis(_, specific, _):
-            let diagnosisCell = tableView.dequeueReusableCell(
-                withIdentifier: CellID.specificDiagnosisCellID.rawValue,
-                for: indexPath) as! IndexTableViewCell
-            diagnosisCell.titleLabel.text = specific
-            return diagnosisCell
-        }
+        return header
+    }
+    
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return filteredCasesByDiagnoses[section].count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let byDiagnosis = filteredCasesByDiagnoses[indexPath.section]
+        
+        let diagnosisCell = tableView.dequeueReusableCell(withIdentifier: CellID.specificDiagnosisCellID.rawValue,
+                                                      for: indexPath) as! IndexTableViewCell
+        diagnosisCell.titleLabel.text = byDiagnosis[indexPath.row].specificDiagnosis
+        
+        return diagnosisCell
     }
 }
 
 extension IndexViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let byDiagnosis = filteredCasesByDiagnoses[indexPath.item]
+        let laCase = filteredCasesByDiagnoses[indexPath.section][indexPath.row].laCase
         
-        switch byDiagnosis {
-        case let .Diagnosis(diagnosis):
-            let diagnosisFilter = LAFilter(filterType: .diagnosisCategory,
-                                           filterString: diagnosis)
-            let casesWithDiagnosis = LAFilterer.filteredCases(fromFilteredCases: filteredCases,
-                                                              passingFilter: diagnosisFilter)
-            
-            let casesVC = MainStoryboard.instantiate(withStoryboardID: .casesID) as! CasesViewController
-            casesVC.configure(filteredCases: casesWithDiagnosis)
-            navigationController?.pushViewController(casesVC, animated: true)
-            
-        case let .SpecificDiagnosis(_, _, laCase):
-            let detailsVC = MainStoryboard.instantiate(withStoryboardID: .caseDetailsID) as! CaseDetailsViewController
-            detailsVC.configure(laCase: laCase, modality: filteredCases.modality)
-            
-            navigationController?.pushViewController(detailsVC, animated: true)
-        }
+        let detailsVC = MainStoryboard.instantiate(withStoryboardID: .caseDetailsID) as! CaseDetailsViewController
+        detailsVC.configure(laCase: laCase, modality: filteredCases.modality)
+        
+        navigationController?.pushViewController(detailsVC, animated: true)
     }
 }
 

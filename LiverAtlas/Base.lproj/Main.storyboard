@@ -430,11 +430,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pov-Ch-4rn">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pov-Ch-4rn">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="YnF-0v-rHM">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="2260"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="YnF-0v-rHM">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="2259.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" placeholderIntrinsicWidth="375" placeholderIntrinsicHeight="1724.5" translatesAutoresizingMaskIntoConstraints="NO" id="Sdg-W1-PcF" customClass="QuizContentView" customModule="LiverAtlas" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="1724.5"/>
@@ -450,14 +450,14 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b6J-me-dFv" userLabel="Diagnosis Picker View">
                                                 <rect key="frame" x="0.0" y="1766.5" width="375" height="180.5"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Diagnosis" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kHN-57-TUZ" userLabel="Diagnosis">
-                                                        <rect key="frame" x="20" y="20" width="375" height="20.5"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Diagnosis" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kHN-57-TUZ" userLabel="Diagnosis">
+                                                        <rect key="frame" x="20" y="20" width="335" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <pickerView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E3v-f5-zqE" userLabel="Diagnosis Picker">
-                                                        <rect key="frame" x="20" y="40.5" width="375" height="120"/>
+                                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E3v-f5-zqE" userLabel="Diagnosis Picker">
+                                                        <rect key="frame" x="20" y="40.5" width="335" height="120"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="120" id="B4l-AN-8Vo"/>
                                                         </constraints>
@@ -474,15 +474,15 @@
                                                     <constraint firstItem="kHN-57-TUZ" firstAttribute="leading" secondItem="b6J-me-dFv" secondAttribute="leading" constant="20" id="BWU-eS-u3J"/>
                                                     <constraint firstAttribute="trailing" secondItem="E3v-f5-zqE" secondAttribute="trailing" constant="20" id="EPS-gU-2bZ"/>
                                                     <constraint firstItem="kHN-57-TUZ" firstAttribute="top" secondItem="b6J-me-dFv" secondAttribute="top" constant="20" id="Umn-Pe-LWJ"/>
-                                                    <constraint firstAttribute="bottom" secondItem="E3v-f5-zqE" secondAttribute="bottom" constant="20" id="kjC-EM-C84"/>
+                                                    <constraint firstAttribute="bottom" secondItem="E3v-f5-zqE" secondAttribute="bottom" priority="999" constant="20" id="kjC-EM-C84"/>
                                                     <constraint firstAttribute="trailing" secondItem="kHN-57-TUZ" secondAttribute="trailing" constant="20" id="r9f-Jc-D7Y"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EXD-5N-5rp" userLabel="Specific Diagnosis View">
                                                 <rect key="frame" x="0.0" y="1967" width="375" height="180.5"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Specific Diagnosis" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bvQ-XB-pdJ" userLabel="Specific Diagnosis">
-                                                        <rect key="frame" x="20" y="20" width="375" height="20.5"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Specific Diagnosis" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bvQ-XB-pdJ" userLabel="Specific Diagnosis">
+                                                        <rect key="frame" x="20" y="20" width="335" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -500,7 +500,7 @@
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="bottom" secondItem="UH4-VL-16e" secondAttribute="bottom" constant="20" id="23S-0A-974"/>
+                                                    <constraint firstAttribute="bottom" secondItem="UH4-VL-16e" secondAttribute="bottom" priority="999" constant="20" id="23S-0A-974"/>
                                                     <constraint firstItem="bvQ-XB-pdJ" firstAttribute="leading" secondItem="EXD-5N-5rp" secondAttribute="leading" constant="20" id="7WR-tS-tfG"/>
                                                     <constraint firstAttribute="trailing" secondItem="UH4-VL-16e" secondAttribute="trailing" constant="20" id="A8A-RY-JQu"/>
                                                     <constraint firstItem="UH4-VL-16e" firstAttribute="top" secondItem="bvQ-XB-pdJ" secondAttribute="bottom" id="fSy-9d-QKQ"/>
@@ -512,7 +512,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OAk-5k-XFv" userLabel="Next Question View">
                                                 <rect key="frame" x="0.0" y="2167.5" width="375" height="92"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" placeholderIntrinsicWidth="375" placeholderIntrinsicHeight="40" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zdl-ob-MAc">
+                                                    <button opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="375" placeholderIntrinsicHeight="40" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zdl-ob-MAc">
                                                         <rect key="frame" x="20" y="20" width="335" height="52"/>
                                                         <state key="normal" title="Next Patient"/>
                                                         <connections>
@@ -522,13 +522,10 @@
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="bottom" secondItem="Zdl-ob-MAc" secondAttribute="bottom" constant="20" id="2Ch-g3-2AA"/>
-                                                    <constraint firstItem="Zdl-ob-MAc" firstAttribute="leading" secondItem="OAk-5k-XFv" secondAttribute="leading" constant="20" id="LlG-G4-pLk"/>
-                                                    <constraint firstAttribute="bottom" secondItem="Zdl-ob-MAc" secondAttribute="bottom" constant="20" id="P5E-G1-Avr"/>
-                                                    <constraint firstItem="Zdl-ob-MAc" firstAttribute="top" secondItem="OAk-5k-XFv" secondAttribute="top" constant="20" id="TS2-1v-eEd"/>
-                                                    <constraint firstAttribute="trailing" secondItem="Zdl-ob-MAc" secondAttribute="trailing" constant="20" id="hVL-il-rNw"/>
-                                                    <constraint firstAttribute="trailing" secondItem="Zdl-ob-MAc" secondAttribute="trailing" constant="20" id="q0m-Gj-CWe"/>
-                                                    <constraint firstItem="Zdl-ob-MAc" firstAttribute="leading" secondItem="OAk-5k-XFv" secondAttribute="leading" constant="20" id="udC-dP-ogM"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Zdl-ob-MAc" secondAttribute="trailing" constant="20" id="J4v-Yz-vjs"/>
+                                                    <constraint firstItem="Zdl-ob-MAc" firstAttribute="leading" secondItem="OAk-5k-XFv" secondAttribute="leading" constant="20" id="SOl-sN-y6v"/>
+                                                    <constraint firstItem="Zdl-ob-MAc" firstAttribute="top" secondItem="OAk-5k-XFv" secondAttribute="top" constant="20" id="daK-8k-lD4"/>
+                                                    <constraint firstAttribute="bottom" secondItem="Zdl-ob-MAc" secondAttribute="bottom" priority="999" constant="20" id="xWM-RL-ESl"/>
                                                 </constraints>
                                             </view>
                                         </subviews>

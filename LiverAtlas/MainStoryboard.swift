@@ -42,6 +42,7 @@ enum SegueID: String {
 }
 
 enum CellID: String {
+    case diagnosisHeaderID = "DiagnosisTableHeaderIdentifier"
     case diagnosisCellID = "DiagnosisTableCellIdentifier"
     case specificDiagnosisCellID = "SpecificDiagnosisTableCellIdentifier"
     case caseResultTableViewCellID = "caseResultTableViewCellID"
